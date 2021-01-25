@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statitisches | Norman&#39;s Academic Blog</title>
+    <link>https://sefiroth.net/nap/category/statitisches/</link>
+      <atom:link href="https://sefiroth.net/nap/category/statitisches/index.xml" rel="self" type="application/rss+xml" />
+    <description>Statitisches</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 05 Apr 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Statitisches</title>
+      <link>https://sefiroth.net/nap/category/statitisches/</link>
+    </image>
+    
+    <item>
+      <title>Der Zentrale Grenzwertsatz</title>
+      <link>https://sefiroth.net/nap/post/der-zentrale-grenzwertsatz/</link>
+      <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/der-zentrale-grenzwertsatz/</guid>
+      <description>
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;der-zentrale-grenzwertsatz-der-statistik-bei-identischer-verteilung.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Der &lt;strong&gt;Zentrale Grenzwertsatz&lt;/strong&gt; der Statistik bei identischer Verteilung.&lt;/h2&gt;
+&lt;div id=&#34;zentraler-grenzwertsatz&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Zentraler Grenzwertsatz&lt;/h3&gt;
+&lt;p&gt;Seien &lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, ..., X_n\)&lt;/span&gt; unabhängige und identisch verteilte Zufallsvariablen mit bekanntem Erwartungswert &lt;span class=&#34;math inline&#34;&gt;\(E(X_i) = \mu\)&lt;/span&gt; und bekannter Varianz &lt;span class=&#34;math inline&#34;&gt;\(Var(X_i)=\sigma^2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Für die Summe &lt;span class=&#34;math inline&#34;&gt;\(S_n = \sum_{i=1}^n X_i\)&lt;/span&gt; ist dann der Erwartungswert &lt;span class=&#34;math inline&#34;&gt;\(E(S_n)= n \cdot \mu\)&lt;/span&gt; und die Varianz &lt;span class=&#34;math inline&#34;&gt;\(Var(S_n)= n \cdot \sigma^2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Dann gilt für die &lt;em&gt;standardisierte&lt;/em&gt; Zufallsvariable&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+Z_n &amp;amp;= \frac{\left(\sum\limits_{i=1}^n X_i\right) - n \cdot \mu}{\sqrt{n\cdot \sigma^2}}
+    = \frac{S_n - n \cdot \mu}{\sigma \cdot \sqrt{n}} 
+    = \frac{n \cdot \bar{X}_n-n \cdot \mu}{\sigma \cdot n / \sqrt{n}} \\
+    &amp;amp;= \frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} 
+    = \frac{\bar{X}_n - \mu}{\sigma} \cdot \sqrt{n},
+\end{align*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;dass sie für wachsendes &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; immer besser durch die &lt;em&gt;Standardnormalverteilung&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(N(0, 1)\)&lt;/span&gt; approximiert werden kann.&lt;/p&gt;
+&lt;p&gt;Mit anderen Worten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+P(Z_n \leq x) \longrightarrow \Phi(x), \quad \text{ für }\; n \rightarrow \infty
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ein-beispiel&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Ein Beispiel:&lt;/h2&gt;
+&lt;p&gt;Nehmen wir drei Verteilungen mit Zufallsvariable &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; und jeweils &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; Realisationen &lt;span class=&#34;math inline&#34;&gt;\(u_1,\dots, u_n\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(x_1,\dots, x_n\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(y_1,\dots, y_n\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Wählen wir zunächst &lt;span class=&#34;math inline&#34;&gt;\(n=5\)&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;u&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 19.726 69.683 60.790  0.955 42.901&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  7.942 15.905 12.917  6.818  4.434&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 59.961 56.552 51.094 75.288 47.985&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Standardisieren wir die Werte:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+zscore(u)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -0.6695256  1.0830283  0.7710507 -1.3280357  0.1434823&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;zscore(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -0.3543069  1.3440714  0.7067796 -0.5940379 -1.1025063&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;zscore(y)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  0.1677971 -0.1526624 -0.6657361  1.6085958 -0.9579944&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Die Behauptung des Zentralengrenzwertsatzes ist nun, dass mit steigender Anzahl an Werten &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; die standardisierten Werte in der empirischen Verteilungsfunktion sich immer mehr der Verteilungsfunktion der Standardnormalverteilung annähern:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Weiterführende Literatur und Quellen dieses Eintrags:&lt;/strong&gt;&lt;/p&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;
+&lt;div id=&#34;ref-Schira2005&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;csl-left-margin&#34;&gt;1. &lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Schira, J.: Statistische Methoden der VWL und BWL. PEARSON Studion, München (2005)&lt;/div&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-website:WikipediaZGS&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;csl-left-margin&#34;&gt;2. &lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Wikipedia: Zentraler Grenzwertsatz, &lt;a href=&#34;https://de.wikipedia.org/w/index.php?title=Zentraler_Grenzwertsatz&amp;amp;oldid=162715036&#34;&gt;https://de.wikipedia.org/w/index.php?title=Zentraler_Grenzwertsatz&amp;amp;oldid=162715036&lt;/a&gt;, (2017)&lt;/div&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-website:WolframMathWorldCLT&#34; class=&#34;csl-entry&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;csl-left-margin&#34;&gt;3. &lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Weisstein, E.W.: Central limit theorem, &lt;a href=&#34;http://mathworld.wolfram.com/CentralLimitTheorem.html&#34;&gt;http://mathworld.wolfram.com/CentralLimitTheorem.html&lt;/a&gt;, (2017)&lt;/div&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

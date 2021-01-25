@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zusammemhangsanalyse | Norman&#39;s Academic Blog</title>
+    <link>https://sefiroth.net/nap/tag/zusammemhangsanalyse/</link>
+      <atom:link href="https://sefiroth.net/nap/tag/zusammemhangsanalyse/index.xml" rel="self" type="application/rss+xml" />
+    <description>Zusammemhangsanalyse</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Zusammemhangsanalyse</title>
+      <link>https://sefiroth.net/nap/tag/zusammemhangsanalyse/</link>
+    </image>
+    
+    <item>
+      <title>Ein kleines Beispiel zum Rangkorrelationskoeffizienten</title>
+      <link>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</guid>
+      <description>
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;../../rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+
+
+&lt;p&gt;Bei der Rangkorrelation werden statt der Werte die Ränge der Werte zur Berechnung herangezogen.&lt;/p&gt;
+&lt;div id=&#34;beispiel&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Beispiel:&lt;/h3&gt;
+&lt;p&gt;Es seien die folgenden Datenpunkte gegeben:&lt;/p&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+x
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.91
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.63
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.88
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.80
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8.70
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.96
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.71
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.06
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+y
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.38
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.30
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+14.87
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+22.20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+36.72
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+49.94
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+63.77
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+82.76
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+100.12
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Das Streudiagramm dieser Daten sieht dann so aus:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Der Korrelationskoeffizent ist nun:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r = r_{BP} = 0.7944953\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Schauen wir uns nun die Werte der Tabelle mit ihrem Rang an:&lt;/p&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+x
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.91
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.63
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.88
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.80
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8.70
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.96
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.71
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.06
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+y
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.38
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.30
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+14.87
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+22.20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+36.72
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+49.94
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+63.77
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+82.76
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+100.12
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+rx
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ry
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Das Streudiagramm der Ränge sieht nun wie folgt aus:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Und der Korrelationskoeffizient der Ränge ist nun:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r_{sp} = r_{ry,rx}=0.8909091\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Dieser Korrelatonskoeffizient der Ränge wird &lt;em&gt;Rangkorrelationkoeffizient&lt;/em&gt; genannt.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aber vorsicht:&lt;/strong&gt; Die Ränge anstatt der Werte in die Formel für den Korrelationskoeffizeten einzusetzen funktioniert nur, wenn jeder Wert genau &lt;strong&gt;einmal&lt;/strong&gt; vorkommt!&lt;/p&gt;
+&lt;p&gt;Um das zu sehen, modifizieren wir unser Beispiel, so dass an zwei Stellen die Werte doppelt vorkommen. Wir erhalten damit die folgende, neue Tabelle:&lt;/p&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+x
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.91
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.63
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.63
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.88
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.80
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8.70
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.96
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.71
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.06
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+y
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.38
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.30
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.90
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+22.20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+22.20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+36.72
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+49.94
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+63.77
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+82.76
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+100.12
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+rx
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ry
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Bevor wir nun einfach die &lt;em&gt;Ränge&lt;/em&gt; so in die Formel für den &lt;em&gt;Korrealtionskoeffizienten&lt;/em&gt; (nach Pearson) einsetzen können, müssen wir noch etwas beachten, was die Definition von &lt;em&gt;Rängen&lt;/em&gt; angeht.
+Denn dort steht im Kleingedruckten folgendes:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Den ranggleichen Beobachtungen wird das arithmetische Mittel der auf sie fallenden Ränge zugeordnen!&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Darum müssen wir die Ränge noch etwas korrigieren und erhalten:&lt;/p&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+x
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.91
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.63
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.63
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.88
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.80
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8.70
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.96
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.71
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.06
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+y
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.38
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.30
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.90
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+22.20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+22.20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+36.72
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+49.94
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+63.77
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+82.76
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+100.12
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+rx
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.50
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.50
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ry
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.50
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.50
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Nun können wir von den Rängen wieder “ganz normal” den Korrelationskoeffizenten berechnen und erhalten:
+&lt;span class=&#34;math display&#34;&gt;\[r_{sp} = r_{ry,rx} = 0.8932927\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen</title>
+      <link>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</link>
+      <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</guid>
+      <description>
+&lt;script src=&#34;2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhängen_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Bei der Analyse von Zusammenhängen tauchen sowohl &lt;em&gt;Moderation&lt;/em&gt; als auch &lt;em&gt;Mediation&lt;/em&gt; auf. Es geht um Zusammenhänge zwischen drei Variablen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt;.
+Untersucht wird der Effekt einer unabhägigen Variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; (&lt;em&gt;Prädiktor&lt;/em&gt;, &lt;em&gt;UV&lt;/em&gt;) auf ein abhängige Variable &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; (&lt;em&gt;AV&lt;/em&gt;).
+Wir untersuchen dies mit einem Regressionsmodell &lt;span class=&#34;math inline&#34;&gt;\(Y \sim X\)&lt;/span&gt;.
+Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; berücksichtigt, die man entweder der &lt;em&gt;Moderator&lt;/em&gt; oder &lt;em&gt;Mediator&lt;/em&gt; nennt.&lt;/p&gt;
+&lt;p&gt;Ist die abhängige Variable metrisch, so können wir mittels eine linearer Regression vorgehen, ist die AB dagegen dichotom, so nutzen wir eine logistische Regression.&lt;/p&gt;
+&lt;div id=&#34;moderation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Moderation&lt;/h2&gt;
+&lt;p&gt;Bei einer &lt;em&gt;Moderation&lt;/em&gt; wirkt die dritte Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (&lt;em&gt;Moderator&lt;/em&gt;) auf die Beziehung zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Der Einfluss von &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; ändert also den Effekt von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; auf &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. Der Zusammenhang zwischen &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; ist also je nach &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; unterschiedlich.&lt;/p&gt;
+&lt;p&gt;Statistisch gesehen liegt eine &lt;em&gt;Interaktion&lt;/em&gt; zwischen &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; vor.&lt;/p&gt;
+&lt;div id=&#34;wie-untersucht-man-einen-zusammenhang-auf-eine-moderation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Wie untersucht man einen Zusammenhang auf eine Moderation?&lt;/h3&gt;
+&lt;p&gt;Dazu stellen wir ein Regressionsmodell mit den drei Faktoren &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; und der Interaktion zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; auf.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lm(Y ~ X * M, data=daten)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Oder alternativ:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lm(Y ~ X + M + M:X, data=daten)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Diese drei Faktoren wirken auf &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. Ist in diesem Modell die Interaktion &lt;span class=&#34;math inline&#34;&gt;\(M:X\)&lt;/span&gt; &lt;em&gt;signifikant&lt;/em&gt;, so liegt eine (signifikante) &lt;em&gt;Moderation&lt;/em&gt; vor.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mediation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Mediation&lt;/h2&gt;
+&lt;p&gt;Bei der &lt;em&gt;Mediation&lt;/em&gt; steht die Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (der &lt;em&gt;Mediator&lt;/em&gt;) sowohl zu &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; als auch zu &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; in Beziehung.
+Der direkte Effekt zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; wird durch den indirekten Effekt über &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; erklärt, also durch
+&lt;span class=&#34;math inline&#34;&gt;\(X \to M \to Y\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;wie-untersucht-man-auf-eine-mediation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Wie untersucht man auf eine Mediation?&lt;/h3&gt;
+&lt;p&gt;In diesem Fall stellen wir mehrere Regressionsmodelle auf. Eine (signifikante) Mediation liegt dann vor, wenn die folgenden Bedinungen erfüllt sind:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;erstesModell &amp;lt;- lm(Y ~ X, data=daten)
+zweitesModell &amp;lt;- lm(M ~ X, data=daten)
+drittesModell &amp;lt;- lm(Y ~ X + M, data=daten)&lt;/code&gt;&lt;/pre&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Im ersten Modell (&lt;span class=&#34;math inline&#34;&gt;\(X \to Y\)&lt;/span&gt;) ist der Regressionskoeffizient von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; signifikant.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Im zweiten Modell (&lt;span class=&#34;math inline&#34;&gt;\(X \to M\)&lt;/span&gt;) ist der Regressionskoeffizient von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; signifikant.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Im dritten Modell (&lt;span class=&#34;math inline&#34;&gt;\(X,M \to Y\)&lt;/span&gt;) ist der Regressionskoeffizient von &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; signifikant und&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;der Regressionskoeffizient von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; im dritten Modell kleiner als im ersten Modell.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

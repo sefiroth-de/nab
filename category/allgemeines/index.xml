@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Allgemeines | Norman&#39;s Academic Blog</title>
+    <link>https://sefiroth.net/nap/category/allgemeines/</link>
+      <atom:link href="https://sefiroth.net/nap/category/allgemeines/index.xml" rel="self" type="application/rss+xml" />
+    <description>Allgemeines</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 18 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Allgemeines</title>
+      <link>https://sefiroth.net/nap/category/allgemeines/</link>
+    </image>
+    
+    <item>
+      <title>Korrigieren von Arbeiten mit Excel und R</title>
+      <link>https://sefiroth.net/nap/post/korrigieren-von-arbeiten-mit-excel-und-r/</link>
+      <pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/korrigieren-von-arbeiten-mit-excel-und-r/</guid>
+      <description>
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Das korrigieren von Arbeiten ist nicht gerade des Lehrenden liebste Tätigkeit. Vorallem, wenn man eine Mischung auf Multiple-Choice und Freitest Aufgaben zu korrigieren hat und leider keine gute technische Unterstützung vorfindet.&lt;/p&gt;
+&lt;p&gt;Klar gibt es wunderschöne Lösungen mit R dazu, wie zum Beispiel &lt;a href=&#34;http://www.r-exams.org&#34; class=&#34;uri&#34;&gt;http://www.r-exams.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Aber zum Glück kann man den Ablauf auch “mit Bordmitteln” etwas verbessern.&lt;/p&gt;
+&lt;p&gt;Wir bekommen eine Liste der Teilnehmer, in Form eine Excel- oder CSV-Datei, in die wir die Punkte eintragen können, die von der Hochschule digital verarbeitet wird. Diese Liste nehmen wir als Grundlage um den Ablauf etwas zu optimieren.&lt;/p&gt;
+&lt;p&gt;In den Klausuren gibt es vier Sorten von Aufgabentypen:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Multiple Choice mit genau einer Antwortmöglichkeit&lt;/li&gt;
+&lt;li&gt;Multiple Choice mit mehr als einer Antwortmöglichkeit&lt;/li&gt;
+&lt;li&gt;(Ganze) Zahlen als Antwort auf eine Frage&lt;/li&gt;
+&lt;li&gt;Begründungen und/oder freie Textantworten&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Die ersten drei Aufgabentypen können sehr schön mit Hilfe einer Exceltabelle erfasst werden. Der vierte Aufgabentyp muss direkt bewertet werden und wird in so ebenfalls in die Exceltabelle eingegeben.&lt;/p&gt;
+&lt;p&gt;Die erfassten Daten der Klausuren liegen zu Beginn der Auswertung in einer Exceldatei bereit, die in etwa wie folgt aussieht:&lt;/p&gt;
+&lt;p&gt;&amp;lt; &amp;lt; &amp;lt; BILD EXCEL DATEI &amp;gt; &amp;gt; &amp;gt;&lt;/p&gt;
+&lt;p&gt;Diese Datei wird unter dem Namen &lt;code&gt;Klausurteilnehmendenliste.xslx&lt;/code&gt; gespeichert.&lt;/p&gt;
+&lt;p&gt;Die Auswertung geschieht dann mittels eines kleinen R-Skripts:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+library(readxl)
+
+max.show &amp;lt;- 10
+
+Aufgaben.Index &amp;lt;- 1:40
+Aufgaben.Typ   &amp;lt;- rep(&amp;quot;MC&amp;quot;, 40)
+for (idx in c(1, 9, 14, 36, 37, 38, 39, 40)){
+    Aufgaben.Typ[idx] &amp;lt;- &amp;quot;nonMC&amp;quot;
+}
+
+Aufgaben.Punkte.max &amp;lt;- c( 8, 1, 1, 1, 2, 1, 2, 2, 3, 1, 
+                          2, 1, 1, 3, 2, 1, 4, 2, 2, 2, 
+                          2, 2, 1, 2, 1, 1, 2, 1, 1, 1, 
+                          1, 2, 1, 1, 1, 6, 4, 4, 6, 8)
+Aufgaben.MC.richtig &amp;lt;- c(NA, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;C&amp;quot;, &amp;quot;D&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;, NA, &amp;quot;B&amp;quot;,
+                         &amp;quot;BD&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, NA, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;BC&amp;quot;, &amp;quot;C&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;,
+                         &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;,  &amp;quot;2&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;,
+                         &amp;quot;B&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;B&amp;quot;, NA, NA, NA, NA, NA
+                        )
+if (sum(Aufgaben.Punkte.max) != 90) stop(&amp;quot;Gesamtpunktzahl ist nicht 90!&amp;quot;)
+
+for (idx in 1:40) {
+    if (Aufgaben.Typ[idx] == &amp;quot;MC&amp;quot;) {
+        if (is.na(Aufgaben.MC.richtig[idx])) stop(paste(&amp;quot;MC Aufgabe&amp;quot;, idx, &amp;quot;ohne Musterlösung!&amp;quot;))
+    } else {
+        if (!is.na(Aufgaben.MC.richtig[idx])) stop(paste(&amp;quot;Nicht-MC Aufgabe&amp;quot;, idx, &amp;quot;mit Musterlösung!&amp;quot;))
+    }
+}
+
+Aufgaben &amp;lt;- c( 531388,
+                NA, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;,  NA, &amp;quot;B&amp;quot;,
+                &amp;quot;BD&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;,  NA, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;,  &amp;quot;&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;B&amp;quot;,
+                &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;,
+                &amp;quot;A&amp;quot;, &amp;quot;E&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;C&amp;quot;, NA, NA, NA, NA, NA
+                )
+
+sumMC &amp;lt;- function(test) {
+    summe &amp;lt;- 0
+    for(idx in 1:40) {
+        if (!is.na(test[idx+1]) &amp;amp;&amp;amp; (!(test[idx+1] == &amp;quot;/&amp;quot; ))) {
+            if (Aufgaben.Typ[idx] == &amp;quot;MC&amp;quot;) {
+                tmp &amp;lt;- length(Aufgaben.MC.richtig[idx])
+                if (tmp &amp;gt; 1) {
+                    pp &amp;lt;-  Aufgaben.Punkte.max[idx]/tmp
+                    for(x in unlist(strsplit(Aufgaben.MC.richtig[idx], NULL))) {
+                        if (toupper(x) %in% toupper(test[idx+1])) {
+                            summe &amp;lt;- summe + pp
+                        }
+                    }
+                } else {
+                    if (toupper(test[idx+1]) == toupper(Aufgaben.MC.richtig[idx])) {
+                        summe &amp;lt;- summe + Aufgaben.Punkte.max[idx]
+                    }
+                }
+            } else {
+                if (!is.na(test[idx+1])) {
+                    summe &amp;lt;- summe + as.integer(test[idx+1])
+                }
+            }
+        }
+    }
+    return(summe)
+}
+
+Klausurteilnehmendenliste &amp;lt;- read_excel(&amp;quot;Klausurteilnehmendenliste.xlsx&amp;quot;)
+Klausurteilnehmendenliste &amp;lt;- Klausurteilnehmendenliste %&amp;gt;% select(c(-1,-2)) %&amp;gt;% mutate_all(toupper)
+
+Punkte &amp;lt;- apply(Klausurteilnehmendenliste, 1, sumMC)
+Klausurteilnehmendenliste &amp;lt;- cbind(Klausurteilnehmendenliste, Punkte)
+
+head(select(Klausurteilnehmendenliste, c(1, &amp;quot;Punkte&amp;quot;)), max.show)
+tail(select(Klausurteilnehmendenliste, c(1, &amp;quot;Punkte&amp;quot;)), max.show)
+
+Klausurteilnehmendenliste %&amp;gt;%
+    filter(Punkte &amp;gt; 10) %&amp;gt;%
+    gf_counts(~ Punkte, data=.)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mit den Zeilen&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Aufgaben.Typ   &amp;lt;- rep(&amp;quot;MC&amp;quot;, 40)
+for (idx in c(1, 9, 14, 36, 37, 38, 39, 40)){
+    Aufgaben.Typ[idx] &amp;lt;- &amp;quot;nonMC&amp;quot;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;werden zunächst 40 MC-Aufgaben angelegt und danach die Aufgaben 1, 9, 14, 36, 37, 38, 39 und 40 als nicht MC Aufgaben gekennzeichnet. Hier muss später die Punktzahl direkt eingegeben werden!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Aufgaben.Punkte.max &amp;lt;- c( 8, 1, 1, 1, 2, 1, 2, 2, 3, 1, 
+                          2, 1, 1, 3, 2, 1, 4, 2, 2, 2, 
+                          2, 2, 1, 2, 1, 1, 2, 1, 1, 1, 
+                          1, 2, 1, 1, 1, 6, 4, 4, 6, 8)
+Aufgaben.MC.richtig &amp;lt;- c(NA, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;C&amp;quot;, &amp;quot;D&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;, NA, &amp;quot;B&amp;quot;,
+                         &amp;quot;BD&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, NA, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;BC&amp;quot;, &amp;quot;C&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;,
+                         &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;,  &amp;quot;2&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;,
+                         &amp;quot;B&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;B&amp;quot;, NA, NA, NA, NA, NA
+                        )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In &lt;code&gt;Aufgaben.Punkte.max&lt;/code&gt; werden die maximal erreichbaren Punkte pro Aufgabe gespeichert. In &lt;code&gt;Aufgaben.MC.richtig&lt;/code&gt; sind alle &lt;em&gt;nicht MC&lt;/em&gt;-Aufgaben mit &lt;code&gt;NA&lt;/code&gt; gekennzeichnet. Die Lösungen werden als Zeichenkette (in Großbuchstaben) hinterlegt. Sollte eine MC-Aufgabe mehrere richtige Antworten haben, so schreibt man diese einfach hintereinander. So bedeutet “BD”, dass die Lösungen “B” und “D” richtig sind.&lt;/p&gt;
+&lt;p&gt;Wird in den Lösungen für eine Aufgabe “/” eingetragen, so gilt diese Aufgabe als nicht bearbeitet und wird mit 0 Punkten bewertet.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Weitere Software auf den Raspberry PI installieren.</title>
+      <link>https://sefiroth.net/nap/post/weitere-software-auf-den-raspberry-pi-installieren/</link>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/weitere-software-auf-den-raspberry-pi-installieren/</guid>
+      <description>&lt;p&gt;Hier eine Liste von Software für den Raspberry Pi, die man noch installieren sollte/ kann und wie man es macht:&lt;/p&gt;
+&lt;h2 id=&#34;mathematica&#34;&gt;Mathematica&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get install wolfram-engine
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;python3-auf-den-aktuellen-stand-bringen&#34;&gt;Python3 auf den aktuellen Stand bringen&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;pip3 install --upgrade pip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;python3-und-das-paket-matplotlib&#34;&gt;Python3 und das Paket &amp;ldquo;matplotlib&amp;rdquo;&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install python3-matplotlib
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Der Angriff der Riesenschlangen.</title>
+      <link>https://sefiroth.net/nap/post/der-angriff-der-riesenschlangen/</link>
+      <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/der-angriff-der-riesenschlangen/</guid>
+      <description>
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Klingt ja bedrohlich, aber es ist wirklich Möglich &lt;a href=&#34;https://www.r-project.org&#34;&gt;R&lt;/a&gt; und &lt;a href=&#34;https://www.python.org&#34;&gt;Python&lt;/a&gt; sinnvoll zu kombinieren. Nicht nur in den Anwendungen, sondern auch beim Erstellen von Skripten mit &lt;a href=&#34;https://rmarkdown.rstudio.com&#34;&gt;R markdown&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Zu Beginn des letzten Semesters hatte ich die Idee in der Vorlesung “&lt;em&gt;Mathematischen Grundlagen der Wirtschaftsinformatik&lt;/em&gt;” ein paar der Begriffe der Mengenlehre denen daraus abgeleiteten Begriffen der abstrakten Datentypen gegenüberzustellen. So gibt es die Idee der &lt;em&gt;Menge&lt;/em&gt; u.a. in &lt;em&gt;Python&lt;/em&gt; als &lt;em&gt;set&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Wie aber kann man solche Python-Fragmente in ein R markdown Sktipr einbauen? - Kann man &lt;em&gt;R markdown&lt;/em&gt; überhaupt mit &lt;em&gt;Python&lt;/em&gt; zusammen bringen? - Ein wenig suchen im Internet und ein paar Stunden später hatte ich es geschaft. Dank einer Netzpython…&lt;/p&gt;
+&lt;div id=&#34;die-netzpython-als-bindeglied-zwischen-r-und-python&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Die Netzpython als Bindeglied zwischen R und Python&lt;/h2&gt;
+&lt;p&gt;Eine Netzpython (engl. &lt;a href=&#34;https://en.wikipedia.org/wiki/Reticulated_python&#34;&gt;reticulated python&lt;/a&gt;) stand Pate für den Namen des &lt;em&gt;R&lt;/em&gt; Paketes &lt;a href=&#34;https://rstudio.github.io/reticulate/index.html&#34;&gt;&lt;code&gt;reticulate&lt;/code&gt;&lt;/a&gt;, welches &lt;em&gt;R&lt;/em&gt; und &lt;em&gt;Python&lt;/em&gt; miteinander verbindet. So ist es möglich &lt;em&gt;Python&lt;/em&gt;-Befehle direkt in ein &lt;em&gt;R markdown&lt;/em&gt; Skript ausführen zulassen, diese Fragmente adequat durchzustellen – ganz wie &lt;em&gt;R Skripte&lt;/em&gt; – und sogar Daten zwoschen &lt;em&gt;R&lt;/em&gt; und &lt;em&gt;Python&lt;/em&gt; hin und her (aus) zu tauschen.&lt;/p&gt;
+&lt;p&gt;Nach der Installation mittels&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;reticulate&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;bedarf es aber durch aus noch einiger Anpassungen, bis alles zur Zufriedenheit funktioniert.&lt;/p&gt;
+&lt;p&gt;Standardmässig sucht die Netzpython nach ihrem Gefährten mit der Hilfe des Befehls &lt;code&gt;Sys.which(&#34;python&#34;)&lt;/code&gt;, welcher bei mir leider zu einer vollkommen alten, aber noch benutzen, &lt;em&gt;Python&lt;/em&gt; Version führte. Möchte man eine ganz bestimmte &lt;em&gt;Python&lt;/em&gt; Version haben, so hilft einem der Befehl &lt;code&gt;use_python()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
+use_python(&amp;quot;/usr/local/bin/python&amp;quot;)  # Pfad zum Python-Befehl der benutz werden soll.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Es werden auch &lt;a href=&#34;https://realpython.com/python-virtual-environments-a-primer/&#34;&gt;virtuelle Umgebungen&lt;/a&gt; unterstützt:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
+use_virtualenv(&amp;quot;myenv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Und auch eine ganz andere Schlangenart kann benutzt werden, &lt;a href=&#34;https://www.anaconda.com/what-is-anaconda/&#34;&gt;Anacondas&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
+use_condaenv(&amp;quot;mycondaenv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;der-einbau-in-ein-r-markdown-dokument&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Der Einbau in ein R markdown Dokument&lt;/h2&gt;
+&lt;p&gt;Einen &lt;em&gt;Python&lt;/em&gt; Quellcode in ein &lt;em&gt;R markdown&lt;/em&gt; einzubauen ist dann wieder sehr einfach. Man ändert einfach ein &lt;em&gt;r&lt;/em&gt; in &lt;em&gt;python&lt;/em&gt; im Codeblock und schon steht einem der &lt;em&gt;knitr-Chunk&lt;/em&gt; als &lt;em&gt;Python&lt;/em&gt; Quelle zur Verfügung.&lt;/p&gt;
+Sp liefert der &lt;em&gt;knitr-Chunk&lt;/em&gt;
+&lt;pre&gt;&lt;code&gt;```{python}
+# Etwas Python gefällig?
+def quadrat(x):
+    return x**2
+    
+print(quadrat(2))
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;in einem &lt;em&gt;R markdown&lt;/em&gt;, dann die Ausgabe:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# Etwas Python geföllig?
+def quadrat(x):
+    return x**2
+    
+print(quadrat(2))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Das war es aber noch lange nicht. &lt;em&gt;R&lt;/em&gt; und &lt;em&gt;Python&lt;/em&gt; können nämlich nicht nur nebeneinander, sondern auch miteinander!&lt;/p&gt;
+&lt;p&gt;Dazu dann aber mehr in einem späteren Blog-Eintrag.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Auch R markdown Dateien sollten sich an Regeln halten</title>
+      <link>https://sefiroth.net/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</guid>
+      <description>
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Jede Programmiersprache hat Regeln.
+Neben dem Regelwerk welches durch den Syntax einer Sprache festgelegt wird, gib es aber noch Regeln über die Form in der man den Quelltext schreibt.
+Diese sogenannte &lt;em&gt;Stilregeln&lt;/em&gt; (engl. &lt;em&gt;style guides&lt;/em&gt;) sind von Programmieren aufgestellte Regeln um ein einheitliches “Schriftbild” des Quelltextes zu erhalten.
+Das Ziel der &lt;em&gt;Stilregeln&lt;/em&gt; ist es, den Quelltext lesbarer zu gestallten, um leichter Änderungen einzupflegen oder um unnötiges zu vermeiden.&lt;/p&gt;
+&lt;p&gt;Eine Programmiersprache wie &lt;em&gt;Python&lt;/em&gt; zum Beispiel hat mit &lt;a href=&#34;https://www.python.org/dev/peps/pep-0008/&#34;&gt;PEP8&lt;/a&gt; einen eigenen Standard wie ein &lt;em&gt;Python&lt;/em&gt; Programm geschrieben seien sollte.
+Dazu gibt es auch gleich das passenden Prüfprogramm (früher &lt;code&gt;pep8&lt;/code&gt;, neuerdings &lt;a href=&#34;https://github.com/PyCQA/pycodestyle&#34;&gt;&lt;code&gt;pycodestyle&lt;/code&gt;&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Schreibt man ein &lt;em&gt;R markdown&lt;/em&gt; Text mag man vielleicht nicht daran denken, dass so eine Idee auch hier sehr sinnvoll ist.
+Neben den gängigen Style-Guides für den &lt;em&gt;R&lt;/em&gt; Quellcode (z. B.: &lt;a href=&#34;https://google.github.io/styleguide/Rguide.xml&#34;&gt;Google’s R Style Guide&lt;/a&gt;, &lt;a href=&#34;http://adv-r.had.co.nz/Style.html&#34;&gt;Hadley Wickham’s Advanced R - Style guide&lt;/a&gt;, &lt;a href=&#34;http://jef.works/R-style-guide/&#34;&gt;jef.works R Style Guide&lt;/a&gt;, &lt;a href=&#34;https://csgillespie.wordpress.com/2010/11/23/r-style-guide/&#34;&gt;R Style Guide&lt;/a&gt; oder &lt;a href=&#34;https://github.com/rdatsci/PackagesInfo/wiki/R-Style-Guide&#34;&gt;R-Style-Guide&lt;/a&gt;) gibt es aber kaum Regeln (z. B.: &lt;a href=&#34;https://holtzy.github.io/Pimp-my-rmd/&#34;&gt;Pimp my Rmd&lt;/a&gt;) für die Gestaltung von &lt;em&gt;R markdown&lt;/em&gt;.&lt;/p&gt;
+&lt;div id=&#34;stil-regeln-für-gutes-r-markdown-ein-erster-vorschlag&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Stil-Regeln für gutes &lt;em&gt;R markdown&lt;/em&gt;, ein erster Vorschlag&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Keine unnützen Zeichen am Ende von Textzeilen. / &lt;em&gt;No whitespaces at the end of a line&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Eine Textzeile sollte mit einem ‘echtem’ Zeichen enden und nicht mit einem ‘unsichtbarem’ Zeichen.
+Das heisst: Leerzeichen, Tabs, harte Leerzeichen etc. gehören nicht ans Ende einer Zeile.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Zwei Leerzeilen vor einer jeden Kopfzeile. / &lt;em&gt;Two blank lines before every header&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Um die Inhalte auch klar voneinander trennen zu können sollte man vor der Kopfzeile zwei Leerzeilen eingefügt werden.
+Statt&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Das ist eine Kopfzeile auf der 1. Ebene
+## Das is eine Kopfzeile auf der 2. Ebene
+Das hier ist einfacher Text&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sollte es so gegliedert sein:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+
+# Das ist eine Kopfzeile auf der 1. Ebene
+
+
+## Das is eine Kopfzeile auf der 2. Ebene
+
+Das hier ist einfacher Text&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Vor und nach Aufzählungen sollte immer eine Leerzeile stehen. / &lt;em&gt;One blank line before and after itemizations or enumerations&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Statt&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Das ist eine Liste:
+- Ein Punkt
+- Ein anderer Punkt
+Und hier geht der Text weiter.
+1. Der erste Punkt.
+2. Der zweite Punkt.
+Und wieder mal ein Text.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sollte es so gegliedert sein:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Das ist eine Liste:
+
+- Ein Punkt
+- Ein anderer Punkt
+
+Und hier geht der Text weiter.
+
+1. Der erste Punkt.
+2. Der zweite Punkt.
+
+Und wieder mal ein Text.&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Vor und nach Codeblöcken sollte immer eine Leerzeile stehen. / &lt;em&gt;One blank line before and after a codeblock&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Statt&lt;/p&gt;
+&lt;pre&gt;
+Etwas Text vorher
+```{r}&lt;code&gt;1+1
+```&lt;/code&gt;und danach.
+&lt;/pre&gt;
+&lt;p&gt;sollte man es besser wie folgt gliedern:&lt;/p&gt;
+&lt;pre&gt;
+Etwas Text vorher
+
+```{r}&lt;code&gt;1+1
+```&lt;/code&gt; und danach.
+&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Keine anderen Sprachen als &lt;em&gt;R markdown&lt;/em&gt; für Inhalte oder Design nutzen. / &lt;em&gt;Use no other languages to create content or design, other than (R) markdown.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Keine anderen Sprachen, insbesondere LaTeX, um besondere Effekte zu erzielen. Dafür sollten (native) DIV oder SPAN Abschnitte benutzt werden und entsprechend durch spätere (Filter-)Programme umgesetzt werden. So ist es immer möglich Design-Ideen für alle möglichen Zielsprachen zu erhalten.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rmdstylechecker-ein-erster-style-checker-für-r-markdown&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;RmdStyleChecker, ein erster Style Checker für &lt;em&gt;R markdown&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;Die ersten drei Punkte der Liste habe ich zu Testzwecken in einem kleinen Projekt mit Hilfe von &lt;em&gt;Python&lt;/em&gt; implementiert.
+Den &lt;em&gt;Python&lt;/em&gt;-Quelltext findet man unter &lt;a href=&#34;https://github.com/NMarkgraf/RmdStyleChecker&#34;&gt;RmdStyleChecker&lt;/a&gt;. Er läuft unter &lt;em&gt;Python&lt;/em&gt; 3.5+.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ein paar interessante Links</title>
+      <link>https://sefiroth.net/nap/post/ein-paar-interessante-links/</link>
+      <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/ein-paar-interessante-links/</guid>
+      <description>&lt;p&gt;Im Laufe der Zeit sammeln sich bei mir mehr und mehr Links zu anderen Seiten an, die ich irgendwie speichern will aber nicht ernsthaft sortieren möchte.
+So ist diese Sammlung hier entstanden:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www2.hs-fulda.de/~grams/hoppla/wordpress/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Blog von Prof. Dr. Timm Grams&lt;/a&gt; &amp;ndash; &amp;ldquo;Ein Weblogbuch über sonderbare Nachrichten und alltäglichen Statistikplunder&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www2.hs-fulda.de/~grams/dnkfln.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Denkfallen und Paradoxa&lt;/a&gt; &amp;ndash; Prof. Dr. Timm Grams gibt einen Überblick&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www2.hs-fulda.de/~grams/mathehilft/schaetzen/Vierfeldertafel.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Signifikanztest mit der Vierfeldertafel&lt;/a&gt; &amp;ndash; Prof. Dr. Timm Grams&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www2.hs-fulda.de/~grams/Heuristik/Lektionen/Querbeet.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Querbeet &amp;ndash; Eine Problemsammlung&lt;/a&gt; &amp;ndash; Prof. Dr. Timm Grams&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://data-se.netlify.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Blog von Prof. Dr. Sebastian Sauer&lt;/a&gt; &amp;ndash; Quelle der Erleuchtung und Intuition&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.six-sigma-material.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Six Sigma Material&lt;/a&gt; &amp;ndash; Six Sigma Seite&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.foundstat.statistik.uni-muenchen.de/studium_lehre/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AG Method(olgo)ische Grundlagen der Statistik und Ihre Anwendung&lt;/a&gt; &amp;ndash; LMU München &amp;hellip; WOW!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.beltz.de/fileadmin/beltz/leseproben/978-3-7799-3658-9.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Leseprobe &amp;ldquo;Induktive Statistik und soziologische Theorie&amp;rdquo;&lt;/a&gt; &amp;ndash; Markus Ziegler - Eine Analyse des theoretischen Potenzials der Bayes-Statistik&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://support.minitab.com/de-de/minitab/18/help-and-how-to/modeling-statistics/reliability/how-to/probit-analysis/perform-the-analysis/estimate-percentiles-and-probabilities/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Fiduzial&lt;/a&gt; &amp;ndash;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.stefanbartz.de/dateien/Vorsicht-bei-der-sigma-Regel.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Vorsicht bei der σ-Regel&lt;/a&gt; &amp;ndash; Stefan Bartz&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

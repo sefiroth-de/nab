@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Information | Norman&#39;s Academic Blog</title>
+    <link>https://sefiroth.net/nap/category/information/</link>
+      <atom:link href="https://sefiroth.net/nap/category/information/index.xml" rel="self" type="application/rss+xml" />
+    <description>Information</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Information</title>
+      <link>https://sefiroth.net/nap/category/information/</link>
+    </image>
+    
+    <item>
+      <title>Erste Schritte mit `vroom`</title>
+      <link>https://sefiroth.net/nap/post/erste-schritte-mit-vroom/</link>
+      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/erste-schritte-mit-vroom/</guid>
+      <description>
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Nach &lt;a href=&#34;https://readr.tidyverse.org&#34;&gt;&lt;code&gt;readr&lt;/code&gt;&lt;/a&gt; kommt &lt;a href=&#34;https://vroom.r-lib.org&#34;&gt;&lt;code&gt;vroom&lt;/code&gt;&lt;/a&gt;. In der Zwischenzeit liegt vroom in der Version 1.2.0 vor und daher habe ich mir ein paar Stunden Zeit gekommen um ein paar erste Experimente damit zu machen.&lt;/p&gt;
+&lt;div id=&#34;erste-schritte-mit-vroom&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Erste Schritte mit vroom&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(vroom)
+
+# URL für die Quelle von tips.csv:
+url &amp;lt;- &amp;quot;https://goo.gl/whKjnl&amp;quot;
+
+# Locale auf Deutsche Sprache, Dezimalkomma und Gruppierungspunkte setzen
+mylocale &amp;lt;- locale(&amp;quot;de&amp;quot;, decimal_mark = &amp;quot;,&amp;quot;, grouping_mark = &amp;quot;.&amp;quot;)
+
+# Spaltentypen ggf. vorgeben:
+mycols &amp;lt;- cols(
+            col_number(),  # total_bill
+            col_number(),  # tip
+            col_factor(),  # sex
+            col_factor(),  # smoker
+            col_factor(),  # day
+            col_factor(),  # time
+            col_integer()  # size
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Laden mit vroom, Spaltentypen erraten, Locale auf mylocale
+tips.vroom &amp;lt;- vroom(url, locale = mylocale)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 244
+## Columns: 7
+## Delimiter: &amp;quot;;&amp;quot;
+## chr [4]: sex, smoker, day, time
+## dbl [1]: size
+## 
+## Use `spec()` to retrieve the guessed column specification
+## Pass a specification to the `col_types` argument to quiet this message&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tips.vroom)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
+##   total_bill   tip sex    smoker day   time    size
+##        &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;dbl&amp;gt;
+## 1       17.0  1.01 Female No     Sun   Dinner     2
+## 2       10.3  1.66 Male   No     Sun   Dinner     3
+## 3       21.0  3.5  Male   No     Sun   Dinner     3
+## 4       23.7  3.31 Male   No     Sun   Dinner     2
+## 5       24.6  3.61 Female No     Sun   Dinner     4
+## 6       25.3  4.71 Male   No     Sun   Dinner     4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(tips.vroom)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## tibble [244 × 7] (S3: tbl_df/tbl/data.frame)
+##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
+##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
+##  $ sex       : chr [1:244] &amp;quot;Female&amp;quot; &amp;quot;Male&amp;quot; &amp;quot;Male&amp;quot; &amp;quot;Male&amp;quot; ...
+##  $ smoker    : chr [1:244] &amp;quot;No&amp;quot; &amp;quot;No&amp;quot; &amp;quot;No&amp;quot; &amp;quot;No&amp;quot; ...
+##  $ day       : chr [1:244] &amp;quot;Sun&amp;quot; &amp;quot;Sun&amp;quot; &amp;quot;Sun&amp;quot; &amp;quot;Sun&amp;quot; ...
+##  $ time      : chr [1:244] &amp;quot;Dinner&amp;quot; &amp;quot;Dinner&amp;quot; &amp;quot;Dinner&amp;quot; &amp;quot;Dinner&amp;quot; ...
+##  $ size      : num [1:244] 2 3 3 2 4 4 2 4 2 2 ...
+##  - attr(*, &amp;quot;spec&amp;quot;)=
+##   .. cols(
+##   ..   total_bill = col_number(),
+##   ..   tip = col_number(),
+##   ..   sex = col_character(),
+##   ..   smoker = col_character(),
+##   ..   day = col_character(),
+##   ..   time = col_character(),
+##   ..   size = col_double(),
+##   ..   .delim = &amp;quot;;&amp;quot;
+##   .. )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;object.size(tips.vroom)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 20392 bytes&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Laden mit vroom, Spaltentypen mycols, Locale auf mylocale
+tips.vroom2 &amp;lt;- vroom(url, col_types = mycols, locale = mylocale)
+
+head(tips.vroom2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
+##   total_bill   tip sex    smoker day   time    size
+##        &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;  &amp;lt;fct&amp;gt;  &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt;  &amp;lt;int&amp;gt;
+## 1       17.0  1.01 Female No     Sun   Dinner     2
+## 2       10.3  1.66 Male   No     Sun   Dinner     3
+## 3       21.0  3.5  Male   No     Sun   Dinner     3
+## 4       23.7  3.31 Male   No     Sun   Dinner     2
+## 5       24.6  3.61 Female No     Sun   Dinner     4
+## 6       25.3  4.71 Male   No     Sun   Dinner     4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(tips.vroom2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## tibble [244 × 7] (S3: tbl_df/tbl/data.frame)
+##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
+##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
+##  $ sex       : Factor w/ 2 levels &amp;quot;Female&amp;quot;,&amp;quot;Male&amp;quot;: 1 2 2 2 1 2 2 2 2 2 ...
+##  $ smoker    : Factor w/ 2 levels &amp;quot;No&amp;quot;,&amp;quot;Yes&amp;quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 47 levels &amp;quot;Sun&amp;quot;,&amp;quot;Sat&amp;quot;,&amp;quot;Sat&amp;quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ time      : Factor w/ 2 levels &amp;quot;Dinner&amp;quot;,&amp;quot;Lunch&amp;quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int [1:244] 2 3 3 2 4 4 2 4 2 2 ...
+##  - attr(*, &amp;quot;spec&amp;quot;)=
+##   .. cols(
+##   ..   total_bill = col_number(),
+##   ..   tip = col_number(),
+##   ..   sex = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
+##   ..   smoker = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
+##   ..   day = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
+##   ..   time = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
+##   ..   size = col_integer(),
+##   ..   .delim = &amp;quot;;&amp;quot;
+##   .. )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;object.size(tips.vroom2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 19520 bytes&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Readr
+library(readr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Registered S3 methods overwritten by &amp;#39;readr&amp;#39;:
+##   method           from 
+##   format.col_spec  vroom
+##   print.col_spec   vroom
+##   print.collector  vroom
+##   print.date_names vroom
+##   print.locale     vroom
+##   str.col_spec     vroom&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attache Paket: &amp;#39;readr&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:vroom&amp;#39;:
+## 
+##     as.col_spec, col_character, col_date, col_datetime, col_double,
+##     col_factor, col_guess, col_integer, col_logical, col_number,
+##     col_skip, col_time, cols, cols_condense, cols_only, date_names,
+##     date_names_lang, date_names_langs, default_locale, fwf_cols,
+##     fwf_empty, fwf_positions, fwf_widths, locale, output_column, spec&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tips.readr &amp;lt;- readr::read_csv2(url)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ℹ Using &amp;#39;,&amp;#39; as decimal and &amp;#39;.&amp;#39; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   total_bill = col_double(),
+##   tip = col_double(),
+##   sex = col_character(),
+##   smoker = col_character(),
+##   day = col_character(),
+##   time = col_character(),
+##   size = col_double()
+## )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tips.readr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
+##   total_bill   tip sex    smoker day   time    size
+##        &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;dbl&amp;gt;
+## 1       17.0  1.01 Female No     Sun   Dinner     2
+## 2       10.3  1.66 Male   No     Sun   Dinner     3
+## 3       21.0  3.5  Male   No     Sun   Dinner     3
+## 4       23.7  3.31 Male   No     Sun   Dinner     2
+## 5       24.6  3.61 Female No     Sun   Dinner     4
+## 6       25.3  4.71 Male   No     Sun   Dinner     4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(tips.readr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## tibble [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
+##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
+##  $ sex       : chr [1:244] &amp;quot;Female&amp;quot; &amp;quot;Male&amp;quot; &amp;quot;Male&amp;quot; &amp;quot;Male&amp;quot; ...
+##  $ smoker    : chr [1:244] &amp;quot;No&amp;quot; &amp;quot;No&amp;quot; &amp;quot;No&amp;quot; &amp;quot;No&amp;quot; ...
+##  $ day       : chr [1:244] &amp;quot;Sun&amp;quot; &amp;quot;Sun&amp;quot; &amp;quot;Sun&amp;quot; &amp;quot;Sun&amp;quot; ...
+##  $ time      : chr [1:244] &amp;quot;Dinner&amp;quot; &amp;quot;Dinner&amp;quot; &amp;quot;Dinner&amp;quot; &amp;quot;Dinner&amp;quot; ...
+##  $ size      : num [1:244] 2 3 3 2 4 4 2 4 2 2 ...
+##  - attr(*, &amp;quot;spec&amp;quot;)=
+##   .. cols(
+##   ..   total_bill = col_double(),
+##   ..   tip = col_double(),
+##   ..   sex = col_character(),
+##   ..   smoker = col_character(),
+##   ..   day = col_character(),
+##   ..   time = col_character(),
+##   ..   size = col_double()
+##   .. )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;object.size(tips.readr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 20400 bytes&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Readr
+tips.readr2 &amp;lt;- readr::read_csv2(url,
+                                col_types = list(
+                                col_double(),  # total_bill
+                                col_double(),  # tip
+                                col_factor(),  # sex
+                                col_factor(),  # smoker
+                                col_factor(),  # day
+                                col_factor(),  # time
+                                col_integer()  # size
+                     )
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ℹ Using &amp;#39;,&amp;#39; as decimal and &amp;#39;.&amp;#39; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tips.readr2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
+##   total_bill   tip sex    smoker day   time    size
+##        &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;  &amp;lt;fct&amp;gt;  &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt;  &amp;lt;int&amp;gt;
+## 1       17.0  1.01 Female No     Sun   Dinner     2
+## 2       10.3  1.66 Male   No     Sun   Dinner     3
+## 3       21.0  3.5  Male   No     Sun   Dinner     3
+## 4       23.7  3.31 Male   No     Sun   Dinner     2
+## 5       24.6  3.61 Female No     Sun   Dinner     4
+## 6       25.3  4.71 Male   No     Sun   Dinner     4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(tips.readr2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## tibble [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
+##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
+##  $ sex       : Factor w/ 2 levels &amp;quot;Female&amp;quot;,&amp;quot;Male&amp;quot;: 1 2 2 2 1 2 2 2 2 2 ...
+##  $ smoker    : Factor w/ 2 levels &amp;quot;No&amp;quot;,&amp;quot;Yes&amp;quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &amp;quot;Sun&amp;quot;,&amp;quot;Sat&amp;quot;,&amp;quot;Thur&amp;quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ time      : Factor w/ 2 levels &amp;quot;Dinner&amp;quot;,&amp;quot;Lunch&amp;quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int [1:244] 2 3 3 2 4 4 2 4 2 2 ...
+##  - attr(*, &amp;quot;spec&amp;quot;)=
+##   .. cols(
+##   ..   total_bill = col_double(),
+##   ..   tip = col_double(),
+##   ..   sex = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
+##   ..   smoker = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
+##   ..   day = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
+##   ..   time = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
+##   ..   size = col_integer()
+##   .. )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;object.size(tips.readr2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 19184 bytes&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Mit Bordmitteln von R
+download.file(&amp;quot;https://goo.gl/whKjnl&amp;quot;, destfile = &amp;quot;tips.csv&amp;quot;)
+tips.csv2 &amp;lt;- read.csv2(&amp;quot;tips.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tips.csv2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   total_bill  tip    sex smoker day   time size
+## 1      16.99 1.01 Female     No Sun Dinner    2
+## 2      10.34 1.66   Male     No Sun Dinner    3
+## 3      21.01 3.50   Male     No Sun Dinner    3
+## 4      23.68 3.31   Male     No Sun Dinner    2
+## 5      24.59 3.61 Female     No Sun Dinner    4
+## 6      25.29 4.71   Male     No Sun Dinner    4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(tips.csv2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    244 obs. of  7 variables:
+##  $ total_bill: num  17 10.3 21 23.7 24.6 ...
+##  $ tip       : num  1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
+##  $ sex       : chr  &amp;quot;Female&amp;quot; &amp;quot;Male&amp;quot; &amp;quot;Male&amp;quot; &amp;quot;Male&amp;quot; ...
+##  $ smoker    : chr  &amp;quot;No&amp;quot; &amp;quot;No&amp;quot; &amp;quot;No&amp;quot; &amp;quot;No&amp;quot; ...
+##  $ day       : chr  &amp;quot;Sun&amp;quot; &amp;quot;Sun&amp;quot; &amp;quot;Sun&amp;quot; &amp;quot;Sun&amp;quot; ...
+##  $ time      : chr  &amp;quot;Dinner&amp;quot; &amp;quot;Dinner&amp;quot; &amp;quot;Dinner&amp;quot; &amp;quot;Dinner&amp;quot; ...
+##  $ size      : int  2 3 3 2 4 4 2 4 2 2 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;object.size(tips.csv2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 14720 bytes&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Auch R markdown Dateien sollten sich an Regeln halten</title>
+      <link>https://sefiroth.net/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</guid>
+      <description>
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Jede Programmiersprache hat Regeln.
+Neben dem Regelwerk welches durch den Syntax einer Sprache festgelegt wird, gib es aber noch Regeln über die Form in der man den Quelltext schreibt.
+Diese sogenannte &lt;em&gt;Stilregeln&lt;/em&gt; (engl. &lt;em&gt;style guides&lt;/em&gt;) sind von Programmieren aufgestellte Regeln um ein einheitliches “Schriftbild” des Quelltextes zu erhalten.
+Das Ziel der &lt;em&gt;Stilregeln&lt;/em&gt; ist es, den Quelltext lesbarer zu gestallten, um leichter Änderungen einzupflegen oder um unnötiges zu vermeiden.&lt;/p&gt;
+&lt;p&gt;Eine Programmiersprache wie &lt;em&gt;Python&lt;/em&gt; zum Beispiel hat mit &lt;a href=&#34;https://www.python.org/dev/peps/pep-0008/&#34;&gt;PEP8&lt;/a&gt; einen eigenen Standard wie ein &lt;em&gt;Python&lt;/em&gt; Programm geschrieben seien sollte.
+Dazu gibt es auch gleich das passenden Prüfprogramm (früher &lt;code&gt;pep8&lt;/code&gt;, neuerdings &lt;a href=&#34;https://github.com/PyCQA/pycodestyle&#34;&gt;&lt;code&gt;pycodestyle&lt;/code&gt;&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Schreibt man ein &lt;em&gt;R markdown&lt;/em&gt; Text mag man vielleicht nicht daran denken, dass so eine Idee auch hier sehr sinnvoll ist.
+Neben den gängigen Style-Guides für den &lt;em&gt;R&lt;/em&gt; Quellcode (z. B.: &lt;a href=&#34;https://google.github.io/styleguide/Rguide.xml&#34;&gt;Google’s R Style Guide&lt;/a&gt;, &lt;a href=&#34;http://adv-r.had.co.nz/Style.html&#34;&gt;Hadley Wickham’s Advanced R - Style guide&lt;/a&gt;, &lt;a href=&#34;http://jef.works/R-style-guide/&#34;&gt;jef.works R Style Guide&lt;/a&gt;, &lt;a href=&#34;https://csgillespie.wordpress.com/2010/11/23/r-style-guide/&#34;&gt;R Style Guide&lt;/a&gt; oder &lt;a href=&#34;https://github.com/rdatsci/PackagesInfo/wiki/R-Style-Guide&#34;&gt;R-Style-Guide&lt;/a&gt;) gibt es aber kaum Regeln (z. B.: &lt;a href=&#34;https://holtzy.github.io/Pimp-my-rmd/&#34;&gt;Pimp my Rmd&lt;/a&gt;) für die Gestaltung von &lt;em&gt;R markdown&lt;/em&gt;.&lt;/p&gt;
+&lt;div id=&#34;stil-regeln-für-gutes-r-markdown-ein-erster-vorschlag&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Stil-Regeln für gutes &lt;em&gt;R markdown&lt;/em&gt;, ein erster Vorschlag&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Keine unnützen Zeichen am Ende von Textzeilen. / &lt;em&gt;No whitespaces at the end of a line&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Eine Textzeile sollte mit einem ‘echtem’ Zeichen enden und nicht mit einem ‘unsichtbarem’ Zeichen.
+Das heisst: Leerzeichen, Tabs, harte Leerzeichen etc. gehören nicht ans Ende einer Zeile.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Zwei Leerzeilen vor einer jeden Kopfzeile. / &lt;em&gt;Two blank lines before every header&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Um die Inhalte auch klar voneinander trennen zu können sollte man vor der Kopfzeile zwei Leerzeilen eingefügt werden.
+Statt&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Das ist eine Kopfzeile auf der 1. Ebene
+## Das is eine Kopfzeile auf der 2. Ebene
+Das hier ist einfacher Text&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sollte es so gegliedert sein:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+
+# Das ist eine Kopfzeile auf der 1. Ebene
+
+
+## Das is eine Kopfzeile auf der 2. Ebene
+
+Das hier ist einfacher Text&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Vor und nach Aufzählungen sollte immer eine Leerzeile stehen. / &lt;em&gt;One blank line before and after itemizations or enumerations&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Statt&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Das ist eine Liste:
+- Ein Punkt
+- Ein anderer Punkt
+Und hier geht der Text weiter.
+1. Der erste Punkt.
+2. Der zweite Punkt.
+Und wieder mal ein Text.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sollte es so gegliedert sein:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Das ist eine Liste:
+
+- Ein Punkt
+- Ein anderer Punkt
+
+Und hier geht der Text weiter.
+
+1. Der erste Punkt.
+2. Der zweite Punkt.
+
+Und wieder mal ein Text.&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Vor und nach Codeblöcken sollte immer eine Leerzeile stehen. / &lt;em&gt;One blank line before and after a codeblock&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Statt&lt;/p&gt;
+&lt;pre&gt;
+Etwas Text vorher
+```{r}&lt;code&gt;1+1
+```&lt;/code&gt;und danach.
+&lt;/pre&gt;
+&lt;p&gt;sollte man es besser wie folgt gliedern:&lt;/p&gt;
+&lt;pre&gt;
+Etwas Text vorher
+
+```{r}&lt;code&gt;1+1
+```&lt;/code&gt; und danach.
+&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Keine anderen Sprachen als &lt;em&gt;R markdown&lt;/em&gt; für Inhalte oder Design nutzen. / &lt;em&gt;Use no other languages to create content or design, other than (R) markdown.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Keine anderen Sprachen, insbesondere LaTeX, um besondere Effekte zu erzielen. Dafür sollten (native) DIV oder SPAN Abschnitte benutzt werden und entsprechend durch spätere (Filter-)Programme umgesetzt werden. So ist es immer möglich Design-Ideen für alle möglichen Zielsprachen zu erhalten.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rmdstylechecker-ein-erster-style-checker-für-r-markdown&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;RmdStyleChecker, ein erster Style Checker für &lt;em&gt;R markdown&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;Die ersten drei Punkte der Liste habe ich zu Testzwecken in einem kleinen Projekt mit Hilfe von &lt;em&gt;Python&lt;/em&gt; implementiert.
+Den &lt;em&gt;Python&lt;/em&gt;-Quelltext findet man unter &lt;a href=&#34;https://github.com/NMarkgraf/RmdStyleChecker&#34;&gt;RmdStyleChecker&lt;/a&gt;. Er läuft unter &lt;em&gt;Python&lt;/em&gt; 3.5+.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GitHub Webhook eingebaut!</title>
+      <link>https://sefiroth.net/nap/post/github-webhook-eingebaut/</link>
+      <pubDate>Mon, 18 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/github-webhook-eingebaut/</guid>
+      <description>&lt;p&gt;GitHub bietet die Möglichkeit an, bei Interaktion mit dem Server automatisch einen Webhook zu aktivieren. Dahinter versteckt sich ein Aufruf einer URL mit einem sogenannten POST-Request. Wertet man diesen aus, so kann man z.B. nach jedem &lt;em&gt;push&lt;/em&gt; automatisch ein &lt;em&gt;fetch&lt;/em&gt; auf dem Webserver starten.&lt;/p&gt;
+&lt;p&gt;Ich nutze das gerade um meinen Blog immer dann zu aktualisieren, wenn ich auf dem GitHub eine Änderung vorgenommen habe.&lt;/p&gt;
+&lt;p&gt;Damit sollte ich nie wieder vergessen alles auch auf dem Server zu aktualisieren!&lt;/p&gt;
+&lt;p&gt;Wir warten ab. ;-)&lt;/p&gt;
+&lt;p&gt;Okay, alle Verzeichnisse sollten den richtigen Besitzer haben ;-)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NACHTRAG:&lt;/strong&gt; (vom 01.01.2018)&lt;/p&gt;
+&lt;p&gt;Leider schaffe ich es nicht auf PHP heraus auch nur ein Skript auszuführen. Daher wird z.Z. alles via &lt;code&gt;crontab&lt;/code&gt; ausgeführt. Nicht optimal, aber es läuft erstmal.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
