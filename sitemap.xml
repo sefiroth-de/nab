@@ -3,503 +3,542 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sefiroth.net/nap/talk/example-talk/</loc>
+    <loc>/talk/example-talk/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/</loc>
+    <loc>/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/event/</loc>
+    <loc>/event/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/ausrei%C3%9Fer/</loc>
+    <loc>/tag/ausrei%C3%9Fer/</loc>
     <lastmod>2020-06-29T10:52:38+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2020-06-29T10:52:38+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/categories/</loc>
+    <loc>/categories/</loc>
     <lastmod>2020-06-29T10:52:38+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/cook-abstand/</loc>
+    <loc>/tag/cook-abstand/</loc>
     <lastmod>2020-06-29T10:52:38+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/cook-abstand/</loc>
+    <loc>/post/cook-abstand/</loc>
     <lastmod>2020-06-29T10:52:38+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/cooks-distance/</loc>
+    <loc>/tag/cooks-distance/</loc>
     <lastmod>2020-06-29T10:52:38+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/outliers/</loc>
+    <loc>/tag/outliers/</loc>
     <lastmod>2020-06-29T10:52:38+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/category/statistisches/</loc>
+    <loc>/category/statistisches/</loc>
     <lastmod>2020-06-29T10:52:38+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2020-06-29T10:52:38+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</loc>
+    <loc>/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</loc>
     <lastmod>2020-05-25T12:15:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/korrelation/</loc>
+    <loc>/tag/korrelation/</loc>
     <lastmod>2020-05-25T12:15:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/korrelationskoeffizient/</loc>
+    <loc>/tag/korrelationskoeffizient/</loc>
     <lastmod>2020-05-25T12:15:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/rang/</loc>
+    <loc>/tag/rang/</loc>
     <lastmod>2020-05-25T12:15:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/rangkorrelation/</loc>
+    <loc>/tag/rangkorrelation/</loc>
     <lastmod>2020-05-25T12:15:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/rangkorrelationskoeffizient/</loc>
+    <loc>/tag/rangkorrelationskoeffizient/</loc>
     <lastmod>2020-05-25T12:15:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/spearman/</loc>
+    <loc>/tag/spearman/</loc>
     <lastmod>2020-05-25T12:15:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/zusammemhangsanalyse/</loc>
+    <loc>/tag/zusammemhangsanalyse/</loc>
     <lastmod>2020-05-25T12:15:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/category/allgemeines/</loc>
+    <loc>/category/allgemeines/</loc>
     <lastmod>2020-03-18T10:27:01+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/korrigieren-von-arbeiten-mit-excel-und-r/</loc>
+    <loc>/post/korrigieren-von-arbeiten-mit-excel-und-r/</loc>
     <lastmod>2020-03-18T10:27:01+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/lehre/</loc>
+    <loc>/tag/lehre/</loc>
     <lastmod>2020-03-18T10:27:01+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/r/</loc>
+    <loc>/tag/r/</loc>
     <lastmod>2020-03-18T10:27:01+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/der-satz-von-vieta-und-dr-loh-s-methode/</loc>
+    <loc>/post/der-satz-von-vieta-und-dr-loh-s-methode/</loc>
     <lastmod>2020-02-26T08:36:09+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/dr.-lohs-methode/</loc>
+    <loc>/tag/dr.-lohs-methode/</loc>
     <lastmod>2020-02-26T08:36:09+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/category/mathematik/</loc>
+    <loc>/category/mathematik/</loc>
     <lastmod>2020-02-26T08:36:09+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/quadratische-gleichung/</loc>
+    <loc>/tag/quadratische-gleichung/</loc>
     <lastmod>2020-02-26T08:36:09+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/satz-von-vieta/</loc>
+    <loc>/tag/satz-von-vieta/</loc>
     <lastmod>2020-02-26T08:36:09+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/erste-schritte-mit-vroom/</loc>
+    <loc>/post/erste-schritte-mit-vroom/</loc>
     <lastmod>2020-02-21T13:17:53+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/category/information/</loc>
+    <loc>/category/information/</loc>
     <lastmod>2020-02-21T13:17:53+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/readr/</loc>
+    <loc>/tag/readr/</loc>
     <lastmod>2020-02-21T13:17:53+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/tidyverse/</loc>
+    <loc>/tag/tidyverse/</loc>
     <lastmod>2020-02-21T13:17:53+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/vroom/</loc>
+    <loc>/tag/vroom/</loc>
     <lastmod>2020-02-21T13:17:53+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/chi-quadrat/</loc>
+    <loc>/tag/chi-quadrat/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/chi-quadrat-test/</loc>
+    <loc>/tag/chi-quadrat-test/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/eine-typische-frage-von-studierenden/</loc>
+    <loc>/post/eine-typische-frage-von-studierenden/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/fisher-test/</loc>
+    <loc>/tag/fisher-test/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/klassische-inferenz/</loc>
+    <loc>/tag/klassische-inferenz/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/nullhypothese/</loc>
+    <loc>/tag/nullhypothese/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/nullhypothesentest/</loc>
+    <loc>/tag/nullhypothesentest/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/permutationstest/</loc>
+    <loc>/tag/permutationstest/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/sbi/</loc>
+    <loc>/tag/sbi/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/statistik/</loc>
+    <loc>/tag/statistik/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/unabhangigkeit/</loc>
+    <loc>/tag/unabhangigkeit/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/unabhangigkeitstest/</loc>
+    <loc>/tag/unabhangigkeitstest/</loc>
     <lastmod>2020-02-28T09:40:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/interaktion/</loc>
+    <loc>/tag/interaktion/</loc>
     <lastmod>2019-12-31T13:33:45+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/mediator/</loc>
+    <loc>/tag/mediator/</loc>
     <lastmod>2019-12-31T13:33:45+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/mediatorenanalyse/</loc>
+    <loc>/tag/mediatorenanalyse/</loc>
     <lastmod>2019-12-31T13:33:45+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/moderator/</loc>
+    <loc>/tag/moderator/</loc>
     <lastmod>2019-12-31T13:33:45+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</loc>
+    <loc>/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</loc>
     <lastmod>2019-12-31T13:33:45+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/moderatorenanalyse/</loc>
+    <loc>/tag/moderatorenanalyse/</loc>
     <lastmod>2019-12-31T13:33:45+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/regression/</loc>
+    <loc>/tag/regression/</loc>
     <lastmod>2019-12-31T13:33:45+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/regressionsanalyse/</loc>
+    <loc>/tag/regressionsanalyse/</loc>
     <lastmod>2019-12-31T13:33:45+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</loc>
+    <loc>/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</loc>
     <lastmod>2019-12-18T13:02:59+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/slides/</loc>
+    <loc>/slides/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/slides/example/</loc>
+    <loc>/slides/example/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/python/</loc>
+    <loc>/tag/python/</loc>
     <lastmod>2019-01-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/wie-man-es-nicht-machen-sollte-in-python/</loc>
+    <loc>/post/wie-man-es-nicht-machen-sollte-in-python/</loc>
     <lastmod>2019-01-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/category/fundstucke/</loc>
+    <loc>/category/fundstucke/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/mathematica/</loc>
+    <loc>/tag/mathematica/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/matplotlib/</loc>
+    <loc>/tag/matplotlib/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/raspberry-pi/</loc>
+    <loc>/tag/raspberry-pi/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/raspbian/</loc>
+    <loc>/tag/raspbian/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/raspbian-auf-dem-raspberry-pi-installieren/</loc>
+    <loc>/post/raspbian-auf-dem-raspberry-pi-installieren/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/weitere-software-auf-den-raspberry-pi-installieren/</loc>
+    <loc>/post/weitere-software-auf-den-raspberry-pi-installieren/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/der-angriff-der-riesenschlangen/</loc>
+    <loc>/post/der-angriff-der-riesenschlangen/</loc>
     <lastmod>2018-12-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/r-markdown/</loc>
+    <loc>/tag/r-markdown/</loc>
     <lastmod>2018-12-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/technisches/</loc>
+    <loc>/tag/technisches/</loc>
     <lastmod>2018-12-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/privacy/</loc>
+    <loc>/privacy/</loc>
     <lastmod>2018-06-28T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/allgemein/</loc>
+    <loc>/tag/allgemein/</loc>
     <lastmod>2018-06-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/sbi-simulation-based-inference/</loc>
+    <loc>/post/sbi-simulation-based-inference/</loc>
     <lastmod>2018-06-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</loc>
+    <loc>/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</loc>
     <lastmod>2018-05-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</loc>
+    <loc>/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</loc>
     <lastmod>2018-05-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/lineare-regression/</loc>
+    <loc>/tag/lineare-regression/</loc>
     <lastmod>2018-01-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/nur-ein-wenig-lineare-regression/</loc>
+    <loc>/post/nur-ein-wenig-lineare-regression/</loc>
     <lastmod>2018-01-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/konfidenzintervalle/</loc>
+    <loc>/tag/konfidenzintervalle/</loc>
     <lastmod>2018-01-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/prognose-konfidenz-und-fiduzialintervalle/</loc>
+    <loc>/post/prognose-konfidenz-und-fiduzialintervalle/</loc>
     <lastmod>2018-01-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/konfidenzintervalle/</loc>
+    <loc>/post/konfidenzintervalle/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/wahrscheinlichkeitstheorie/</loc>
+    <loc>/tag/wahrscheinlichkeitstheorie/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/zentrales-schwankungsintervall/</loc>
+    <loc>/post/zentrales-schwankungsintervall/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/ein-paar-interessante-links/</loc>
+    <loc>/post/ein-paar-interessante-links/</loc>
     <lastmod>2017-12-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/weblinks/</loc>
+    <loc>/tag/weblinks/</loc>
     <lastmod>2017-12-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/quartile-quantile-perzentile-etc/</loc>
+    <loc>/post/quartile-quantile-perzentile-etc/</loc>
     <lastmod>2017-12-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/github/</loc>
+    <loc>/tag/github/</loc>
     <lastmod>2017-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/github-webhook/</loc>
+    <loc>/tag/github-webhook/</loc>
     <lastmod>2017-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/github-webhook-eingebaut/</loc>
+    <loc>/post/github-webhook-eingebaut/</loc>
     <lastmod>2017-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/10-dinge-die-kein-talent-benotigen/</loc>
+    <loc>/post/10-dinge-die-kein-talent-benotigen/</loc>
     <lastmod>2017-07-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/post/der-zentrale-grenzwertsatz/</loc>
+    <loc>/post/der-zentrale-grenzwertsatz/</loc>
     <lastmod>2017-04-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/category/statitisches/</loc>
+    <loc>/category/statitisches/</loc>
     <lastmod>2017-04-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/tag/deep-learning/</loc>
+    <loc>/tag/deep-learning/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/project/example/</loc>
+    <loc>/project/example/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/project/</loc>
+    <loc>/project/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc></loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
   </url>
   
   <url>
     <loc></loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sefiroth.net/nap/publication-type/1/</loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sefiroth.net/nap/publication/example/</loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sefiroth.net/nap/publication_types/</loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sefiroth.net/nap/publication/</loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+    <loc>/publication-type/2/</loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
   </url>
   
   <url>
     <loc></loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/learn2control/</loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tag/projektorientiertes-lernen/</loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication_types/</loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/</loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tag/regelungstechnik/</loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
+    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
   </url>
   
 </urlset>

@@ -1,3 +1,3 @@
 User-agent: *
 
-Sitemap: https://sefiroth.net/nap/sitemap.xml
+Sitemap: /sitemap.xml

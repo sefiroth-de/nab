@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nullhypothesentest | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/nap/tag/nullhypothesentest/</link>
-      <atom:link href="https://sefiroth.net/nap/tag/nullhypothesentest/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tag/nullhypothesentest/</link>
+      <atom:link href="/tag/nullhypothesentest/index.xml" rel="self" type="application/rss+xml" />
     <description>Nullhypothesentest</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Nullhypothesentest</title>
-      <link>https://sefiroth.net/nap/tag/nullhypothesentest/</link>
+      <link>/tag/nullhypothesentest/</link>
     </image>
     
     <item>
       <title>Eine typische Frage von Studierenden</title>
-      <link>https://sefiroth.net/nap/post/eine-typische-frage-von-studierenden/</link>
+      <link>/post/eine-typische-frage-von-studierenden/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/eine-typische-frage-von-studierenden/</guid>
+      <guid>/post/eine-typische-frage-von-studierenden/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Vor kurzem fand ich mal wieder eine Anfrage einer Studierenden in meinem Email Postfach. Die Frage lautete in etwa wie folgt:&lt;/p&gt;
@@ -74,7 +74,7 @@ head(daten)&lt;/code&gt;&lt;/pre&gt;
 ##                   2xtäglich 34   26
 ##                   3xtäglich 27   27&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mosaicplot(wetter.ist.gut ~ iphones.tagsüber.unbeachtet, data=daten)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Für später speichern wir die Kreuztabelle in obs.tab
 obs.tab &amp;lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -199,7 +199,7 @@ obs.abs &amp;lt;- diffabsobsexp(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffabsobsexp(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
 gf_histogram(~ diffabsobsexp, data=NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert, also die relative Fläche rechts von der roten Linie in unseren Histogramm, abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexp &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -225,7 +225,7 @@ obs.abs &amp;lt;- diffabsobsexprel(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffabsobsexprel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
 gf_dhistogram(~ diffabsobsexprel, data=NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Auch hier können wir den p-Wert abschätzen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexprel &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -248,7 +248,7 @@ obs.abs &amp;lt;- diffquad(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffquad(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
 gf_dhistogram(~ diffquad, data=NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquad &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -269,7 +269,7 @@ obs.abs &amp;lt;- diffquadrel(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffquadrel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
 gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Den Wert 1.2344597, den wir mit Hilfe der relativen quadratischen Abweichung berechnet haben, nennen wir auch &lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt; Wert.&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquadrel &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
@@ -312,7 +312,7 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dhistogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;gt;%
   gf_fun(dchisq(x, df=2) ~ x, xlim=c(0:20), color=&amp;quot;blue&amp;quot;) %&amp;gt;% 
   gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Aber es gibt auch den (exakten) Fisher-Test:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fisher.test(obs.tab, alternative = &amp;quot;greater&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
@@ -327,7 +327,7 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;
 &lt;p&gt;Wir können die p-Werte der einzelnen Tests nun gegenüber stellen:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
 ## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Gewöhnlich haben wir ein Signifikanznivau von &lt;span class=&#34;math inline&#34;&gt;\(5\% = 0{,}05\)&lt;/span&gt; angenommen. Die rote Linie zeigt diese Grenze. Liegt der Balken links vor dieser Linie, so sprechen wir davon, dass der gemessene Wert selten bei unabhänigen Daten vorliegt und würden uns gegen die Nullhypothese und damit quasi für die Alternativhypothese entscheiden. Liegt der Balken recht der roten Linie, so haben wir übliche Werte für unabhängige Daten und keinen Grund gefunden, der gegen die Nullhypothese spricht. Warum wir sie dann, auf Grundlage unserer Daten, auch nicht ablehnen können.&lt;/p&gt;
 &lt;p&gt;Bleibt Sie Frage, gibt es Situationen in denen die Entscheidung über die Nullhypothese bei den einzelen betrachteten Verfahren unterschiedlichen ist? Und wenn ja, wann und wieoft?&lt;/p&gt;
 &lt;p&gt;Diese Fragen sind nicht Thema dieses Beitrags, aber vielleicht habe ich Zeit und betrachte das später einmal.&lt;/p&gt;
