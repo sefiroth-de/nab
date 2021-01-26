@@ -45,8 +45,10 @@ Trinkgeldbetrag &lt;code&gt;tip&lt;/code&gt; für unser Modell:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;unser-modell&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Unser Modell:&lt;/h2&gt;
+&lt;p&gt;Werfen wir zunächst einen Blick auf das Streudiagramm unserer Daten:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(tip ~ total_bill, data = tips)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Und erstellen dann ein lineares Modell:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;erg_lm &amp;lt;- lm(tip ~ total_bill, data = tips)
 summary(erg_lm)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
@@ -75,7 +77,7 @@ summary(erg_lm)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Für lineare Regressionsmodell können einflussreiche Ausreißer sehr hinderlich
 sein.
-Was also ändert sich nun, wenn wir einen Wert, z.B. einen Ausreißer,
+Was ändert sich, wenn wir einen Wert, z.B. einen potentiellen Ausreißer,
 nicht betrachten?&lt;/p&gt;
 &lt;p&gt;Als Beispiel wählen wir die folgende Beobachtung aus:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tips %&amp;gt;% slice(173) -&amp;gt; tips_removed
@@ -109,19 +111,14 @@ summary(erg_lm_red)&lt;/code&gt;&lt;/pre&gt;
                 color = &amp;quot;Regressionsgerade&amp;quot;)) +
   geom_point(aes(x = tips_removed$total_bill,
                  y = tips_removed$tip,
-                 colour = &amp;quot;Removed Data&amp;quot;,
-                 show.legend = FALSE))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Ignoring unknown aesthetics: show.legend&lt;/code&gt;&lt;/pre&gt;
+                 colour = &amp;quot;Removed Data&amp;quot;),
+                 show.legend = FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Um zu messen, was diese Änderung bewirkt hat, schaut sich der Cook Abstand
+&lt;p&gt;Um zu messen was diese Änderung bewirkt hat, schaut sich der Cook Abstand
 zunächst die Summe der quadrierten Differenzen der vorhergesagten Werte in
 beiden Modellen an:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;new_data &amp;lt;- data_frame(total_bill = tips$total_bill)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
-## Please use `tibble()` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_warnings()` to see where this warning was generated.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prognose_lm &amp;lt;- predict(erg_lm, newdata = new_data)
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;new_data &amp;lt;- tibble(total_bill = tips$total_bill)
+prognose_lm &amp;lt;- predict(erg_lm, newdata = new_data)
 prognose_lm_red &amp;lt;- predict(erg_lm_red, newdata = new_data)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[d_j = \sum_{i=1}^n \left(\hat{y}_i - \hat{y}_{i(j)}\right)^2\]&lt;/span&gt;
 Dabei ist &lt;span class=&#34;math inline&#34;&gt;\(\hat{y}_i\)&lt;/span&gt; die Prognose des Wertes &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; auf Basis von &lt;span class=&#34;math inline&#34;&gt;\(x_i\)&lt;/span&gt; mit
@@ -210,6 +207,11 @@ erg_lm_no_outliers &amp;lt;- lm(tip ~ total_bill, data = tips_no_outliers)&lt;/c
               slope =  erg_lm_no_outliers$coefficients[2])
               )&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Unsere beiden Modelle als Formeln:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{align*}
+   \widehat{tips}_{lm} &amp;amp;= `r `coef(erg_lm)[1] + 0.1050245 \cdot total\_bill + \epsilon\\
+   \widehat{tips}_{lm\_no} &amp;amp;= `r `coef(erg_lm_no_outliers)[1] + 0.1117985 \cdot total\_bill + \epsilon\\
+   \end{align*}\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

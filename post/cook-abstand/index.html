@@ -841,8 +841,10 @@ Trinkgeldbetrag <code>tip</code> für unser Modell:</p>
 </div>
 <div id="unser-modell" class="section level2">
 <h2>Unser Modell:</h2>
+<p>Werfen wir zunächst einen Blick auf das Streudiagramm unserer Daten:</p>
 <pre class="r"><code>gf_point(tip ~ total_bill, data = tips)</code></pre>
 <p><img src="../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Und erstellen dann ein lineares Modell:</p>
 <pre class="r"><code>erg_lm &lt;- lm(tip ~ total_bill, data = tips)
 summary(erg_lm)</code></pre>
 <pre><code>## 
@@ -871,7 +873,7 @@ summary(erg_lm)</code></pre>
 <p><img src="../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Für lineare Regressionsmodell können einflussreiche Ausreißer sehr hinderlich
 sein.
-Was also ändert sich nun, wenn wir einen Wert, z.B. einen Ausreißer,
+Was ändert sich, wenn wir einen Wert, z.B. einen potentiellen Ausreißer,
 nicht betrachten?</p>
 <p>Als Beispiel wählen wir die folgende Beobachtung aus:</p>
 <pre class="r"><code>tips %&gt;% slice(173) -&gt; tips_removed
@@ -905,19 +907,14 @@ summary(erg_lm_red)</code></pre>
                 color = &quot;Regressionsgerade&quot;)) +
   geom_point(aes(x = tips_removed$total_bill,
                  y = tips_removed$tip,
-                 colour = &quot;Removed Data&quot;,
-                 show.legend = FALSE))</code></pre>
-<pre><code>## Warning: Ignoring unknown aesthetics: show.legend</code></pre>
+                 colour = &quot;Removed Data&quot;),
+                 show.legend = FALSE)</code></pre>
 <p><img src="../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Um zu messen, was diese Änderung bewirkt hat, schaut sich der Cook Abstand
+<p>Um zu messen was diese Änderung bewirkt hat, schaut sich der Cook Abstand
 zunächst die Summe der quadrierten Differenzen der vorhergesagten Werte in
 beiden Modellen an:</p>
-<pre class="r"><code>new_data &lt;- data_frame(total_bill = tips$total_bill)</code></pre>
-<pre><code>## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
-## Please use `tibble()` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
-<pre class="r"><code>prognose_lm &lt;- predict(erg_lm, newdata = new_data)
+<pre class="r"><code>new_data &lt;- tibble(total_bill = tips$total_bill)
+prognose_lm &lt;- predict(erg_lm, newdata = new_data)
 prognose_lm_red &lt;- predict(erg_lm_red, newdata = new_data)</code></pre>
 <p><span class="math display">\[d_j = \sum_{i=1}^n \left(\hat{y}_i - \hat{y}_{i(j)}\right)^2\]</span>
 Dabei ist <span class="math inline">\(\hat{y}_i\)</span> die Prognose des Wertes <span class="math inline">\(y_i\)</span> auf Basis von <span class="math inline">\(x_i\)</span> mit
@@ -1006,6 +1003,11 @@ erg_lm_no_outliers &lt;- lm(tip ~ total_bill, data = tips_no_outliers)</code></p
               slope =  erg_lm_no_outliers$coefficients[2])
               )</code></pre>
 <p><img src="../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Unsere beiden Modelle als Formeln:</p>
+<p><span class="math display">\[\begin{align*}
+   \widehat{tips}_{lm} &amp;= `r `coef(erg_lm)[1] + 0.1050245 \cdot total\_bill + \epsilon\\
+   \widehat{tips}_{lm\_no} &amp;= `r `coef(erg_lm_no_outliers)[1] + 0.1117985 \cdot total\_bill + \epsilon\\
+   \end{align*}\]</span></p>
 </div>
 
     </div>
