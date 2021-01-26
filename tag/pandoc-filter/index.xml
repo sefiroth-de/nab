@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pandoc-filter | Norman&#39;s Academic Blog</title>
+    <link>/tag/pandoc-filter/</link>
+      <atom:link href="/tag/pandoc-filter/index.xml" rel="self" type="application/rss+xml" />
+    <description>pandoc-filter</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 10 Feb 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>pandoc-filter</title>
+      <link>/tag/pandoc-filter/</link>
+    </image>
+    
+    <item>
+      <title>Pandoc filter: style.py</title>
+      <link>/project/style.py/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      <guid>/project/style.py/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pandoc filter: typography.py</title>
+      <link>/project/typography.py/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      <guid>/project/typography.py/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
