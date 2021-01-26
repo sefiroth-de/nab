@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Regressionsanalyse | Norman&#39;s Academic Blog</title>
-    <link>/tag/regressionsanalyse/</link>
-      <atom:link href="/tag/regressionsanalyse/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/nap/tag/regressionsanalyse/</link>
+      <atom:link href="https://sefiroth.net/nap/tag/regressionsanalyse/index.xml" rel="self" type="application/rss+xml" />
     <description>Regressionsanalyse</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Tue, 31 Dec 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Regressionsanalyse</title>
-      <link>/tag/regressionsanalyse/</link>
+      <link>https://sefiroth.net/nap/tag/regressionsanalyse/</link>
     </image>
     
     <item>
       <title>Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen</title>
-      <link>/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</link>
+      <link>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</link>
       <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</guid>
+      <guid>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</guid>
       <description>
 &lt;script src=&#34;2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhängen_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
@@ -29,7 +29,7 @@ Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;
 &lt;div id=&#34;moderation&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Moderation&lt;/h2&gt;
 &lt;p&gt;Bei einer &lt;em&gt;Moderation&lt;/em&gt; wirkt die dritte Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (&lt;em&gt;Moderator&lt;/em&gt;) auf die Beziehung zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der Einfluss von &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; ändert also den Effekt von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; auf &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. Der Zusammenhang zwischen &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; ist also je nach &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; unterschiedlich.&lt;/p&gt;
 &lt;p&gt;Statistisch gesehen liegt eine &lt;em&gt;Interaktion&lt;/em&gt; zwischen &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; vor.&lt;/p&gt;
 &lt;div id=&#34;wie-untersucht-man-einen-zusammenhang-auf-eine-moderation&#34; class=&#34;section level3&#34;&gt;
@@ -46,7 +46,7 @@ Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;
 &lt;p&gt;Bei der &lt;em&gt;Mediation&lt;/em&gt; steht die Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (der &lt;em&gt;Mediator&lt;/em&gt;) sowohl zu &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; als auch zu &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; in Beziehung.
 Der direkte Effekt zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; wird durch den indirekten Effekt über &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; erklärt, also durch
 &lt;span class=&#34;math inline&#34;&gt;\(X \to M \to Y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;wie-untersucht-man-auf-eine-mediation&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Wie untersucht man auf eine Mediation?&lt;/h3&gt;
 &lt;p&gt;In diesem Fall stellen wir mehrere Regressionsmodelle auf. Eine (signifikante) Mediation liegt dann vor, wenn die folgenden Bedinungen erfüllt sind:&lt;/p&gt;
@@ -66,11 +66,11 @@ drittesModell &amp;lt;- lm(Y ~ X + M, data=daten)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Nur ein wenig lineare Regression</title>
-      <link>/post/nur-ein-wenig-lineare-regression/</link>
+      <link>https://sefiroth.net/nap/post/nur-ein-wenig-lineare-regression/</link>
       <pubDate>Mon, 08 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/post/nur-ein-wenig-lineare-regression/</guid>
+      <guid>https://sefiroth.net/nap/post/nur-ein-wenig-lineare-regression/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Der &lt;em&gt;tipping&lt;/em&gt; Datensatz wird oft analysiert. Das Verhältnis von Trinkgeld (&lt;em&gt;tip&lt;/em&gt;) und Rechnungsbetrag (&lt;em&gt;total_bill&lt;/em&gt;) steht dabei im Vordergrund einer lineare Regressionsanalyse.
@@ -127,7 +127,7 @@ xyplot(
             text = list(c(&amp;quot;Regressionsgerade&amp;quot;))
           )
      )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Was hat es mit dem y-Achsenabschnitt &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta}_0\)&lt;/span&gt; auf sich?&lt;/p&gt;
 &lt;p&gt;Ist es etwa eine Art &lt;em&gt;Grundtrinkgeld&lt;/em&gt;, mit dem der Kellern rechnen kann, auch wenn der Kunde gar nichts bestellt?&lt;/p&gt;
 &lt;p&gt;Nun ja, es so etwas in der Art, aber eben ein rein fiktiver Wert, der durch die Konstruktion der Parameter entsteht.
@@ -177,7 +177,7 @@ xyplot(
             lines=list(col=c(&amp;quot;red&amp;quot;), lty=c(2), lwd=1.2),
             text=list(c(&amp;quot;Regressionsgerade&amp;quot;)))
      )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Vergleichen wir die beiden Zusammenfassungen, so stellen wir fest das sich mit Ausnahme der &lt;em&gt;[Intercept]&lt;/em&gt; Zeile praktisch nichts geändert hat. Das ist kein Wunder, sondern Absicht!&lt;/p&gt;
 &lt;p&gt;Die Regressionsgerade stellt für unsere Stichprobe die Gerade mit dem geringsten Fehler an den Datenpunkten dar. Mathematisch heißt das folgendes:&lt;/p&gt;
 &lt;p&gt;An den &lt;span class=&#34;math inline&#34;&gt;\(n=244\)&lt;/span&gt; Datenpunkten unserer Stichprobe &lt;span class=&#34;math inline&#34;&gt;\((x_i, y_i)=(tips\$total\_bill[i], tips\$tip[i])\)&lt;/span&gt; [für &lt;span class=&#34;math inline&#34;&gt;\((i=1, \dots, n)\)&lt;/span&gt;] sind die &lt;em&gt;Residuen&lt;/em&gt;, also die &lt;em&gt;Fehlerterme&lt;/em&gt;,&lt;/p&gt;
@@ -230,10 +230,10 @@ xyplot(
             text = list(c(&amp;quot;Regressionsgerade / x-Achse&amp;quot;))
           )
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können die Graphik im wesentlichen auch einfacher über den Befehl&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;xyplot(residuals(linMod) ~ fitted(linMod))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;erhalten.&lt;/p&gt;
 &lt;p&gt;Betrachten wir kurz nur die Residuen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats(~residuals(linMod))&lt;/code&gt;&lt;/pre&gt;
@@ -260,7 +260,7 @@ xyplot(
 Es könnte also eine linkssteile, rechtsschiefe Verteilung der Residuen vorliegen.
 Betrachten wir dazu das Histogramm:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;histogram(~residuals(linMod), nint = 19)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Schon beim ersten Blick auf das Histogramm kann an eine Normalverteilung der Residuen nicht mehr so ganz geglaubt werden.&lt;/p&gt;
 &lt;p&gt;Ein Shapiro-Wilk-Test&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; hat als Nullhypothese die Annahme, dass die Daten normalverteilt sind!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shapiro.test(residuals(linMod))&lt;/code&gt;&lt;/pre&gt;
@@ -271,7 +271,7 @@ Betrachten wir dazu das Histogramm:&lt;/p&gt;
 ## W = 0.96728, p-value = 2.171e-05&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Davon ist nach dem Ergebnis eben sowenig auszugehen, wie nach einem Blick auf das QQ-Normal-Diagramm:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;qqnorm(residuals(linMod), col = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Ein K.O.-Kriterium für gute Prognosen.&lt;/p&gt;
 &lt;p&gt;Wie gut aber beschreibt unsere Regressionsgerade die Daten?&lt;/p&gt;
 &lt;p&gt;Als Maß dafür können wir das Bestimmtheitsmaß nehmen.&lt;/p&gt;
@@ -301,7 +301,7 @@ xyplot(
             text = list(c(&amp;quot;Mittelwert Trinkgeld&amp;quot;, &amp;quot;Regressionsgerade&amp;quot;))
     )
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Die Varianz &lt;span class=&#34;math inline&#34;&gt;\(s^2_{y_i}=1.9144546\)&lt;/span&gt; beschreibt die mittlere quadratische Abweichung der Datenpunkte &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; vom Mittelwert &lt;span class=&#34;math inline&#34;&gt;\(\bar{y}\)&lt;/span&gt;.
 Diese Varianz lässt sich Zerlegen in einen Anteil, der durch die Regressionsgerade &lt;em&gt;erklärt&lt;/em&gt; wird und in einen Anteil, der durch die Regressionsgerade &lt;em&gt;nicht erklärt&lt;/em&gt; wird.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[

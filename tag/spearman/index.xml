@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spearman | Norman&#39;s Academic Blog</title>
-    <link>/tag/spearman/</link>
-      <atom:link href="/tag/spearman/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/nap/tag/spearman/</link>
+      <atom:link href="https://sefiroth.net/nap/tag/spearman/index.xml" rel="self" type="application/rss+xml" />
     <description>Spearman</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Spearman</title>
-      <link>/tag/spearman/</link>
+      <link>https://sefiroth.net/nap/tag/spearman/</link>
     </image>
     
     <item>
       <title>Ein kleines Beispiel zum Rangkorrelationskoeffizienten</title>
-      <link>/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</link>
+      <link>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</link>
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</guid>
+      <guid>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;../../rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
 
 
 &lt;p&gt;Bei der Rangkorrelation werden statt der Werte die Ränge der Werte zur Berechnung herangezogen.&lt;/p&gt;
@@ -102,7 +102,7 @@ y
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Das Streudiagramm dieser Daten sieht dann so aus:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der Korrelationskoeffizent ist nun:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r = r_{BP} = 0.7944953\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Schauen wir uns nun die Werte der Tabelle mit ihrem Rang an:&lt;/p&gt;
@@ -251,7 +251,7 @@ ry
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Das Streudiagramm der Ränge sieht nun wie folgt aus:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Und der Korrelationskoeffizient der Ränge ist nun:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r_{sp} = r_{ry,rx}=0.8909091\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Dieser Korrelatonskoeffizient der Ränge wird &lt;em&gt;Rangkorrelationkoeffizient&lt;/em&gt; genannt.&lt;/p&gt;

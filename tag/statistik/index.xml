@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statistik | Norman&#39;s Academic Blog</title>
-    <link>/tag/statistik/</link>
-      <atom:link href="/tag/statistik/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/nap/tag/statistik/</link>
+      <atom:link href="https://sefiroth.net/nap/tag/statistik/index.xml" rel="self" type="application/rss+xml" />
     <description>Statistik</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Statistik</title>
-      <link>/tag/statistik/</link>
+      <link>https://sefiroth.net/nap/tag/statistik/</link>
     </image>
     
     <item>
       <title>Eine typische Frage von Studierenden</title>
-      <link>/post/eine-typische-frage-von-studierenden/</link>
+      <link>https://sefiroth.net/nap/post/eine-typische-frage-von-studierenden/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>/post/eine-typische-frage-von-studierenden/</guid>
+      <guid>https://sefiroth.net/nap/post/eine-typische-frage-von-studierenden/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Vor kurzem fand ich mal wieder eine Anfrage einer Studierenden in meinem Email Postfach. Die Frage lautete in etwa wie folgt:&lt;/p&gt;
@@ -74,7 +74,7 @@ head(daten)&lt;/code&gt;&lt;/pre&gt;
 ##                   2xtäglich 34   26
 ##                   3xtäglich 27   27&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mosaicplot(wetter.ist.gut ~ iphones.tagsüber.unbeachtet, data=daten)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Für später speichern wir die Kreuztabelle in obs.tab
 obs.tab &amp;lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -199,7 +199,7 @@ obs.abs &amp;lt;- diffabsobsexp(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffabsobsexp(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
 gf_histogram(~ diffabsobsexp, data=NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert, also die relative Fläche rechts von der roten Linie in unseren Histogramm, abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexp &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -225,7 +225,7 @@ obs.abs &amp;lt;- diffabsobsexprel(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffabsobsexprel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
 gf_dhistogram(~ diffabsobsexprel, data=NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Auch hier können wir den p-Wert abschätzen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexprel &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -248,7 +248,7 @@ obs.abs &amp;lt;- diffquad(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffquad(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
 gf_dhistogram(~ diffquad, data=NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquad &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -269,7 +269,7 @@ obs.abs &amp;lt;- diffquadrel(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffquadrel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
 gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Den Wert 1.2344597, den wir mit Hilfe der relativen quadratischen Abweichung berechnet haben, nennen wir auch &lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt; Wert.&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquadrel &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
@@ -312,7 +312,7 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dhistogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;gt;%
   gf_fun(dchisq(x, df=2) ~ x, xlim=c(0:20), color=&amp;quot;blue&amp;quot;) %&amp;gt;% 
   gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Aber es gibt auch den (exakten) Fisher-Test:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fisher.test(obs.tab, alternative = &amp;quot;greater&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
@@ -327,7 +327,7 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;
 &lt;p&gt;Wir können die p-Werte der einzelnen Tests nun gegenüber stellen:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
 ## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Gewöhnlich haben wir ein Signifikanznivau von &lt;span class=&#34;math inline&#34;&gt;\(5\% = 0{,}05\)&lt;/span&gt; angenommen. Die rote Linie zeigt diese Grenze. Liegt der Balken links vor dieser Linie, so sprechen wir davon, dass der gemessene Wert selten bei unabhänigen Daten vorliegt und würden uns gegen die Nullhypothese und damit quasi für die Alternativhypothese entscheiden. Liegt der Balken recht der roten Linie, so haben wir übliche Werte für unabhängige Daten und keinen Grund gefunden, der gegen die Nullhypothese spricht. Warum wir sie dann, auf Grundlage unserer Daten, auch nicht ablehnen können.&lt;/p&gt;
 &lt;p&gt;Bleibt Sie Frage, gibt es Situationen in denen die Entscheidung über die Nullhypothese bei den einzelen betrachteten Verfahren unterschiedlichen ist? Und wenn ja, wann und wieoft?&lt;/p&gt;
 &lt;p&gt;Diese Fragen sind nicht Thema dieses Beitrags, aber vielleicht habe ich Zeit und betrachte das später einmal.&lt;/p&gt;
@@ -337,378 +337,10 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;
     </item>
     
     <item>
-      <title>Warum das Nachrechnen von Veröffentlichungen so wichtig ist</title>
-      <link>/post/warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist/</link>
-      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/post/warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;Im Internet fand ich vor kurzem einen sehr interessanten &lt;a href=&#34;http://www.stefanbartz.de/dateien/Vorsicht-bei-der-sigma-Regel.pdf&#34;&gt;Text&lt;/a&gt; von &lt;a href=&#34;http://www.stefanbartz.de&#34;&gt;Stefan Bart&lt;/a&gt;. Eine Aufgabe daraus fand meine besondere Aufmerksamkeit.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;HSB gesucht (Grundgesamtheit mit &lt;span class=&#34;math inline&#34;&gt;\(H_0 \rightarrow\)&lt;/span&gt; Stichprobe)&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Es soll die Nullhypothese, dass die 500 Mädchen und 500 Jungen der Schule gleich intelligent sind, getestet werden.
-Dazu werden 200 zufällige Junge-Mädchen-Paare gebildet.
-Bei 112 davon hatte der Junge einen höheren IQ. Ist die Abweichung vom Mittelwert signifikant?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Als Lösungen wurden vorgeschlagen:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
-&lt;li&gt;&lt;em&gt;grobe Näherung&lt;/em&gt;:
-&lt;span class=&#34;math display&#34;&gt;\[x \in [n \cdot p_0 \pm \sqrt{n}\,] = [200 \cdot 0{,}5 \pm \sqrt{200}\,] \approx [85{,}85786; 114{,}1421] \approx [85; 115]\]&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;bessere Näherung&lt;/em&gt;:
-&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}x \in \left[n \cdot p_0 \pm \Phi(0{,}975) \sqrt{n \cdot p_0 (1-p_0)}\,\right] &amp;amp;\approx \left[n \cdot p_0 \pm 1{,}96 \cdot \sqrt{n \cdot p_0 \cdot(1-p_0)} \,\right] \\ &amp;amp;\approx \left[200 \cdot 0{,}5 \pm 1.959964 \cdot \sqrt{200 \cdot 0{,}5 \cdot (1-0{,}5)}\,\right] \\ &amp;amp;\approx \left[86{,}14096; 113{,}859\right] \\&amp;amp;\approx \left[86; 114\right]\end{aligned}\]&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;exakte Lösung&lt;/em&gt;:
-&lt;span class=&#34;math display&#34;&gt;\[x \in [89; 111]\]&lt;/span&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Auf Grundlage dieser drei Lösungen wurde dann entschieden, ob die Abweichung signifikant ist, also 112 im oder eben nicht im berechneten Intervall liegt. &lt;em&gt;Ergebnis:&lt;/em&gt; a), b) liefern nicht signifikante und c) ein signifikantes Ergebnis.&lt;/p&gt;
-&lt;p&gt;Die Frage bleibt, was in der Aufgabenstellung mit “200 zufällige Junge-Mädchen-Paaren” gemeint ist.&lt;/p&gt;
-&lt;p&gt;Bekannterweise kann man diesen Satz interpretieren:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Eine &lt;em&gt;uneingeschränkte Zufallsstichprobe&lt;/em&gt; erhält man z. B. bei einem &lt;em&gt;Ziehen ohne Zurücklegen&lt;/em&gt; (&lt;span class=&#34;math inline&#34;&gt;\(\rightarrow\)&lt;/span&gt; Hypergeometrische Verteilung).&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Eine &lt;em&gt;einfache Zufallsstichprobe&lt;/em&gt; z. B. bei einem &lt;em&gt;Ziehen mit Zurücklegen&lt;/em&gt; (&lt;span class=&#34;math inline&#34;&gt;\(\rightarrow\)&lt;/span&gt; Binomialverteilung).&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Rechnet man mit Hilfe von &lt;em&gt;R&lt;/em&gt; die exakte Lösung nach, so erhält man:&lt;/p&gt;
-&lt;p&gt;Für die Binomialverteilung (die “bessere Näherung”):&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pl &amp;lt;- 0.025 # 2,5% als untere Grenze
-pr &amp;lt;- 0.975 # 97,5% als obere Grenze
-
-iu &amp;lt;- qbinom(pl, 200, prob=0.5)
-io &amp;lt;- qbinom(pr, 200, prob=0.5)
-c(iu, io) # Ausgabe des (HSB-)Intervalls&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1]  86 114&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Für die Hypergeometischeverteilung (hier “exakte Lösung” genannt) müssen wir die zwei Gruppen (500 Jungen und 500 Mädchen) jeweils als ein mögliches Paar ansehen. Es gibt somit insgesamt 500 solcher Paare, da jeder Junge und jedes Mädchen in nur einem Paar vorkommen können. – Sehr wohl aber 500! solcher Möglichen Paar-Reihen.&lt;/p&gt;
-&lt;p&gt;Betrachten wir nun jedes Paar nur einmal, dann ziehen wir aus der Menge der Paare also eine &lt;em&gt;Stichprobe ohne Zurücklegen&lt;/em&gt;, also eine &lt;em&gt;uneingeschränkte Zufallsstichprobe&lt;/em&gt;.
-Zum bestimmen der Quantiele und damit des HSB benötigen wir dann die &lt;em&gt;hypergeometrische Verteilung&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Oh ja, diese Annahme ist sehr verwirrend, logisch nicht ganz einzusehen und einfach von Mathematik-Lehrenden gemacht worden, damit man die Hypergeometrischeverteilung hier anwenden kann. Alleine schon die Annahme, dass zwei Personen immer einen unterschiedlichen IQ haben müssen … – Egal!&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m &amp;lt;- 250 # Anzahl der Paare mit besseren Mädchen
-n &amp;lt;- 250 # Anzahl der Paare mit besseren Jungen
-k &amp;lt;- 200 # Umfang des Stichprobe
-pl &amp;lt;- 0.025 # 2,5% als untere Grenze
-pr &amp;lt;- 0.975 # 97,5% als obere Grenze
-
-iu &amp;lt;- qhyper(pl, m, n, k) # Linke/untere Intervallgrenze
-io &amp;lt;- qhyper(pr, m, n, k) # Rechte/obere Intervallgrenze
-c(iu, io) # Ausgabe des (HSB-)Intervalls&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1]  89 111&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;R&lt;/strong&gt; liefert aus &lt;em&gt;exakte Lösung&lt;/em&gt; das Intervall &lt;span class=&#34;math inline&#34;&gt;\([89; 111]\)&lt;/span&gt;. Schauen wir einmal genauer hin:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m &amp;lt;- 250 # Anzahl der Paare mit besseren Mädchen
-n &amp;lt;- 250 # Anzahl der Paare mit besseren Jungen
-k &amp;lt;- 200 # Umfang des Stichprobe
-
-p &amp;lt;- dhyper(0:k, m, n, k)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Werte für die linke/untere Intervallgrenzen:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Werte für die linke/untere Intervallgrenzen:
-sum(p[0:89])&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.01782071&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(p[0:90])&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.02755396&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Werte für die rechte/untere Intervallgrenzen:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Werte für die rechte/untere Intervallgrenzen:
-sum(p[0:111])&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.972446&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(p[0:112])&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9821793&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Wie wird nun gerundet? – Im Text heißt es:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Werden 2,5% und 97,5% nicht genau getroffen, wird hier nicht […] nach außen / .  , sondern in beiden Fällen nach rechts . gerundet;
-d.h. man nimmt diejenigen Werte in das zu bestimmende Intervall auf, bei denen 2,5% bzw. 97,5% zum ersten Mal
-übertroffen werden. Somit verbleiben weniger als 2,5% der Histogrammfläche am linken bzw. rechten Rand.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div id=&#34;ein-paar-überlegungen-zum-lösen-der-aufgabe-mit-sbi&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Ein paar Überlegungen zum Lösen der Aufgabe mit SBI&lt;/h3&gt;
-&lt;p&gt;Eigentlich haben wir es mit drei Fällen je Paar zu tun:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(IQ_{Junge} &amp;gt; IQ_{Mädchen}\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(IQ_{Junge} &amp;lt; IQ_{Mädchen}\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(IQ_{Junge} = IQ_{Mädchen}\)&lt;/span&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Tatsächlich spielt hier welches Mädchen und welcher Junge im Paar sind eine entscheidende Rolle.&lt;/p&gt;
-&lt;p&gt;Simulieren wir nun einmal, dass unsere beiden Gruppe im wesendlichen (und im Mittel) gleich intelligent sind, was wir durch einen gleich mittlenem IQ von 100 und einer Standardabweichung von 15 modellieren wollen:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Wir laden zuerst das Paket `mosaic`
-library(mosaic)
-
-# Zur Reproduzierbarkeit
-set.seed(2009)
-
-# IQs für Jungen und Mädchen normalverteilt mit den Parametern mu=100 und sigma=15
-
-# 1. Fassung, aber hier ist F_iq_junger = F_iq_maedchen
-#iq_jungen &amp;lt;- rnorm(500, mean=100, sd=15)
-#iq_maedchen &amp;lt;- rnorm(500, mean=100, sd=15)
-
-# 2. Fassung
-#iq &amp;lt;- rnorm(500, mean=100, sd=15)
-#iq_jungen &amp;lt;- iq
-#iq_maedchen &amp;lt;- iq
-
-# 3. Fassung
-iq_jungen &amp;lt;- rnorm(500, mean=100, sd=15)
-iq_maedchen &amp;lt;- rnorm(499, mean=100, sd=15)
-iq_maedchen &amp;lt;- c(iq_maedchen, mean(iq_jungen)+499*(mean(iq_jungen)-mean(iq_maedchen)))
-
-# Ein Blick auf die beinden Datenreihen
-length(iq_maedchen)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 500&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;length(iq_jungen)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 500&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(iq_maedchen)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 99.22318&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(iq_jungen)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 99.22318&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Bilden wir nun die Paare:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;paare &amp;lt;- data.frame(jungen = iq_jungen, maedchen = iq_maedchen)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Und schauen uns nun einmal an, wie oft – bei zufälliger Auswahl von 200 Paarungen – es vorkommen kann, dass Jungen in den Paarungen einen höheren IQ haben als Mädchen. Das wäre dann dem Zufall geschuldet und nicht der übermässigen Intelligenz der Jungen. (Da nach Vereinbarung beide Gruppen gleich intelligent waren!)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;NullVerteilung &amp;lt;- do(5000) * count( ~ sample(jungen, 200) - sample(maedchen, 200) &amp;gt; 0, data=paare)
-gf_bar( ~ n_TRUE, data=NullVerteilung)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-01-27-warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Das HSB für diesen Fall wäre dann:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(hsb &amp;lt;- quantile( ~ n_TRUE, prob=c(0.025, 0.975), data=NullVerteilung))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  2.5% 97.5% 
-##    83   107&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Anders formuliert, der zu erwartende Hauptstreubereich ist das Intervall &lt;span class=&#34;math inline&#34;&gt;\([83, 107]\)&lt;/span&gt;!&lt;/p&gt;
-&lt;p&gt;Die 112 Paare in denen die Jungen einen höheren IQ haben, sind also nicht zu erwarten. (Also &lt;em&gt;signifikant!&lt;/em&gt;)&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Der Standardfehler aus klassischer Sicht - Ein kleiner Überblick</title>
-      <link>/post/der-standardfehler-aus-klassischer-sicht-ein-kleiner-uberblick/</link>
-      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/post/der-standardfehler-aus-klassischer-sicht-ein-kleiner-uberblick/</guid>
-      <description>
-&lt;script src=&#34;2020-01-22-der-standardfehler-aus-klassischer-sicht-ein-kleiner-überblick_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;Der &lt;strong&gt;Standardfehler&lt;/strong&gt; ist ein &lt;em&gt;Steuungsmaß&lt;/em&gt; für eine Schätzfunktion &lt;span class=&#34;math inline&#34;&gt;\(\hat{\vartheta}\)&lt;/span&gt; für einen unbekannten Parameter &lt;span class=&#34;math inline&#34;&gt;\(\vartheta\)&lt;/span&gt; der Grundgesamtheit. Er ist definiert als
-&lt;span class=&#34;math display&#34;&gt;\[\sigma(\hat{\vartheta}) = + \sqrt{\operatorname{Var}(\hat{\vartheta})}.\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Bei einem erwartungstreuen Schätzer ist daher der Standardfehler ein Maß für die durchschnittliche Abweichung des geschätzten Parameterwertes vom wahren Parameterwert. Je kleiner der Standardfehler ist, desto genauer kann der unbekannte Parameter mit Hilfe der Schätzfunktion geschätzt werden.&lt;/p&gt;
-&lt;p&gt;Für eine Stichprobe vom Umfang &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; mit Standardabweichung &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt; gilt für den Standardfehler:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;des &lt;strong&gt;Stichprobenmittel&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\sigma(\overline{X}) = \frac{\sigma}{\sqrt{n}}\)&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Unterstellt man eine Stichprobenverteilung, so kann der Standardfehler anhand der Varianz der Stichprobenverteilung berechnet werden:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Binomialverteilung&lt;/strong&gt; mit Parametern &lt;span class=&#34;math inline&#34;&gt;\(N,\, p\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{\bar x,\mathrm{binom}} = \frac{\sqrt{ N \cdot p \cdot (1-p)}}{\sqrt n}\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Exponentialverteilung&lt;/strong&gt; mit Parameter &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; (Erwartungswert = Standardabweichung = &lt;span class=&#34;math inline&#34;&gt;\(1/\lambda\)&lt;/span&gt;): &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{\bar x,\mathrm{exp}} = \frac{1}{\lambda\sqrt n}\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Poisson-Verteilung&lt;/strong&gt; mit Parameter &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; (Erwartungswert = Varianz = &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;): &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{\bar x,\mathrm{poisson}} = \sqrt{\frac{\lambda}{n}}\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div id=&#34;beispiel-binomialverteile-stichprobe&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Beispiel: Binomialverteile Stichprobe&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;printAllSE.binom &amp;lt;- function(n, N, prob, bootstrapN=1000, theta=mean) {
-  stipro &amp;lt;- rbinom(n, N, prob)
-  bootvert &amp;lt;- do(bootstrapN) * theta(resample(stipro))
-  se.boot &amp;lt;- sd(bootvert$theta)
-  se.exakt &amp;lt;- sqrt(N*prop*(1-prop))/sqrt(n)
-  se &amp;lt;- list(se.exakt, se.boot)
-  names(se) &amp;lt;- c(&amp;quot;exakt&amp;quot;, &amp;quot;boot&amp;quot;)
-  return(se)
-}
-
-printAllSE.poision &amp;lt;- function(n, lambda, bootstrapN=1000, theta=mean) {
-  stipro &amp;lt;- rpois(n, lambda)
-  bootvert &amp;lt;- do(bootstrapN) * theta(resample(stipro))
-  se.boot &amp;lt;- sd(bootvert$theta)
-  se.exakt &amp;lt;- sqrt(lambda/n)
-  se &amp;lt;- list(se.exakt, se.boot)
-  names(se) &amp;lt;- c(&amp;quot;exakt&amp;quot;, &amp;quot;boot&amp;quot;)
-  return(se)
-}
-
-printAllSE.normal &amp;lt;- function(n, mu=0, sigma=1, bootstrapN=1000, theta=mean) {
-  stipro &amp;lt;- rnorm(n, mu, sigma)
-  bootvert &amp;lt;- do(bootstrapN) * theta(resample(stipro))
-  se.boot &amp;lt;- sd(bootvert$theta)
-  se.exakt &amp;lt;- sqrt(sigma^2/n)
-  se.geschaetzt &amp;lt;- sqrt(var(stipro)/n)
-  se &amp;lt;- list(se.exakt, se.boot, se.geschaetzt)
-  names(se) &amp;lt;- c(&amp;quot;exakt&amp;quot;, &amp;quot;boot&amp;quot;, &amp;quot;geschaetzt&amp;quot;)
-  return(se)
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 100
-N &amp;lt;- 70
-prop &amp;lt;- 0.9
-
-# Binomialverteilte:
-for(n in c(30, 50, 100, 200, 500, 1000, 3000)) {
-  cat(&amp;quot;\nn=&amp;quot;, n, &amp;quot;\n&amp;quot;)
-  for(prob in c(1/2, 1/3, 1/4, 1/5, 1/6)) {
-    N &amp;lt;- floor(prob*n)
-    cat(&amp;quot;N=&amp;quot;,N, &amp;quot;\n&amp;quot;)    
-    tmp &amp;lt;- printAllSE.binom(n , N, prob)
-    cat(prob,&amp;quot;: &amp;quot;, tmp$exakt, &amp;quot; (exakt), &amp;quot;, tmp$boot, &amp;quot; (boot), &amp;quot;, abs(tmp$exakt-tmp$boot), &amp;quot; (abs. Fehler) \n&amp;quot;)
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## n= 30 
-## N= 15 
-## 0.5 :  0.212132  (exakt),  0.2996921  (boot),  0.08756008  (abs. Fehler) 
-## N= 10 
-## 0.3333333 :  0.1732051  (exakt),  0.2309855  (boot),  0.0577804  (abs. Fehler) 
-## N= 7 
-## 0.25 :  0.1449138  (exakt),  0.230028  (boot),  0.08511424  (abs. Fehler) 
-## N= 6 
-## 0.2 :  0.1341641  (exakt),  0.1914001  (boot),  0.05723599  (abs. Fehler) 
-## N= 5 
-## 0.1666667 :  0.1224745  (exakt),  0.1436041  (boot),  0.02112966  (abs. Fehler) 
-## 
-## n= 50 
-## N= 25 
-## 0.5 :  0.212132  (exakt),  0.3525394  (boot),  0.1404073  (abs. Fehler) 
-## N= 16 
-## 0.3333333 :  0.1697056  (exakt),  0.273315  (boot),  0.1036094  (abs. Fehler) 
-## N= 12 
-## 0.25 :  0.1469694  (exakt),  0.2005751  (boot),  0.05360569  (abs. Fehler) 
-## N= 10 
-## 0.2 :  0.1341641  (exakt),  0.1867858  (boot),  0.0526217  (abs. Fehler) 
-## N= 8 
-## 0.1666667 :  0.12  (exakt),  0.1343281  (boot),  0.01432808  (abs. Fehler) 
-## 
-## n= 100 
-## N= 50 
-## 0.5 :  0.212132  (exakt),  0.349122  (boot),  0.13699  (abs. Fehler) 
-## N= 33 
-## 0.3333333 :  0.1723369  (exakt),  0.2724159  (boot),  0.100079  (abs. Fehler) 
-## N= 25 
-## 0.25 :  0.15  (exakt),  0.2371899  (boot),  0.0871899  (abs. Fehler) 
-## N= 20 
-## 0.2 :  0.1341641  (exakt),  0.1927453  (boot),  0.05858118  (abs. Fehler) 
-## N= 16 
-## 0.1666667 :  0.12  (exakt),  0.1463126  (boot),  0.02631257  (abs. Fehler) 
-## 
-## n= 200 
-## N= 100 
-## 0.5 :  0.212132  (exakt),  0.3311697  (boot),  0.1190377  (abs. Fehler) 
-## N= 66 
-## 0.3333333 :  0.1723369  (exakt),  0.2952654  (boot),  0.1229285  (abs. Fehler) 
-## N= 50 
-## 0.25 :  0.15  (exakt),  0.2033503  (boot),  0.05335033  (abs. Fehler) 
-## N= 40 
-## 0.2 :  0.1341641  (exakt),  0.1563642  (boot),  0.02220012  (abs. Fehler) 
-## N= 33 
-## 0.1666667 :  0.1218606  (exakt),  0.1407523  (boot),  0.01889169  (abs. Fehler) 
-## 
-## n= 500 
-## N= 250 
-## 0.5 :  0.212132  (exakt),  0.3497107  (boot),  0.1375787  (abs. Fehler) 
-## N= 166 
-## 0.3333333 :  0.1728583  (exakt),  0.2574557  (boot),  0.08459734  (abs. Fehler) 
-## N= 125 
-## 0.25 :  0.15  (exakt),  0.2186492  (boot),  0.06864923  (abs. Fehler) 
-## N= 100 
-## 0.2 :  0.1341641  (exakt),  0.185649  (boot),  0.05148495  (abs. Fehler) 
-## N= 83 
-## 0.1666667 :  0.1222293  (exakt),  0.146211  (boot),  0.02398172  (abs. Fehler) 
-## 
-## n= 1000 
-## N= 500 
-## 0.5 :  0.212132  (exakt),  0.345063  (boot),  0.132931  (abs. Fehler) 
-## N= 333 
-## 0.3333333 :  0.1731185  (exakt),  0.2646252  (boot),  0.09150675  (abs. Fehler) 
-## N= 250 
-## 0.25 :  0.15  (exakt),  0.2231931  (boot),  0.07319309  (abs. Fehler) 
-## N= 200 
-## 0.2 :  0.1341641  (exakt),  0.1833904  (boot),  0.04922629  (abs. Fehler) 
-## N= 166 
-## 0.1666667 :  0.1222293  (exakt),  0.1528499  (boot),  0.03062058  (abs. Fehler) 
-## 
-## n= 3000 
-## N= 1500 
-## 0.5 :  0.212132  (exakt),  0.3525232  (boot),  0.1403911  (abs. Fehler) 
-## N= 1000 
-## 0.3333333 :  0.1732051  (exakt),  0.2702559  (boot),  0.09705078  (abs. Fehler) 
-## N= 750 
-## 0.25 :  0.15  (exakt),  0.2196364  (boot),  0.0696364  (abs. Fehler) 
-## N= 600 
-## 0.2 :  0.1341641  (exakt),  0.1791849  (boot),  0.04502081  (abs. Fehler) 
-## N= 500 
-## 0.1666667 :  0.1224745  (exakt),  0.1466177  (boot),  0.02414318  (abs. Fehler)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 
-# Poisionverteilte:
-for(n in c(30, 50, 100, 200, 500, 1000, 3000)) {
-  cat(&amp;quot;\nn=&amp;quot;, n, &amp;quot;\n&amp;quot;)
-  for(lambda in c(1/2,1/3, 1/4, 1/5, 1/6)) {
-    tmp &amp;lt;- printAllSE.poision(n, lambda)
-    cat(lambda,&amp;quot;: &amp;quot;, tmp$exakt, &amp;quot; (exakt), &amp;quot;, tmp$boot, &amp;quot; (boot), &amp;quot;, abs(tmp$exakt-tmp$boot), &amp;quot; (abs. Fehler) \n&amp;quot;)
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## n= 30 
-## 0.5 :  0.1290994  (exakt),  0.1243969  (boot),  0.004702575  (abs. Fehler) 
-## 0.3333333 :  0.1054093  (exakt),  0.1002588  (boot),  0.005150442  (abs. Fehler) 
-## 0.25 :  0.09128709  (exakt),  0.08302049  (boot),  0.008266599  (abs. Fehler) 
-## 0.2 :  0.08164966  (exakt),  0.07318089  (boot),  0.008468764  (abs. Fehler) 
-## 0.1666667 :  0.0745356  (exakt),  0.04481507  (boot),  0.02972053  (abs. Fehler) 
-## 
-## n= 50 
-## 0.5 :  0.1  (exakt),  0.09339713  (boot),  0.006602873  (abs. Fehler) 
-## 0.3333333 :  0.08164966  (exakt),  0.06811893  (boot),  0.01353073  (abs. Fehler) 
-## 0.25 :  0.07071068  (exakt),  0.06970471  (boot),  0.00100597  (abs. Fehler) 
-## 0.2 :  0.06324555  (exakt),  0.05739908  (boot),  0.005846471  (abs. Fehler) 
-## 0.1666667 :  0.05773503  (exakt),  0.06721628  (boot),  0.009481251  (abs. Fehler) 
-## 
-## n= 100 
-## 0.5 :  0.07071068  (exakt),  0.07809672  (boot),  0.007386041  (abs. Fehler) 
-## 0.3333333 :  0.05773503  (exakt),  0.05174337  (boot),  0.005991656  (abs. Fehler) 
-## 0.25 :  0.05  (exakt),  0.04781868  (boot),  0.002181325  (abs. Fehler) 
-## 0.2 :  0.04472136  (exakt),  0.04141606  (boot),  0.003305295  (abs. Fehler) 
-## 0.1666667 :  0.04082483  (exakt),  0.04997504  (boot),  0.009150211  (abs. Fehler) 
-## 
-## n= 200 
-## 0.5 :  0.05  (exakt),  0.04892444  (boot),  0.001075565  (abs. Fehler) 
-## 0.3333333 :  0.04082483  (exakt),  0.03717077  (boot),  0.00365406  (abs. Fehler) 
-## 0.25 :  0.03535534  (exakt),  0.03747469  (boot),  0.002119349  (abs. Fehler) 
-## 0.2 :  0.03162278  (exakt),  0.02947104  (boot),  0.002151735  (abs. Fehler) 
-## 0.1666667 :  0.02886751  (exakt),  0.0281555  (boot),  0.0007120108  (abs. Fehler) 
-## 
-## n= 500 
-## 0.5 :  0.03162278  (exakt),  0.03392637  (boot),  0.002303597  (abs. Fehler) 
-## 0.3333333 :  0.02581989  (exakt),  0.02539741  (boot),  0.0004224743  (abs. Fehler) 
-## 0.25 :  0.02236068  (exakt),  0.0223629  (boot),  2.223781e-06  (abs. Fehler) 
-## 0.2 :  0.02  (exakt),  0.01972995  (boot),  0.0002700514  (abs. Fehler) 
-## 0.1666667 :  0.01825742  (exakt),  0.0197222  (boot),  0.001464778  (abs. Fehler) 
-## 
-## n= 1000 
-## 0.5 :  0.02236068  (exakt),  0.02245352  (boot),  9.283735e-05  (abs. Fehler) 
-## 0.3333333 :  0.01825742  (exakt),  0.0185596  (boot),  0.0003021789  (abs. Fehler) 
-## 0.25 :  0.01581139  (exakt),  0.01669539  (boot),  0.0008840021  (abs. Fehler) 
-## 0.2 :  0.01414214  (exakt),  0.0150454  (boot),  0.0009032662  (abs. Fehler) 
-## 0.1666667 :  0.01290994  (exakt),  0.01366569  (boot),  0.0007557503  (abs. Fehler) 
-## 
-## n= 3000 
-## 0.5 :  0.01290994  (exakt),  0.01333761  (boot),  0.0004276694  (abs. Fehler) 
-## 0.3333333 :  0.01054093  (exakt),  0.01085993  (boot),  0.000319002  (abs. Fehler) 
-## 0.25 :  0.009128709  (exakt),  0.008925436  (boot),  0.0002032728  (abs. Fehler) 
-## 0.2 :  0.008164966  (exakt),  0.008679877  (boot),  0.0005149115  (abs. Fehler) 
-## 0.1666667 :  0.00745356  (exakt),  0.007160364  (boot),  0.0002931957  (abs. Fehler)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;for(n in c(30, 50, 100, 200, 500, 1000, 3000)) {
-  tmp &amp;lt;- printAllSE.normal(n)
-  cat(&amp;quot;\nn=&amp;quot;, n, &amp;quot;: &amp;quot;, tmp$exakt, &amp;quot; (exakt), &amp;quot;, tmp$boot, &amp;quot; (boot), &amp;quot;, tmp$geschaetzt, &amp;quot;(geschätzt), &amp;quot;, abs(tmp$exakt-tmp$boot), &amp;quot; (abs. Fehler (boot))&amp;quot;, abs(tmp$exakt-tmp$geschaetzt),&amp;quot;(abs. Fehler (geschätzt)) \n&amp;quot;)
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## n= 30 :  0.1825742  (exakt),  0.1835327  (boot),  0.1860335 (geschätzt),  0.0009585326  (abs. Fehler (boot)) 0.003459307 (abs. Fehler (geschätzt)) 
-## 
-## n= 50 :  0.1414214  (exakt),  0.1371073  (boot),  0.1374232 (geschätzt),  0.004314035  (abs. Fehler (boot)) 0.003998187 (abs. Fehler (geschätzt)) 
-## 
-## n= 100 :  0.1  (exakt),  0.1026103  (boot),  0.1027873 (geschätzt),  0.002610263  (abs. Fehler (boot)) 0.002787325 (abs. Fehler (geschätzt)) 
-## 
-## n= 200 :  0.07071068  (exakt),  0.06443724  (boot),  0.06457342 (geschätzt),  0.006273439  (abs. Fehler (boot)) 0.006137256 (abs. Fehler (geschätzt)) 
-## 
-## n= 500 :  0.04472136  (exakt),  0.04366336  (boot),  0.04297065 (geschätzt),  0.001057998  (abs. Fehler (boot)) 0.00175071 (abs. Fehler (geschätzt)) 
-## 
-## n= 1000 :  0.03162278  (exakt),  0.03126506  (boot),  0.03133075 (geschätzt),  0.000357721  (abs. Fehler (boot)) 0.0002920245 (abs. Fehler (geschätzt)) 
-## 
-## n= 3000 :  0.01825742  (exakt),  0.01858404  (boot),  0.01852834 (geschätzt),  0.0003266222  (abs. Fehler (boot)) 0.0002709226 (abs. Fehler (geschätzt))&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen</title>
-      <link>/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</link>
+      <link>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</link>
       <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</guid>
+      <guid>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</guid>
       <description>
 &lt;script src=&#34;2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhängen_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
@@ -721,7 +353,7 @@ Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;
 &lt;div id=&#34;moderation&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Moderation&lt;/h2&gt;
 &lt;p&gt;Bei einer &lt;em&gt;Moderation&lt;/em&gt; wirkt die dritte Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (&lt;em&gt;Moderator&lt;/em&gt;) auf die Beziehung zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der Einfluss von &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; ändert also den Effekt von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; auf &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. Der Zusammenhang zwischen &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; ist also je nach &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; unterschiedlich.&lt;/p&gt;
 &lt;p&gt;Statistisch gesehen liegt eine &lt;em&gt;Interaktion&lt;/em&gt; zwischen &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; vor.&lt;/p&gt;
 &lt;div id=&#34;wie-untersucht-man-einen-zusammenhang-auf-eine-moderation&#34; class=&#34;section level3&#34;&gt;
@@ -738,7 +370,7 @@ Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;
 &lt;p&gt;Bei der &lt;em&gt;Mediation&lt;/em&gt; steht die Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (der &lt;em&gt;Mediator&lt;/em&gt;) sowohl zu &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; als auch zu &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; in Beziehung.
 Der direkte Effekt zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; wird durch den indirekten Effekt über &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; erklärt, also durch
 &lt;span class=&#34;math inline&#34;&gt;\(X \to M \to Y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;wie-untersucht-man-auf-eine-mediation&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Wie untersucht man auf eine Mediation?&lt;/h3&gt;
 &lt;p&gt;In diesem Fall stellen wir mehrere Regressionsmodelle auf. Eine (signifikante) Mediation liegt dann vor, wenn die folgenden Bedinungen erfüllt sind:&lt;/p&gt;
@@ -758,11 +390,11 @@ drittesModell &amp;lt;- lm(Y ~ X + M, data=daten)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Die ersten Schritte zur Prognose mitteles linearer Regression</title>
-      <link>/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</link>
+      <link>https://sefiroth.net/nap/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</link>
       <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</guid>
+      <guid>https://sefiroth.net/nap/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Prognosen sind ein wichtiger Bestandteil von Data Science und ist durchaus nicht nur auf moderne Ansätze, wie Neuronale Netze, deep lerning etc. begrenzt. Auch die gute, alte Regression kann ein sehr sinnvolles Mittel sein solche Prognosen zu erstellen.&lt;/p&gt;
@@ -835,9 +467,9 @@ tipspruef %&amp;gt;%
 &lt;h2&gt;Die Datenlage&lt;/h2&gt;
 &lt;p&gt;Ein (paar) Blick(e) auf unsere Trainingsdaten:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(total_bill ~ jitter(size), color=~time, data=tipstrain)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(total_bill ~ day | time, color = ~ sex, data=tipstrain)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;prognosemodel-nullmodell&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Prognosemodel: Nullmodell&lt;/h2&gt;
@@ -894,20 +526,12 @@ maa.null&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Statistik21</title>
-      <link>/publication/statistik21/</link>
-      <pubDate>Wed, 25 Sep 2019 00:00:00 +0200</pubDate>
-      <guid>/publication/statistik21/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>SBI - Simulation Based Inference</title>
-      <link>/post/sbi-simulation-based-inference/</link>
+      <link>https://sefiroth.net/nap/post/sbi-simulation-based-inference/</link>
       <pubDate>Mon, 11 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>/post/sbi-simulation-based-inference/</guid>
+      <guid>https://sefiroth.net/nap/post/sbi-simulation-based-inference/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Wenn meine Tochter &lt;em&gt;SBI&lt;/em&gt; hört, denkt sie an &lt;em&gt;Sally Bollywood Investigation&lt;/em&gt;. – Und ich oft auch. – Mit &lt;em&gt;SBI&lt;/em&gt; ist hier aber nicht der Trickfilm für Kinder, sondern &lt;em&gt;&lt;strong&gt;S&lt;/strong&gt;imulation &lt;strong&gt;B&lt;/strong&gt;ased &lt;strong&gt;I&lt;/strong&gt;nference&lt;/em&gt;, gemeint.&lt;/p&gt;
@@ -918,20 +542,20 @@ maa.null&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Ein wenig schneller zur simulierten Nullverteilung</title>
-      <link>/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</link>
+      <link>https://sefiroth.net/nap/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
-      <guid>/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</guid>
+      <guid>https://sefiroth.net/nap/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/profvis/profvis.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;/rmarkdown-libs/profvis/profvis.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/profvis/scroll.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/highlight/textmate.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;/rmarkdown-libs/highlight/highlight.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/profvis-binding/profvis.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;../../rmarkdown-libs/profvis/profvis.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;../../rmarkdown-libs/profvis/profvis.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/profvis/scroll.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;../../rmarkdown-libs/highlight/textmate.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;../../rmarkdown-libs/highlight/highlight.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/profvis-binding/profvis.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Ein Nullhypothesentest ist schnell geschrieben.
@@ -992,12 +616,12 @@ Im ersten Fall schaut man sich die Anteilsunterschiede an, wenn man die (potenti
 NullVtlgAntwert &amp;lt;- do(10000) * diffprop(sex ~ shuffle(time), 
     success = &amp;quot;Female&amp;quot;, data = tips)
 gf_histogram(~diffprop, nint = 25, data = NullVtlgAntwert)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Schaut man sich nun die Lage der Anteilsdifferenz der Stichprobe &lt;span class=&#34;math inline&#34;&gt;\(\hat\pi=0.2192513\)&lt;/span&gt; in Bezug auf diese Nullverteilung geometrisch an, so kann man schon einen ersten Eindruck erlangen, ob die Nullhypothese abzulehnen ist oder nicht:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;diffpropdach &amp;lt;- diffprop(sex ~ time, success = &amp;quot;Female&amp;quot;, data = tips)
 gf_histogram(~diffprop, nint = 25, data = NullVtlgAntwert) + 
     geom_vline(xintercept = diffpropdach, color = &amp;quot;blue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Offenbar ist &lt;span class=&#34;math inline&#34;&gt;\(\hat\pi\)&lt;/span&gt; kein sehr häufiges Ereignis.&lt;/p&gt;
 &lt;p&gt;Der &lt;em&gt;p-Wert&lt;/em&gt; ist ebenfalls leicht zu ermitteln:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pvalue_aw &amp;lt;- prop(~abs(diffprop) &amp;gt;= abs(diffpropdach), data = NullVtlgAntwert)
@@ -1010,12 +634,12 @@ pvalue_aw&lt;/code&gt;&lt;/pre&gt;
 NullVtlgMittelwert &amp;lt;- do(10000) * diffmean(total_bill ~ shuffle(time), 
     data = tips)
 gf_histogram(~diffmean, nint = 25, data = NullVtlgMittelwert)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Und können im Anschluss die Mittelwertsdifferenz der Stichprobe geometrisch einordnen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;diffmeandach &amp;lt;- diffmean(total_bill ~ time, data = tips)
 gf_histogram(~diffmean, nint = 25, data = NullVtlgMittelwert) + 
     geom_vline(xintercept = diffmeandach, color = &amp;quot;blue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Auch den &lt;em&gt;p-Wert&lt;/em&gt; können wir wieder leicht bestimmen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pvalue_mw &amp;lt;- prop(~abs(diffmean) &amp;gt;= abs(diffmeandach), data = NullVtlgMittelwert)
 pvalue_mw&lt;/code&gt;&lt;/pre&gt;
@@ -1045,12 +669,12 @@ Ein Vergleich:&lt;/p&gt;
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_warnings()` to see where this warning was generated.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_qq(~diffprop, color = ~type, data = df.diffprop)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df.diffmean &amp;lt;- data_frame(diffmean = c(NullDistFSNDR_mw$diffmean, 
     NullDistMosaic_mw$diffmean), type = c(rep(&amp;quot;FSNDR&amp;quot;, 10000), 
     rep(&amp;quot;mosaic&amp;quot;, 10000)))
 gf_qq(~diffmean, color = ~type, data = df.diffmean)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-2.png&#34; width=&#34;672&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-2.png&#34; width=&#34;672&#34; /&gt;
 # qqplot(NullDistFSNDR_aw&lt;span class=&#34;math inline&#34;&gt;\(diffprop, NullDistMosaic_aw\)&lt;/span&gt;diffprop)
 gf_qq(FSNDR ~ Mosaic, data=df)
 # qqplot(NullDistFSNDR_mw&lt;span class=&#34;math inline&#34;&gt;\(diffmean, NullDistMosaic_mw\)&lt;/span&gt;diffmean)
@@ -1066,11 +690,11 @@ gf_qq(NullDistFSNDR_mw&lt;span class=&#34;math inline&#34;&gt;\(diffmean ~ NullD
     
     <item>
       <title>Nur ein wenig lineare Regression</title>
-      <link>/post/nur-ein-wenig-lineare-regression/</link>
+      <link>https://sefiroth.net/nap/post/nur-ein-wenig-lineare-regression/</link>
       <pubDate>Mon, 08 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/post/nur-ein-wenig-lineare-regression/</guid>
+      <guid>https://sefiroth.net/nap/post/nur-ein-wenig-lineare-regression/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Der &lt;em&gt;tipping&lt;/em&gt; Datensatz wird oft analysiert. Das Verhältnis von Trinkgeld (&lt;em&gt;tip&lt;/em&gt;) und Rechnungsbetrag (&lt;em&gt;total_bill&lt;/em&gt;) steht dabei im Vordergrund einer lineare Regressionsanalyse.
@@ -1127,7 +751,7 @@ xyplot(
             text = list(c(&amp;quot;Regressionsgerade&amp;quot;))
           )
      )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Was hat es mit dem y-Achsenabschnitt &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta}_0\)&lt;/span&gt; auf sich?&lt;/p&gt;
 &lt;p&gt;Ist es etwa eine Art &lt;em&gt;Grundtrinkgeld&lt;/em&gt;, mit dem der Kellern rechnen kann, auch wenn der Kunde gar nichts bestellt?&lt;/p&gt;
 &lt;p&gt;Nun ja, es so etwas in der Art, aber eben ein rein fiktiver Wert, der durch die Konstruktion der Parameter entsteht.
@@ -1177,7 +801,7 @@ xyplot(
             lines=list(col=c(&amp;quot;red&amp;quot;), lty=c(2), lwd=1.2),
             text=list(c(&amp;quot;Regressionsgerade&amp;quot;)))
      )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Vergleichen wir die beiden Zusammenfassungen, so stellen wir fest das sich mit Ausnahme der &lt;em&gt;[Intercept]&lt;/em&gt; Zeile praktisch nichts geändert hat. Das ist kein Wunder, sondern Absicht!&lt;/p&gt;
 &lt;p&gt;Die Regressionsgerade stellt für unsere Stichprobe die Gerade mit dem geringsten Fehler an den Datenpunkten dar. Mathematisch heißt das folgendes:&lt;/p&gt;
 &lt;p&gt;An den &lt;span class=&#34;math inline&#34;&gt;\(n=244\)&lt;/span&gt; Datenpunkten unserer Stichprobe &lt;span class=&#34;math inline&#34;&gt;\((x_i, y_i)=(tips\$total\_bill[i], tips\$tip[i])\)&lt;/span&gt; [für &lt;span class=&#34;math inline&#34;&gt;\((i=1, \dots, n)\)&lt;/span&gt;] sind die &lt;em&gt;Residuen&lt;/em&gt;, also die &lt;em&gt;Fehlerterme&lt;/em&gt;,&lt;/p&gt;
@@ -1230,10 +854,10 @@ xyplot(
             text = list(c(&amp;quot;Regressionsgerade / x-Achse&amp;quot;))
           )
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können die Graphik im wesentlichen auch einfacher über den Befehl&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;xyplot(residuals(linMod) ~ fitted(linMod))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;erhalten.&lt;/p&gt;
 &lt;p&gt;Betrachten wir kurz nur die Residuen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats(~residuals(linMod))&lt;/code&gt;&lt;/pre&gt;
@@ -1260,7 +884,7 @@ xyplot(
 Es könnte also eine linkssteile, rechtsschiefe Verteilung der Residuen vorliegen.
 Betrachten wir dazu das Histogramm:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;histogram(~residuals(linMod), nint = 19)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Schon beim ersten Blick auf das Histogramm kann an eine Normalverteilung der Residuen nicht mehr so ganz geglaubt werden.&lt;/p&gt;
 &lt;p&gt;Ein Shapiro-Wilk-Test&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; hat als Nullhypothese die Annahme, dass die Daten normalverteilt sind!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shapiro.test(residuals(linMod))&lt;/code&gt;&lt;/pre&gt;
@@ -1271,7 +895,7 @@ Betrachten wir dazu das Histogramm:&lt;/p&gt;
 ## W = 0.96728, p-value = 2.171e-05&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Davon ist nach dem Ergebnis eben sowenig auszugehen, wie nach einem Blick auf das QQ-Normal-Diagramm:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;qqnorm(residuals(linMod), col = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Ein K.O.-Kriterium für gute Prognosen.&lt;/p&gt;
 &lt;p&gt;Wie gut aber beschreibt unsere Regressionsgerade die Daten?&lt;/p&gt;
 &lt;p&gt;Als Maß dafür können wir das Bestimmtheitsmaß nehmen.&lt;/p&gt;
@@ -1301,7 +925,7 @@ xyplot(
             text = list(c(&amp;quot;Mittelwert Trinkgeld&amp;quot;, &amp;quot;Regressionsgerade&amp;quot;))
     )
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Die Varianz &lt;span class=&#34;math inline&#34;&gt;\(s^2_{y_i}=1.9144546\)&lt;/span&gt; beschreibt die mittlere quadratische Abweichung der Datenpunkte &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; vom Mittelwert &lt;span class=&#34;math inline&#34;&gt;\(\bar{y}\)&lt;/span&gt;.
 Diese Varianz lässt sich Zerlegen in einen Anteil, der durch die Regressionsgerade &lt;em&gt;erklärt&lt;/em&gt; wird und in einen Anteil, der durch die Regressionsgerade &lt;em&gt;nicht erklärt&lt;/em&gt; wird.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
@@ -1423,11 +1047,11 @@ Wenn der &lt;em&gt;Wald-Test&lt;/em&gt; für eine oder mehrere unabhängige Vari
     
     <item>
       <title>Prognose-, Konfidenz- und Fiduzialintervalle</title>
-      <link>/post/prognose-konfidenz-und-fiduzialintervalle/</link>
+      <link>https://sefiroth.net/nap/post/prognose-konfidenz-und-fiduzialintervalle/</link>
       <pubDate>Thu, 04 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/post/prognose-konfidenz-und-fiduzialintervalle/</guid>
+      <guid>https://sefiroth.net/nap/post/prognose-konfidenz-und-fiduzialintervalle/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;*&lt;strong&gt;WORK IN PROGRESS&lt;/strong&gt;
@@ -1448,7 +1072,7 @@ Dann heißt das (stochastische) Intervall &lt;span class=&#34;math inline&#34;&g
 &lt;p&gt;Wir nehmen zunächst als Population &lt;span class=&#34;math inline&#34;&gt;\(N=1000\)&lt;/span&gt; normalverteilte Zufallszahlen mit dem Mittelwert &lt;span class=&#34;math inline&#34;&gt;\(\mu= 0\)&lt;/span&gt; und der Standardabweichung &lt;span class=&#34;math inline&#34;&gt;\(\sigma=2.0088\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Dazu das Histogramm der Population:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;histogram(pop, xlab=&amp;quot;Population&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Aus dieser Population ziehen wir eine Stichprobe &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; vom Umfang $n=$40 und erhalten die folgenden statistischen Daten:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats(x)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    min      Q1 median    Q3   max   mean    sd  n missing
@@ -1480,7 +1104,7 @@ und&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;##     cover
 ## n     Low  Yes High
 ##   40 0.00 0.98 0.02&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;prognoseintervalle&#34; class=&#34;section level2&#34;&gt;
@@ -1504,11 +1128,11 @@ und&lt;/p&gt;
     
     <item>
       <title>Konfidenzintervalle</title>
-      <link>/post/konfidenzintervalle/</link>
+      <link>https://sefiroth.net/nap/post/konfidenzintervalle/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/post/konfidenzintervalle/</guid>
+      <guid>https://sefiroth.net/nap/post/konfidenzintervalle/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Stub!&lt;/p&gt;
@@ -1517,11 +1141,11 @@ und&lt;/p&gt;
     
     <item>
       <title>Zentrales Schwankungsintervall</title>
-      <link>/post/zentrales-schwankungsintervall/</link>
+      <link>https://sefiroth.net/nap/post/zentrales-schwankungsintervall/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/post/zentrales-schwankungsintervall/</guid>
+      <guid>https://sefiroth.net/nap/post/zentrales-schwankungsintervall/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Das &lt;strong&gt;zentrale Schwankungsintervall&lt;/strong&gt; sagt etwas über die Präzision der Lageschätzung eines Parameters (zum Beispiel eines Mittelwertes) aus. Das Schwankungsintervall schließt einen Bereich um den wahren Wert des Parameters in der Grundgesamtheit ein, der – vereinfacht gesprochen – mit einer zuvor festgelegten Sicherheitswahrscheinlichkeit den aus der Stichprobe geschätzten Parameter enthält.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
@@ -1536,9 +1160,9 @@ und&lt;/p&gt;
     
     <item>
       <title>Ein paar interessante Links</title>
-      <link>/post/ein-paar-interessante-links/</link>
+      <link>https://sefiroth.net/nap/post/ein-paar-interessante-links/</link>
       <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
-      <guid>/post/ein-paar-interessante-links/</guid>
+      <guid>https://sefiroth.net/nap/post/ein-paar-interessante-links/</guid>
       <description>&lt;p&gt;Im Laufe der Zeit sammeln sich bei mir mehr und mehr Links zu anderen Seiten an, die ich irgendwie speichern will aber nicht ernsthaft sortieren möchte.
 So ist diese Sammlung hier entstanden:&lt;/p&gt;
 &lt;ul&gt;
@@ -1578,11 +1202,11 @@ So ist diese Sammlung hier entstanden:&lt;/p&gt;
     
     <item>
       <title>Quartile, Quantile, Perzentile etc.</title>
-      <link>/post/quartile-quantile-perzentile-etc/</link>
+      <link>https://sefiroth.net/nap/post/quartile-quantile-perzentile-etc/</link>
       <pubDate>Tue, 19 Dec 2017 00:00:00 +0000</pubDate>
-      <guid>/post/quartile-quantile-perzentile-etc/</guid>
+      <guid>https://sefiroth.net/nap/post/quartile-quantile-perzentile-etc/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;“Was hat das eigentlich mit den Quartilen, Quantilen und so weiter auf sich?”
@@ -1671,11 +1295,11 @@ Ebenso liegen 40 % der Stichprobe unterhalb des vierten Dezils und 60 % oberhalb
     
     <item>
       <title>Der Zentrale Grenzwertsatz</title>
-      <link>/post/der-zentrale-grenzwertsatz/</link>
+      <link>https://sefiroth.net/nap/post/der-zentrale-grenzwertsatz/</link>
       <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
-      <guid>/post/der-zentrale-grenzwertsatz/</guid>
+      <guid>https://sefiroth.net/nap/post/der-zentrale-grenzwertsatz/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;der-zentrale-grenzwertsatz-der-statistik-bei-identischer-verteilung.&#34; class=&#34;section level2&#34;&gt;
@@ -1720,7 +1344,7 @@ zscore(u)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;zscore(y)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1]  0.1677971 -0.1526624 -0.6657361  1.6085958 -0.9579944&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Die Behauptung des Zentralengrenzwertsatzes ist nun, dass mit steigender Anzahl an Werten &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; die standardisierten Werte in der empirischen Verteilungsfunktion sich immer mehr der Verteilungsfunktion der Standardnormalverteilung annähern:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Weiterführende Literatur und Quellen dieses Eintrags:&lt;/strong&gt;&lt;/p&gt;
 &lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;
 &lt;div id=&#34;ref-Schira2005&#34; class=&#34;csl-entry&#34;&gt;
@@ -1739,17 +1363,17 @@ zscore(u)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Etwas R am Abend</title>
-      <link>/project/etwas-r-am-abend/</link>
+      <link>https://sefiroth.net/nap/project/etwas-r-am-abend/</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>/project/etwas-r-am-abend/</guid>
+      <guid>https://sefiroth.net/nap/project/etwas-r-am-abend/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FastSimNullDistR</title>
-      <link>/project/fastsimnulldistr/</link>
+      <link>https://sefiroth.net/nap/project/fastsimnulldistr/</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>/project/fastsimnulldistr/</guid>
+      <guid>https://sefiroth.net/nap/project/fastsimnulldistr/</guid>
       <description></description>
     </item>
     
