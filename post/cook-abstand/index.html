@@ -1005,8 +1005,8 @@ erg_lm_no_outliers &lt;- lm(tip ~ total_bill, data = tips_no_outliers)</code></p
 <p><img src="../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Unsere beiden Modelle als Formeln:</p>
 <p><span class="math display">\[\begin{align*}
-   \widehat{tips}_{lm} &amp;= `r `coef(erg_lm)[1] + 0.1050245 \cdot total\_bill + \epsilon\\
-   \widehat{tips}_{lm\_no} &amp;= `r `coef(erg_lm_no_outliers)[1] + 0.1117985 \cdot total\_bill + \epsilon\\
+   \widehat{tips}_{lm} &amp;= 0.9202696 + 0.1050245 \cdot total\_bill + \epsilon\\
+   \widehat{tips}_{lm\_no} &amp;= 0.7733236 + 0.1117985 \cdot total\_bill + \epsilon\\
    \end{align*}\]</span></p>
 </div>
 
