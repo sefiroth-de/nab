@@ -561,7 +561,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#blog"><span>Blog</span></a>
+          <a class="nav-link " href="../../#posts"><span>Blog</span></a>
         </li>
 
         
@@ -598,7 +598,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#projekte"><span>Projekte</span></a>
+          <a class="nav-link " href="../../#projects"><span>Projekte</span></a>
         </li>
 
         
@@ -672,7 +672,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#impressum"><span>Impressum</span></a>
+          <a class="nav-link " href="../../#contact"><span>Impressum</span></a>
         </li>
 
         
@@ -1003,11 +1003,13 @@ erg_lm_no_outliers &lt;- lm(tip ~ total_bill, data = tips_no_outliers)</code></p
               slope =  erg_lm_no_outliers$coefficients[2])
               )</code></pre>
 <p><img src="../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p>Unsere beiden Modelle als Formeln:</p>
-<p><span class="math display">\[\begin{align*}
-   \widehat{tips}_{lm} &amp;= 0.9202696 + 0.1050245 \cdot total\_bill + \epsilon\\
-   \widehat{tips}_{lm\_no} &amp;= 0.7733236 + 0.1117985 \cdot total\_bill + \epsilon\\
-   \end{align*}\]</span></p>
+</div>
+<div id="unsere-beiden-modelle-als-formeln" class="section level2">
+<h2>Unsere beiden Modelle als Formeln</h2>
+<p>Das ursprüngliche Modell:
+<span class="math display">\[\widehat{tips}_{lm} = 0.9202696 + 0.1050245 \cdot total\_bill + \epsilon\]</span></p>
+<p>Das um pot. Ausreißer bereinigte Modell:
+<span class="math display">\[\widehat{tips}_{lm\_no} 0.7733236 + 0.1117985 \cdot total\_bill + \epsilon\]</span></p>
 </div>
 
     </div>

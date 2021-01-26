@@ -227,11 +227,13 @@ erg_lm_no_outliers &amp;lt;- lm(tip ~ total_bill, data = tips_no_outliers)&lt;/c
               slope =  erg_lm_no_outliers$coefficients[2])
               )&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Unsere beiden Modelle als Formeln:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{align*}
-   \widehat{tips}_{lm} &amp;amp;= 0.9202696 + 0.1050245 \cdot total\_bill + \epsilon\\
-   \widehat{tips}_{lm\_no} &amp;amp;= 0.7733236 + 0.1117985 \cdot total\_bill + \epsilon\\
-   \end{align*}\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unsere-beiden-modelle-als-formeln&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Unsere beiden Modelle als Formeln&lt;/h2&gt;
+&lt;p&gt;Das ursprüngliche Modell:
+&lt;span class=&#34;math display&#34;&gt;\[\widehat{tips}_{lm} = 0.9202696 + 0.1050245 \cdot total\_bill + \epsilon\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Das um pot. Ausreißer bereinigte Modell:
+&lt;span class=&#34;math display&#34;&gt;\[\widehat{tips}_{lm\_no} 0.7733236 + 0.1117985 \cdot total\_bill + \epsilon\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -912,39 +914,53 @@ Aufgaben.MC.richtig &amp;lt;- c(NA, &amp;quot;A&amp;quot;, &amp;quot;A&amp;quot;
 &lt;script src=&#34;./rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;Das schnelle Lösen von quadratischen Gleichungen – mit ganzzahligen Lösungen – ist etwas für den (Wurzel-)Satz von Vieta.&lt;/p&gt;
-&lt;p&gt;Ist eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:&lt;/p&gt;
+&lt;p&gt;Das schnelle Lösen von quadratischen Gleichungen – mit (nahezu) ganzzahligen Lösungen – ist etwas für den (Wurzel-)Satz von Vieta.&lt;/p&gt;
+&lt;p&gt;Ist eine quadratischen Gleichung in Normalform, genügt sie der folgenden
+Darstellung:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[x^2 + px + q = 0\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Diese Gleichung hat, wenn überhaupt, zwei Lösungen &lt;span class=&#34;math inline&#34;&gt;\(x_1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Diese Gleichung hat, wenn überhaupt, zwei (nicht notwendig verschiedene)
+Lösungen &lt;span class=&#34;math inline&#34;&gt;\(x_1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Wegen&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[(x-x_1) \cdot (x-x_2) = x^2 -(x_1+x_2)\cdot x + x_1\cdot x_2 = x^2 + px + q\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;muss somit &lt;span class=&#34;math inline&#34;&gt;\(p = -\left(x_1+x_2\right)\)&lt;/span&gt; und gleichzeitig &lt;span class=&#34;math inline&#34;&gt;\(q = x_1 \cdot x_2\)&lt;/span&gt; gelten.&lt;/p&gt;
-&lt;p&gt;Sucht man nach (ganzzahligen) &lt;span class=&#34;math inline&#34;&gt;\(x_1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt;, so nimmt man die Teilermenge &lt;span class=&#34;math inline&#34;&gt;\(T_q\)&lt;/span&gt; von &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; und prüft für jedes &lt;span class=&#34;math inline&#34;&gt;\(x \in T_q\)&lt;/span&gt; ob es ein &lt;span class=&#34;math inline&#34;&gt;\(y \in T_q\)&lt;/span&gt; gibt, so dass &lt;span class=&#34;math inline&#34;&gt;\(\pm x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\pm y\)&lt;/span&gt; sowohl die Gleichungen für &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; erfüllen. Ein für &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; passendes Paar zu finden ist dabei nicht das Problem. Aber die Gleichung für &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; muss auch erfüllt sein.&lt;/p&gt;
+&lt;p&gt;muss &lt;span class=&#34;math inline&#34;&gt;\(p = -\left(x_1+x_2\right)\)&lt;/span&gt; und gleichzeitig &lt;span class=&#34;math inline&#34;&gt;\(q = x_1 \cdot x_2\)&lt;/span&gt; gelten.&lt;/p&gt;
+&lt;p&gt;Sucht man nach (ganzzahligen) &lt;span class=&#34;math inline&#34;&gt;\(x_1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt;, so nimmt man die Teilermenge
+&lt;span class=&#34;math inline&#34;&gt;\(T_q\)&lt;/span&gt; von &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; und prüft für jedes &lt;span class=&#34;math inline&#34;&gt;\(x \in T_q\)&lt;/span&gt; ob es ein &lt;span class=&#34;math inline&#34;&gt;\(y \in T_q\)&lt;/span&gt; gibt,
+so dass &lt;span class=&#34;math inline&#34;&gt;\(\pm x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\pm y\)&lt;/span&gt; sowohl die Gleichungen für &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; erfüllen.
+Ein für &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; passendes Paar zu finden ist dabei nicht das Problem.
+Aber die Gleichung für &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; muss auch erfüllt sein.&lt;/p&gt;
 &lt;div id=&#34;ein-beispiel&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Ein Beispiel&lt;/h3&gt;
-&lt;p&gt;Hat die Gleichung &lt;span class=&#34;math inline&#34;&gt;\(x^2 - 8 \cdot x + 12 = 0\)&lt;/span&gt; also nur ganzzahlige Lösungen, so reicht es die Teiler von &lt;span class=&#34;math inline&#34;&gt;\(12\)&lt;/span&gt; zu untersuchen.
-Nun ist &lt;span class=&#34;math inline&#34;&gt;\(12 = 2 \cdot 2 \cdot 3\)&lt;/span&gt; und somit die Teilermenge von &lt;span class=&#34;math inline&#34;&gt;\(12\)&lt;/span&gt; die Menge &lt;span class=&#34;math inline&#34;&gt;\(T_{12} = \{1, 2, 3, 4, 6, 12\}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Wegen der &lt;span class=&#34;math inline&#34;&gt;\(p=-8\)&lt;/span&gt; muss &lt;span class=&#34;math inline&#34;&gt;\(x_1 + x_2\)&lt;/span&gt; eine positive Zahl sein und wegen &lt;span class=&#34;math inline&#34;&gt;\(q=+12\)&lt;/span&gt; müssen &lt;span class=&#34;math inline&#34;&gt;\(x_1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt; somit auch beide positiv sein.&lt;/p&gt;
+&lt;p&gt;Hat die Gleichung &lt;span class=&#34;math inline&#34;&gt;\(x^2 - 8 \cdot x + 12 = 0\)&lt;/span&gt; also nur ganzzahlige Lösungen,
+so reicht es die Teiler von &lt;span class=&#34;math inline&#34;&gt;\(12\)&lt;/span&gt; zu untersuchen.&lt;/p&gt;
+&lt;p&gt;Nun ist &lt;span class=&#34;math inline&#34;&gt;\(12 = 2 \cdot 2 \cdot 3\)&lt;/span&gt; und somit die Teilermenge von &lt;span class=&#34;math inline&#34;&gt;\(12\)&lt;/span&gt; die Menge
+&lt;span class=&#34;math inline&#34;&gt;\(T_{12} = \{1, 2, 3, 4, 6, 12\}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Wegen der &lt;span class=&#34;math inline&#34;&gt;\(p=-8\)&lt;/span&gt; muss &lt;span class=&#34;math inline&#34;&gt;\(x_1 + x_2\)&lt;/span&gt; eine positive Zahl sein.
+Wegen &lt;span class=&#34;math inline&#34;&gt;\(q=+12\)&lt;/span&gt; müssen &lt;span class=&#34;math inline&#34;&gt;\(x_1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt; beide positiv sein.&lt;/p&gt;
 &lt;p&gt;Gesucht ist also die Lösung von &lt;span class=&#34;math inline&#34;&gt;\(x_1+x_2 = 8\)&lt;/span&gt; für &lt;span class=&#34;math inline&#34;&gt;\(x_1, x_2 \in T_{12}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Für &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; findet sich &lt;span class=&#34;math inline&#34;&gt;\(12\)&lt;/span&gt;, für &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; findet sich &lt;span class=&#34;math inline&#34;&gt;\(6\)&lt;/span&gt; und für &lt;span class=&#34;math inline&#34;&gt;\(3\)&lt;/span&gt; findet sich &lt;span class=&#34;math inline&#34;&gt;\(4\)&lt;/span&gt;. Danach drehen sich die Positionen nur noch um.&lt;/p&gt;
-&lt;p&gt;Weil &lt;span class=&#34;math inline&#34;&gt;\(1 + 12 = 13 \neq 8\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(3+4=7 \neq 8\)&lt;/span&gt; ist fallen diese Paate leider als Lösungen aus.&lt;/p&gt;
-&lt;p&gt;Da &lt;span class=&#34;math inline&#34;&gt;\(2+6=8\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(2 \cdot 6 = 12\)&lt;/span&gt; ist, haben wir mit &lt;span class=&#34;math inline&#34;&gt;\(x_1=2\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2=6\)&lt;/span&gt; eine Lösung gefunden.&lt;/p&gt;
+&lt;p&gt;Für &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; findet sich &lt;span class=&#34;math inline&#34;&gt;\(12\)&lt;/span&gt;, für &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; findet sich &lt;span class=&#34;math inline&#34;&gt;\(6\)&lt;/span&gt; und für &lt;span class=&#34;math inline&#34;&gt;\(3\)&lt;/span&gt; findet sich &lt;span class=&#34;math inline&#34;&gt;\(4\)&lt;/span&gt;.
+Danach drehen sich die Positionen nur noch um, es gibt aber keinen neuen Paarungen.&lt;/p&gt;
+&lt;p&gt;Weil &lt;span class=&#34;math inline&#34;&gt;\(1 + 12 = 13 \neq 8\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(3+4=7 \neq 8\)&lt;/span&gt; ist fallen diese Paare als Lösungen aus.&lt;/p&gt;
+&lt;p&gt;Da &lt;span class=&#34;math inline&#34;&gt;\(2+6=8\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(2 \cdot 6 = 12\)&lt;/span&gt; ist, haben wir mit &lt;span class=&#34;math inline&#34;&gt;\(x_1=2\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2=6\)&lt;/span&gt; die Lösung gefunden.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;dr.-lohs-methode&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Dr. Loh’s Methode&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Dr. Loh’s Methode&lt;/strong&gt; zielt darauf ab, das Raten des Lösungspaars &lt;span class=&#34;math inline&#34;&gt;\(x_1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt; etwas stärker in eine Berechnung zu überführen.&lt;/p&gt;
-&lt;p&gt;Wir starten mit &lt;span class=&#34;math inline&#34;&gt;\(p=8\)&lt;/span&gt; und wissen, dass dies in die Summe von zwei Zahlen zerlegt werden muss. &lt;span class=&#34;math inline&#34;&gt;\(p/2\)&lt;/span&gt; ist der Scheitelpunktsstelle der quadratischen Funktion &lt;span class=&#34;math inline&#34;&gt;\(f(x) = x^2+px+q\)&lt;/span&gt; und die zwei Nullstellen, sofern existent, haben von der Scheitelpunktsstelle &lt;span class=&#34;math inline&#34;&gt;\(p/\)&lt;/span&gt; den selben Abstand, den wir &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; nennen wollen.&lt;/p&gt;
+&lt;p&gt;Wir starten mit &lt;span class=&#34;math inline&#34;&gt;\(p=8\)&lt;/span&gt; und wissen, dass &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; in die Summe von zwei Zahlen zerlegt werden muss.
+&lt;span class=&#34;math inline&#34;&gt;\(p/2\)&lt;/span&gt; ist der Scheitelpunktsstelle der quadratischen Funktion &lt;span class=&#34;math inline&#34;&gt;\(f(x) = x^2+px+q\)&lt;/span&gt;
+und die zwei Nullstellen, sofern existent, haben von der Scheitelpunktsstelle &lt;span class=&#34;math inline&#34;&gt;\(p/\)&lt;/span&gt;
+den selben Abstand, den wir &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; nennen wollen.&lt;/p&gt;
 &lt;p&gt;Damit ist&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[x_1 = \frac{p}{2} +u \quad\text{ und }\quad x_2 = \frac{p}{2} - u\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;In unserem Beispiel also
+&lt;p&gt;In unserem Beispiel gilt:
 &lt;span class=&#34;math display&#34;&gt;\[x_1 = 4+u \quad\text{ und }\quad x_2 = 4 - u\]&lt;/span&gt;
-Da nachdem Wurzelsatz von Viete &lt;span class=&#34;math inline&#34;&gt;\(q=x_1 \cdot x_2\)&lt;/span&gt; ist gilt (mit der 3. Binomischen Formel) für unser Beispiel nun&lt;/p&gt;
+Da nachdem Wurzelsatz von Vieta &lt;span class=&#34;math inline&#34;&gt;\(q=x_1 \cdot x_2\)&lt;/span&gt; ist, gilt (mit der 3. Binomischen Formel) für unser Beispiel:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[x_1 \cdot x_2 = (4+u)(4-u)=4^2-u^2 = 16-u^2 = 12\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Wir stellen die Gleichung um und erhalten&lt;/p&gt;
+&lt;p&gt;Wir stellen die Gleichung um und erhalten:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[u^2 = 16-12 = 4\]&lt;/span&gt;
-woraus sich&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[u = \pm\sqrt{4} = \pm 2\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;und – entweder durch ausprobieren oder nachdenken – die Lösung &lt;span class=&#34;math inline&#34;&gt;\(x_1=2\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2=6\)&lt;/span&gt; ergibt.&lt;/p&gt;
+Diese Wurzelgleichung hat nunu zwei Lösungen:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[u = \pm\sqrt{4} = \pm 2, \text{ somit: }u_1=-2, u_2 = 2\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Und – entweder durch ausprobieren oder nachdenken – erhalten wir die Lösung
+&lt;span class=&#34;math inline&#34;&gt;\(x_1=4+u_1=2\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2=4-u_1=6\)&lt;/span&gt; ergibt.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;ein-weiteres-beispiel&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Ein weiteres Beispiel&lt;/h3&gt;
@@ -1217,11 +1233,18 @@ Welchen Test kann ich dazu zur Überprüfung einer Abhängigkeit nehmen?&lt;/p&g
 &lt;p&gt;Vielen Dank im Voraus.&lt;/p&gt;
 &lt;p&gt;MfG Monika Mustermann&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Natürlich ist diese Frage im Prinzip einfach zu beantworten, sogar von Leuten, die Statistik an einer Hochschule gehört haben. – Aber da ich ja auch sonst nichts zu tun habe gebe ich gerne statistische Hilfestellung für Studierende. Sicher verdiene ich damit eigentlich Geld, also ist es nur natürlich, dass ich so etwas volllkommen unendgeldlich mache. Und wieso sollten Studierende einfach mal ein Buch in die Hand nehmen und selber nachdenken? Es gibt vermutlich keine Bücher zu diesem Thema, denn es ist gar sicher eine Geheimwissenschaft. Und wieso sollte man dann also seine Betreuungsperson zu diesem Probem fragen? – Egal.&lt;/p&gt;
-&lt;p&gt;Was haben wir hier vorliegen? – Im einfachsten Fall sind es zwei kategoriale Variablen und wir wollen sehen ob diese von einenander (un-)Abhängig sind.
-Mangels tatsächlicher Daten basten wir uns einfach mal ein Beispiel:&lt;/p&gt;
-&lt;div id=&#34;wir-basten-uns-ein-beispiel&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Wir basten uns ein Beispiel&lt;/h3&gt;
+&lt;p&gt;Natürlich ist diese Frage im Prinzip einfach zu beantworten, sogar von Leuten, die Statistik an einer Hochschule gehört haben. – Aber da ich ja auch sonst nichts zu tun habe, gebe ich gerne statistische Hilfestellung für Studierende.
+Sicher, ich verdiene damit eigentlich mein Geld.
+Also ist es nur natürlich, dass ich so etwas vollkommen unentgeldlich mache.
+Und wieso sollten Studierende einfach mal ein Buch in die Hand nehmen und
+selber nachdenken?
+Es gibt vermutlich keine Bücher zu diesem Thema, denn es ist ganz sicher eine Geheimwissenschaft.
+Und wieso sollte man dann also seine Betreuungsperson zu diesem Probem fragen?
+Die hat ja auch so viel zu tun… – Egal.&lt;/p&gt;
+&lt;p&gt;Was haben wir hier vorliegen? – Im einfachsten Fall sind es zwei kategoriale Variablen, und wir wollen sehen ob diese von einander (un-)abhängig sind.&lt;/p&gt;
+&lt;p&gt;Mangels tatsächlicher Daten basteln wir uns einfach mal ein Beispiel:&lt;/p&gt;
+&lt;div id=&#34;wir-bastlen-uns-ein-beispiel&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Wir bastlen uns ein Beispiel&lt;/h3&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Wie immer zuerst das Paket &amp;#39;mosaic&amp;#39; laden
 library(mosaic)
 
@@ -1254,23 +1277,27 @@ head(daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;ein-blick-auf-kennzahlen-und-visualisierungsmöglichkeiten&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Ein Blick auf Kennzahlen und Visualisierungsmöglichkeiten&lt;/h3&gt;
 &lt;p&gt;Man kann diese Daten als Kreuztabelle zusammenfassen und diese dann mit Hilfe eines Mosaikplots darstellen:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data = daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##                            wetter.ist.gut
 ## iphones.tagsüber.unbeachtet Ja Nein
 ##                   1xtäglich 29   33
 ##                   2xtäglich 34   26
 ##                   3xtäglich 27   27&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mosaicplot(wetter.ist.gut ~ iphones.tagsüber.unbeachtet, data=daten)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mosaicplot(wetter.ist.gut ~ iphones.tagsüber.unbeachtet, data = daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Für später speichern wir die Kreuztabelle in obs.tab
-obs.tab &amp;lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)&lt;/code&gt;&lt;/pre&gt;
+obs.tab &amp;lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data = daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;von-der-forschungsthese-zur-hypothese&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Von der Forschungsthese zur Hypothese&lt;/h3&gt;
-&lt;p&gt;Um nun zwischen abhänig und unabhängig statitisch zu unterscheiden, sollte man sich die Null- und Alternativhypothese genau überlegen und &lt;em&gt;operationalisieren&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Ein Blick auf die (orginal) Forschungsthese: “Die reduzierte Abhängigkeit des Iphones tagsüber liegt am schönen Wetter.”&lt;/p&gt;
-&lt;p&gt;Okay, wir formulieren etwas um: “Es besteht ein Zusammenhang zwischen ‘schönem Wetter’ und dem ‘Iphone tagsüber unbeachtet’ lassen.”&lt;/p&gt;
-&lt;p&gt;Warum diese unterschiedliche Formulierung? – Nun, in der orginal Forschungsthese wird ein kausal Zusammenhang geprüft. Da es sich vermutlich um eine Beobachtungstudie handelt können wir einen solchen Ursache-Wirkungs-Zusammenhang aber hier nicht so einfach (bis gar nicht) prüfen. Zwar kann man von außen sagen: “Wenn es einen Zusammenhang gibt, dann führt das schöne Wetter zur Nichtbeachtung.” statitisch können wir hier aber aktuell nur den Zusammenhang (und zwar ungerichtget!) testen. Liegt dieser &lt;strong&gt;nicht&lt;/strong&gt; vor, so spricht erstmal auch nichts für einen kausalen Zusammenhang, aber ein Zusammenhang an sich spricht noch nicht für einen kausalen Zusammenhang!&lt;/p&gt;
+&lt;p&gt;Um nun zwischen abhängig und unabhängig statistisch zu unterscheiden, sollte man sich die Null- und Alternativhypothese genau überlegen und &lt;em&gt;operationalisieren&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Ein Blick auf die (orginale) Forschungsthese: “Die reduzierte Abhängigkeit des Iphones tagsüber liegt am schönen Wetter.”&lt;/p&gt;
+&lt;p&gt;Oh je, eine kausale Forschungsthese. Ein dezenter Hinweis auf das Werk von Judea Pearl und Dana Mackenzie &lt;a href=&#34;https://www.amazon.de/Book-Why-Science-Cause-Effect/dp/046509760X/ref=sr_1_1?adgrpid=70747374853&amp;amp;dchild=1&amp;amp;gclid=EAIaIQobChMIio7A5a-57gIVBKOyCh1zPAemEAAYAyAAEgKbXPD_BwE&amp;amp;hvadid=352621590167&amp;amp;hvdev=c&amp;amp;hvlocphy=9043910&amp;amp;hvnetw=g&amp;amp;hvqmt=b&amp;amp;hvrand=4305248996988708271&amp;amp;hvtargid=kwd-422343395170&amp;amp;hydadcr=16871_1724817&amp;amp;keywords=the+book+of+why+judea+pearl&amp;amp;qid=1611656438&amp;amp;sr=8-1&amp;amp;tag=googhydr08-21&#34;&gt;“The Book of Why!”&lt;/a&gt; muss an dieser Stelle sein. – Aber da wir keine kausale Modellierung machen wollen, müssen wir das Problem sinngetreu umformulieren:&lt;/p&gt;
+&lt;p&gt;“Es besteht ein Zusammenhang zwischen ‘schönem Wetter’ und dem ‘Iphone tagsüber unbeachtet’ lassen.”&lt;/p&gt;
+&lt;p&gt;Warum diese neue Formulierung? – Nun, in der orginal Forschungsthese wird ein &lt;strong&gt;kausal&lt;/strong&gt; Zusammenhang geprüft. Da es sich vermutlich um eine Beobachtungstudie handelt können wir einen solchen Ursache-Wirkungs-Zusammenhang aber hier nicht so einfach prüfen. Wie das gehen könnte, dazu schaut man mal bei J.Pearl und D.Mackenzie (s.o.) nach.
+Zwar kann man von außen sagen: “Wenn es einen Zusammenhang gibt, dann führt das schöne Wetter zur Nichtbeachtung.” mit klassischer Statistik können wir hier aber nur den Zusammenhang (und zwar ungerichtet!) testen.
+Liegt dieser &lt;strong&gt;nicht&lt;/strong&gt; vor, so spricht erstmal auch nichts für einen kausalen Zusammenhang, aber ein Zusammenhang an sich spricht noch nicht für einen kausalen Zusammenhang!
+(Korrelation ist ebeb &lt;strong&gt;nicht&lt;/strong&gt; Kausalität!)&lt;/p&gt;
 &lt;p&gt;Aus der umformulierten Forschungsfrage können wir die Alternativ- und auch die Nullhypothese ableiten:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Alternativhypothese:&lt;/strong&gt; Es besteht ein Zusammenhang zwischen ‘schönem Wetter’ und dem ‘Iphone tagsüber unbeachtet’ lassen.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Nullhypothese:&lt;/strong&gt; Es besteht &lt;strong&gt;kein&lt;/strong&gt; Zusammenhang zwischen ‘schönem Wetter’ und dem ‘Iphone tagsüber unbeachtet’ lassen.&lt;/p&gt;
@@ -1279,11 +1306,11 @@ obs.tab &amp;lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=date
 &lt;h2&gt;Wie kann man nun den Zusammenhang &lt;em&gt;messen&lt;/em&gt; und wie sieht &lt;em&gt;kein Zusammenhang&lt;/em&gt; dabei aus?&lt;/h2&gt;
 &lt;p&gt;Um zu sehen ob unsere Werte keinen Zusammenhang haben, also rein zufällig sind, oder es einen inneren Zusammenhang gibt müssen wir die äußeren von den inneren Häufigkeiten trennen.&lt;/p&gt;
 &lt;p&gt;Konkret heißt das, wir schauen uns an wie die Häufigkeiten oder auch Verteilung der einzelnen Variabeln ausssehen:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tally(~ wetter.ist.gut, data=daten)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tally(~ wetter.ist.gut, data = daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## wetter.ist.gut
 ##   Ja Nein 
 ##   90   86&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tally(~ iphones.tagsüber.unbeachtet, data=daten)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tally(~ iphones.tagsüber.unbeachtet, data = daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## iphones.tagsüber.unbeachtet
 ## 1xtäglich 2xtäglich 3xtäglich 
 ##        62        60        54&lt;/code&gt;&lt;/pre&gt;
@@ -1321,16 +1348,16 @@ Oder etwas informeller: &lt;em&gt;Die Wahrscheinlichkeit das beide Ereignisse ei
   
   # Randhäufigkeiten 
   x &amp;lt;- rep(0, max.i)
-  for(i in 0:max.i) x[i] = sum(tab.obs[i,])
+  for (i in 0:max.i) x[i] = sum(tab.obs[i,])
 
   y &amp;lt;- rep(0, max.j)
-  for(j in 0:max.j) y[j] = sum(tab.obs[,j])
+  for (j in 0:max.j) y[j] = sum(tab.obs[,j])
 
   # Anzahl aller Beobachtungen
   n = sum(tab.obs)
   
-  for(i in 0:max.i){
-    for(j in 0:max.j) {
+  for (i in 0:max.i) {
+    for (j in 0:max.j) {
        ret[i,j] &amp;lt;- (x[i] * y[j] / n)
     }
   }
@@ -1339,7 +1366,7 @@ Oder etwas informeller: &lt;em&gt;Die Wahrscheinlichkeit das beide Ereignisse ei
 }
 
 # Kreuztabelle der beobachtete Werte
-obs.tab &amp;lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)
+obs.tab &amp;lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data = daten)
 
 # Kreuztabelle der erwarteten Werte auf Grundlage der beobachteten Werte
 exp.tab &amp;lt;- expectation.tab(obs.tab)&lt;/code&gt;&lt;/pre&gt;
@@ -1364,7 +1391,7 @@ exp.tab &amp;lt;- expectation.tab(obs.tab)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;messen-mit-dem-absolutabstand&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;Messen mit dem Absolutabstand?&lt;/h4&gt;
 &lt;p&gt;Man könnte nun auf die Idee kommen die Abstände an jeder Stelle zu messen und den absoluten Abstand zu summieren:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(abs(obs.tab-exp.tab))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(abs(obs.tab - exp.tab))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 13.27273&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nur was sagt dieser Wert aus? – Ist das ein kleiner Abstand oder ein großer?&lt;/p&gt;
 &lt;p&gt;Wir brauchen Referenzwerte zur Orientierung. Eine Idee lautet: &lt;strong&gt;Permutationstest&lt;/strong&gt;&lt;/p&gt;
@@ -1376,19 +1403,19 @@ exp.tab &amp;lt;- expectation.tab(obs.tab)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Funktion zur Berechnung der absoluten Differenz zwischen
 # beobachteten und erwarteten Werte
 diffabsobsexp &amp;lt;- function(obs, exp) {
-  return(sum(abs(obs-exp)))
+  return(sum(abs(obs - exp)))
 }
 
 # Absolute Abweichung der gemessenen Werte
 obs.abs &amp;lt;- diffabsobsexp(obs.tab, exp.tab)
 
 # Erzeugen der Nullverteilung
-NullVert  &amp;lt;- do(loops) * diffabsobsexp(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
-gf_histogram(~ diffabsobsexp, data=NullVert) %&amp;gt;%
-  gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+NullVert  &amp;lt;- do(loops) * diffabsobsexp(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
+gf_histogram(~ diffabsobsexp, data = NullVert) %&amp;gt;%
+  gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert, also die relative Fläche rechts von der roten Linie in unseren Histogramm, abschätzen mit:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexp &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexp &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
 ##    0.5714&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Absolute Abweichungen (oder auch &lt;em&gt;absolute Fehler&lt;/em&gt;) haben die Tendenz bei großen Zahlen auch große Abweichungswerte zu liefern und bei kleinen Werten eher kleine Abweichungswerte.
@@ -1402,19 +1429,19 @@ Dabei ist:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Funktion zur Berechnung der korrigierten absoluten 
 # Differenz zwischen beobachteten und erwarteten Werten
 diffabsobsexprel &amp;lt;- function(obs, exp) {
-  return(sum((abs(obs-exp))/exp))
+  return(sum((abs(obs - exp))/exp))
 }
 
 # Absolute Abweichung der gemessenen Werte -- korrigiert
 obs.abs &amp;lt;- diffabsobsexprel(obs.tab, exp.tab)
 
 # Erzeugen der Nullverteilung
-NullVert  &amp;lt;- do(loops) * diffabsobsexprel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
-gf_dhistogram(~ diffabsobsexprel, data=NullVert) %&amp;gt;%
-  gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+NullVert  &amp;lt;- do(loops) * diffabsobsexprel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
+gf_dhistogram(~ diffabsobsexprel, data = NullVert) %&amp;gt;%
+  gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Auch hier können wir den p-Wert abschätzen:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexprel &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexprel &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
 ##    0.5983&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;Ist der absolute Abstand überhaupt gut gewählt? – Wäre nicht eher der quadratische Abstand angebracht?&lt;/strong&gt;&lt;/p&gt;
@@ -1425,19 +1452,19 @@ gf_dhistogram(~ diffabsobsexprel, data=NullVert) %&amp;gt;%
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Funktion zur Berechnung der quadratischen 
 # Differenz zwischen beobachteten und erwarteten Werten
 diffquad &amp;lt;- function(obs, exp) {
-  return(sum((obs-exp)^2))
+  return(sum((obs - exp)^2))
 }
 
 # Quadratische Abweichung der gemessenen Werte
 obs.abs &amp;lt;- diffquad(obs.tab, exp.tab)
 
 # Erzeugen der Nullverteilung
-NullVert  &amp;lt;- do(loops) * diffquad(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
-gf_dhistogram(~ diffquad, data=NullVert) %&amp;gt;%
-  gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+NullVert  &amp;lt;- do(loops) * diffquad(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
+gf_dhistogram(~ diffquad, data = NullVert) %&amp;gt;%
+  gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert abschätzen mit:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquad &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquad &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
 ##    0.5389&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Wie beim absoluten Abstand werden hier die Größe der Werte ausser acht gelassen und vielleicht fühlen wir uns etwas wohler, wenn wir statt des quadratischen Abstands den relativen quadratischen Abstand benutzen:&lt;/p&gt;
@@ -1446,20 +1473,20 @@ gf_dhistogram(~ diffquad, data=NullVert) %&amp;gt;%
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Funktion zur Berechnung der korrigierten quadratischen 
 # Differenz zwischen beobachteten und erwarteten Werten
 diffquadrel &amp;lt;- function(obs, exp) {
-  return(sum(((obs-exp)^2)/exp))
+  return(sum(((obs - exp)^2)/exp))
 }
 
 # Quadratische Abweichung der gemessenen Werte -- korrigiert
 obs.abs &amp;lt;- diffquadrel(obs.tab, exp.tab)
 
 # Erzeugen der Nullverteilung
-NullVert  &amp;lt;- do(loops) * diffquadrel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
-gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;gt;%
-  gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+NullVert  &amp;lt;- do(loops) * diffquadrel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
+gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&amp;gt;%
+  gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Den Wert 1.2344597, den wir mit Hilfe der relativen quadratischen Abweichung berechnet haben, nennen wir auch &lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt; Wert.&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert abschätzen mit:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquadrel &amp;gt;= obs.abs, data=NullVert)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquadrel &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
 ##    0.5599&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;An Hand der p-Werte können wir nun über die Nullhypothese entscheiden:&lt;/p&gt;
@@ -1468,7 +1495,7 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;
 &lt;div id=&#34;was-sagt-die-klassische-statistik&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Was sagt die klassische Statistik?&lt;/h3&gt;
 &lt;p&gt;In der klassischen Statistik könnte man hier den &lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;-Unabhängigkeitstest anwenden:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;xchisq.test(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;xchisq.test(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data = daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ##  Pearson&amp;#39;s Chi-squared test
 ## 
@@ -1496,9 +1523,9 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;
 ##  [contribution to X-squared]
 ##  &amp;lt;Pearson residual&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Vergleichen wir nun die beiden Ansätze, SBI auf der einen und der klassische Ansatz auf der anderern Seite, einmal in einem Diagramm. Das (Dichte-)Histogramm sind die Daten aus der Nullverteilung für die quadratische, korrigierte Differenz. Die rote Linie ist der gemessene Abweichungswert. Die schwarze Linie ist der Graph der &lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;-Verteilung mit zwei Freiheitsgraden:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dhistogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;gt;%
-  gf_fun(dchisq(x, df=2) ~ x, xlim=c(0:20), color=&amp;quot;blue&amp;quot;) %&amp;gt;% 
-  gf_vline(xintercept = ~ obs.abs, color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dhistogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&amp;gt;%
+  gf_fun(dchisq(x, df=2) ~ x, xlim = c(0:20), color = &amp;quot;blue&amp;quot;) %&amp;gt;% 
+  gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Aber es gibt auch den (exakten) Fisher-Test:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fisher.test(obs.tab, alternative = &amp;quot;greater&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
@@ -1515,9 +1542,20 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&amp;
 &lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
 ## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Gewöhnlich haben wir ein Signifikanznivau von &lt;span class=&#34;math inline&#34;&gt;\(5\% = 0{,}05\)&lt;/span&gt; angenommen. Die rote Linie zeigt diese Grenze. Liegt der Balken links vor dieser Linie, so sprechen wir davon, dass der gemessene Wert selten bei unabhänigen Daten vorliegt und würden uns gegen die Nullhypothese und damit quasi für die Alternativhypothese entscheiden. Liegt der Balken recht der roten Linie, so haben wir übliche Werte für unabhängige Daten und keinen Grund gefunden, der gegen die Nullhypothese spricht. Warum wir sie dann, auf Grundlage unserer Daten, auch nicht ablehnen können.&lt;/p&gt;
-&lt;p&gt;Bleibt Sie Frage, gibt es Situationen in denen die Entscheidung über die Nullhypothese bei den einzelen betrachteten Verfahren unterschiedlichen ist? Und wenn ja, wann und wieoft?&lt;/p&gt;
-&lt;p&gt;Diese Fragen sind nicht Thema dieses Beitrags, aber vielleicht habe ich Zeit und betrachte das später einmal.&lt;/p&gt;
+&lt;p&gt;Gewöhnlich haben wir ein Signifikanznivau von &lt;span class=&#34;math inline&#34;&gt;\(5\% = 0{,}05\)&lt;/span&gt; angenommen.
+Die rote Linie zeigt diese Grenze.
+Liegt der Balken links vor dieser Linie, so sprechen wir davon, dass der
+gemessene Wert selten bei unabhänigen Daten vorliegt und würden uns gegen die
+Nullhypothese und damit quasi für die Alternativhypothese entscheiden.
+Liegt der Balken recht der roten Linie, so haben wir übliche Werte für
+unabhängige Daten und keinen Grund gefunden, der gegen die Nullhypothese
+spricht.
+Warum wir sie dann, auf Grundlage unserer Daten, auch nicht ablehnen können.&lt;/p&gt;
+&lt;p&gt;Bleibt Sie Frage, gibt es Situationen in denen die Entscheidung über die
+Nullhypothese bei den einzelen betrachteten Verfahren unterschiedlichen ist?
+Und wenn ja, wann und wieoft?&lt;/p&gt;
+&lt;p&gt;Diese Fragen sind nicht Thema dieses Beitrags, aber vielleicht habe ich Zeit
+und betrachte das später einmal.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -3336,21 +3374,6 @@ Ebenso liegen 40 % der Stichprobe unterhalb des vierten Dezils und 60 % oberhalb
 ##  576  582  588  594  600&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>GitHub Webhook eingebaut!</title>
-      <link>https://sefiroth.net/nap/post/github-webhook-eingebaut/</link>
-      <pubDate>Mon, 18 Dec 2017 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/github-webhook-eingebaut/</guid>
-      <description>&lt;p&gt;GitHub bietet die Möglichkeit an, bei Interaktion mit dem Server automatisch einen Webhook zu aktivieren. Dahinter versteckt sich ein Aufruf einer URL mit einem sogenannten POST-Request. Wertet man diesen aus, so kann man z.B. nach jedem &lt;em&gt;push&lt;/em&gt; automatisch ein &lt;em&gt;fetch&lt;/em&gt; auf dem Webserver starten.&lt;/p&gt;
-&lt;p&gt;Ich nutze das gerade um meinen Blog immer dann zu aktualisieren, wenn ich auf dem GitHub eine Änderung vorgenommen habe.&lt;/p&gt;
-&lt;p&gt;Damit sollte ich nie wieder vergessen alles auch auf dem Server zu aktualisieren!&lt;/p&gt;
-&lt;p&gt;Wir warten ab. ;-)&lt;/p&gt;
-&lt;p&gt;Okay, alle Verzeichnisse sollten den richtigen Besitzer haben ;-)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;NACHTRAG:&lt;/strong&gt; (vom 01.01.2018)&lt;/p&gt;
-&lt;p&gt;Leider schaffe ich es nicht auf PHP heraus auch nur ein Skript auszuführen. Daher wird z.Z. alles via &lt;code&gt;crontab&lt;/code&gt; ausgeführt. Nicht optimal, aber es läuft erstmal.&lt;/p&gt;
 </description>
     </item>
     

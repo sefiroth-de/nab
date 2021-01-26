@@ -207,11 +207,13 @@ erg_lm_no_outliers &amp;lt;- lm(tip ~ total_bill, data = tips_no_outliers)&lt;/c
               slope =  erg_lm_no_outliers$coefficients[2])
               )&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Unsere beiden Modelle als Formeln:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{align*}
-   \widehat{tips}_{lm} &amp;amp;= 0.9202696 + 0.1050245 \cdot total\_bill + \epsilon\\
-   \widehat{tips}_{lm\_no} &amp;amp;= 0.7733236 + 0.1117985 \cdot total\_bill + \epsilon\\
-   \end{align*}\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unsere-beiden-modelle-als-formeln&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Unsere beiden Modelle als Formeln&lt;/h2&gt;
+&lt;p&gt;Das ursprüngliche Modell:
+&lt;span class=&#34;math display&#34;&gt;\[\widehat{tips}_{lm} = 0.9202696 + 0.1050245 \cdot total\_bill + \epsilon\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Das um pot. Ausreißer bereinigte Modell:
+&lt;span class=&#34;math display&#34;&gt;\[\widehat{tips}_{lm\_no} 0.7733236 + 0.1117985 \cdot total\_bill + \epsilon\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

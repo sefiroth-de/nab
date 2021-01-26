@@ -565,7 +565,7 @@ ich würde gerne die Hypothese untersuchen: Die reduzierte Abhängigkeit des Iph
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#blog"><span>Blog</span></a>
+          <a class="nav-link " href="../../#posts"><span>Blog</span></a>
         </li>
 
         
@@ -602,7 +602,7 @@ ich würde gerne die Hypothese untersuchen: Die reduzierte Abhängigkeit des Iph
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#projekte"><span>Projekte</span></a>
+          <a class="nav-link " href="../../#projects"><span>Projekte</span></a>
         </li>
 
         
@@ -676,7 +676,7 @@ ich würde gerne die Hypothese untersuchen: Die reduzierte Abhängigkeit des Iph
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#impressum"><span>Impressum</span></a>
+          <a class="nav-link " href="../../#contact"><span>Impressum</span></a>
         </li>
 
         
@@ -830,11 +830,18 @@ Welchen Test kann ich dazu zur Überprüfung einer Abhängigkeit nehmen?</p>
 <p>Vielen Dank im Voraus.</p>
 <p>MfG Monika Mustermann</p>
 </blockquote>
-<p>Natürlich ist diese Frage im Prinzip einfach zu beantworten, sogar von Leuten, die Statistik an einer Hochschule gehört haben. – Aber da ich ja auch sonst nichts zu tun habe gebe ich gerne statistische Hilfestellung für Studierende. Sicher verdiene ich damit eigentlich Geld, also ist es nur natürlich, dass ich so etwas volllkommen unendgeldlich mache. Und wieso sollten Studierende einfach mal ein Buch in die Hand nehmen und selber nachdenken? Es gibt vermutlich keine Bücher zu diesem Thema, denn es ist gar sicher eine Geheimwissenschaft. Und wieso sollte man dann also seine Betreuungsperson zu diesem Probem fragen? – Egal.</p>
-<p>Was haben wir hier vorliegen? – Im einfachsten Fall sind es zwei kategoriale Variablen und wir wollen sehen ob diese von einenander (un-)Abhängig sind.
-Mangels tatsächlicher Daten basten wir uns einfach mal ein Beispiel:</p>
-<div id="wir-basten-uns-ein-beispiel" class="section level3">
-<h3>Wir basten uns ein Beispiel</h3>
+<p>Natürlich ist diese Frage im Prinzip einfach zu beantworten, sogar von Leuten, die Statistik an einer Hochschule gehört haben. – Aber da ich ja auch sonst nichts zu tun habe, gebe ich gerne statistische Hilfestellung für Studierende.
+Sicher, ich verdiene damit eigentlich mein Geld.
+Also ist es nur natürlich, dass ich so etwas vollkommen unentgeldlich mache.
+Und wieso sollten Studierende einfach mal ein Buch in die Hand nehmen und
+selber nachdenken?
+Es gibt vermutlich keine Bücher zu diesem Thema, denn es ist ganz sicher eine Geheimwissenschaft.
+Und wieso sollte man dann also seine Betreuungsperson zu diesem Probem fragen?
+Die hat ja auch so viel zu tun… – Egal.</p>
+<p>Was haben wir hier vorliegen? – Im einfachsten Fall sind es zwei kategoriale Variablen, und wir wollen sehen ob diese von einander (un-)abhängig sind.</p>
+<p>Mangels tatsächlicher Daten basteln wir uns einfach mal ein Beispiel:</p>
+<div id="wir-bastlen-uns-ein-beispiel" class="section level3">
+<h3>Wir bastlen uns ein Beispiel</h3>
 <pre class="r"><code># Wie immer zuerst das Paket &#39;mosaic&#39; laden
 library(mosaic)
 
@@ -867,23 +874,27 @@ head(daten)</code></pre>
 <div id="ein-blick-auf-kennzahlen-und-visualisierungsmöglichkeiten" class="section level3">
 <h3>Ein Blick auf Kennzahlen und Visualisierungsmöglichkeiten</h3>
 <p>Man kann diese Daten als Kreuztabelle zusammenfassen und diese dann mit Hilfe eines Mosaikplots darstellen:</p>
-<pre class="r"><code>tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)</code></pre>
+<pre class="r"><code>tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data = daten)</code></pre>
 <pre><code>##                            wetter.ist.gut
 ## iphones.tagsüber.unbeachtet Ja Nein
 ##                   1xtäglich 29   33
 ##                   2xtäglich 34   26
 ##                   3xtäglich 27   27</code></pre>
-<pre class="r"><code>mosaicplot(wetter.ist.gut ~ iphones.tagsüber.unbeachtet, data=daten)</code></pre>
+<pre class="r"><code>mosaicplot(wetter.ist.gut ~ iphones.tagsüber.unbeachtet, data = daten)</code></pre>
 <p><img src="../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <pre class="r"><code># Für später speichern wir die Kreuztabelle in obs.tab
-obs.tab &lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)</code></pre>
+obs.tab &lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data = daten)</code></pre>
 </div>
 <div id="von-der-forschungsthese-zur-hypothese" class="section level3">
 <h3>Von der Forschungsthese zur Hypothese</h3>
-<p>Um nun zwischen abhänig und unabhängig statitisch zu unterscheiden, sollte man sich die Null- und Alternativhypothese genau überlegen und <em>operationalisieren</em>.</p>
-<p>Ein Blick auf die (orginal) Forschungsthese: “Die reduzierte Abhängigkeit des Iphones tagsüber liegt am schönen Wetter.”</p>
-<p>Okay, wir formulieren etwas um: “Es besteht ein Zusammenhang zwischen ‘schönem Wetter’ und dem ‘Iphone tagsüber unbeachtet’ lassen.”</p>
-<p>Warum diese unterschiedliche Formulierung? – Nun, in der orginal Forschungsthese wird ein kausal Zusammenhang geprüft. Da es sich vermutlich um eine Beobachtungstudie handelt können wir einen solchen Ursache-Wirkungs-Zusammenhang aber hier nicht so einfach (bis gar nicht) prüfen. Zwar kann man von außen sagen: “Wenn es einen Zusammenhang gibt, dann führt das schöne Wetter zur Nichtbeachtung.” statitisch können wir hier aber aktuell nur den Zusammenhang (und zwar ungerichtget!) testen. Liegt dieser <strong>nicht</strong> vor, so spricht erstmal auch nichts für einen kausalen Zusammenhang, aber ein Zusammenhang an sich spricht noch nicht für einen kausalen Zusammenhang!</p>
+<p>Um nun zwischen abhängig und unabhängig statistisch zu unterscheiden, sollte man sich die Null- und Alternativhypothese genau überlegen und <em>operationalisieren</em>.</p>
+<p>Ein Blick auf die (orginale) Forschungsthese: “Die reduzierte Abhängigkeit des Iphones tagsüber liegt am schönen Wetter.”</p>
+<p>Oh je, eine kausale Forschungsthese. Ein dezenter Hinweis auf das Werk von Judea Pearl und Dana Mackenzie <a href="https://www.amazon.de/Book-Why-Science-Cause-Effect/dp/046509760X/ref=sr_1_1?adgrpid=70747374853&amp;dchild=1&amp;gclid=EAIaIQobChMIio7A5a-57gIVBKOyCh1zPAemEAAYAyAAEgKbXPD_BwE&amp;hvadid=352621590167&amp;hvdev=c&amp;hvlocphy=9043910&amp;hvnetw=g&amp;hvqmt=b&amp;hvrand=4305248996988708271&amp;hvtargid=kwd-422343395170&amp;hydadcr=16871_1724817&amp;keywords=the+book+of+why+judea+pearl&amp;qid=1611656438&amp;sr=8-1&amp;tag=googhydr08-21">“The Book of Why!”</a> muss an dieser Stelle sein. – Aber da wir keine kausale Modellierung machen wollen, müssen wir das Problem sinngetreu umformulieren:</p>
+<p>“Es besteht ein Zusammenhang zwischen ‘schönem Wetter’ und dem ‘Iphone tagsüber unbeachtet’ lassen.”</p>
+<p>Warum diese neue Formulierung? – Nun, in der orginal Forschungsthese wird ein <strong>kausal</strong> Zusammenhang geprüft. Da es sich vermutlich um eine Beobachtungstudie handelt können wir einen solchen Ursache-Wirkungs-Zusammenhang aber hier nicht so einfach prüfen. Wie das gehen könnte, dazu schaut man mal bei J.Pearl und D.Mackenzie (s.o.) nach.
+Zwar kann man von außen sagen: “Wenn es einen Zusammenhang gibt, dann führt das schöne Wetter zur Nichtbeachtung.” mit klassischer Statistik können wir hier aber nur den Zusammenhang (und zwar ungerichtet!) testen.
+Liegt dieser <strong>nicht</strong> vor, so spricht erstmal auch nichts für einen kausalen Zusammenhang, aber ein Zusammenhang an sich spricht noch nicht für einen kausalen Zusammenhang!
+(Korrelation ist ebeb <strong>nicht</strong> Kausalität!)</p>
 <p>Aus der umformulierten Forschungsfrage können wir die Alternativ- und auch die Nullhypothese ableiten:</p>
 <p><strong>Alternativhypothese:</strong> Es besteht ein Zusammenhang zwischen ‘schönem Wetter’ und dem ‘Iphone tagsüber unbeachtet’ lassen.</p>
 <p><strong>Nullhypothese:</strong> Es besteht <strong>kein</strong> Zusammenhang zwischen ‘schönem Wetter’ und dem ‘Iphone tagsüber unbeachtet’ lassen.</p>
@@ -892,11 +903,11 @@ obs.tab &lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)</
 <h2>Wie kann man nun den Zusammenhang <em>messen</em> und wie sieht <em>kein Zusammenhang</em> dabei aus?</h2>
 <p>Um zu sehen ob unsere Werte keinen Zusammenhang haben, also rein zufällig sind, oder es einen inneren Zusammenhang gibt müssen wir die äußeren von den inneren Häufigkeiten trennen.</p>
 <p>Konkret heißt das, wir schauen uns an wie die Häufigkeiten oder auch Verteilung der einzelnen Variabeln ausssehen:</p>
-<pre class="r"><code>tally(~ wetter.ist.gut, data=daten)</code></pre>
+<pre class="r"><code>tally(~ wetter.ist.gut, data = daten)</code></pre>
 <pre><code>## wetter.ist.gut
 ##   Ja Nein 
 ##   90   86</code></pre>
-<pre class="r"><code>tally(~ iphones.tagsüber.unbeachtet, data=daten)</code></pre>
+<pre class="r"><code>tally(~ iphones.tagsüber.unbeachtet, data = daten)</code></pre>
 <pre><code>## iphones.tagsüber.unbeachtet
 ## 1xtäglich 2xtäglich 3xtäglich 
 ##        62        60        54</code></pre>
@@ -934,16 +945,16 @@ Oder etwas informeller: <em>Die Wahrscheinlichkeit das beide Ereignisse eintreff
   
   # Randhäufigkeiten 
   x &lt;- rep(0, max.i)
-  for(i in 0:max.i) x[i] = sum(tab.obs[i,])
+  for (i in 0:max.i) x[i] = sum(tab.obs[i,])
 
   y &lt;- rep(0, max.j)
-  for(j in 0:max.j) y[j] = sum(tab.obs[,j])
+  for (j in 0:max.j) y[j] = sum(tab.obs[,j])
 
   # Anzahl aller Beobachtungen
   n = sum(tab.obs)
   
-  for(i in 0:max.i){
-    for(j in 0:max.j) {
+  for (i in 0:max.i) {
+    for (j in 0:max.j) {
        ret[i,j] &lt;- (x[i] * y[j] / n)
     }
   }
@@ -952,7 +963,7 @@ Oder etwas informeller: <em>Die Wahrscheinlichkeit das beide Ereignisse eintreff
 }
 
 # Kreuztabelle der beobachtete Werte
-obs.tab &lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)
+obs.tab &lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data = daten)
 
 # Kreuztabelle der erwarteten Werte auf Grundlage der beobachteten Werte
 exp.tab &lt;- expectation.tab(obs.tab)</code></pre>
@@ -977,7 +988,7 @@ exp.tab &lt;- expectation.tab(obs.tab)</code></pre>
 <div id="messen-mit-dem-absolutabstand" class="section level4">
 <h4>Messen mit dem Absolutabstand?</h4>
 <p>Man könnte nun auf die Idee kommen die Abstände an jeder Stelle zu messen und den absoluten Abstand zu summieren:</p>
-<pre class="r"><code>sum(abs(obs.tab-exp.tab))</code></pre>
+<pre class="r"><code>sum(abs(obs.tab - exp.tab))</code></pre>
 <pre><code>## [1] 13.27273</code></pre>
 <p>Nur was sagt dieser Wert aus? – Ist das ein kleiner Abstand oder ein großer?</p>
 <p>Wir brauchen Referenzwerte zur Orientierung. Eine Idee lautet: <strong>Permutationstest</strong></p>
@@ -989,19 +1000,19 @@ exp.tab &lt;- expectation.tab(obs.tab)</code></pre>
 <pre class="r"><code># Funktion zur Berechnung der absoluten Differenz zwischen
 # beobachteten und erwarteten Werte
 diffabsobsexp &lt;- function(obs, exp) {
-  return(sum(abs(obs-exp)))
+  return(sum(abs(obs - exp)))
 }
 
 # Absolute Abweichung der gemessenen Werte
 obs.abs &lt;- diffabsobsexp(obs.tab, exp.tab)
 
 # Erzeugen der Nullverteilung
-NullVert  &lt;- do(loops) * diffabsobsexp(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
-gf_histogram(~ diffabsobsexp, data=NullVert) %&gt;%
-  gf_vline(xintercept = ~ obs.abs, color=&quot;red&quot;)</code></pre>
+NullVert  &lt;- do(loops) * diffabsobsexp(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
+gf_histogram(~ diffabsobsexp, data = NullVert) %&gt;%
+  gf_vline(xintercept = ~ obs.abs, color = &quot;red&quot;)</code></pre>
 <p><img src="../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Wir können nun den p-Wert, also die relative Fläche rechts von der roten Linie in unseren Histogramm, abschätzen mit:</p>
-<pre class="r"><code>prop( ~ diffabsobsexp &gt;= obs.abs, data=NullVert)</code></pre>
+<pre class="r"><code>prop( ~ diffabsobsexp &gt;= obs.abs, data = NullVert)</code></pre>
 <pre><code>## prop_TRUE 
 ##    0.5714</code></pre>
 <p>Absolute Abweichungen (oder auch <em>absolute Fehler</em>) haben die Tendenz bei großen Zahlen auch große Abweichungswerte zu liefern und bei kleinen Werten eher kleine Abweichungswerte.
@@ -1015,19 +1026,19 @@ Dabei ist:</p>
 <pre class="r"><code># Funktion zur Berechnung der korrigierten absoluten 
 # Differenz zwischen beobachteten und erwarteten Werten
 diffabsobsexprel &lt;- function(obs, exp) {
-  return(sum((abs(obs-exp))/exp))
+  return(sum((abs(obs - exp))/exp))
 }
 
 # Absolute Abweichung der gemessenen Werte -- korrigiert
 obs.abs &lt;- diffabsobsexprel(obs.tab, exp.tab)
 
 # Erzeugen der Nullverteilung
-NullVert  &lt;- do(loops) * diffabsobsexprel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
-gf_dhistogram(~ diffabsobsexprel, data=NullVert) %&gt;%
-  gf_vline(xintercept = ~ obs.abs, color=&quot;red&quot;)</code></pre>
+NullVert  &lt;- do(loops) * diffabsobsexprel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
+gf_dhistogram(~ diffabsobsexprel, data = NullVert) %&gt;%
+  gf_vline(xintercept = ~ obs.abs, color = &quot;red&quot;)</code></pre>
 <p><img src="../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Auch hier können wir den p-Wert abschätzen:</p>
-<pre class="r"><code>prop( ~ diffabsobsexprel &gt;= obs.abs, data=NullVert)</code></pre>
+<pre class="r"><code>prop( ~ diffabsobsexprel &gt;= obs.abs, data = NullVert)</code></pre>
 <pre><code>## prop_TRUE 
 ##    0.5983</code></pre>
 <p><strong>Ist der absolute Abstand überhaupt gut gewählt? – Wäre nicht eher der quadratische Abstand angebracht?</strong></p>
@@ -1038,19 +1049,19 @@ gf_dhistogram(~ diffabsobsexprel, data=NullVert) %&gt;%
 <pre class="r"><code># Funktion zur Berechnung der quadratischen 
 # Differenz zwischen beobachteten und erwarteten Werten
 diffquad &lt;- function(obs, exp) {
-  return(sum((obs-exp)^2))
+  return(sum((obs - exp)^2))
 }
 
 # Quadratische Abweichung der gemessenen Werte
 obs.abs &lt;- diffquad(obs.tab, exp.tab)
 
 # Erzeugen der Nullverteilung
-NullVert  &lt;- do(loops) * diffquad(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
-gf_dhistogram(~ diffquad, data=NullVert) %&gt;%
-  gf_vline(xintercept = ~ obs.abs, color=&quot;red&quot;)</code></pre>
+NullVert  &lt;- do(loops) * diffquad(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
+gf_dhistogram(~ diffquad, data = NullVert) %&gt;%
+  gf_vline(xintercept = ~ obs.abs, color = &quot;red&quot;)</code></pre>
 <p><img src="../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Wir können nun den p-Wert abschätzen mit:</p>
-<pre class="r"><code>prop( ~ diffquad &gt;= obs.abs, data=NullVert)</code></pre>
+<pre class="r"><code>prop( ~ diffquad &gt;= obs.abs, data = NullVert)</code></pre>
 <pre><code>## prop_TRUE 
 ##    0.5389</code></pre>
 <p>Wie beim absoluten Abstand werden hier die Größe der Werte ausser acht gelassen und vielleicht fühlen wir uns etwas wohler, wenn wir statt des quadratischen Abstands den relativen quadratischen Abstand benutzen:</p>
@@ -1059,20 +1070,20 @@ gf_dhistogram(~ diffquad, data=NullVert) %&gt;%
 <pre class="r"><code># Funktion zur Berechnung der korrigierten quadratischen 
 # Differenz zwischen beobachteten und erwarteten Werten
 diffquadrel &lt;- function(obs, exp) {
-  return(sum(((obs-exp)^2)/exp))
+  return(sum(((obs - exp)^2)/exp))
 }
 
 # Quadratische Abweichung der gemessenen Werte -- korrigiert
 obs.abs &lt;- diffquadrel(obs.tab, exp.tab)
 
 # Erzeugen der Nullverteilung
-NullVert  &lt;- do(loops) * diffquadrel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data=daten), exp.tab)
-gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&gt;%
-  gf_vline(xintercept = ~ obs.abs, color=&quot;red&quot;)</code></pre>
+NullVert  &lt;- do(loops) * diffquadrel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
+gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&gt;%
+  gf_vline(xintercept = ~ obs.abs, color = &quot;red&quot;)</code></pre>
 <p><img src="../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>Den Wert 1.2344597, den wir mit Hilfe der relativen quadratischen Abweichung berechnet haben, nennen wir auch <span class="math inline">\(\chi^2\)</span> Wert.</p>
 <p>Wir können nun den p-Wert abschätzen mit:</p>
-<pre class="r"><code>prop( ~ diffquadrel &gt;= obs.abs, data=NullVert)</code></pre>
+<pre class="r"><code>prop( ~ diffquadrel &gt;= obs.abs, data = NullVert)</code></pre>
 <pre><code>## prop_TRUE 
 ##    0.5599</code></pre>
 <p>An Hand der p-Werte können wir nun über die Nullhypothese entscheiden:</p>
@@ -1081,7 +1092,7 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&gt;%
 <div id="was-sagt-die-klassische-statistik" class="section level3">
 <h3>Was sagt die klassische Statistik?</h3>
 <p>In der klassischen Statistik könnte man hier den <span class="math inline">\(\chi^2\)</span>-Unabhängigkeitstest anwenden:</p>
-<pre class="r"><code>xchisq.test(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data=daten)</code></pre>
+<pre class="r"><code>xchisq.test(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data = daten)</code></pre>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -1109,9 +1120,9 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&gt;%
 ##  [contribution to X-squared]
 ##  &lt;Pearson residual&gt;</code></pre>
 <p>Vergleichen wir nun die beiden Ansätze, SBI auf der einen und der klassische Ansatz auf der anderern Seite, einmal in einem Diagramm. Das (Dichte-)Histogramm sind die Daten aus der Nullverteilung für die quadratische, korrigierte Differenz. Die rote Linie ist der gemessene Abweichungswert. Die schwarze Linie ist der Graph der <span class="math inline">\(\chi^2\)</span>-Verteilung mit zwei Freiheitsgraden:</p>
-<pre class="r"><code>gf_dhistogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&gt;%
-  gf_fun(dchisq(x, df=2) ~ x, xlim=c(0:20), color=&quot;blue&quot;) %&gt;% 
-  gf_vline(xintercept = ~ obs.abs, color=&quot;red&quot;)</code></pre>
+<pre class="r"><code>gf_dhistogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&gt;%
+  gf_fun(dchisq(x, df=2) ~ x, xlim = c(0:20), color = &quot;blue&quot;) %&gt;% 
+  gf_vline(xintercept = ~ obs.abs, color = &quot;red&quot;)</code></pre>
 <p><img src="../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <p>Aber es gibt auch den (exakten) Fisher-Test:</p>
 <pre class="r"><code>fisher.test(obs.tab, alternative = &quot;greater&quot;)</code></pre>
@@ -1128,9 +1139,20 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data=NullVert) %&gt;%
 <pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
 ## replace the existing scale.</code></pre>
 <p><img src="../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
-<p>Gewöhnlich haben wir ein Signifikanznivau von <span class="math inline">\(5\% = 0{,}05\)</span> angenommen. Die rote Linie zeigt diese Grenze. Liegt der Balken links vor dieser Linie, so sprechen wir davon, dass der gemessene Wert selten bei unabhänigen Daten vorliegt und würden uns gegen die Nullhypothese und damit quasi für die Alternativhypothese entscheiden. Liegt der Balken recht der roten Linie, so haben wir übliche Werte für unabhängige Daten und keinen Grund gefunden, der gegen die Nullhypothese spricht. Warum wir sie dann, auf Grundlage unserer Daten, auch nicht ablehnen können.</p>
-<p>Bleibt Sie Frage, gibt es Situationen in denen die Entscheidung über die Nullhypothese bei den einzelen betrachteten Verfahren unterschiedlichen ist? Und wenn ja, wann und wieoft?</p>
-<p>Diese Fragen sind nicht Thema dieses Beitrags, aber vielleicht habe ich Zeit und betrachte das später einmal.</p>
+<p>Gewöhnlich haben wir ein Signifikanznivau von <span class="math inline">\(5\% = 0{,}05\)</span> angenommen.
+Die rote Linie zeigt diese Grenze.
+Liegt der Balken links vor dieser Linie, so sprechen wir davon, dass der
+gemessene Wert selten bei unabhänigen Daten vorliegt und würden uns gegen die
+Nullhypothese und damit quasi für die Alternativhypothese entscheiden.
+Liegt der Balken recht der roten Linie, so haben wir übliche Werte für
+unabhängige Daten und keinen Grund gefunden, der gegen die Nullhypothese
+spricht.
+Warum wir sie dann, auf Grundlage unserer Daten, auch nicht ablehnen können.</p>
+<p>Bleibt Sie Frage, gibt es Situationen in denen die Entscheidung über die
+Nullhypothese bei den einzelen betrachteten Verfahren unterschiedlichen ist?
+Und wenn ja, wann und wieoft?</p>
+<p>Diese Fragen sind nicht Thema dieses Beitrags, aber vielleicht habe ich Zeit
+und betrachte das später einmal.</p>
 </div>
 </div>
 

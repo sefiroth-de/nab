@@ -34,8 +34,8 @@
   
     
   
-  <meta name="description" content="Das schnelle Lösen von quadratischen Gleichungen – mit ganzzahligen Lösungen – ist etwas für den (Wurzel-)Satz von Vieta.
-Ist eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:">
+  <meta name="description" content="Das schnelle Lösen von quadratischen Gleichungen – mit (nahezu) ganzzahligen Lösungen – ist etwas für den (Wurzel-)Satz von Vieta.
+Ist eine quadratischen Gleichung in Normalform, genügt sie der folgenden Darstellung:">
 
   
   <link rel="alternate" hreflang="de-de" href="https://sefiroth.net/nap/post/der-satz-von-vieta-und-dr-loh-s-methode/">
@@ -324,8 +324,8 @@ Ist eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:">
   <meta property="og:site_name" content="Norman&#39;s Academic Blog">
   <meta property="og:url" content="https://sefiroth.net/nap/post/der-satz-von-vieta-und-dr-loh-s-methode/">
   <meta property="og:title" content="Der Satz von Vieta und Dr. Loh&#39;s Methode | Norman&#39;s Academic Blog">
-  <meta property="og:description" content="Das schnelle Lösen von quadratischen Gleichungen – mit ganzzahligen Lösungen – ist etwas für den (Wurzel-)Satz von Vieta.
-Ist eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:"><meta property="og:image" content="https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="og:description" content="Das schnelle Lösen von quadratischen Gleichungen – mit (nahezu) ganzzahligen Lösungen – ist etwas für den (Wurzel-)Satz von Vieta.
+Ist eine quadratischen Gleichung in Normalform, genügt sie der folgenden Darstellung:"><meta property="og:image" content="https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="de-de">
   
     
@@ -375,7 +375,7 @@ Ist eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:"><m
       "url": "https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Das schnelle Lösen von quadratischen Gleichungen – mit ganzzahligen Lösungen – ist etwas für den (Wurzel-)Satz von Vieta.\nIst eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:"
+  "description": "Das schnelle Lösen von quadratischen Gleichungen – mit (nahezu) ganzzahligen Lösungen – ist etwas für den (Wurzel-)Satz von Vieta.\nIst eine quadratischen Gleichung in Normalform, genügt sie der folgenden Darstellung:"
 }
 </script>
 
@@ -563,7 +563,7 @@ Ist eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:"><m
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#blog"><span>Blog</span></a>
+          <a class="nav-link " href="../../#posts"><span>Blog</span></a>
         </li>
 
         
@@ -600,7 +600,7 @@ Ist eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:"><m
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#projekte"><span>Projekte</span></a>
+          <a class="nav-link " href="../../#projects"><span>Projekte</span></a>
         </li>
 
         
@@ -674,7 +674,7 @@ Ist eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:"><m
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#impressum"><span>Impressum</span></a>
+          <a class="nav-link " href="../../#contact"><span>Impressum</span></a>
         </li>
 
         
@@ -819,39 +819,53 @@ Ist eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:"><m
 <script src="../../rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<p>Das schnelle Lösen von quadratischen Gleichungen – mit ganzzahligen Lösungen – ist etwas für den (Wurzel-)Satz von Vieta.</p>
-<p>Ist eine quadratischen Gleichung in Normalform, genügt sie der Darstellung:</p>
+<p>Das schnelle Lösen von quadratischen Gleichungen – mit (nahezu) ganzzahligen Lösungen – ist etwas für den (Wurzel-)Satz von Vieta.</p>
+<p>Ist eine quadratischen Gleichung in Normalform, genügt sie der folgenden
+Darstellung:</p>
 <p><span class="math display">\[x^2 + px + q = 0\]</span></p>
-<p>Diese Gleichung hat, wenn überhaupt, zwei Lösungen <span class="math inline">\(x_1\)</span> und <span class="math inline">\(x_2\)</span>.</p>
+<p>Diese Gleichung hat, wenn überhaupt, zwei (nicht notwendig verschiedene)
+Lösungen <span class="math inline">\(x_1\)</span> und <span class="math inline">\(x_2\)</span>.</p>
 <p>Wegen</p>
 <p><span class="math display">\[(x-x_1) \cdot (x-x_2) = x^2 -(x_1+x_2)\cdot x + x_1\cdot x_2 = x^2 + px + q\]</span></p>
-<p>muss somit <span class="math inline">\(p = -\left(x_1+x_2\right)\)</span> und gleichzeitig <span class="math inline">\(q = x_1 \cdot x_2\)</span> gelten.</p>
-<p>Sucht man nach (ganzzahligen) <span class="math inline">\(x_1\)</span> und <span class="math inline">\(x_2\)</span>, so nimmt man die Teilermenge <span class="math inline">\(T_q\)</span> von <span class="math inline">\(q\)</span> und prüft für jedes <span class="math inline">\(x \in T_q\)</span> ob es ein <span class="math inline">\(y \in T_q\)</span> gibt, so dass <span class="math inline">\(\pm x\)</span> und <span class="math inline">\(\pm y\)</span> sowohl die Gleichungen für <span class="math inline">\(p\)</span> und <span class="math inline">\(q\)</span> erfüllen. Ein für <span class="math inline">\(q\)</span> passendes Paar zu finden ist dabei nicht das Problem. Aber die Gleichung für <span class="math inline">\(p\)</span> muss auch erfüllt sein.</p>
+<p>muss <span class="math inline">\(p = -\left(x_1+x_2\right)\)</span> und gleichzeitig <span class="math inline">\(q = x_1 \cdot x_2\)</span> gelten.</p>
+<p>Sucht man nach (ganzzahligen) <span class="math inline">\(x_1\)</span> und <span class="math inline">\(x_2\)</span>, so nimmt man die Teilermenge
+<span class="math inline">\(T_q\)</span> von <span class="math inline">\(q\)</span> und prüft für jedes <span class="math inline">\(x \in T_q\)</span> ob es ein <span class="math inline">\(y \in T_q\)</span> gibt,
+so dass <span class="math inline">\(\pm x\)</span> und <span class="math inline">\(\pm y\)</span> sowohl die Gleichungen für <span class="math inline">\(p\)</span> und <span class="math inline">\(q\)</span> erfüllen.
+Ein für <span class="math inline">\(q\)</span> passendes Paar zu finden ist dabei nicht das Problem.
+Aber die Gleichung für <span class="math inline">\(p\)</span> muss auch erfüllt sein.</p>
 <div id="ein-beispiel" class="section level3">
 <h3>Ein Beispiel</h3>
-<p>Hat die Gleichung <span class="math inline">\(x^2 - 8 \cdot x + 12 = 0\)</span> also nur ganzzahlige Lösungen, so reicht es die Teiler von <span class="math inline">\(12\)</span> zu untersuchen.
-Nun ist <span class="math inline">\(12 = 2 \cdot 2 \cdot 3\)</span> und somit die Teilermenge von <span class="math inline">\(12\)</span> die Menge <span class="math inline">\(T_{12} = \{1, 2, 3, 4, 6, 12\}\)</span>.</p>
-<p>Wegen der <span class="math inline">\(p=-8\)</span> muss <span class="math inline">\(x_1 + x_2\)</span> eine positive Zahl sein und wegen <span class="math inline">\(q=+12\)</span> müssen <span class="math inline">\(x_1\)</span> und <span class="math inline">\(x_2\)</span> somit auch beide positiv sein.</p>
+<p>Hat die Gleichung <span class="math inline">\(x^2 - 8 \cdot x + 12 = 0\)</span> also nur ganzzahlige Lösungen,
+so reicht es die Teiler von <span class="math inline">\(12\)</span> zu untersuchen.</p>
+<p>Nun ist <span class="math inline">\(12 = 2 \cdot 2 \cdot 3\)</span> und somit die Teilermenge von <span class="math inline">\(12\)</span> die Menge
+<span class="math inline">\(T_{12} = \{1, 2, 3, 4, 6, 12\}\)</span>.</p>
+<p>Wegen der <span class="math inline">\(p=-8\)</span> muss <span class="math inline">\(x_1 + x_2\)</span> eine positive Zahl sein.
+Wegen <span class="math inline">\(q=+12\)</span> müssen <span class="math inline">\(x_1\)</span> und <span class="math inline">\(x_2\)</span> beide positiv sein.</p>
 <p>Gesucht ist also die Lösung von <span class="math inline">\(x_1+x_2 = 8\)</span> für <span class="math inline">\(x_1, x_2 \in T_{12}\)</span>.</p>
-<p>Für <span class="math inline">\(1\)</span> findet sich <span class="math inline">\(12\)</span>, für <span class="math inline">\(2\)</span> findet sich <span class="math inline">\(6\)</span> und für <span class="math inline">\(3\)</span> findet sich <span class="math inline">\(4\)</span>. Danach drehen sich die Positionen nur noch um.</p>
-<p>Weil <span class="math inline">\(1 + 12 = 13 \neq 8\)</span> und <span class="math inline">\(3+4=7 \neq 8\)</span> ist fallen diese Paate leider als Lösungen aus.</p>
-<p>Da <span class="math inline">\(2+6=8\)</span> und <span class="math inline">\(2 \cdot 6 = 12\)</span> ist, haben wir mit <span class="math inline">\(x_1=2\)</span> und <span class="math inline">\(x_2=6\)</span> eine Lösung gefunden.</p>
+<p>Für <span class="math inline">\(1\)</span> findet sich <span class="math inline">\(12\)</span>, für <span class="math inline">\(2\)</span> findet sich <span class="math inline">\(6\)</span> und für <span class="math inline">\(3\)</span> findet sich <span class="math inline">\(4\)</span>.
+Danach drehen sich die Positionen nur noch um, es gibt aber keinen neuen Paarungen.</p>
+<p>Weil <span class="math inline">\(1 + 12 = 13 \neq 8\)</span> und <span class="math inline">\(3+4=7 \neq 8\)</span> ist fallen diese Paare als Lösungen aus.</p>
+<p>Da <span class="math inline">\(2+6=8\)</span> und <span class="math inline">\(2 \cdot 6 = 12\)</span> ist, haben wir mit <span class="math inline">\(x_1=2\)</span> und <span class="math inline">\(x_2=6\)</span> die Lösung gefunden.</p>
 </div>
 <div id="dr.-lohs-methode" class="section level3">
 <h3>Dr. Loh’s Methode</h3>
 <p><strong>Dr. Loh’s Methode</strong> zielt darauf ab, das Raten des Lösungspaars <span class="math inline">\(x_1\)</span> und <span class="math inline">\(x_2\)</span> etwas stärker in eine Berechnung zu überführen.</p>
-<p>Wir starten mit <span class="math inline">\(p=8\)</span> und wissen, dass dies in die Summe von zwei Zahlen zerlegt werden muss. <span class="math inline">\(p/2\)</span> ist der Scheitelpunktsstelle der quadratischen Funktion <span class="math inline">\(f(x) = x^2+px+q\)</span> und die zwei Nullstellen, sofern existent, haben von der Scheitelpunktsstelle <span class="math inline">\(p/\)</span> den selben Abstand, den wir <span class="math inline">\(u\)</span> nennen wollen.</p>
+<p>Wir starten mit <span class="math inline">\(p=8\)</span> und wissen, dass <span class="math inline">\(p\)</span> in die Summe von zwei Zahlen zerlegt werden muss.
+<span class="math inline">\(p/2\)</span> ist der Scheitelpunktsstelle der quadratischen Funktion <span class="math inline">\(f(x) = x^2+px+q\)</span>
+und die zwei Nullstellen, sofern existent, haben von der Scheitelpunktsstelle <span class="math inline">\(p/\)</span>
+den selben Abstand, den wir <span class="math inline">\(u\)</span> nennen wollen.</p>
 <p>Damit ist</p>
 <p><span class="math display">\[x_1 = \frac{p}{2} +u \quad\text{ und }\quad x_2 = \frac{p}{2} - u\]</span></p>
-<p>In unserem Beispiel also
+<p>In unserem Beispiel gilt:
 <span class="math display">\[x_1 = 4+u \quad\text{ und }\quad x_2 = 4 - u\]</span>
-Da nachdem Wurzelsatz von Viete <span class="math inline">\(q=x_1 \cdot x_2\)</span> ist gilt (mit der 3. Binomischen Formel) für unser Beispiel nun</p>
+Da nachdem Wurzelsatz von Vieta <span class="math inline">\(q=x_1 \cdot x_2\)</span> ist, gilt (mit der 3. Binomischen Formel) für unser Beispiel:</p>
 <p><span class="math display">\[x_1 \cdot x_2 = (4+u)(4-u)=4^2-u^2 = 16-u^2 = 12\]</span></p>
-<p>Wir stellen die Gleichung um und erhalten</p>
+<p>Wir stellen die Gleichung um und erhalten:</p>
 <p><span class="math display">\[u^2 = 16-12 = 4\]</span>
-woraus sich</p>
-<p><span class="math display">\[u = \pm\sqrt{4} = \pm 2\]</span></p>
-<p>und – entweder durch ausprobieren oder nachdenken – die Lösung <span class="math inline">\(x_1=2\)</span> und <span class="math inline">\(x_2=6\)</span> ergibt.</p>
+Diese Wurzelgleichung hat nunu zwei Lösungen:</p>
+<p><span class="math display">\[u = \pm\sqrt{4} = \pm 2, \text{ somit: }u_1=-2, u_2 = 2\]</span></p>
+<p>Und – entweder durch ausprobieren oder nachdenken – erhalten wir die Lösung
+<span class="math inline">\(x_1=4+u_1=2\)</span> und <span class="math inline">\(x_2=4-u_1=6\)</span> ergibt.</p>
 </div>
 <div id="ein-weiteres-beispiel" class="section level3">
 <h3>Ein weiteres Beispiel</h3>
