@@ -233,6 +233,26 @@
   </url>
   
   <url>
+    <loc>/post/warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist/</loc>
+    <lastmod>2020-01-27T08:53:09+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/der-standardfehler-aus-klassischer-sicht-ein-kleiner-uberblick/</loc>
+    <lastmod>2020-01-22T16:08:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tag/standardfehler/</loc>
+    <lastmod>2020-01-22T16:08:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/category/statitisches/</loc>
+    <lastmod>2020-01-22T16:08:04+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tag/interaktion/</loc>
     <lastmod>2019-12-31T13:33:45+01:00</lastmod>
   </url>
@@ -275,6 +295,51 @@
   <url>
     <loc>/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</loc>
     <lastmod>2019-12-18T13:02:59+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
+    <lastmod>2019-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication-type/4/</loc>
+    <lastmod>2019-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tag/fom/</loc>
+    <lastmod>2019-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
+    <lastmod>2019-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
+    <lastmod>2019-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
+    <lastmod>2019-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication_types/</loc>
+    <lastmod>2019-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/</loc>
+    <lastmod>2019-09-25T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/statistik21/</loc>
+    <lastmod>2019-09-25T00:00:00+02:00</lastmod>
   </url>
   
   <url>
@@ -349,6 +414,11 @@
   
   <url>
     <loc>/privacy/</loc>
+    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/terms/</loc>
     <lastmod>2018-06-28T00:00:00+01:00</lastmod>
   </url>
   
@@ -448,21 +518,6 @@
   </url>
   
   <url>
-    <loc>/category/statitisches/</loc>
-    <lastmod>2017-04-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc></loc>
-    <lastmod>2017-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc></loc>
-    <lastmod>2017-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tag/data-science/</loc>
     <lastmod>2017-02-10T00:00:00+00:00</lastmod>
   </url>
@@ -479,6 +534,11 @@
   
   <url>
     <loc>/tag/latex/</loc>
+    <lastmod>2017-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc></loc>
     <lastmod>2017-02-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -583,22 +643,7 @@
   </url>
   
   <url>
-    <loc></loc>
-    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tag/projektorientiertes-lernen/</loc>
-    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication_types/</loc>
-    <lastmod>2004-09-25T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/</loc>
     <lastmod>2004-09-25T00:00:00+02:00</lastmod>
   </url>
   

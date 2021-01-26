@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zusammemhangsanalyse | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/nap/tag/zusammemhangsanalyse/</link>
-      <atom:link href="https://sefiroth.net/nap/tag/zusammemhangsanalyse/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tag/zusammemhangsanalyse/</link>
+      <atom:link href="/tag/zusammemhangsanalyse/index.xml" rel="self" type="application/rss+xml" />
     <description>Zusammemhangsanalyse</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Zusammemhangsanalyse</title>
-      <link>https://sefiroth.net/nap/tag/zusammemhangsanalyse/</link>
+      <link>/tag/zusammemhangsanalyse/</link>
     </image>
     
     <item>
       <title>Ein kleines Beispiel zum Rangkorrelationskoeffizienten</title>
-      <link>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</link>
+      <link>/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</link>
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</guid>
+      <guid>/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;../../rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;../../rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
 
 
 &lt;p&gt;Bei der Rangkorrelation werden statt der Werte die Ränge der Werte zur Berechnung herangezogen.&lt;/p&gt;
@@ -102,7 +102,7 @@ y
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Das Streudiagramm dieser Daten sieht dann so aus:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der Korrelationskoeffizent ist nun:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r = r_{BP} = 0.7944953\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Schauen wir uns nun die Werte der Tabelle mit ihrem Rang an:&lt;/p&gt;
@@ -251,7 +251,7 @@ ry
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Das Streudiagramm der Ränge sieht nun wie folgt aus:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Und der Korrelationskoeffizient der Ränge ist nun:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r_{sp} = r_{ry,rx}=0.8909091\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Dieser Korrelatonskoeffizient der Ränge wird &lt;em&gt;Rangkorrelationkoeffizient&lt;/em&gt; genannt.&lt;/p&gt;
@@ -559,9 +559,9 @@ ry
     
     <item>
       <title>Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen</title>
-      <link>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</link>
+      <link>/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</link>
       <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</guid>
+      <guid>/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</guid>
       <description>
 &lt;script src=&#34;2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhängen_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
@@ -574,7 +574,7 @@ Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;
 &lt;div id=&#34;moderation&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Moderation&lt;/h2&gt;
 &lt;p&gt;Bei einer &lt;em&gt;Moderation&lt;/em&gt; wirkt die dritte Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (&lt;em&gt;Moderator&lt;/em&gt;) auf die Beziehung zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der Einfluss von &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; ändert also den Effekt von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; auf &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. Der Zusammenhang zwischen &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; ist also je nach &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; unterschiedlich.&lt;/p&gt;
 &lt;p&gt;Statistisch gesehen liegt eine &lt;em&gt;Interaktion&lt;/em&gt; zwischen &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; vor.&lt;/p&gt;
 &lt;div id=&#34;wie-untersucht-man-einen-zusammenhang-auf-eine-moderation&#34; class=&#34;section level3&#34;&gt;
@@ -591,7 +591,7 @@ Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;
 &lt;p&gt;Bei der &lt;em&gt;Mediation&lt;/em&gt; steht die Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (der &lt;em&gt;Mediator&lt;/em&gt;) sowohl zu &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; als auch zu &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; in Beziehung.
 Der direkte Effekt zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; wird durch den indirekten Effekt über &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; erklärt, also durch
 &lt;span class=&#34;math inline&#34;&gt;\(X \to M \to Y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;wie-untersucht-man-auf-eine-mediation&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Wie untersucht man auf eine Mediation?&lt;/h3&gt;
 &lt;p&gt;In diesem Fall stellen wir mehrere Regressionsmodelle auf. Eine (signifikante) Mediation liegt dann vor, wenn die folgenden Bedinungen erfüllt sind:&lt;/p&gt;

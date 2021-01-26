@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>matplotlib | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/nap/tag/matplotlib/</link>
-      <atom:link href="https://sefiroth.net/nap/tag/matplotlib/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tag/matplotlib/</link>
+      <atom:link href="/tag/matplotlib/index.xml" rel="self" type="application/rss+xml" />
     <description>matplotlib</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 02 Jan 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>matplotlib</title>
-      <link>https://sefiroth.net/nap/tag/matplotlib/</link>
+      <link>/tag/matplotlib/</link>
     </image>
     
     <item>
       <title>Weitere Software auf den Raspberry PI installieren.</title>
-      <link>https://sefiroth.net/nap/post/weitere-software-auf-den-raspberry-pi-installieren/</link>
+      <link>/post/weitere-software-auf-den-raspberry-pi-installieren/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/weitere-software-auf-den-raspberry-pi-installieren/</guid>
+      <guid>/post/weitere-software-auf-den-raspberry-pi-installieren/</guid>
       <description>&lt;p&gt;Hier eine Liste von Software für den Raspberry Pi, die man noch installieren sollte/ kann und wie man es macht:&lt;/p&gt;
 &lt;h2 id=&#34;mathematica&#34;&gt;Mathematica&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt-get update
