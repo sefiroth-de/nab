@@ -53,8 +53,8 @@ Danach drehen sich die Positionen nur noch um, es gibt aber keinen neuen Paarung
 &lt;h3&gt;Dr. Loh’s Methode&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Dr. Loh’s Methode&lt;/strong&gt; zielt darauf ab, das Raten des Lösungspaars &lt;span class=&#34;math inline&#34;&gt;\(x_1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt; etwas stärker in eine Berechnung zu überführen.&lt;/p&gt;
 &lt;p&gt;Wir starten mit &lt;span class=&#34;math inline&#34;&gt;\(p=8\)&lt;/span&gt; und wissen, dass &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; in die Summe von zwei Zahlen zerlegt werden muss.
-&lt;span class=&#34;math inline&#34;&gt;\(p/2\)&lt;/span&gt; ist der Scheitelpunktsstelle der quadratischen Funktion &lt;span class=&#34;math inline&#34;&gt;\(f(x) = x^2+px+q\)&lt;/span&gt;
-und die zwei Nullstellen, sofern existent, haben von der Scheitelpunktsstelle &lt;span class=&#34;math inline&#34;&gt;\(p/\)&lt;/span&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(p/2\)&lt;/span&gt; ist der Scheitelpunktstelle der quadratischen Funktion &lt;span class=&#34;math inline&#34;&gt;\(f(x) = x^2+px+q\)&lt;/span&gt;
+und die zwei Nullstellen, sofern existent, haben von der Scheitelpunktstelle &lt;span class=&#34;math inline&#34;&gt;\(p/\)&lt;/span&gt;
 den selben Abstand, den wir &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; nennen wollen.&lt;/p&gt;
 &lt;p&gt;Damit ist&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[x_1 = \frac{p}{2} +u \quad\text{ und }\quad x_2 = \frac{p}{2} - u\]&lt;/span&gt;&lt;/p&gt;
@@ -64,7 +64,7 @@ Da nachdem Wurzelsatz von Vieta &lt;span class=&#34;math inline&#34;&gt;\(q=x_1 
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[x_1 \cdot x_2 = (4+u)(4-u)=4^2-u^2 = 16-u^2 = 12\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Wir stellen die Gleichung um und erhalten:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[u^2 = 16-12 = 4\]&lt;/span&gt;
-Diese Wurzelgleichung hat nunu zwei Lösungen:&lt;/p&gt;
+Diese Wurzelgleichung hat nun zwei Lösungen:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[u = \pm\sqrt{4} = \pm 2, \text{ somit: }u_1=-2, u_2 = 2\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Und – entweder durch ausprobieren oder nachdenken – erhalten wir die Lösung
 &lt;span class=&#34;math inline&#34;&gt;\(x_1=4+u_1=2\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_2=4-u_1=6\)&lt;/span&gt; ergibt.&lt;/p&gt;

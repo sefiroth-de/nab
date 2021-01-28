@@ -21,7 +21,7 @@
 &lt;script src=&#34;2020-01-22-der-standardfehler-aus-klassischer-sicht-ein-kleiner-überblick_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;Der &lt;strong&gt;Standardfehler&lt;/strong&gt; ist ein &lt;em&gt;Steuungsmaß&lt;/em&gt; für eine Schätzfunktion &lt;span class=&#34;math inline&#34;&gt;\(\hat{\vartheta}\)&lt;/span&gt; für einen unbekannten Parameter &lt;span class=&#34;math inline&#34;&gt;\(\vartheta\)&lt;/span&gt; der Grundgesamtheit. Er ist definiert als
+&lt;p&gt;Der &lt;strong&gt;Standardfehler&lt;/strong&gt; ist ein &lt;em&gt;Streuungsmaß&lt;/em&gt; für eine Schätzfunktion &lt;span class=&#34;math inline&#34;&gt;\(\hat{\vartheta}\)&lt;/span&gt; für einen unbekannten Parameter &lt;span class=&#34;math inline&#34;&gt;\(\vartheta\)&lt;/span&gt; der Grundgesamtheit. Er ist definiert als
 &lt;span class=&#34;math display&#34;&gt;\[\sigma(\hat{\vartheta}) = + \sqrt{\operatorname{Var}(\hat{\vartheta})}.\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Bei einem erwartungstreuen Schätzer ist daher der Standardfehler ein Maß für die durchschnittliche Abweichung des geschätzten Parameterwertes vom wahren Parameterwert. Je kleiner der Standardfehler ist, desto genauer kann der unbekannte Parameter mit Hilfe der Schätzfunktion geschätzt werden.&lt;/p&gt;
 &lt;p&gt;Für eine Stichprobe vom Umfang &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; mit Standardabweichung &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt; gilt für den Standardfehler:&lt;/p&gt;
