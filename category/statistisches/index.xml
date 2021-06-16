@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statistisches | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/nap/category/statistisches/</link>
-      <atom:link href="https://sefiroth.net/nap/category/statistisches/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/category/statistisches/</link>
+      <atom:link href="https://sefiroth.net/category/statistisches/index.xml" rel="self" type="application/rss+xml" />
     <description>Statistisches</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 11 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 11 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Statistisches</title>
-      <link>https://sefiroth.net/nap/category/statistisches/</link>
+      <link>https://sefiroth.net/category/statistisches/</link>
     </image>
     
     <item>
       <title>Wege zur Normalverteilung</title>
-      <link>https://sefiroth.net/nap/post/wege-zur-normalverteilung/</link>
+      <link>https://sefiroth.net/post/wege-zur-normalverteilung/</link>
       <pubDate>Fri, 11 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/wege-zur-normalverteilung/</guid>
+      <guid>https://sefiroth.net/post/wege-zur-normalverteilung/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Der fairen Wurf einer fairen Münze, also eine Münze bei der Kopf und Zahl gleich wahrscheinlich geworfen wird, sei der Ausgang des ersten Weges.&lt;/p&gt;
@@ -57,26 +57,26 @@ uns danach anwie die Anzahl der &lt;em&gt;Kopf&lt;/em&gt; Würfe variiert:&lt;/p
 vrtlg_1 &amp;lt;- do(N) * rflip(n)
 gf_bar(~ heads, data = vrtlg_1) %&amp;gt;%
   gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5,n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=2\)&lt;/span&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 2
 vrtlg_2 &amp;lt;- do(N) * rflip(n)
 gf_bar(~ heads, data = vrtlg_2) %&amp;gt;%
   gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=20\)&lt;/span&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 20
 vrtlg_20 &amp;lt;- do(N) * rflip(n)
 gf_bar(~ heads, data = vrtlg_20) %&amp;gt;%
   gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;
 &lt;span class=&#34;math inline&#34;&gt;\(n=50\)&lt;/span&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt; -50&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] FALSE&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vrtlg_50 &amp;lt;- do(N) * rflip(n)
 gf_bar(~ heads, data = vrtlg_50) %&amp;gt;%
   gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der faire Wurf eine fairen Münze &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; ist aber vorallem ein Gedanken-Expermiment,
 bei dem wir davon ausgehen, dass die Wahrscheinlichkeit für Kopf gleich der Wahrscheinlichkeit für Zahl ist:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(X = \text{&amp;quot;Kopf&amp;quot;}) = P(X = \text{&amp;quot;Zahl&amp;quot;}) = 50\,\% = 0{,}5\]&lt;/span&gt;&lt;/p&gt;
@@ -89,7 +89,7 @@ mit &lt;span class=&#34;math inline&#34;&gt;\(q = P(X = 0)\)&lt;/span&gt; und &l
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p = 0.5
 n = 1
 gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 2
 tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_2)
 dist_2 &amp;lt;- data.frame(
@@ -99,10 +99,10 @@ dist_2 &amp;lt;- data.frame(
 
 gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
   gf_point(density ~ x, data = dist_2, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 20
 gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 20
 tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_20)
 dist_20 &amp;lt;- data.frame(
@@ -112,7 +112,7 @@ dist_20 &amp;lt;- data.frame(
 
 gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
   gf_point(density ~ x, data = dist_20, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 50
 tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_50)
 dist_50 &amp;lt;- data.frame(
@@ -122,7 +122,7 @@ dist_50 &amp;lt;- data.frame(
 
 gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = 0.5) %&amp;gt;%
   gf_point(density ~ x, data = dist_50, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 100
 N &amp;lt;- 5 * n**2
 vrtlg_100 &amp;lt;- do(N) * rflip(n)
@@ -134,7 +134,7 @@ dist_100 &amp;lt;- data.frame(
 
 gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
   gf_point(density ~ x, data = dist_100, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 300
 N &amp;lt;- 5 * n**2
 vrtlg_300 &amp;lt;- do(N) * rflip(n)
@@ -146,12 +146,12 @@ dist_300 &amp;lt;- data.frame(
 
 gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
   gf_point(density ~ x, data = dist_300, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Zeichnen wir nun die &lt;em&gt;Gauß’sche Glockenkurve&lt;/em&gt; in rot dazu:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
   gf_point(density ~ x, data = dist_300, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7) %&amp;gt;%
   gf_dist(&amp;quot;norm&amp;quot;, mean = n*p, sd = sqrt(n*p*(1 - p)), color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Die &lt;em&gt;Gauß’sche Glockenkurve&lt;/em&gt; ist die &lt;strong&gt;Dichtefunktion&lt;/strong&gt; der Normalverteilung und ist definiert durch:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{(x-\mu)^2}{2\sigma^2}}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Mit den beiden Parameter &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt; kann man den &lt;em&gt;Mittelwert der Verteilung&lt;/em&gt; (auch &lt;strong&gt;Erwartungswert&lt;/strong&gt; genannt) und die &lt;em&gt;Varianz der Verteilung&lt;/em&gt; einstellen.&lt;/p&gt;
@@ -167,21 +167,21 @@ des eintretens von Werten &lt;span class=&#34;math inline&#34;&gt;\(\leq x\)&lt;
 &lt;p&gt;Betrachen wir nun &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; unserer Experimente:&lt;/p&gt;
 &lt;p&gt;n = 2&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;n = 20&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_20)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;
 n = 50&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_50)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;n = 300&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_300)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;
 Tragen wir zur &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; auch die &lt;em&gt;Verteilungsfunktion&lt;/em&gt; der Normalverteilung von oben ein:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 300
 gf_ecdf( ~ heads, data = vrtlg_300) %&amp;gt;%
   gf_dist(&amp;quot;norm&amp;quot;, mean = n*p, sd = sqrt(n*p*(1 - p)), kind=&amp;quot;cdf&amp;quot;, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Die &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; strebt also gegen die (theoretisch) &lt;em&gt;Verteilungsfunktion&lt;/em&gt; der Normalverteilung. Sie lautet:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F(x) = \int_{-\infty}^x f(u)\, \text{d} u = \int_{-\infty}^x\frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{(x-\mu)^2}{2\sigma^2}}\]&lt;/span&gt;&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
@@ -195,11 +195,11 @@ gf_ecdf( ~ heads, data = vrtlg_300) %&amp;gt;%
     
     <item>
       <title>Über die Koeffizienten einer linearen Regression</title>
-      <link>https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/</link>
+      <link>https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/</link>
       <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/</guid>
+      <guid>https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Bei einer &lt;em&gt;einfachen Regression&lt;/em&gt; versuchen wir zu gegebenen
@@ -360,7 +360,7 @@ dt &amp;lt;- mtcars
 # Mit Hilfe eines Streudiagramms
 gf_point(mpg ~ hp, data = dt) %&amp;gt;%
   gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Berechnen wir zunächst die Mittelwerte von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; (also ‘hp’) und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; (also ‘mpg’)&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean_hp = mean(~ hp, data = dt)
 mean_mpg = mean(~ mpg, data = dt)
@@ -375,7 +375,7 @@ Streudiagramm ein:&lt;/p&gt;
   gf_vline(xintercept = ~ mean_hp, color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
   gf_point(mean_mpg ~ mean_hp, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
   gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Berechnen wir nun die Schätzwerte für die Regressiongerade&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beta_1 = cov(mpg ~ hp, data = dt) / var(~ hp, data = dt)
 beta_0 = mean_mpg - beta_1 * mean_hp&lt;/code&gt;&lt;/pre&gt;
@@ -386,7 +386,7 @@ beta_0 = mean_mpg - beta_1 * mean_hp&lt;/code&gt;&lt;/pre&gt;
   gf_point(mean_mpg ~ mean_hp, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
   gf_abline(slope = ~ beta_1, intercept = ~beta_0, color = &amp;quot;dodgerblue&amp;quot;) %&amp;gt;%
   gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
   \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
@@ -415,13 +415,13 @@ sind Rundungsfehler, die der Computer macht!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(mpg_stud ~ hp_stud, data = dt) %&amp;gt;%
   gf_point(0 ~ 0, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
   gf_lims(y = c(-2, 2))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;90%&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;90%&#34; /&gt;
 Auch wenn die Skalierungen sich geändert haben, die Diagramme sind sehr ähnlich.&lt;/p&gt;
 &lt;p&gt;Bestimmen wir die Koeffizienten der Regressionsgerade&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beta_stud_1 = cov(mpg_stud ~ hp_stud, data = dt)
 beta_stud_0 = 0 - beta_stud_1 * 0&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;und setzen sie in das Steudiagramm ein:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können das studentisierte Problem auch wieder auf unser ursprüngliches
 zurück rechnen.&lt;/p&gt;
 &lt;p&gt;Die Regressionsgerade im studentisierten Problem lautet:&lt;/p&gt;
@@ -592,7 +592,7 @@ b_1 &amp;lt;- -1 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Wir haben somit mit &lt;span class=&#34;math inline&#34;&gt;\(203\)&lt;/span&gt; Iterationsschritten das folgende Ergebnisse für die Regressionskoeffizienten:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_0^{stud} = 0` \qquad \hat\beta_1 {stud} = -0.7761689\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Betrachten wir die daraus erstellte Regressionsgerade:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Um die ursprünglichen Regressionskoeffizenten zu erhalten müssen wir zurück rechnen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b1 &amp;lt;- b_1 * sd(dt$mpg) / sd(dt$hp)
 b0 &amp;lt;- mean(dt$mpg) -  b1 * mean(dt$hp)&lt;/code&gt;&lt;/pre&gt;
@@ -663,14 +663,14 @@ f &amp;lt;- function(beta) {
 opti_as_beta_0 &amp;lt;- ergb$par[1]
 opti_as_beta_1 &amp;lt;- ergb$par[2]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Schauen wir uns nun die so erhaltene Gerade im Vergleich mit der ‘normalen’ Regressionsgerade an:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;In grün und gestrichelt sehen wir die Gerade aus der &lt;em&gt;Idee der quadratsichen Abweichungssummen&lt;/em&gt;, in blau die aus der &lt;em&gt;Idee der absoluten Abweichungssummen&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Für unser ursprüngliches Problem rechnen wir um:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Umrechnen in die urspüngliche Fragestellung
 as_b1 &amp;lt;- opti_as_beta_1 * sd(dt$mpg) / sd(dt$hp)
 as_b0 &amp;lt;- (mean(dt$mpg) - as_b1 * mean(dt$hp)) + opti_as_beta_0 * sd(dt$mpg)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Und die dazu gehörige Darstellung:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
   \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
@@ -748,11 +748,11 @@ tab&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Über die t-Verteilung mit einem bzw. zwei Freiheitsgraden</title>
-      <link>https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</link>
+      <link>https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</link>
       <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</guid>
+      <guid>https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;vorbereitungen-für-r&#34; class=&#34;section level2&#34;&gt;
@@ -870,7 +870,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
   gf_line(f_star(x) ~ x, 
           color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
         xlim = c(lower_bound, upper_bound), 
@@ -881,7 +881,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wie groß ist nun der (absolute) Fehler zwischen &lt;span class=&#34;math inline&#34;&gt;\(f_1^*\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(f_1\)&lt;/span&gt;?&lt;/p&gt;
 &lt;p&gt;Eine Grafik von &lt;span class=&#34;math inline&#34;&gt;\(f_1^*-f_1\)&lt;/span&gt; zeigt:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- seq(1,1000,1)
@@ -891,7 +891,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Genauer gilt:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 f_1^*(x) - f_1(x) = \frac{1}{x^2+x^4}
@@ -990,7 +990,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
   gf_line(f_star(x) ~ x, 
           color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
         xlim = c(lower_bound, upper_bound), 
@@ -1001,7 +1001,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wie groß ist nun der absolute Fehler zwischen &lt;span class=&#34;math inline&#34;&gt;\(f_2^*\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(f_2\)&lt;/span&gt; genau?&lt;/p&gt;
 &lt;p&gt;Eine Grafik zeigt von &lt;span class=&#34;math inline&#34;&gt;\(f_2^*-2_1\)&lt;/span&gt; zeigt:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- seq(1,1000,1)
@@ -1011,7 +1011,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;fussnoten&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Fussnoten&lt;/h2&gt;
@@ -1027,11 +1027,11 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     
     <item>
       <title>Behäbige Funktionen aka slowly varying function</title>
-      <link>https://sefiroth.net/nap/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</link>
+      <link>https://sefiroth.net/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</link>
       <pubDate>Sat, 13 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</guid>
+      <guid>https://sefiroth.net/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Reelle Funktionen, die ihren Funktionswert kaum ändern, kann man mit
@@ -1116,11 +1116,11 @@ Weiterführend gibt es mit der
     
     <item>
       <title>Ein paar Gedanken über potenzgesetzliche Verteilungen (power law distributions)</title>
-      <link>https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/</link>
+      <link>https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/</guid>
+      <guid>https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; heißt &lt;strong&gt;potenzgesetzlich&lt;/strong&gt;,
@@ -1204,7 +1204,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
   gf_line(C*x**(-alpha) ~ x, 
           color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
         xlim = c(lower_bound, upper_bound), 
@@ -1215,7 +1215,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Noch ein Beispiel:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Nehmen wir die t-Verteilung mit &lt;span class=&#34;math inline&#34;&gt;\(n=1\)&lt;/span&gt; Freiheitsgeraden.
 Die Dichtefunktion bezeichnen wir mit &lt;span class=&#34;math inline&#34;&gt;\(t_{1}(x)\)&lt;/span&gt;.&lt;/p&gt;
@@ -1230,7 +1230,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
   gf_line(C*x**(-alpha) ~ x, 
           color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
         xlim = c(lower_bound, upper_bound), 
@@ -1241,7 +1241,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Ein ’Gegen-’Beispiel:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Betrachten wir nun die (rechte Seite – &lt;span class=&#34;math inline&#34;&gt;\(x&amp;gt;1=x_{min}\)&lt;/span&gt;) einer Gauß’schen Standardnormalverteilung.&lt;/p&gt;
 &lt;p&gt;Mit den Stützstellen &lt;span class=&#34;math inline&#34;&gt;\(x_0 = 1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_1 = 5\)&lt;/span&gt; können wir &lt;span class=&#34;math inline&#34;&gt;\(\alpha=7.46\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(C=0.24\)&lt;/span&gt; abschätzen.
@@ -1255,7 +1255,7 @@ gf_dist(&amp;quot;norm&amp;quot;,
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
   gf_line(C*x**(-alpha) ~ x, 
           color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;norm&amp;quot;, 
         xlim = c(lower_bound, upper_bound), 
@@ -1266,7 +1266,7 @@ gf_dist(&amp;quot;norm&amp;quot;,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir erkennen, dass hier etwas nicht passt.
 Die Standardnormalverteilung ist (vielleicht) keine &lt;em&gt;potenzgesetzich&lt;/em&gt; Verteilung?&lt;/p&gt;
 &lt;p&gt;Ein oft verwendetes Kriterium ist, dass sich die Funktion in der doppelt-logarithmischen Darstellung als Gerade offenbart.&lt;/p&gt;
@@ -1281,7 +1281,7 @@ gf_dist(&amp;quot;norm&amp;quot;,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;** — **&lt;/p&gt;
 &lt;p&gt;Weiter gilt für &lt;em&gt;potenzgesetzliche Verteilungen&lt;/em&gt; wegen&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\frac{f(x)}{f(c\cdot x)} = \frac{C \cdot x^{-\alpha}}{C \cdot (c\cdot x)^{-\alpha}}
@@ -1297,11 +1297,11 @@ was man gerne als &lt;span class=&#34;math inline&#34;&gt;\(f(x) \propto f(c \cd
     
     <item>
       <title>Gedankenstütze zu wichtigen Funktionsbegriffen in der Statistik</title>
-      <link>https://sefiroth.net/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/</link>
+      <link>https://sefiroth.net/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/</guid>
+      <guid>https://sefiroth.net/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;eine-kleine-liste-von-fundermentalen-begriffen-in-der-statistik.&#34; class=&#34;section level1&#34;&gt;
@@ -1374,11 +1374,11 @@ folgt:
     
     <item>
       <title>Cook Abstand</title>
-      <link>https://sefiroth.net/nap/post/cook-abstand/</link>
+      <link>https://sefiroth.net/post/cook-abstand/</link>
       <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/cook-abstand/</guid>
+      <guid>https://sefiroth.net/post/cook-abstand/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Eine Möglichkeit Ausreißer zu finden ist der &lt;em&gt;Cook Abstand&lt;/em&gt;
@@ -1407,7 +1407,7 @@ Trinkgeldbetrag &lt;code&gt;tip&lt;/code&gt; für unser Modell:&lt;/p&gt;
 &lt;h2&gt;Unser Modell:&lt;/h2&gt;
 &lt;p&gt;Werfen wir zunächst einen Blick auf das Streudiagramm unserer Daten:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(tip ~ total_bill, data = tips)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Und erstellen dann ein lineares Modell:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;erg_lm &amp;lt;- lm(tip ~ total_bill, data = tips)
 summary(erg_lm)&lt;/code&gt;&lt;/pre&gt;
@@ -1434,7 +1434,7 @@ summary(erg_lm)&lt;/code&gt;&lt;/pre&gt;
   geom_line(aes(x = total_bill, 
                 y = erg_lm$fitted.values, 
                 color = &amp;quot;Regressionsgerade&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Für lineare Regressionsmodell können einflussreiche Ausreißer sehr hinderlich
 sein.
 Was ändert sich, wenn wir einen Wert, z.B. einen potentiellen Ausreißer,
@@ -1473,7 +1473,7 @@ summary(erg_lm_red)&lt;/code&gt;&lt;/pre&gt;
                  y = tips_removed$tip,
                  colour = &amp;quot;Removed Data&amp;quot;),
                  show.legend = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Um zu messen was diese Änderung bewirkt hat, schaut sich der Cook Abstand
 zunächst die Summe der quadrierten Differenzen der vorhergesagten Werte in
 beiden Modellen an:&lt;/p&gt;
@@ -1556,7 +1556,7 @@ erg_lm_no_outliers &amp;lt;- lm(tip ~ total_bill, data = tips_no_outliers)&lt;/c
   geom_line(aes(x = total_bill, 
                 y = erg_lm_no_outliers$fitted.values, 
                 color = &amp;quot;Regressionsgerade&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Im direkten Vergleich:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(tip ~ total_bill, data = erg_lm) +
   geom_line(aes(x = total_bill, 
@@ -1566,7 +1566,7 @@ erg_lm_no_outliers &amp;lt;- lm(tip ~ total_bill, data = tips_no_outliers)&lt;/c
               intercept = erg_lm_no_outliers$coefficients[1], 
               slope =  erg_lm_no_outliers$coefficients[2])
               )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;unsere-beiden-modelle-als-formeln&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Unsere beiden Modelle als Formeln&lt;/h2&gt;
@@ -1580,13 +1580,13 @@ erg_lm_no_outliers &amp;lt;- lm(tip ~ total_bill, data = tips_no_outliers)&lt;/c
     
     <item>
       <title>Ein kleines Beispiel zum Rangkorrelationskoeffizienten</title>
-      <link>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</link>
+      <link>https://sefiroth.net/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</link>
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</guid>
+      <guid>https://sefiroth.net/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://sefiroth.net/nap/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
 
 
 &lt;p&gt;Bei der Rangkorrelation werden statt der Werte die Ränge der Werte zur Berechnung herangezogen.&lt;/p&gt;
@@ -1668,7 +1668,7 @@ y
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Das Streudiagramm dieser Daten sieht dann so aus:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der Korrelationskoeffizient ist nun:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r = r_{BP} = 0.7944953\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Schauen wir uns nun die Werte der Tabelle mit ihrem Rang an:&lt;/p&gt;
@@ -1817,7 +1817,7 @@ ry
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Das Streudiagramm der Ränge sieht nun wie folgt aus:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Und der Korrelationskoeffizient der Ränge ist nun:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r_{sp} = r_{ry,rx}=0.8909091\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Dieser Korrelationskoeffizient der Ränge wird &lt;em&gt;Rangkorrelationkoeffizient&lt;/em&gt; genannt.&lt;/p&gt;
@@ -2125,11 +2125,11 @@ ry
     
     <item>
       <title>Eine typische Frage von Studierenden</title>
-      <link>https://sefiroth.net/nap/post/eine-typische-frage-von-studierenden/</link>
+      <link>https://sefiroth.net/post/eine-typische-frage-von-studierenden/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/eine-typische-frage-von-studierenden/</guid>
+      <guid>https://sefiroth.net/post/eine-typische-frage-von-studierenden/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Vor kurzem fand ich mal wieder eine Anfrage einer Studierenden in meinem Email Postfach. Die Frage lautete in etwa wie folgt:&lt;/p&gt;
@@ -2192,7 +2192,7 @@ head(daten)&lt;/code&gt;&lt;/pre&gt;
 ##                   2xtäglich 34   26
 ##                   3xtäglich 27   27&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mosaicplot(wetter.ist.gut ~ iphones.tagsüber.unbeachtet, data = daten)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Für später speichern wir die Kreuztabelle in obs.tab
 obs.tab &amp;lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data = daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -2321,7 +2321,7 @@ obs.abs &amp;lt;- diffabsobsexp(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffabsobsexp(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
 gf_histogram(~ diffabsobsexp, data = NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert, also die relative Fläche rechts von der roten Linie in unseren Histogramm, abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexp &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -2347,7 +2347,7 @@ obs.abs &amp;lt;- diffabsobsexprel(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffabsobsexprel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
 gf_dhistogram(~ diffabsobsexprel, data = NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Auch hier können wir den p-Wert abschätzen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexprel &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -2370,7 +2370,7 @@ obs.abs &amp;lt;- diffquad(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffquad(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
 gf_dhistogram(~ diffquad, data = NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquad &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -2391,7 +2391,7 @@ obs.abs &amp;lt;- diffquadrel(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffquadrel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
 gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Den Wert 1.2344597, den wir mit Hilfe der relativen quadratischen Abweichung berechnet haben, nennen wir auch &lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt; Wert.&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquadrel &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
@@ -2434,7 +2434,7 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&am
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dhistogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&amp;gt;%
   gf_fun(dchisq(x, df=2) ~ x, xlim = c(0:20), color = &amp;quot;blue&amp;quot;) %&amp;gt;% 
   gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Aber es gibt auch den (exakten) Fisher-Test:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fisher.test(obs.tab, alternative = &amp;quot;greater&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
@@ -2449,7 +2449,7 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&am
 &lt;p&gt;Wir können die p-Werte der einzelnen Tests nun gegenüber stellen:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
 ## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Gewöhnlich haben wir ein Signifikanznivau von &lt;span class=&#34;math inline&#34;&gt;\(5\% = 0{,}05\)&lt;/span&gt; angenommen.
 Die rote Linie zeigt diese Grenze.
 Liegt der Balken links vor dieser Linie, so sprechen wir davon, dass der
@@ -2471,11 +2471,11 @@ und betrachte das später einmal.&lt;/p&gt;
     
     <item>
       <title>Warum das Nachrechnen von Veröffentlichungen so wichtig ist</title>
-      <link>https://sefiroth.net/nap/post/warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist/</link>
+      <link>https://sefiroth.net/post/warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist/</guid>
+      <guid>https://sefiroth.net/post/warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Im Internet fand ich vor kurzem einen sehr interessanten &lt;a href=&#34;http://www.stefanbartz.de/dateien/Vorsicht-bei-der-sigma-Regel.pdf&#34;&gt;Text&lt;/a&gt; von &lt;a href=&#34;http://www.stefanbartz.de&#34;&gt;Stefan Bart&lt;/a&gt;. Eine Aufgabe daraus fand meine besondere Aufmerksamkeit.&lt;/p&gt;
@@ -2594,7 +2594,7 @@ length(iq_maedchen)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Und schauen uns nun einmal an, wie oft – bei zufälliger Auswahl von 200 Paarungen – es vorkommen kann, dass Jungen in den Paarungen einen höheren IQ haben als Mädchen. Das wäre dann dem Zufall geschuldet und nicht der übermässigen Intelligenz der Jungen. (Da nach Vereinbarung beide Gruppen gleich intelligent waren!)&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;NullVerteilung &amp;lt;- do(5000) * count( ~ sample(jungen, 200) - sample(maedchen, 200) &amp;gt; 0, data=paare)
 gf_bar( ~ n_TRUE, data=NullVerteilung)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2020-01-27-warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-01-27-warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Das HSB für diesen Fall wäre dann:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(hsb &amp;lt;- quantile( ~ n_TRUE, prob=c(0.025, 0.975), data=NullVerteilung))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  2.5% 97.5% 
@@ -2607,9 +2607,9 @@ gf_bar( ~ n_TRUE, data=NullVerteilung)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen</title>
-      <link>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</link>
+      <link>https://sefiroth.net/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</link>
       <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</guid>
+      <guid>https://sefiroth.net/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/</guid>
       <description>
 &lt;script src=&#34;2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhängen_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
@@ -2622,7 +2622,7 @@ Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;
 &lt;div id=&#34;moderation&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Moderation&lt;/h2&gt;
 &lt;p&gt;Bei einer &lt;em&gt;Moderation&lt;/em&gt; wirkt die dritte Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (&lt;em&gt;Moderator&lt;/em&gt;) auf die Beziehung zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der Einfluss von &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; ändert also den Effekt von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; auf &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. Der Zusammenhang zwischen &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; ist also je nach &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; unterschiedlich.&lt;/p&gt;
 &lt;p&gt;Statistisch gesehen liegt eine &lt;em&gt;Interaktion&lt;/em&gt; zwischen &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; vor.&lt;/p&gt;
 &lt;div id=&#34;wie-untersucht-man-einen-zusammenhang-auf-eine-moderation&#34; class=&#34;section level3&#34;&gt;
@@ -2639,7 +2639,7 @@ Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;
 &lt;p&gt;Bei der &lt;em&gt;Mediation&lt;/em&gt; steht die Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (der &lt;em&gt;Mediator&lt;/em&gt;) sowohl zu &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; als auch zu &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; in Beziehung.
 Der direkte Effekt zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; wird durch den indirekten Effekt über &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; erklärt, also durch
 &lt;span class=&#34;math inline&#34;&gt;\(X \to M \to Y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;wie-untersucht-man-auf-eine-mediation&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Wie untersucht man auf eine Mediation?&lt;/h3&gt;
 &lt;p&gt;In diesem Fall stellen wir mehrere Regressionsmodelle auf. Eine (signifikante) Mediation liegt dann vor, wenn die folgenden Bedinungen erfüllt sind:&lt;/p&gt;
@@ -2659,11 +2659,11 @@ drittesModell &amp;lt;- lm(Y ~ X + M, data=daten)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Die ersten Schritte zur Prognose mitteles linearer Regression</title>
-      <link>https://sefiroth.net/nap/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</link>
+      <link>https://sefiroth.net/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</link>
       <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</guid>
+      <guid>https://sefiroth.net/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Prognosen sind ein wichtiger Bestandteil von Data Science und ist durchaus nicht nur auf moderne Ansätze, wie Neuronale Netze, deep lerning etc. begrenzt. Auch die gute, alte Regression kann ein sehr sinnvolles Mittel sein solche Prognosen zu erstellen.&lt;/p&gt;
@@ -2736,9 +2736,9 @@ tipspruef %&amp;gt;%
 &lt;h2&gt;Die Datenlage&lt;/h2&gt;
 &lt;p&gt;Ein (paar) Blick(e) auf unsere Trainingsdaten:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(total_bill ~ jitter(size), color=~time, data=tipstrain)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(total_bill ~ day | time, color = ~ sex, data=tipstrain)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;prognosemodel-nullmodell&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Prognosemodel: Nullmodell&lt;/h2&gt;
@@ -2796,11 +2796,11 @@ maa.null&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>SBI - Simulation Based Inference</title>
-      <link>https://sefiroth.net/nap/post/sbi-simulation-based-inference/</link>
+      <link>https://sefiroth.net/post/sbi-simulation-based-inference/</link>
       <pubDate>Mon, 11 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/sbi-simulation-based-inference/</guid>
+      <guid>https://sefiroth.net/post/sbi-simulation-based-inference/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Wenn meine Tochter &lt;em&gt;SBI&lt;/em&gt; hört, denkt sie an &lt;em&gt;Sally Bollywood Investigation&lt;/em&gt;. – Und ich oft auch. – Mit &lt;em&gt;SBI&lt;/em&gt; ist hier aber nicht der Trickfilm für Kinder, sondern &lt;em&gt;&lt;strong&gt;S&lt;/strong&gt;imulation &lt;strong&gt;B&lt;/strong&gt;ased &lt;strong&gt;I&lt;/strong&gt;nference&lt;/em&gt;, gemeint.&lt;/p&gt;
@@ -2812,20 +2812,20 @@ Und ich habe das Glück gehabt,dabei mitwirken zu dürfen.&lt;/p&gt;
     
     <item>
       <title>Ein wenig schneller zur simulierten Nullverteilung</title>
-      <link>https://sefiroth.net/nap/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</link>
+      <link>https://sefiroth.net/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</guid>
+      <guid>https://sefiroth.net/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/profvis/profvis.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/profvis/profvis.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/profvis/scroll.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/highlight/textmate.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/highlight/highlight.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/profvis-binding/profvis.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://sefiroth.net/nap/rmarkdown-libs/profvis/profvis.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/profvis/profvis.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/profvis/scroll.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://sefiroth.net/nap/rmarkdown-libs/highlight/textmate.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/highlight/highlight.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/profvis-binding/profvis.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Ein Nullhypothesentest ist schnell geschrieben.
@@ -2886,12 +2886,12 @@ Im ersten Fall schaut man sich die Anteilsunterschiede an, wenn man die (potenti
 NullVtlgAntwert &amp;lt;- do(10000) * diffprop(sex ~ shuffle(time),
     success = &amp;quot;Female&amp;quot;, data = tips)
 gf_histogram(~diffprop, nint = 25, data = NullVtlgAntwert)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Schaut man sich nun die Lage der Anteilsdifferenz der Stichprobe &lt;span class=&#34;math inline&#34;&gt;\(\hat\pi=0.2192513\)&lt;/span&gt; in Bezug auf diese Nullverteilung geometrisch an, so kann man schon einen ersten Eindruck erlangen, ob die Nullhypothese abzulehnen ist oder nicht:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;diffpropdach &amp;lt;- diffprop(sex ~ time, success = &amp;quot;Female&amp;quot;, data = tips)
 gf_histogram(~diffprop, nint = 25, data = NullVtlgAntwert) +
     geom_vline(xintercept = diffpropdach, color = &amp;quot;blue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Offenbar ist &lt;span class=&#34;math inline&#34;&gt;\(\hat\pi\)&lt;/span&gt; kein sehr häufiges Ereignis.&lt;/p&gt;
 &lt;p&gt;Der &lt;em&gt;p-Wert&lt;/em&gt; ist ebenfalls leicht zu ermitteln:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pvalue_aw &amp;lt;- prop(~abs(diffprop) &amp;gt;= abs(diffpropdach), data = NullVtlgAntwert)
@@ -2904,12 +2904,12 @@ pvalue_aw&lt;/code&gt;&lt;/pre&gt;
 NullVtlgMittelwert &amp;lt;- do(10000) * diffmean(total_bill ~ shuffle(time),
     data = tips)
 gf_histogram(~diffmean, nint = 25, data = NullVtlgMittelwert)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Und können im Anschluss die Mittelwertsdifferenz der Stichprobe geometrisch einordnen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;diffmeandach &amp;lt;- diffmean(total_bill ~ time, data = tips)
 gf_histogram(~diffmean, nint = 25, data = NullVtlgMittelwert) +
     geom_vline(xintercept = diffmeandach, color = &amp;quot;blue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Auch den &lt;em&gt;p-Wert&lt;/em&gt; können wir wieder leicht bestimmen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pvalue_mw &amp;lt;- prop(~abs(diffmean) &amp;gt;= abs(diffmeandach), data = NullVtlgMittelwert)
 pvalue_mw&lt;/code&gt;&lt;/pre&gt;
@@ -2937,12 +2937,12 @@ Ein Vergleich:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: `data_frame()` was deprecated in tibble 1.1.0.
 ## Please use `tibble()` instead.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_qq(~diffprop, color = ~type, data = df.diffprop)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df.diffmean &amp;lt;- data_frame(diffmean = c(NullDistFSNDR_mw$diffmean,
     NullDistMosaic_mw$diffmean), type = c(rep(&amp;quot;FSNDR&amp;quot;, 10000),
     rep(&amp;quot;mosaic&amp;quot;, 10000)))
 gf_qq(~diffmean, color = ~type, data = df.diffmean)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-2.png&#34; width=&#34;672&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-2.png&#34; width=&#34;672&#34; /&gt;
 # qqplot(NullDistFSNDR_aw&lt;span class=&#34;math inline&#34;&gt;\(diffprop, NullDistMosaic_aw\)&lt;/span&gt;diffprop)
 gf_qq(FSNDR ~ Mosaic, data=df)
 # qqplot(NullDistFSNDR_mw&lt;span class=&#34;math inline&#34;&gt;\(diffmean, NullDistMosaic_mw\)&lt;/span&gt;diffmean)
@@ -2958,11 +2958,11 @@ gf_qq(NullDistFSNDR_mw&lt;span class=&#34;math inline&#34;&gt;\(diffmean ~ NullD
     
     <item>
       <title>Nur ein wenig lineare Regression</title>
-      <link>https://sefiroth.net/nap/post/nur-ein-wenig-lineare-regression/</link>
+      <link>https://sefiroth.net/post/nur-ein-wenig-lineare-regression/</link>
       <pubDate>Mon, 08 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/nur-ein-wenig-lineare-regression/</guid>
+      <guid>https://sefiroth.net/post/nur-ein-wenig-lineare-regression/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Der &lt;em&gt;tipping&lt;/em&gt; Datensatz wird oft analysiert. Das Verhältnis von Trinkgeld (&lt;em&gt;tip&lt;/em&gt;) und Rechnungsbetrag (&lt;em&gt;total_bill&lt;/em&gt;) steht dabei im Vordergrund einer lineare Regressionsanalyse.
@@ -3019,7 +3019,7 @@ xyplot(
             text = list(c(&amp;quot;Regressionsgerade&amp;quot;))
           )
      )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Was hat es mit dem y-Achsenabschnitt &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta}_0\)&lt;/span&gt; auf sich?&lt;/p&gt;
 &lt;p&gt;Ist es etwa eine Art &lt;em&gt;Grundtrinkgeld&lt;/em&gt;, mit dem der Kellern rechnen kann, auch wenn der Kunde gar nichts bestellt?&lt;/p&gt;
 &lt;p&gt;Nun ja, es so etwas in der Art, aber eben ein rein fiktiver Wert, der durch die Konstruktion der Parameter entsteht.
@@ -3069,7 +3069,7 @@ xyplot(
             lines=list(col=c(&amp;quot;red&amp;quot;), lty=c(2), lwd=1.2),
             text=list(c(&amp;quot;Regressionsgerade&amp;quot;)))
      )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Vergleichen wir die beiden Zusammenfassungen, so stellen wir fest das sich mit Ausnahme der &lt;em&gt;[Intercept]&lt;/em&gt; Zeile praktisch nichts geändert hat. Das ist kein Wunder, sondern Absicht!&lt;/p&gt;
 &lt;p&gt;Die Regressionsgerade stellt für unsere Stichprobe die Gerade mit dem geringsten Fehler an den Datenpunkten dar. Mathematisch heißt das folgendes:&lt;/p&gt;
 &lt;p&gt;An den &lt;span class=&#34;math inline&#34;&gt;\(n=244\)&lt;/span&gt; Datenpunkten unserer Stichprobe &lt;span class=&#34;math inline&#34;&gt;\((x_i, y_i)=(tips\$total\_bill[i], tips\$tip[i])\)&lt;/span&gt; [für &lt;span class=&#34;math inline&#34;&gt;\((i=1, \dots, n)\)&lt;/span&gt;] sind die &lt;em&gt;Residuen&lt;/em&gt;, also die &lt;em&gt;Fehlerterme&lt;/em&gt;,&lt;/p&gt;
@@ -3122,10 +3122,10 @@ xyplot(
             text = list(c(&amp;quot;Regressionsgerade / x-Achse&amp;quot;))
           )
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können die Graphik im wesentlichen auch einfacher über den Befehl&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;xyplot(residuals(linMod) ~ fitted(linMod))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;erhalten.&lt;/p&gt;
 &lt;p&gt;Betrachten wir kurz nur die Residuen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats(~residuals(linMod))&lt;/code&gt;&lt;/pre&gt;
@@ -3152,7 +3152,7 @@ xyplot(
 Es könnte also eine linkssteile, rechtsschiefe Verteilung der Residuen vorliegen.
 Betrachten wir dazu das Histogramm:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;histogram(~residuals(linMod), nint = 19)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Schon beim ersten Blick auf das Histogramm kann an eine Normalverteilung der Residuen nicht mehr so ganz geglaubt werden.&lt;/p&gt;
 &lt;p&gt;Ein Shapiro-Wilk-Test&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; hat als Nullhypothese die Annahme, dass die Daten normalverteilt sind!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shapiro.test(residuals(linMod))&lt;/code&gt;&lt;/pre&gt;
@@ -3163,7 +3163,7 @@ Betrachten wir dazu das Histogramm:&lt;/p&gt;
 ## W = 0.96728, p-value = 2.171e-05&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Davon ist nach dem Ergebnis eben sowenig auszugehen, wie nach einem Blick auf das QQ-Normal-Diagramm:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;qqnorm(residuals(linMod), col = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Ein K.O.-Kriterium für gute Prognosen.&lt;/p&gt;
 &lt;p&gt;Wie gut aber beschreibt unsere Regressionsgerade die Daten?&lt;/p&gt;
 &lt;p&gt;Als Maß dafür können wir das Bestimmtheitsmaß nehmen.&lt;/p&gt;
@@ -3193,7 +3193,7 @@ xyplot(
             text = list(c(&amp;quot;Mittelwert Trinkgeld&amp;quot;, &amp;quot;Regressionsgerade&amp;quot;))
     )
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Die Varianz &lt;span class=&#34;math inline&#34;&gt;\(s^2_{y_i}=1.9144546\)&lt;/span&gt; beschreibt die mittlere quadratische Abweichung der Datenpunkte &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; vom Mittelwert &lt;span class=&#34;math inline&#34;&gt;\(\bar{y}\)&lt;/span&gt;.
 Diese Varianz lässt sich Zerlegen in einen Anteil, der durch die Regressionsgerade &lt;em&gt;erklärt&lt;/em&gt; wird und in einen Anteil, der durch die Regressionsgerade &lt;em&gt;nicht erklärt&lt;/em&gt; wird.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
@@ -3315,11 +3315,11 @@ Wenn der &lt;em&gt;Wald-Test&lt;/em&gt; für eine oder mehrere unabhängige Vari
     
     <item>
       <title>Prognose-, Konfidenz- und Fiduzialintervalle</title>
-      <link>https://sefiroth.net/nap/post/prognose-konfidenz-und-fiduzialintervalle/</link>
+      <link>https://sefiroth.net/post/prognose-konfidenz-und-fiduzialintervalle/</link>
       <pubDate>Thu, 04 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/prognose-konfidenz-und-fiduzialintervalle/</guid>
+      <guid>https://sefiroth.net/post/prognose-konfidenz-und-fiduzialintervalle/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;*&lt;strong&gt;WORK IN PROGRESS&lt;/strong&gt;
@@ -3340,7 +3340,7 @@ Dann heißt das (stochastische) Intervall &lt;span class=&#34;math inline&#34;&g
 &lt;p&gt;Wir nehmen zunächst als Population &lt;span class=&#34;math inline&#34;&gt;\(N=1000\)&lt;/span&gt; normalverteilte Zufallszahlen mit dem Mittelwert &lt;span class=&#34;math inline&#34;&gt;\(\mu= 0\)&lt;/span&gt; und der Standardabweichung &lt;span class=&#34;math inline&#34;&gt;\(\sigma=2.0088\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Dazu das Histogramm der Population:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;histogram(pop, xlab=&amp;quot;Population&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Aus dieser Population ziehen wir eine Stichprobe &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; vom Umfang $n=$40 und erhalten die folgenden statistischen Daten:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats(x)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    min      Q1 median    Q3   max   mean    sd  n missing
@@ -3372,7 +3372,7 @@ und&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;##     cover
 ## n     Low  Yes High
 ##   40 0.00 0.98 0.02&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;prognoseintervalle&#34; class=&#34;section level2&#34;&gt;
@@ -3396,11 +3396,11 @@ und&lt;/p&gt;
     
     <item>
       <title>Konfidenzintervalle</title>
-      <link>https://sefiroth.net/nap/post/konfidenzintervalle/</link>
+      <link>https://sefiroth.net/post/konfidenzintervalle/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/konfidenzintervalle/</guid>
+      <guid>https://sefiroth.net/post/konfidenzintervalle/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Stub!&lt;/p&gt;
@@ -3409,11 +3409,11 @@ und&lt;/p&gt;
     
     <item>
       <title>Zentrales Schwankungsintervall</title>
-      <link>https://sefiroth.net/nap/post/zentrales-schwankungsintervall/</link>
+      <link>https://sefiroth.net/post/zentrales-schwankungsintervall/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/zentrales-schwankungsintervall/</guid>
+      <guid>https://sefiroth.net/post/zentrales-schwankungsintervall/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Das &lt;strong&gt;zentrale Schwankungsintervall&lt;/strong&gt; sagt etwas über die Präzision der Lageschätzung eines Parameters (zum Beispiel eines Mittelwertes) aus. Das Schwankungsintervall schließt einen Bereich um den wahren Wert des Parameters in der Grundgesamtheit ein, der – vereinfacht gesprochen – mit einer zuvor festgelegten Sicherheitswahrscheinlichkeit den aus der Stichprobe geschätzten Parameter enthält.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
@@ -3428,11 +3428,11 @@ und&lt;/p&gt;
     
     <item>
       <title>Quartile, Quantile, Perzentile etc.</title>
-      <link>https://sefiroth.net/nap/post/quartile-quantile-perzentile-etc/</link>
+      <link>https://sefiroth.net/post/quartile-quantile-perzentile-etc/</link>
       <pubDate>Tue, 19 Dec 2017 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/quartile-quantile-perzentile-etc/</guid>
+      <guid>https://sefiroth.net/post/quartile-quantile-perzentile-etc/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;“Was hat das eigentlich mit den Quartilen, Quantilen und so weiter auf sich?”

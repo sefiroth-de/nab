@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/nap/project/</link>
-      <atom:link href="https://sefiroth.net/nap/project/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/project/</link>
+      <atom:link href="https://sefiroth.net/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 10 Feb 2017 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 10 Feb 2017 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Projects</title>
-      <link>https://sefiroth.net/nap/project/</link>
+      <link>https://sefiroth.net/project/</link>
     </image>
     
     <item>
       <title>Etwas R am Abend</title>
-      <link>https://sefiroth.net/nap/project/etwas-r-am-abend/</link>
+      <link>https://sefiroth.net/project/etwas-r-am-abend/</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/project/etwas-r-am-abend/</guid>
+      <guid>https://sefiroth.net/project/etwas-r-am-abend/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FastSimNullDistR</title>
-      <link>https://sefiroth.net/nap/project/fastsimnulldistr/</link>
+      <link>https://sefiroth.net/project/fastsimnulldistr/</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/project/fastsimnulldistr/</guid>
+      <guid>https://sefiroth.net/project/fastsimnulldistr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pandoc filter: style.py</title>
-      <link>https://sefiroth.net/nap/project/style.py/</link>
+      <link>https://sefiroth.net/project/style.py/</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/project/style.py/</guid>
+      <guid>https://sefiroth.net/project/style.py/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pandoc filter: typography.py</title>
-      <link>https://sefiroth.net/nap/project/typography.py/</link>
+      <link>https://sefiroth.net/project/typography.py/</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/project/typography.py/</guid>
+      <guid>https://sefiroth.net/project/typography.py/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RmdStyleChecker</title>
-      <link>https://sefiroth.net/nap/project/rmdstylechecker/</link>
+      <link>https://sefiroth.net/project/rmdstylechecker/</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/project/rmdstylechecker/</guid>
+      <guid>https://sefiroth.net/project/rmdstylechecker/</guid>
       <description>&lt;p&gt;Jede Sprache hat Regeln, auch Programmiersprachen und R markdown ist eine Programmiersprache. Wieso also nicht ein Tool schreiben, welches &lt;em&gt;SStilregeln&lt;/em&gt; (engl. &lt;em&gt;style guides&lt;/em&gt;) für R markdown kontrolliert um auch im kolaborativen Einsatz ein einheitliches &amp;ldquo;Schriftbild&amp;rdquo; des Quelltextes zu erhalten.&lt;/p&gt;
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
 &lt;p&gt;Einen ersten Schritt habe ich mit dem &lt;a href=&#34;auch-rmarkdown-dateien-sollten-sich-regeln-halten&#34;&gt;Blog-Eintrag&lt;/a&gt; gemacht und dazu gleich noch ein Tool in &lt;em&gt;Python&lt;/em&gt; geschrieben um Verstöße dagegen schneller zu finden.&lt;/p&gt;

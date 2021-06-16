@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Freiheitsgrade | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/nap/tag/freiheitsgrade/</link>
-      <atom:link href="https://sefiroth.net/nap/tag/freiheitsgrade/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/tag/freiheitsgrade/</link>
+      <atom:link href="https://sefiroth.net/tag/freiheitsgrade/index.xml" rel="self" type="application/rss+xml" />
     <description>Freiheitsgrade</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 17 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 17 Feb 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Freiheitsgrade</title>
-      <link>https://sefiroth.net/nap/tag/freiheitsgrade/</link>
+      <link>https://sefiroth.net/tag/freiheitsgrade/</link>
     </image>
     
     <item>
       <title>Über die t-Verteilung mit einem bzw. zwei Freiheitsgraden</title>
-      <link>https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</link>
+      <link>https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</link>
       <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</guid>
+      <guid>https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;vorbereitungen-für-r&#34; class=&#34;section level2&#34;&gt;
@@ -136,7 +136,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
   gf_line(f_star(x) ~ x, 
           color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
         xlim = c(lower_bound, upper_bound), 
@@ -147,7 +147,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wie groß ist nun der (absolute) Fehler zwischen &lt;span class=&#34;math inline&#34;&gt;\(f_1^*\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(f_1\)&lt;/span&gt;?&lt;/p&gt;
 &lt;p&gt;Eine Grafik von &lt;span class=&#34;math inline&#34;&gt;\(f_1^*-f_1\)&lt;/span&gt; zeigt:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- seq(1,1000,1)
@@ -157,7 +157,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Genauer gilt:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 f_1^*(x) - f_1(x) = \frac{1}{x^2+x^4}
@@ -256,7 +256,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
   gf_line(f_star(x) ~ x, 
           color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
         xlim = c(lower_bound, upper_bound), 
@@ -267,7 +267,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wie groß ist nun der absolute Fehler zwischen &lt;span class=&#34;math inline&#34;&gt;\(f_2^*\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(f_2\)&lt;/span&gt; genau?&lt;/p&gt;
 &lt;p&gt;Eine Grafik zeigt von &lt;span class=&#34;math inline&#34;&gt;\(f_2^*-2_1\)&lt;/span&gt; zeigt:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- seq(1,1000,1)
@@ -277,7 +277,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;fussnoten&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Fussnoten&lt;/h2&gt;

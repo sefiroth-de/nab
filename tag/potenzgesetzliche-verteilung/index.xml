@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Potenzgesetzliche Verteilung | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/nap/tag/potenzgesetzliche-verteilung/</link>
-      <atom:link href="https://sefiroth.net/nap/tag/potenzgesetzliche-verteilung/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/tag/potenzgesetzliche-verteilung/</link>
+      <atom:link href="https://sefiroth.net/tag/potenzgesetzliche-verteilung/index.xml" rel="self" type="application/rss+xml" />
     <description>Potenzgesetzliche Verteilung</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2021 by Norman Markgraf</copyright><lastBuildDate>Sat, 13 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Sat, 13 Feb 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Potenzgesetzliche Verteilung</title>
-      <link>https://sefiroth.net/nap/tag/potenzgesetzliche-verteilung/</link>
+      <link>https://sefiroth.net/tag/potenzgesetzliche-verteilung/</link>
     </image>
     
     <item>
       <title>Behäbige Funktionen aka slowly varying function</title>
-      <link>https://sefiroth.net/nap/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</link>
+      <link>https://sefiroth.net/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</link>
       <pubDate>Sat, 13 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</guid>
+      <guid>https://sefiroth.net/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Reelle Funktionen, die ihren Funktionswert kaum ändern, kann man mit
@@ -103,11 +103,11 @@ Weiterführend gibt es mit der
     
     <item>
       <title>Ein paar Gedanken über potenzgesetzliche Verteilungen (power law distributions)</title>
-      <link>https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/</link>
+      <link>https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/</guid>
+      <guid>https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; heißt &lt;strong&gt;potenzgesetzlich&lt;/strong&gt;,
@@ -191,7 +191,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
   gf_line(C*x**(-alpha) ~ x, 
           color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
         xlim = c(lower_bound, upper_bound), 
@@ -202,7 +202,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Noch ein Beispiel:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Nehmen wir die t-Verteilung mit &lt;span class=&#34;math inline&#34;&gt;\(n=1\)&lt;/span&gt; Freiheitsgeraden.
 Die Dichtefunktion bezeichnen wir mit &lt;span class=&#34;math inline&#34;&gt;\(t_{1}(x)\)&lt;/span&gt;.&lt;/p&gt;
@@ -217,7 +217,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
   gf_line(C*x**(-alpha) ~ x, 
           color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
         xlim = c(lower_bound, upper_bound), 
@@ -228,7 +228,7 @@ gf_dist(&amp;quot;t&amp;quot;, df = dfree,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Ein ’Gegen-’Beispiel:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Betrachten wir nun die (rechte Seite – &lt;span class=&#34;math inline&#34;&gt;\(x&amp;gt;1=x_{min}\)&lt;/span&gt;) einer Gauß’schen Standardnormalverteilung.&lt;/p&gt;
 &lt;p&gt;Mit den Stützstellen &lt;span class=&#34;math inline&#34;&gt;\(x_0 = 1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_1 = 5\)&lt;/span&gt; können wir &lt;span class=&#34;math inline&#34;&gt;\(\alpha=7.46\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(C=0.24\)&lt;/span&gt; abschätzen.
@@ -242,7 +242,7 @@ gf_dist(&amp;quot;norm&amp;quot;,
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
   gf_line(C*x**(-alpha) ~ x, 
           color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;norm&amp;quot;, 
         xlim = c(lower_bound, upper_bound), 
@@ -253,7 +253,7 @@ gf_dist(&amp;quot;norm&amp;quot;,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir erkennen, dass hier etwas nicht passt.
 Die Standardnormalverteilung ist (vielleicht) keine &lt;em&gt;potenzgesetzich&lt;/em&gt; Verteilung?&lt;/p&gt;
 &lt;p&gt;Ein oft verwendetes Kriterium ist, dass sich die Funktion in der doppelt-logarithmischen Darstellung als Gerade offenbart.&lt;/p&gt;
@@ -268,7 +268,7 @@ gf_dist(&amp;quot;norm&amp;quot;,
     scale_x_log10(),
     scale_y_log10()
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;** — **&lt;/p&gt;
 &lt;p&gt;Weiter gilt für &lt;em&gt;potenzgesetzliche Verteilungen&lt;/em&gt; wegen&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\frac{f(x)}{f(c\cdot x)} = \frac{C \cdot x^{-\alpha}}{C \cdot (c\cdot x)^{-\alpha}}

@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Allgemein | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/nap/tag/allgemein/</link>
-      <atom:link href="https://sefiroth.net/nap/tag/allgemein/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/tag/allgemein/</link>
+      <atom:link href="https://sefiroth.net/tag/allgemein/index.xml" rel="self" type="application/rss+xml" />
     <description>Allgemein</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 09 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 09 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Allgemein</title>
-      <link>https://sefiroth.net/nap/tag/allgemein/</link>
+      <link>https://sefiroth.net/tag/allgemein/</link>
     </image>
     
     <item>
       <title>Über die Koeffizienten einer linearen Regression</title>
-      <link>https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/</link>
+      <link>https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/</link>
       <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/</guid>
+      <guid>https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Bei einer &lt;em&gt;einfachen Regression&lt;/em&gt; versuchen wir zu gegebenen
@@ -179,7 +179,7 @@ dt &amp;lt;- mtcars
 # Mit Hilfe eines Streudiagramms
 gf_point(mpg ~ hp, data = dt) %&amp;gt;%
   gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Berechnen wir zunächst die Mittelwerte von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; (also ‘hp’) und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; (also ‘mpg’)&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean_hp = mean(~ hp, data = dt)
 mean_mpg = mean(~ mpg, data = dt)
@@ -194,7 +194,7 @@ Streudiagramm ein:&lt;/p&gt;
   gf_vline(xintercept = ~ mean_hp, color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
   gf_point(mean_mpg ~ mean_hp, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
   gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Berechnen wir nun die Schätzwerte für die Regressiongerade&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beta_1 = cov(mpg ~ hp, data = dt) / var(~ hp, data = dt)
 beta_0 = mean_mpg - beta_1 * mean_hp&lt;/code&gt;&lt;/pre&gt;
@@ -205,7 +205,7 @@ beta_0 = mean_mpg - beta_1 * mean_hp&lt;/code&gt;&lt;/pre&gt;
   gf_point(mean_mpg ~ mean_hp, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
   gf_abline(slope = ~ beta_1, intercept = ~beta_0, color = &amp;quot;dodgerblue&amp;quot;) %&amp;gt;%
   gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
   \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
@@ -234,13 +234,13 @@ sind Rundungsfehler, die der Computer macht!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(mpg_stud ~ hp_stud, data = dt) %&amp;gt;%
   gf_point(0 ~ 0, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
   gf_lims(y = c(-2, 2))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;90%&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;90%&#34; /&gt;
 Auch wenn die Skalierungen sich geändert haben, die Diagramme sind sehr ähnlich.&lt;/p&gt;
 &lt;p&gt;Bestimmen wir die Koeffizienten der Regressionsgerade&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beta_stud_1 = cov(mpg_stud ~ hp_stud, data = dt)
 beta_stud_0 = 0 - beta_stud_1 * 0&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;und setzen sie in das Steudiagramm ein:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können das studentisierte Problem auch wieder auf unser ursprüngliches
 zurück rechnen.&lt;/p&gt;
 &lt;p&gt;Die Regressionsgerade im studentisierten Problem lautet:&lt;/p&gt;
@@ -411,7 +411,7 @@ b_1 &amp;lt;- -1 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Wir haben somit mit &lt;span class=&#34;math inline&#34;&gt;\(203\)&lt;/span&gt; Iterationsschritten das folgende Ergebnisse für die Regressionskoeffizienten:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_0^{stud} = 0` \qquad \hat\beta_1 {stud} = -0.7761689\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Betrachten wir die daraus erstellte Regressionsgerade:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Um die ursprünglichen Regressionskoeffizenten zu erhalten müssen wir zurück rechnen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b1 &amp;lt;- b_1 * sd(dt$mpg) / sd(dt$hp)
 b0 &amp;lt;- mean(dt$mpg) -  b1 * mean(dt$hp)&lt;/code&gt;&lt;/pre&gt;
@@ -482,14 +482,14 @@ f &amp;lt;- function(beta) {
 opti_as_beta_0 &amp;lt;- ergb$par[1]
 opti_as_beta_1 &amp;lt;- ergb$par[2]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Schauen wir uns nun die so erhaltene Gerade im Vergleich mit der ‘normalen’ Regressionsgerade an:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;In grün und gestrichelt sehen wir die Gerade aus der &lt;em&gt;Idee der quadratsichen Abweichungssummen&lt;/em&gt;, in blau die aus der &lt;em&gt;Idee der absoluten Abweichungssummen&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Für unser ursprüngliches Problem rechnen wir um:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Umrechnen in die urspüngliche Fragestellung
 as_b1 &amp;lt;- opti_as_beta_1 * sd(dt$mpg) / sd(dt$hp)
 as_b0 &amp;lt;- (mean(dt$mpg) - as_b1 * mean(dt$hp)) + opti_as_beta_0 * sd(dt$mpg)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Und die dazu gehörige Darstellung:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
   \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
@@ -567,11 +567,11 @@ tab&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>SBI - Simulation Based Inference</title>
-      <link>https://sefiroth.net/nap/post/sbi-simulation-based-inference/</link>
+      <link>https://sefiroth.net/post/sbi-simulation-based-inference/</link>
       <pubDate>Mon, 11 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/sbi-simulation-based-inference/</guid>
+      <guid>https://sefiroth.net/post/sbi-simulation-based-inference/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Wenn meine Tochter &lt;em&gt;SBI&lt;/em&gt; hört, denkt sie an &lt;em&gt;Sally Bollywood Investigation&lt;/em&gt;. – Und ich oft auch. – Mit &lt;em&gt;SBI&lt;/em&gt; ist hier aber nicht der Trickfilm für Kinder, sondern &lt;em&gt;&lt;strong&gt;S&lt;/strong&gt;imulation &lt;strong&gt;B&lt;/strong&gt;ased &lt;strong&gt;I&lt;/strong&gt;nference&lt;/em&gt;, gemeint.&lt;/p&gt;
@@ -583,11 +583,11 @@ Und ich habe das Glück gehabt,dabei mitwirken zu dürfen.&lt;/p&gt;
     
     <item>
       <title>Auch R markdown Dateien sollten sich an Regeln halten</title>
-      <link>https://sefiroth.net/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</link>
+      <link>https://sefiroth.net/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</guid>
+      <guid>https://sefiroth.net/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Jede Programmiersprache hat Regeln.
@@ -668,9 +668,9 @@ Den &lt;em&gt;Python&lt;/em&gt;-Quelltext findet man unter &lt;a href=&#34;https
     
     <item>
       <title>10 Dinge die kein Talent benötigen!</title>
-      <link>https://sefiroth.net/nap/post/10-dinge-die-kein-talent-benotigen/</link>
+      <link>https://sefiroth.net/post/10-dinge-die-kein-talent-benotigen/</link>
       <pubDate>Thu, 13 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/nap/post/10-dinge-die-kein-talent-benotigen/</guid>
+      <guid>https://sefiroth.net/post/10-dinge-die-kein-talent-benotigen/</guid>
       <description>&lt;p&gt;Gerade im Internet gefunden:&lt;/p&gt;
 &lt;h3 id=&#34;10-dinge-die-kein-talent-benötigen&#34;&gt;10 Dinge die kein Talent benötigen!&lt;/h3&gt;
 &lt;ol&gt;
