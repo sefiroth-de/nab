@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>probability desity function | Norman&#39;s Academic Blog</title>
+    <link>https://sefiroth.net/nap/tag/probability-desity-function/</link>
+      <atom:link href="https://sefiroth.net/nap/tag/probability-desity-function/index.xml" rel="self" type="application/rss+xml" />
+    <description>probability desity function</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>probability desity function</title>
+      <link>https://sefiroth.net/nap/tag/probability-desity-function/</link>
+    </image>
+    
+    <item>
+      <title>Gedankenstütze zu wichtigen Funktionsbegriffen in der Statistik</title>
+      <link>https://sefiroth.net/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;eine-kleine-liste-von-fundermentalen-begriffen-in-der-statistik.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Eine kleine Liste von fundermentalen Begriffen in der Statistik.&lt;/h1&gt;
+&lt;p&gt;Gilt für eine reelle Funktion &lt;span class=&#34;math inline&#34;&gt;\(f: \mathbf{R} \to \mathbf{R}\)&lt;/span&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; ist &lt;em&gt;nichtnegativ&lt;/em&gt;, d.h., &lt;span class=&#34;math inline&#34;&gt;\(f(x) \geq 0\)&lt;/span&gt;, für alle &lt;span class=&#34;math inline&#34;&gt;\(x \in \mathbf{R}\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; ist &lt;em&gt;integrierbar&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; ist &lt;em&gt;normiert&lt;/em&gt; in dem Sinne, dass
+&lt;span class=&#34;math display&#34;&gt;\[\int_{-\infty}^\infty f(x) \text{d}x = 1\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Dann nennen wir &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; eine &lt;strong&gt;Wahrscheinlichkeitsdichtefunktion&lt;/strong&gt; (engl. &lt;strong&gt;probability density funktion&lt;/strong&gt; kurz &lt;strong&gt;pdf&lt;/strong&gt;) oder kurz &lt;strong&gt;Dichte&lt;/strong&gt; (engl. &lt;strong&gt;density&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;Durch
+&lt;span class=&#34;math display&#34;&gt;\[P([a, b]) := \int_a^b f(x) \text{d} x\]&lt;/span&gt;
+definiert &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; eine &lt;em&gt;Wahrscheinlichkeitsverteilung&lt;/em&gt; auf den reellen Zahlen.&lt;/p&gt;
+&lt;p&gt;Ist &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; eine reelwertige &lt;em&gt;Zufallsvariable&lt;/em&gt; (kurz &lt;strong&gt;ZV&lt;/strong&gt;) und existiert eine
+reelle Funktion &lt;span class=&#34;math inline&#34;&gt;\(f_X(x)\)&lt;/span&gt; der art, dass für alle &lt;span class=&#34;math inline&#34;&gt;\(a \in \mathbf{R}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(X \leq a) = \int_{-\infty}^a f_X(x) \text{d}x\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;gilt, so nennt man &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; die &lt;strong&gt;Wahrscheinlichkeitsdichtefunktion von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Die Funktion&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F_X(a) = P(X \leq a)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;nenen wir &lt;strong&gt;(Wahrscheinlichkeits-)Verteilung(-sfunktion)&lt;/strong&gt;
+(engl. &lt;strong&gt;cumulative distribution function&lt;/strong&gt; kurz &lt;strong&gt;cdf&lt;/strong&gt;
+aber auch nur &lt;strong&gt;distribution function&lt;/strong&gt;) &lt;strong&gt;von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Genau dann ist eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(F: \mathbf{R} \to [0, 1]\)&lt;/span&gt;
+eine &lt;strong&gt;Verteilungsfunktion&lt;/strong&gt;, wenngilt:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to - \infty} F(t)=0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to + \infty} F(t)=1\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;monoton wachsend&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;rechtsseitig stetig&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Die Funktion&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\overline{F}_X(a) = 1 - F_X(a)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;nennen wir
+&lt;strong&gt;Überlebensfunktion&lt;/strong&gt; (engl. &lt;strong&gt;survival function&lt;/strong&gt;, &lt;strong&gt;complementarey cumulative distribution funktion&lt;/strong&gt; kurz &lt;strong&gt;ccdf&lt;/strong&gt;, &lt;strong&gt;tail distribution&lt;/strong&gt;, &lt;strong&gt;exceedance&lt;/strong&gt; oder &lt;strong&gt;reliability function&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;Es gilt &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}_X(a) + F_X(a) = 1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Genau dann ist eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}: \mathbf{R} \to [0, 1]\)&lt;/span&gt;
+eine &lt;strong&gt;Überlebensfunktion&lt;/strong&gt;, wenn gilt:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to - \infty} \overline{F}(t)=1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to + \infty} \overline{F}(t)=0\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;monoton fallend&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;rechtsseitig stetig&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

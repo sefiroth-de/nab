@@ -5,12 +5,193 @@
     <link>https://sefiroth.net/nap/tag/wahrscheinlichkeitstheorie/</link>
       <atom:link href="https://sefiroth.net/nap/tag/wahrscheinlichkeitstheorie/index.xml" rel="self" type="application/rss+xml" />
     <description>Wahrscheinlichkeitstheorie</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 11 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Wahrscheinlichkeitstheorie</title>
       <link>https://sefiroth.net/nap/tag/wahrscheinlichkeitstheorie/</link>
     </image>
+    
+    <item>
+      <title>Wege zur Normalverteilung</title>
+      <link>https://sefiroth.net/nap/post/wege-zur-normalverteilung/</link>
+      <pubDate>Fri, 11 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/wege-zur-normalverteilung/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Der fairen Wurf einer fairen Münze, also eine Münze bei der Kopf und Zahl gleich wahrscheinlich geworfen wird, sei der Ausgang des ersten Weges.&lt;/p&gt;
+&lt;p&gt;Wir können den Münzwurf mit R simulieren:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+set.seed(2009)
+
+rflip(1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Flipping 1 coin [ Prob(Heads) = 0.5 ] ...
+## 
+## T
+## 
+## Number of Heads: 0 [Proportion Heads: 0]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Genauso wie den Wurf zweier Münzen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rflip(2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Flipping 2 coins [ Prob(Heads) = 0.5 ] ...
+## 
+## H H
+## 
+## Number of Heads: 2 [Proportion Heads: 1]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Oder auch von 20 Münzwürfen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rflip(20)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Flipping 20 coins [ Prob(Heads) = 0.5 ] ...
+## 
+## T T T T H H T T T H H H H T H T T H H H
+## 
+## Number of Heads: 10 [Proportion Heads: 0.5]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Wir wollen uns dafür interessieren, wie der Zufall auf jeweils &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; Münzwürfe einwirkt&lt;/p&gt;
+&lt;p&gt;Und wieder holen dafür die drei Experiment jeweils &lt;span class=&#34;math inline&#34;&gt;\(N=10^{4}\)&lt;/span&gt; mal und schauen
+uns danach anwie die Anzahl der &lt;em&gt;Kopf&lt;/em&gt; Würfe variiert:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;N &amp;lt;- 10000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 1
+vrtlg_1 &amp;lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_1) %&amp;gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5,n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=2\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 2
+vrtlg_2 &amp;lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_2) %&amp;gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=20\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 20
+vrtlg_20 &amp;lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_20) %&amp;gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(n=50\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt; -50&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] FALSE&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vrtlg_50 &amp;lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_50) %&amp;gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Der faire Wurf eine fairen Münze &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; ist aber vorallem ein Gedanken-Expermiment,
+bei dem wir davon ausgehen, dass die Wahrscheinlichkeit für Kopf gleich der Wahrscheinlichkeit für Zahl ist:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(X = \text{&amp;quot;Kopf&amp;quot;}) = P(X = \text{&amp;quot;Zahl&amp;quot;}) = 50\,\% = 0{,}5\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir wollen die beiden Ergebnisse kodieren: &lt;span class=&#34;math inline&#34;&gt;\(\text{&amp;quot;Kopf&amp;quot;}\)&lt;/span&gt; mit &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\text{&amp;quot;Zahl&amp;quot;}\)&lt;/span&gt; mit &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;. Somit können wir schreiben:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(X = 0)  = 0{,}5 = P(X = 1)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Für denn Fall, dass die Münze nicht mehr fair ist wollen wir vereinbaren, dass wir
+mit &lt;span class=&#34;math inline&#34;&gt;\(q = P(X = 0)\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(p = P(X = 1)\)&lt;/span&gt; die jeweiligen Wahrscheinlichkeiten bezeichnen wollen. Es gilt aber immer, dass &lt;span class=&#34;math inline&#34;&gt;\(q+p = 1\)&lt;/span&gt; ist!&lt;/p&gt;
+&lt;p&gt;Eine Variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; die dem Zufall ein Wert &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; zuweist, wollen wir &lt;strong&gt;Zufallsvariable&lt;/strong&gt; nennen.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ausgehen von der Annahme können wir uns diese theoretischen Verteilungen auch einmal ansehen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p = 0.5
+n = 1
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 2
+tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_2)
+dist_2 &amp;lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
+  gf_point(density ~ x, data = dist_2, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 20
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 20
+tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_20)
+dist_20 &amp;lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
+  gf_point(density ~ x, data = dist_20, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 50
+tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_50)
+dist_50 &amp;lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = 0.5) %&amp;gt;%
+  gf_point(density ~ x, data = dist_50, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 100
+N &amp;lt;- 5 * n**2
+vrtlg_100 &amp;lt;- do(N) * rflip(n)
+tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_100)
+dist_100 &amp;lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
+  gf_point(density ~ x, data = dist_100, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 300
+N &amp;lt;- 5 * n**2
+vrtlg_300 &amp;lt;- do(N) * rflip(n)
+tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_300)
+dist_300 &amp;lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
+  gf_point(density ~ x, data = dist_300, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Zeichnen wir nun die &lt;em&gt;Gauß’sche Glockenkurve&lt;/em&gt; in rot dazu:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
+  gf_point(density ~ x, data = dist_300, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7) %&amp;gt;%
+  gf_dist(&amp;quot;norm&amp;quot;, mean = n*p, sd = sqrt(n*p*(1 - p)), color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Die &lt;em&gt;Gauß’sche Glockenkurve&lt;/em&gt; ist die &lt;strong&gt;Dichtefunktion&lt;/strong&gt; der Normalverteilung und ist definiert durch:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{(x-\mu)^2}{2\sigma^2}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Mit den beiden Parameter &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt; kann man den &lt;em&gt;Mittelwert der Verteilung&lt;/em&gt; (auch &lt;strong&gt;Erwartungswert&lt;/strong&gt; genannt) und die &lt;em&gt;Varianz der Verteilung&lt;/em&gt; einstellen.&lt;/p&gt;
+&lt;p&gt;Wir haben diese Werte oben mit den theoretischen Werten der &lt;em&gt;Binomialverteilung&lt;/em&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(\mu = E[X] = p \cdot n\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\sigma = \sqrt{\sigma^2}= \sqrt{Var[X]} = \sqrt{n \cdot p \cdot (1-p)}\)&lt;/span&gt; belegt.&lt;/p&gt;
+&lt;p&gt;Wir sehen, die (simulierten) relativen Häufigkeiten der Münzwürfe streben mit steigendem &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; mehr und mehr in Richtung der (theoretischen) Wahrscheinlichkeiten der Binomialverteilung und diese (mit steigendem &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;) gegen die Gauß’sche Glockenkurve der Normalverteilung.&lt;/p&gt;
+&lt;p&gt;Eine &lt;strong&gt;Verteilungsfunktion&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(F(x)\)&lt;/span&gt; gibt an, wie wahrscheinlich es ist, einen Wert &lt;span class=&#34;math inline&#34;&gt;\(\leq x\)&lt;/span&gt; zu beobachten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F(x) = P(X \leq x)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Natürlich ist damit immer &lt;span class=&#34;math inline&#34;&gt;\(0 \leq F(x) \leq 1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Eine &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(F_n(x)\)&lt;/span&gt;gibt an, wie groß die relative Häufigkeit
+des eintretens von Werten &lt;span class=&#34;math inline&#34;&gt;\(\leq x\)&lt;/span&gt; bei einem Stichprobenumfang von &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; waren:
+&lt;span class=&#34;math display&#34;&gt;\[F_n(x) = \frac{\text{Anzahl der Werte} \leq x}{n}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Betrachen wir nun &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; unserer Experimente:&lt;/p&gt;
+&lt;p&gt;n = 2&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;n = 20&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_20)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;
+n = 50&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_50)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;n = 300&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_300)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;
+Tragen wir zur &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; auch die &lt;em&gt;Verteilungsfunktion&lt;/em&gt; der Normalverteilung von oben ein:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 300
+gf_ecdf( ~ heads, data = vrtlg_300) %&amp;gt;%
+  gf_dist(&amp;quot;norm&amp;quot;, mean = n*p, sd = sqrt(n*p*(1 - p)), kind=&amp;quot;cdf&amp;quot;, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Die &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; strebt also gegen die (theoretisch) &lt;em&gt;Verteilungsfunktion&lt;/em&gt; der Normalverteilung. Sie lautet:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F(x) = \int_{-\infty}^x f(u)\, \text{d} u = \int_{-\infty}^x\frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{(x-\mu)^2}{2\sigma^2}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Eigentlich handelt es sich damit strenggenommen um eine Funktion. Und es müssen noch weitere Eigenschaften erfüllt sein. Aber darauf gehen wir hier nicht weiter ein.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Konfidenzintervalle</title>
@@ -18,7 +199,7 @@
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/konfidenzintervalle/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Stub!&lt;/p&gt;
@@ -31,7 +212,7 @@
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/zentrales-schwankungsintervall/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Das &lt;strong&gt;zentrale Schwankungsintervall&lt;/strong&gt; sagt etwas über die Präzision der Lageschätzung eines Parameters (zum Beispiel eines Mittelwertes) aus. Das Schwankungsintervall schließt einen Bereich um den wahren Wert des Parameters in der Grundgesamtheit ein, der – vereinfacht gesprochen – mit einer zuvor festgelegten Sicherheitswahrscheinlichkeit den aus der Stichprobe geschätzten Parameter enthält.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
@@ -50,7 +231,7 @@
       <pubDate>Tue, 19 Dec 2017 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/quartile-quantile-perzentile-etc/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;“Was hat das eigentlich mit den Quartilen, Quantilen und so weiter auf sich?”
@@ -143,7 +324,7 @@ Ebenso liegen 40 % der Stichprobe unterhalb des vierten Dezils und 60 % oberhalb
       <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/der-zentrale-grenzwertsatz/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;der-zentrale-grenzwertsatz-der-statistik-bei-identischer-verteilung.&#34; class=&#34;section level2&#34;&gt;
@@ -188,7 +369,7 @@ zscore(u)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;zscore(y)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1]  0.1677971 -0.1526624 -0.6657361  1.6085958 -0.9579944&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Die Behauptung des Zentralengrenzwertsatzes ist nun, dass mit steigender Anzahl an Werten &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; die standardisierten Werte in der empirischen Verteilungsfunktion sich immer mehr der Verteilungsfunktion der Standardnormalverteilung annähern:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;../../post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Weiterführende Literatur und Quellen dieses Eintrags:&lt;/strong&gt;&lt;/p&gt;
 &lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;
 &lt;div id=&#34;ref-Schira2005&#34; class=&#34;csl-entry&#34;&gt;

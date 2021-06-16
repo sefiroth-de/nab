@@ -5,12 +5,1025 @@
     <link>https://sefiroth.net/nap/category/statistisches/</link>
       <atom:link href="https://sefiroth.net/nap/category/statistisches/index.xml" rel="self" type="application/rss+xml" />
     <description>Statistisches</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Mon, 29 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 11 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Statistisches</title>
       <link>https://sefiroth.net/nap/category/statistisches/</link>
     </image>
+    
+    <item>
+      <title>Wege zur Normalverteilung</title>
+      <link>https://sefiroth.net/nap/post/wege-zur-normalverteilung/</link>
+      <pubDate>Fri, 11 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/wege-zur-normalverteilung/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Der fairen Wurf einer fairen Münze, also eine Münze bei der Kopf und Zahl gleich wahrscheinlich geworfen wird, sei der Ausgang des ersten Weges.&lt;/p&gt;
+&lt;p&gt;Wir können den Münzwurf mit R simulieren:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+set.seed(2009)
+
+rflip(1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Flipping 1 coin [ Prob(Heads) = 0.5 ] ...
+## 
+## T
+## 
+## Number of Heads: 0 [Proportion Heads: 0]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Genauso wie den Wurf zweier Münzen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rflip(2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Flipping 2 coins [ Prob(Heads) = 0.5 ] ...
+## 
+## H H
+## 
+## Number of Heads: 2 [Proportion Heads: 1]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Oder auch von 20 Münzwürfen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rflip(20)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Flipping 20 coins [ Prob(Heads) = 0.5 ] ...
+## 
+## T T T T H H T T T H H H H T H T T H H H
+## 
+## Number of Heads: 10 [Proportion Heads: 0.5]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Wir wollen uns dafür interessieren, wie der Zufall auf jeweils &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; Münzwürfe einwirkt&lt;/p&gt;
+&lt;p&gt;Und wieder holen dafür die drei Experiment jeweils &lt;span class=&#34;math inline&#34;&gt;\(N=10^{4}\)&lt;/span&gt; mal und schauen
+uns danach anwie die Anzahl der &lt;em&gt;Kopf&lt;/em&gt; Würfe variiert:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;N &amp;lt;- 10000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 1
+vrtlg_1 &amp;lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_1) %&amp;gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5,n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=2\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 2
+vrtlg_2 &amp;lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_2) %&amp;gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=20\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 20
+vrtlg_20 &amp;lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_20) %&amp;gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(n=50\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt; -50&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] FALSE&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vrtlg_50 &amp;lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_50) %&amp;gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Der faire Wurf eine fairen Münze &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; ist aber vorallem ein Gedanken-Expermiment,
+bei dem wir davon ausgehen, dass die Wahrscheinlichkeit für Kopf gleich der Wahrscheinlichkeit für Zahl ist:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(X = \text{&amp;quot;Kopf&amp;quot;}) = P(X = \text{&amp;quot;Zahl&amp;quot;}) = 50\,\% = 0{,}5\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir wollen die beiden Ergebnisse kodieren: &lt;span class=&#34;math inline&#34;&gt;\(\text{&amp;quot;Kopf&amp;quot;}\)&lt;/span&gt; mit &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\text{&amp;quot;Zahl&amp;quot;}\)&lt;/span&gt; mit &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;. Somit können wir schreiben:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(X = 0)  = 0{,}5 = P(X = 1)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Für denn Fall, dass die Münze nicht mehr fair ist wollen wir vereinbaren, dass wir
+mit &lt;span class=&#34;math inline&#34;&gt;\(q = P(X = 0)\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(p = P(X = 1)\)&lt;/span&gt; die jeweiligen Wahrscheinlichkeiten bezeichnen wollen. Es gilt aber immer, dass &lt;span class=&#34;math inline&#34;&gt;\(q+p = 1\)&lt;/span&gt; ist!&lt;/p&gt;
+&lt;p&gt;Eine Variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; die dem Zufall ein Wert &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; zuweist, wollen wir &lt;strong&gt;Zufallsvariable&lt;/strong&gt; nennen.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ausgehen von der Annahme können wir uns diese theoretischen Verteilungen auch einmal ansehen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p = 0.5
+n = 1
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 2
+tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_2)
+dist_2 &amp;lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
+  gf_point(density ~ x, data = dist_2, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 20
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 20
+tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_20)
+dist_20 &amp;lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
+  gf_point(density ~ x, data = dist_20, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n = 50
+tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_50)
+dist_50 &amp;lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = 0.5) %&amp;gt;%
+  gf_point(density ~ x, data = dist_50, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 100
+N &amp;lt;- 5 * n**2
+vrtlg_100 &amp;lt;- do(N) * rflip(n)
+tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_100)
+dist_100 &amp;lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
+  gf_point(density ~ x, data = dist_100, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 300
+N &amp;lt;- 5 * n**2
+vrtlg_300 &amp;lt;- do(N) * rflip(n)
+tab &amp;lt;- tally( ~ heads, format = &amp;quot;proportion&amp;quot;, data = vrtlg_300)
+dist_300 &amp;lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
+  gf_point(density ~ x, data = dist_300, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Zeichnen wir nun die &lt;em&gt;Gauß’sche Glockenkurve&lt;/em&gt; in rot dazu:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;binom&amp;quot;, size = n, prob = p) %&amp;gt;%
+  gf_point(density ~ x, data = dist_300, color = &amp;quot;lightgreen&amp;quot;, alpha = 0.7) %&amp;gt;%
+  gf_dist(&amp;quot;norm&amp;quot;, mean = n*p, sd = sqrt(n*p*(1 - p)), color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Die &lt;em&gt;Gauß’sche Glockenkurve&lt;/em&gt; ist die &lt;strong&gt;Dichtefunktion&lt;/strong&gt; der Normalverteilung und ist definiert durch:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{(x-\mu)^2}{2\sigma^2}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Mit den beiden Parameter &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt; kann man den &lt;em&gt;Mittelwert der Verteilung&lt;/em&gt; (auch &lt;strong&gt;Erwartungswert&lt;/strong&gt; genannt) und die &lt;em&gt;Varianz der Verteilung&lt;/em&gt; einstellen.&lt;/p&gt;
+&lt;p&gt;Wir haben diese Werte oben mit den theoretischen Werten der &lt;em&gt;Binomialverteilung&lt;/em&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(\mu = E[X] = p \cdot n\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\sigma = \sqrt{\sigma^2}= \sqrt{Var[X]} = \sqrt{n \cdot p \cdot (1-p)}\)&lt;/span&gt; belegt.&lt;/p&gt;
+&lt;p&gt;Wir sehen, die (simulierten) relativen Häufigkeiten der Münzwürfe streben mit steigendem &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; mehr und mehr in Richtung der (theoretischen) Wahrscheinlichkeiten der Binomialverteilung und diese (mit steigendem &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;) gegen die Gauß’sche Glockenkurve der Normalverteilung.&lt;/p&gt;
+&lt;p&gt;Eine &lt;strong&gt;Verteilungsfunktion&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(F(x)\)&lt;/span&gt; gibt an, wie wahrscheinlich es ist, einen Wert &lt;span class=&#34;math inline&#34;&gt;\(\leq x\)&lt;/span&gt; zu beobachten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F(x) = P(X \leq x)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Natürlich ist damit immer &lt;span class=&#34;math inline&#34;&gt;\(0 \leq F(x) \leq 1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Eine &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(F_n(x)\)&lt;/span&gt;gibt an, wie groß die relative Häufigkeit
+des eintretens von Werten &lt;span class=&#34;math inline&#34;&gt;\(\leq x\)&lt;/span&gt; bei einem Stichprobenumfang von &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; waren:
+&lt;span class=&#34;math display&#34;&gt;\[F_n(x) = \frac{\text{Anzahl der Werte} \leq x}{n}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Betrachen wir nun &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; unserer Experimente:&lt;/p&gt;
+&lt;p&gt;n = 2&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;n = 20&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_20)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;
+n = 50&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_50)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;n = 300&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_ecdf( ~ heads, data=vrtlg_300)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;
+Tragen wir zur &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; auch die &lt;em&gt;Verteilungsfunktion&lt;/em&gt; der Normalverteilung von oben ein:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 300
+gf_ecdf( ~ heads, data = vrtlg_300) %&amp;gt;%
+  gf_dist(&amp;quot;norm&amp;quot;, mean = n*p, sd = sqrt(n*p*(1 - p)), kind=&amp;quot;cdf&amp;quot;, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Die &lt;em&gt;empirische Verteilungsfunktion&lt;/em&gt; strebt also gegen die (theoretisch) &lt;em&gt;Verteilungsfunktion&lt;/em&gt; der Normalverteilung. Sie lautet:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F(x) = \int_{-\infty}^x f(u)\, \text{d} u = \int_{-\infty}^x\frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{(x-\mu)^2}{2\sigma^2}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Eigentlich handelt es sich damit strenggenommen um eine Funktion. Und es müssen noch weitere Eigenschaften erfüllt sein. Aber darauf gehen wir hier nicht weiter ein.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Über die Koeffizienten einer linearen Regression</title>
+      <link>https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Bei einer &lt;em&gt;einfachen Regression&lt;/em&gt; versuchen wir zu gegebenen
+Datenpunkten &lt;span class=&#34;math inline&#34;&gt;\((x_1, y_1), ... (x_n, y_n)\)&lt;/span&gt; eine &lt;em&gt;möglichst passende&lt;/em&gt; Funktion
+&lt;span class=&#34;math inline&#34;&gt;\(g(x)\)&lt;/span&gt; zu finden, so dass
+&lt;span class=&#34;math display&#34;&gt;\[y_i = g(x_i) + e_i\]&lt;/span&gt;
+gilt. Dabei tollerieren wir eine (kleine) Abweichung &lt;span class=&#34;math inline&#34;&gt;\(e_i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Bei einer &lt;em&gt;einfachen &lt;strong&gt;linearen&lt;/strong&gt; Regression&lt;/em&gt; gehen wir davon aus, dass die Datenpunkte (im wesendlichen) auf einer Geraden&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[y_i = \beta_0 + \beta_1 \cdot x_i + e_i\]&lt;/span&gt;
+liegen.&lt;/p&gt;
+&lt;p&gt;Unsere Aufgabe besteht nun darin die Parameter &lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt; (y-Achenabschnitt) und &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; (Steigung) an hand der Datenpunkte zu schätzen.
+Schätzungen tragen ein Dacht (&lt;span class=&#34;math inline&#34;&gt;\(\hat{.}\)&lt;/span&gt;) um sie von den (in der Regel unbekannten) Parametern zu unterscheiden.&lt;/p&gt;
+&lt;p&gt;Wir suchen somit nach &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta= \left(\hat\beta_0,\, \hat\beta_1\right)\)&lt;/span&gt;,
+so dass die Gerade &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0 + \hat\beta_1 \cdot x\)&lt;/span&gt; zu gegebenem &lt;span class=&#34;math inline&#34;&gt;\(x_i\)&lt;/span&gt;
+eine möglichst gute Schätzung von &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; (genannt &lt;span class=&#34;math inline&#34;&gt;\(\hat{y}_i\)&lt;/span&gt;) bestimmt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\hat{y_i} = \hat\beta_0 + \hat\beta_1 \cdot x_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Die Abweichung &lt;span class=&#34;math inline&#34;&gt;\(\hat{e_i}\)&lt;/span&gt; unserer Schätzung &lt;span class=&#34;math inline&#34;&gt;\(\hat{y}_i\)&lt;/span&gt; von dem
+gegebenen Wert &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; ist somit:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\hat{e_i} =  \hat{y_i} - y_i =  \hat\beta_0 + \hat\beta_1 \cdot x_i - y_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wenn wir diese Abweichung über alle &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; minimieren, finden wir unser &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Doch das wirft eine Frage auf:
+&lt;em&gt;Wie genau messen wir &lt;strong&gt;kleinsten Fehler&lt;/strong&gt; der &lt;span class=&#34;math inline&#34;&gt;\(\hat{e_i}\)&lt;/span&gt;?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Wir betrachten zunächste drei einfache Ideen:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Idee: Summe der Abweichungen&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Idee: Summe der absoluten Abweichungen&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Idee: Summe der quadratischen Abweichungen&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Wir betrachten die drei Ideen in umgekehrter Reihenfolge:&lt;/p&gt;
+&lt;div id=&#34;idee-summe-der-quadratischen-abweichungen&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. Idee: Summe der quadratischen Abweichungen&lt;/h2&gt;
+&lt;p&gt;Wir bezeichnen mit&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+QS &amp;amp;= QS(\hat\beta) = QS(\hat\beta_0, \hat\beta_1) \\
+  &amp;amp;= \sum\limits_{i=1}^n \hat{e_i}^2 = \sum\limits_{i=1}^n \left(\hat{y_i} - y_i \right)^2 \\
+  &amp;amp;= \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right)^2
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;die &lt;strong&gt;Q&lt;/strong&gt;uadrat-&lt;strong&gt;S&lt;/strong&gt;umme der Abweichungen.&lt;/p&gt;
+&lt;p&gt;Gesucht wird &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta=\left(\hat\beta_0,\,\hat\beta_1\right)\)&lt;/span&gt;,
+so das &lt;span class=&#34;math inline&#34;&gt;\(QS\)&lt;/span&gt; minimiert wird.&lt;/p&gt;
+&lt;p&gt;Dieses klassische Minimierungsproblem hat eine (exakte)
+mathematisch-algebraisch Lösung in dem wir die Nullstelle
+der ersten partiellen Ableitung von &lt;span class=&#34;math inline&#34;&gt;\(QS\)&lt;/span&gt; nach &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; bzw.
+&lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; bestimmen. Neben dieser notwendigen Bedindung, müssen wir formal
+noch die dann hinreichende Bedinung auf ein Minimum prüfen.&lt;/p&gt;
+&lt;p&gt;Aber wir beginnen mit den notwenigdigen Bedingungen:&lt;/p&gt;
+&lt;div id=&#34;schätzen-des-y-achenabschnitts-hatbeta_0&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Schätzen des y-Achenabschnitts &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;Es ist:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+ \frac{\partial}{\partial \hat\beta_0} \, QS &amp;amp;= 2 \cdot \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right) \cdot 1 \\
+  &amp;amp;= 2 \cdot \left(\sum\limits_{i=1}^n \hat\beta_0 + \sum\limits_{i=1}^n\hat\beta_1 \cdot x_i - \sum\limits_{i=1}^n y_i\right) \\
+  &amp;amp;= 2 \cdot \left( n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right)
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Für die notwendige Bedingung eines Minimums, setzen wir den Ausdruck
+gleich Null und erhalten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  0 &amp;amp;= \frac{\partial}{\partial \hat\beta_0} \, QS \\
+  &amp;amp;= 2 \cdot \left( n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right) \\
+  &amp;amp;= n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir stellen nach &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; um:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  -n \cdot \hat\beta_0 &amp;amp;= \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \\
+  \hat\beta_0 &amp;amp;= \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i - \hat\beta_1\cdot\frac{1}{n} \cdot \sum\limits_{i=1}^n x_i \\
+  &amp;amp;= \bar{y} - \hat\beta_1\cdot \bar{x}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wenn wir &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; bestimmen, so haben wir auch &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;schätzen-der-steigung-hatbeta_1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Schätzen der Steigung &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;Es ist:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \frac{\partial}{\partial \hat\beta_1} \, QS &amp;amp;= 2 \cdot \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right) \cdot x_i \\
+  &amp;amp;= 2 \cdot \left(\sum\limits_{i=1}^n \hat\beta_0 \cdot x_i + \sum\limits_{i=1}^n \hat\beta_1 \cdot x_i\cdot x_i- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+    &amp;amp;= 2 \cdot \left(\hat\beta_0 \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir ersetzen nun &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; durch &lt;span class=&#34;math inline&#34;&gt;\(\bar{y} - \hat\beta_1\cdot \bar{x}\)&lt;/span&gt; und erhalten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \frac{\partial}{\partial \hat\beta_1} \, QS  &amp;amp;= 2 \cdot \left(\left(\bar{y} - \hat\beta_1\cdot \bar{x}\right) \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+  &amp;amp;= 2 \cdot \left(\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir setzen nun wieder den Ausdruck gleich Null:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+ 0 &amp;amp;= 2 \cdot \left(\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+   &amp;amp;= \bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i \\
+   &amp;amp;= \frac{1}{n} \cdot \bar{y} \cdot \sum\limits_{i=1}^n  x_i- \frac{1}{n} \cdot\hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \frac{1}{n} \cdot\hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+   &amp;amp;=  \bar{y} \cdot \frac{1}{n} \cdot \sum\limits_{i=1}^n  x_i - \hat\beta_1\cdot \bar{x} \cdot \frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i + \frac{1}{n} \cdot\hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+      &amp;amp;=  \bar{y} \cdot \bar{x} - \hat\beta_1\cdot \bar{x} \cdot \bar{x}+ \hat\beta_1 \cdot\frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+      &amp;amp;=  \bar{y} \cdot \bar{x} - \hat\beta_1\cdot\bar{x}^2 + \hat\beta_1 \cdot\frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir stellen nach &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; um:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\hat\beta_1\cdot \bar{x}^2 - \hat\beta_1 \cdot\frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2 
+      &amp;amp;=  \bar{y} \cdot \bar{x} - \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+\hat\beta_1\cdot \left(\bar{x}^2 - \frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2 \right)
+      &amp;amp;=  \bar{y} \cdot \bar{x} - \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+\hat\beta_1 
+      &amp;amp;= \frac{\bar{y} \cdot \bar{x} - \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i}{\bar{x}^2 - \frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Mit Hilfe des &lt;a href=&#34;https://de.wikipedia.org/wiki/Verschiebungssatz_(Statistik)&#34;&gt;&lt;em&gt;Verschiebesatzes von Steiner&lt;/em&gt;&lt;/a&gt; erhalten wir:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\hat\beta_1 
+      &amp;amp;= \frac{\frac{1}{n} \cdot\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\frac{1}{n} \cdot\sum\limits_{i=1}^n  (x_i-\bar{x})^2} \\
+      &amp;amp;= \frac{\sigma_{x,y}}{\sigma^2_x} \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Beachte:
+&lt;em&gt;Da &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt; sowohl im Zähler als auch im Nenner steht
+können wir ihr kürzen und mit &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt; erweitern.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Somit gilt ebenfalls:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\hat\beta_1 
+      &amp;amp;= \frac{\frac{1}{n} \cdot\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\frac{1}{n} \cdot\sum\limits_{i=1}^n  (x_i-\bar{x})^2} 
+      = \frac{\frac{1}{n-1} \cdot\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\frac{1}{n-1} \cdot\sum\limits_{i=1}^n  (x_i-\bar{x})^2} \\
+      &amp;amp;= \frac{s_{x,y}}{s^2_{x}}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir können zur Berechnung sowohl die Kovarianz der Grundgesamtheit &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{x,y}\)&lt;/span&gt; und die Varianz &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2_x\)&lt;/span&gt; von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, als auch deren Schätzer &lt;span class=&#34;math inline&#34;&gt;\(s_{x,y}\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(s^2_x\)&lt;/span&gt; verwendet werden!&lt;/p&gt;
+&lt;p&gt;Diese Methode nennt sich &lt;strong&gt;Methode der kleinsten Quadrate&lt;/strong&gt;
+(engl. &lt;em&gt;ordenary least square method&lt;/em&gt;) und wir sprechen
+dann auch von den &lt;strong&gt;Kleinste-Quadrate-Schätzern&lt;/strong&gt;
+(oder kurz &lt;strong&gt;KQ-Schätzer&lt;/strong&gt; bzw. &lt;strong&gt;OLS-Schätzer&lt;/strong&gt;) &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Erweitern wir den Ausdruck mit Standardabweichung &lt;span class=&#34;math inline&#34;&gt;\(\sigma_y\)&lt;/span&gt; bzw. &lt;span class=&#34;math inline&#34;&gt;\(s_y\)&lt;/span&gt;, so erhalten wir:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\hat\beta_1 &amp;amp;= \frac{\sigma_{x,y}}{\sigma^2_x} \cdot \frac{\sigma_y}{\sigma_y} \\
+ &amp;amp;= \frac{\sigma_{x,y}}{\sigma_x \cdot \sigma_x} \cdot \frac{\sigma_y}{\sigma_y}\\
+ &amp;amp;= \frac{\sigma_{x,y}}{\sigma_x \cdot \sigma_y} \cdot \frac{\sigma_y}{\sigma_x} \\
+ &amp;amp;= \rho_{x,y} \cdot \frac{\sigma_y}{\sigma_x} \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;und analog für die Schätzer:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\hat\beta_1 &amp;amp;= \frac{s_{x,y}}{s^2_x} \cdot \frac{s_y}{s_y} \\
+ &amp;amp;= \frac{s_{x,y}}{s_x \cdot s_x} \cdot \frac{s_y}{s_y}\\
+ &amp;amp;= \frac{s_{x,y}}{s_x \cdot s_y} \cdot \frac{s_y}{s_x} \\
+ &amp;amp;= r_{x,y} \cdot \frac{s_y}{s_x} \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Die Steigung &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; hat somit eine direkte Beziehung mit dem &lt;em&gt;Korrelationskoeffizenten&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt; (der Grundgesamtheit) bzw. &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt; (der Stichprobe).&lt;/p&gt;
+&lt;p&gt;Für eine Berechnung in &lt;strong&gt;R&lt;/strong&gt; heißt dies: wir können die Regressionskoeffizienten
+&lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; direkt algebraisch ausrechnen, wenn wir&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;&lt;p&gt;die Standardabweichungen von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; und den Korrelationskoeffizienten oder&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;die Varianz von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und Kovarianz von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;haben.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ein-beispiel-in-r&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Ein Beispiel in R:&lt;/h3&gt;
+&lt;p&gt;Auf Grundlage der Datentabelle &lt;em&gt;mtcars&lt;/em&gt; wollen wir Prüfen wie ein linearer
+Zusammenhang zwischen dem Verbrauch (in Meilen pro Gallone &lt;em&gt;mpg&lt;/em&gt;) und der Leistung
+(Pferdestärke &lt;em&gt;hp&lt;/em&gt;) modelliert werden kann.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+# Wir nehmen eie Datentabelle &amp;#39;mtcars&amp;#39;:
+dt &amp;lt;- mtcars
+# und vergleichen Verbrauch (mpg, miles per gallon) mit der Pferdestärke (hp)
+# Mit Hilfe eines Streudiagramms
+gf_point(mpg ~ hp, data = dt) %&amp;gt;%
+  gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Berechnen wir zunächst die Mittelwerte von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; (also ‘hp’) und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; (also ‘mpg’)&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean_hp = mean(~ hp, data = dt)
+mean_mpg = mean(~ mpg, data = dt)
+mean_hp&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 146.6875&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean_mpg&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 20.09062&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;und zeichnen die Punkt &lt;span class=&#34;math inline&#34;&gt;\((\bar{x}, \bar{y}) = (146.69, 20.09)\)&lt;/span&gt; in unser
+Streudiagramm ein:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(mpg ~ hp, data = dt) %&amp;gt;%
+  gf_hline(yintercept = ~ mean_mpg, color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_vline(xintercept = ~ mean_hp, color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_point(mean_mpg ~ mean_hp, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
+  gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Berechnen wir nun die Schätzwerte für die Regressiongerade&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beta_1 = cov(mpg ~ hp, data = dt) / var(~ hp, data = dt)
+beta_0 = mean_mpg - beta_1 * mean_hp&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;und zeichnen diese ebenfalls in unser Streudiagramm ein:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(mpg ~ hp, data = dt) %&amp;gt;%
+  gf_hline(yintercept = ~ mean_mpg, color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_vline(xintercept = ~ mean_hp, color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_point(mean_mpg ~ mean_hp, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
+  gf_abline(slope = ~ beta_1, intercept = ~beta_0, color = &amp;quot;dodgerblue&amp;quot;) %&amp;gt;%
+  gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;amp;\approx 30.0988605 -0.0682283 \cdot x \\
+          &amp;amp;\approx 30.099 -0.068 \cdot x
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;studentisieren-einmal-hin-und-einmal-zurück&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Studentisieren – einmal hin und einmal zurück&lt;/h3&gt;
+&lt;p&gt;Was passiert eigentlich, wenn wir unsere &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; Werte studentisieren (aka standardisieren oder z-transformieren)?&lt;/p&gt;
+&lt;p&gt;Zur Erinnerung, studentisieren geht so:
+&lt;span class=&#34;math display&#34;&gt;\[x^{stud} = \frac{x - \bar{x}}{s_x}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;R&lt;/strong&gt; können wir das mit der Funktion ‘zscore’ wie folgt:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dt$hp_stud &amp;lt;- zscore(dt$hp)
+dt$mpg_stud&amp;lt;- zscore(dt$mpg)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Natürlich sind die Mittelwerte nun Null und die Standardabweichungen Eins:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats( ~ hp_stud, data = dt)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        min         Q1     median        Q3      max         mean sd  n missing
+##  -1.381032 -0.7319924 -0.3454858 0.4858679 2.746567 1.040834e-17  1 32       0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats( ~ mpg_stud, data = dt)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        min         Q1     median        Q3      max         mean sd  n missing
+##  -1.607883 -0.7741273 -0.1477738 0.4495434 2.291272 7.112366e-17  1 32       0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Der Grund für die kleinen Abweichungen von der Null beim MIttelwert
+sind Rundungsfehler, die der Computer macht!&lt;/p&gt;
+&lt;p&gt;Schauen wir uns nun das Streudiagramm an, zusammen mit dem Mittelpunkt &lt;span class=&#34;math inline&#34;&gt;\((0,0)\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(mpg_stud ~ hp_stud, data = dt) %&amp;gt;%
+  gf_point(0 ~ 0, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
+  gf_lims(y = c(-2, 2))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;90%&#34; /&gt;
+Auch wenn die Skalierungen sich geändert haben, die Diagramme sind sehr ähnlich.&lt;/p&gt;
+&lt;p&gt;Bestimmen wir die Koeffizienten der Regressionsgerade&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beta_stud_1 = cov(mpg_stud ~ hp_stud, data = dt)
+beta_stud_0 = 0 - beta_stud_1 * 0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;und setzen sie in das Steudiagramm ein:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Wir können das studentisierte Problem auch wieder auf unser ursprüngliches
+zurück rechnen.&lt;/p&gt;
+&lt;p&gt;Die Regressionsgerade im studentisierten Problem lautet:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y}^{stud} &amp;amp;= \hat\beta^{stud}_0 + \hat\beta_1^{stud} \cdot x^{stud} \\ 
+          &amp;amp;\approx 0 -0.7761684 \cdot x^{stud} \\
+          &amp;amp;\approx 0 -0.776 \cdot x^{stud}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Rechnen wir nun mittels der Formel
+&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_1 = \hat\beta_1^{stud} \cdot \frac{s_y}{s_x}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;die Steigung um, so erhalten wir:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b1 &amp;lt;- beta_stud_1 * sd(dt$mpg) / sd(dt$hp)
+b1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -0.06822828&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Und setzen wir das in unsere Gleichung zur Bestimmung von &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; ein:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b0 &amp;lt;- mean(dt$mpg) - b1 * mean(dt$hp)
+b0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 30.09886&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;so erhalten wir die Schätzwerte des ursprünglichen Problem.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ein-anderer-weg-um-die-regressionskoeffizenten-zu-bestimmen&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Ein anderer Weg um die Regressionskoeffizenten zu bestimmen…&lt;/h3&gt;
+&lt;p&gt;Gehen wir das Problem noch einmal neu an. Wir suchen &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta=(\hat\beta_0, \hat\beta_1)\)&lt;/span&gt; welches &lt;span class=&#34;math inline&#34;&gt;\(QS(\hat\beta) = QS(\hat\beta_0, \hat\beta_1) = \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right)^2\)&lt;/span&gt; minimiert.&lt;/p&gt;
+&lt;p&gt;Statt es direkt, wie oben durch Nullsetzen der partiellen Ableitungen, zu bestimmen, wählen wir nun einen mathematisch-&lt;em&gt;numerischen&lt;/em&gt; Ansatz und wollen &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta \in \mathbf{R}^2\)&lt;/span&gt; als &lt;em&gt;Optimierungsproblem&lt;/em&gt; mit Hilfe des &lt;em&gt;Gradientenverfahrens&lt;/em&gt; lösen.&lt;/p&gt;
+&lt;p&gt;Beim Gradientenverfahren wird versucht, ausgehend von einem Startwert &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta^0 \in \mathbf{R}^2\)&lt;/span&gt;, gemäß der Iterationsvorschrift
+&lt;span class=&#34;math display&#34;&gt;\[
+\hat\beta^{k+1} = \hat\beta^{k} + \alpha^k \cdot d^k
+\]&lt;/span&gt;
+für alle &lt;span class=&#34;math inline&#34;&gt;\(k=0,1, ...\)&lt;/span&gt; eine Näherungslösung für &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta\)&lt;/span&gt; zu finden.
+Dabei ist &lt;span class=&#34;math inline&#34;&gt;\(\alpha^k &amp;gt; 0\)&lt;/span&gt; eine &lt;em&gt;positive Schrittweite&lt;/em&gt; und &lt;span class=&#34;math inline&#34;&gt;\(d^k\in\mathbf{R}^n\)&lt;/span&gt; eine &lt;em&gt;Abstiegsrichtung&lt;/em&gt;, welche wir in jedem Iterationsschritt &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; so bestimmen,
+dass die Folge &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta^k\)&lt;/span&gt; zu einem stationären Punkt, unserer Näherungslösung, konvergiert.&lt;/p&gt;
+&lt;p&gt;Im einfachsten Fall, dem &lt;strong&gt;Verfahren des steilsten Abstieges&lt;/strong&gt;, wird der
+Abstiegsvektor &lt;span class=&#34;math inline&#34;&gt;\(d^k\)&lt;/span&gt; aus dem Gradienten &lt;span class=&#34;math inline&#34;&gt;\(\nabla QS\)&lt;/span&gt; wie folgt bestimmt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[d^k = -\nabla QS\left(\hat\beta^k\right)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wegen
+&lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial}{\partial \hat\beta_0} \, QS = 2 \cdot \left( n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;und&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial}{\partial \hat\beta_1} \, QS = 2 \cdot \left(\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;gilt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\nabla QS(\hat\beta) &amp;amp;= \nabla QS(\hat\beta_0, \hat\beta_1) \\
+&amp;amp;= 2 \cdot \begin{pmatrix}
+n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \\
+\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i
+\end{pmatrix}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir wollen hier von Anfang an mit den studentisierten Werten arbeiten, weil diese numerisch viele Vorteile haben.
+Darum vereinfachen sich die beiden partiellen Ableitungen noch einmal zu:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial}{\partial \hat\beta_0} \, QS = 2 \cdot \left(\hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;und&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial}{\partial \hat\beta_1} \, QS = 2 \cdot \left(\hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Somit gilt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\nabla QS(\hat\beta) &amp;amp;= \nabla QS(\hat\beta_0, \hat\beta_1) \\
+&amp;amp;= 2 \cdot \begin{pmatrix}
+\hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \\
+ \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2 - \sum\limits_{i=1}^n y_i \cdot x_i 
+\end{pmatrix}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Weil im studentisierten Fall &lt;span class=&#34;math inline&#34;&gt;\(\bar{x}= \bar{y} = 0\)&lt;/span&gt; gilt, können wir
+wegen
+&lt;span class=&#34;math display&#34;&gt;\[n \cdot \bar{x} = \sum\limits_{i=1}^n x_i,\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[n \cdot \bar{y} = \sum\limits_{i=1}^n y_i,\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[(n-1) \cdot s^2_x = \sum\limits_{i=1}^n  x_i^2\]&lt;/span&gt;
+und
+&lt;span class=&#34;math display&#34;&gt;\[(n-1) \cdot \text{cov}_{x,y} = \sum\limits_{i=1}^n y_i \cdot x_i\]&lt;/span&gt;
+den Term &lt;span class=&#34;math inline&#34;&gt;\(\nabla QS\)&lt;/span&gt; weiter vereinfachen:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\nabla QS(\hat\beta) &amp;amp;= \nabla QS(\hat\beta_0, \hat\beta_1) \\
+&amp;amp;= 2 \cdot \begin{pmatrix}
+\hat\beta_1\cdot n \cdot \bar{x} - n \cdot \bar{y} \\
+ \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2 - \sum\limits_{i=1}^n y_i \cdot x_i 
+\end{pmatrix} \\
+&amp;amp;= 2 \cdot \begin{pmatrix}
+0 \\
+ (n-1)\cdot\left(\hat\beta_1 \cdot s^2_x - \text{cov}_{x,y}\right)
+\end{pmatrix} \\
+&amp;amp;= 2 \cdot (n-1) \cdot \begin{pmatrix}
+0 \\
+ \hat\beta_1 \cdot s^2_x - \text{cov}_{x,y}
+\end{pmatrix}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Um die Varianz und die Kovarianz nicht jedesmal neu zu berechnen, speichern
+wir die Ergebnisse vorab. Ebenso, damit der Quellcode kürzer wird, speichern
+wir in &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; die studentisierten Werte von &lt;span class=&#34;math inline&#34;&gt;\(hp\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(mpg\)&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Vorbereitungen 
+sd_x &amp;lt;- var(dt$hp_stud)
+cov_xy &amp;lt;- cov(mpg_stud ~ hp_stud, data = dt)
+
+n &amp;lt;- length(dt$hp_stud)
+
+x &amp;lt;- dt$hp_stud
+y &amp;lt;- dt$mpg_stud&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nun erstellen wir die &lt;span class=&#34;math inline&#34;&gt;\(QS\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\nabla QS\)&lt;/span&gt; Funktionen:
+Wir definieren diese Funktion wie folgt in &lt;strong&gt;R&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;qs &amp;lt;- function(b_0, b_1) {
+  sum((b_1 * x - y)**2)
+}
+
+nabla_qs &amp;lt;- function(b_0, b_1) {
+  c(0,
+    2 * (n - 1) * (b_1 * sd_x - cov_xy)
+  )
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Die Schrittweite &lt;span class=&#34;math inline&#34;&gt;\(alpha\)&lt;/span&gt; bestimmen wir mit Hilfe der &lt;em&gt;Armijo-Bedingung&lt;/em&gt; und der &lt;em&gt;Backtracking Liniensuche&lt;/em&gt;:
+Diese formalisiert das Konzept “genügend” in der geforderten Verringerung des Funktionswertes. Die Bedingung &lt;span class=&#34;math inline&#34;&gt;\(f(x^k + \alpha d^k) &amp;lt; f(x^k)\)&lt;/span&gt; wird modifiziert zu
+&lt;span class=&#34;math display&#34;&gt;\[f(x^k + \alpha d^k) \leq f(x^k) + \sigma \alpha \left(\nabla f(x^k)\right)^T d^k,\]&lt;/span&gt;
+mit &lt;span class=&#34;math inline&#34;&gt;\(\sigma\in (0,1)\)&lt;/span&gt;.
+Die Armijo-Bedingung umgeht Konvergenzprobleme der einfachen Bedingung, indem sie fordert, dass die Verringerung zumindest proportional zur Schrittweite und zur Richtungsableitung &lt;span class=&#34;math inline&#34;&gt;\(\left(\nabla f(x^k)\right)^T d^k\)&lt;/span&gt; ist, mit Hilfe der Proportionalitätskonstante &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt;.
+In der Praxis werden oft sehr kleine Werte verwendet, z.B. &lt;span class=&#34;math inline&#34;&gt;\(\sigma=0.0001\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Die &lt;em&gt;Backtracking-Liniensuche&lt;/em&gt; verringert die Schrittweite wiederholt um den
+Faktor &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt; (&lt;code&gt;rho&lt;/code&gt;) , bis die Armijo-Bedingung erfüllt ist.
+Sie terminiert garantiert nach einer endlichen Anzahl von Schritten. Wesshalb wir
+sie hier einsetzen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;alpha_k &amp;lt;- function(b_0, b_1, d_k, alpha = 1, sigma = 0.0001, rho = 0.5) {
+  d_0 &amp;lt;- d_k[1]
+  d_1 &amp;lt;- d_k[2]
+  nabla &amp;lt;- nabla_qs(b_0, b_1)
+  n_0 &amp;lt;- nabla[1]
+  n_1 &amp;lt;- nabla[2]
+
+  lhs &amp;lt;- qs(b_0 + alpha*d_0, b_1 + alpha*d_1)
+  rhs &amp;lt;- qs(b_0, b_1) + sigma*alpha*(n_0*d_0 + n_1*d_1)
+
+  while (lhs &amp;gt; rhs) {
+    alpha &amp;lt;- rho * alpha
+    lhs &amp;lt;- qs(b_0 + alpha*d_0, b_1 + alpha*d_1)
+    rhs &amp;lt;- qs(b_0, b_1) + sigma*alpha*(n_0*d_0 + n_1*d_1)
+  }
+  return(alpha)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ein paar Einstellungen vorab:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# maximale Anzahl an Iterationen
+max_iter &amp;lt;- 1000
+iter &amp;lt;- 0
+
+# Genauigkeit
+eps &amp;lt;- 10**-6
+
+# Startwerte
+b_0 &amp;lt;- 0 
+b_1 &amp;lt;- -1 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Für eine vorgegebene Genauigkeit &lt;span class=&#34;math inline&#34;&gt;\(eps=10^{-6}\)&lt;/span&gt;, den Startwerten &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0^0 = 0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1^0 = -1\)&lt;/span&gt; können wir somit das Verfahren starten:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;while (TRUE) {
+  iter &amp;lt;- iter + 1
+
+  d_k &amp;lt;- -nabla_qs(b_0, b_1)
+
+  ad_ &amp;lt;- alpha_k(b_0, b_1, d_k) * d_k
+
+  x0 &amp;lt;- b_0 + ad_[1]
+  x1 &amp;lt;- b_1 + ad_[2]
+
+  if ((abs(b_0 - x0) &amp;lt; eps) &amp;amp; (abs(b_1 - x1) &amp;lt; eps) | (iter &amp;gt; max_iter)) {
+    break
+  }
+  b_0 &amp;lt;- x0
+  b_1 &amp;lt;- x1
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Wir haben somit mit &lt;span class=&#34;math inline&#34;&gt;\(203\)&lt;/span&gt; Iterationsschritten das folgende Ergebnisse für die Regressionskoeffizienten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_0^{stud} = 0` \qquad \hat\beta_1 {stud} = -0.7761689\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Betrachten wir die daraus erstellte Regressionsgerade:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Um die ursprünglichen Regressionskoeffizenten zu erhalten müssen wir zurück rechnen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b1 &amp;lt;- b_1 * sd(dt$mpg) / sd(dt$hp)
+b0 &amp;lt;- mean(dt$mpg) -  b1 * mean(dt$hp)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Die Geradengleichung für unser ursprüngliches Problem lautet somit:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;amp;\approx 30.0988668 -0.0682283 \cdot x \\
+          &amp;amp;\approx 30.099 -0.068 \cdot x
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;die-r-funktion-optim&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Die R Funktion &lt;code&gt;optim&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;In &lt;strong&gt;R&lt;/strong&gt; gibt es bessere Optimierungsmethoden, als die hier verwendete.
+Zum Beispiel kännen wir die Funktion &lt;code&gt;optim&lt;/code&gt; verwenden.
+Die Funktion &lt;code&gt;optim&lt;/code&gt; benötigt die zu optimierende &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; und
+ggf. die Gradientenfunkt &lt;span class=&#34;math inline&#34;&gt;\(gf(x)\)&lt;/span&gt; sowie einen Startpunkt &lt;span class=&#34;math inline&#34;&gt;\(x^0\)&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f &amp;lt;- function(beta) {
+  qs(beta[1], beta[2])
+}
+
+grf &amp;lt;- function(beta) {
+  nabla_qs(beta[1], beta[2])
+}
+
+# Der eigentliche Aufruf von optim:
+ergb &amp;lt;- optim(c(0,-1), f, grf)
+
+# Auslesen der Schätzer aus dem Ergbnis:
+optim_beta_0 &amp;lt;- ergb$par[1]
+optim_beta_1 &amp;lt;- ergb$par[2]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Wir erhalten somit für das studentisierte Problem die Gerade:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y}^{stud} &amp;amp;= \hat\beta_0^{stud} + \hat\beta_1^{stud} \cdot x^{stud} \\ 
+          &amp;amp;\approx 0.1505859 -0.7761719 \cdot  x^{stud} \\
+          &amp;amp;\approx 0.151 -0.776 \cdot  x^{stud}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Für das ursprüngliche Problem rechnen wir mittels&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;optim_b1 &amp;lt;- optim_beta_1 * sd(dt$mpg) / sd(dt$hp)
+optim_b0 &amp;lt;- mean(dt$mpg) -  optim_b1 * mean(dt$hp)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;um und erhalten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;amp;\approx 30.0989057 -0.0682286 \cdot x \\
+          &amp;amp;\approx 30.099 -0.068 \cdot x
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;idee-summe-der-absoluten-abweichungen&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. Idee: Summe der absoluten Abweichungen&lt;/h2&gt;
+&lt;p&gt;Wir ändern nun die Abweichungsmessfunktion von der &lt;em&gt;Q&lt;/em&gt;uadrat-&lt;em&gt;S&lt;/em&gt;umme hin zu
+den &lt;strong&gt;A&lt;/strong&gt;bsolut-&lt;em&gt;S&lt;/em&gt;ummen:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[AS = AS(\hat\beta) = AS(\hat\beta_0, \hat\beta_1) = \sum_{i=1}^n |\hat{y}_i - y_i|\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Auch hier wollen wir mit den studentisierten Daten arbeiten und stellen
+die Funktion der &lt;em&gt;A&lt;/em&gt;bsolut-&lt;em&gt;S&lt;/em&gt;ummen auf:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Absolute Abweichungssummen
+as &amp;lt;- function(b_0, b_1) {
+  return(sum(abs(b_0 + b_1 * x - y)))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Danach konstuieren wir die zu optimierende Funktion &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Zu optimierende Funktion
+f &amp;lt;- function(beta) {
+  as(beta[1], beta[2])
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Diesmal nutzen wir &lt;code&gt;optim&lt;/code&gt; ohne eine Gradientenfunktion:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ergb &amp;lt;- optim(c(0,-1), f)
+
+# Schätzer auslesen
+opti_as_beta_0 &amp;lt;- ergb$par[1]
+opti_as_beta_1 &amp;lt;- ergb$par[2]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Schauen wir uns nun die so erhaltene Gerade im Vergleich mit der ‘normalen’ Regressionsgerade an:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;In grün und gestrichelt sehen wir die Gerade aus der &lt;em&gt;Idee der quadratsichen Abweichungssummen&lt;/em&gt;, in blau die aus der &lt;em&gt;Idee der absoluten Abweichungssummen&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Für unser ursprüngliches Problem rechnen wir um:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Umrechnen in die urspüngliche Fragestellung
+as_b1 &amp;lt;- opti_as_beta_1 * sd(dt$mpg) / sd(dt$hp)
+as_b0 &amp;lt;- (mean(dt$mpg) - as_b1 * mean(dt$hp)) + opti_as_beta_0 * sd(dt$mpg)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Und die dazu gehörige Darstellung:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;amp;\approx 28.1305094 -0.0601695 \cdot x \\
+          &amp;amp;\approx 28.131 -0.06 \cdot x
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Diese Methode nennt sich &lt;strong&gt;Median-Regression&lt;/strong&gt; und ein ein Spezialfall der &lt;strong&gt;Quantilsregression&lt;/strong&gt;, die sich u.a. mit dem R-Paket &lt;a href=&#34;https://cran.r-project.org/web/packages/quantreg/index.html&#34;&gt;&lt;em&gt;quantreg&lt;/em&gt;&lt;/a&gt;
+unmittelbar umsetzen lässt:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(quantreg)
+ergmedianreg &amp;lt;- rq(mpg ~ hp, data = dt)
+coef(ergmedianreg)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (Intercept)          hp 
+## 28.13050847 -0.06016949&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;idee-summe-der-abweichungen&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Idee: Summe der Abweichungen&lt;/h2&gt;
+&lt;p&gt;Wenn wir die Summe der Abweichungen &lt;span class=&#34;math inline&#34;&gt;\(\sum\limits_{i=1}^n \hat{e}_i\)&lt;/span&gt; minimieren
+wollen, dann ist es sinnvoll den Betrag davon zu minimieren.
+Wir suchen also die Schätzer &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt;, so dass der Ausdruck
+&lt;span class=&#34;math display&#34;&gt;\[
+\left| \sum_{i=1}^n \hat{e}_i \right| = \left| \sum_{i=1}^n (\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i) \right|
+\]&lt;/span&gt;
+minimal ist.&lt;/p&gt;
+&lt;p&gt;Wegen:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\sum_{i=1}^n (\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i)
+&amp;amp;= \sum_{i=1}^n \hat\beta_0 + \sum_{i=1}^n \hat\beta_1 \cdot x_i - \sum_{i=1}^n y_i \\
+&amp;amp;= n \cdot \hat\beta_0 + \hat\beta_1 \cdot \sum_{i=1}^n x_i - \sum_{i=1}^n y_i \\
+&amp;amp;= n \cdot \hat\beta_0 + \hat\beta_1 \cdot n \cdot \bar{x} - n \cdot \bar{y} \\
+&amp;amp;= n \cdot \left( \hat\beta_0 + \hat\beta_1 \cdot \bar{x} - \bar{y} \right) \\
+&amp;amp;= n \cdot \left( \hat\beta_0 - \bar{y} + \hat\beta_1 \cdot \bar{x}  \right)
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;können wir das absolute Mininum bei &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0 - \bar{y} =0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1 \cdot \bar{x}=0\)&lt;/span&gt; erreichen, was zur Lösung
+&lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0 =\bar{y}\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1 = 0\)&lt;/span&gt; führt.
+Dies ist unser &lt;em&gt;Nullmodel&lt;/em&gt; in dem die &lt;span class=&#34;math inline&#34;&gt;\(x_i\)&lt;/span&gt; keinen Einfluss auf die &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; haben und
+wir daher pauschal die &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; mit &lt;span class=&#34;math inline&#34;&gt;\(\hat{y}_i=\bar{y}\)&lt;/span&gt;, also dem Mittelwert der &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; abschätzen.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;zusammenfassung&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Zusammenfassung&lt;/h2&gt;
+&lt;p&gt;Als Vergleich können wir uns die Quadratsumme &lt;span class=&#34;math inline&#34;&gt;\(QS\)&lt;/span&gt; und Absulutsumme &lt;span class=&#34;math inline&#34;&gt;\(AS\)&lt;/span&gt; der drei
+Modelle einmal ansehen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Quadratische Abweichungssummen
+qs &amp;lt;- function(b_0, b_1) {
+  sum( (b_0 + b_1 * dt$hp - dt$mpg )**2)
+}
+
+# Absolute Abweichungssummen
+as &amp;lt;- function(b_0, b_1) {
+  sum( abs(b_0 + b_1 * dt$hp - dt$mpg))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Quadratsummen:
+quad_sum &amp;lt;- c(qs(b0, b1), qs(as_b0, as_b1), qs(mean_mpg, 0))
+# Absolutsummen:
+abs_sum &amp;lt;- c(as(b0, b1), as(as_b0, as_b1), as(mean_mpg, 0))
+
+tab &amp;lt;- tibble(
+  sums = c(quad_sum, abs_sum),
+  sum_type = rep(c(&amp;quot;quad&amp;quot;, &amp;quot;abs&amp;quot;), each = 3),
+  methode = rep(c(&amp;quot;Idee 3&amp;quot;, &amp;quot;Idee 2&amp;quot;, &amp;quot;Idee 1&amp;quot;), 2)
+)
+
+tab&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 3
+##     sums sum_type methode
+##    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;    &amp;lt;chr&amp;gt;  
+## 1  448.  quad     Idee 3 
+## 2  477.  quad     Idee 2 
+## 3 1126.  quad     Idee 1 
+## 4   93.0 abs      Idee 3 
+## 5   87.3 abs      Idee 2 
+## 6  151.  abs      Idee 1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Behäbige Funktionen aka slowly varying function</title>
+      <link>https://sefiroth.net/nap/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</link>
+      <pubDate>Sat, 13 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Reelle Funktionen, die ihren Funktionswert kaum ändern, kann man mit
+Fug und Recht durchaus behäbig nennen,
+korrekter wäre aber von &lt;strong&gt;langsam variierenden&lt;/strong&gt; Funktionen zu sprechen&lt;/p&gt;
+&lt;p&gt;Im Kontext von potenzgesetzlichen Verteilungen kommt der Begriff
+&lt;strong&gt;slowly varying function&lt;/strong&gt; vor, der Funktionen beschreibt die nur sehr gering
+auf Änderungen ihres Parameters reagieren.&lt;/p&gt;
+&lt;p&gt;Die Definition dieser &lt;em&gt;behäbigen&lt;/em&gt; besser &lt;strong&gt;langsam variierenden&lt;/strong&gt; Funktionen
+stammt von &lt;a href=&#34;https://de.wikipedia.org/wiki/Jovan_Karamata&#34;&gt;Jovan Karamata&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Eine positive stetige Funktion &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; auf den positiven reelen Zahlen ist
+&lt;strong&gt;langsam variierend (im unendlichen)&lt;/strong&gt;, falls für alle reellen &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\lim_{x \to +\infty} \frac{L(t\cdot x)}{L(x)} = 1\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;gilt.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Beispiele:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Jede konstante Funktionen (&lt;span class=&#34;math inline&#34;&gt;\(\neq 0\)&lt;/span&gt;) ist &lt;em&gt;langsam variierend&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Beweisskizze:&lt;/strong&gt;
+Mit &lt;span class=&#34;math inline&#34;&gt;\(L(x) = c\)&lt;/span&gt; ist &lt;span class=&#34;math inline&#34;&gt;\(L(x) = L(t x) = c\)&lt;/span&gt; und damit &lt;span class=&#34;math inline&#34;&gt;\(\frac{L(t x)}{L(x)}= 1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Jeder Funktion &lt;span class=&#34;math inline&#34;&gt;\(L(x)\)&lt;/span&gt; mit einem Grenzwert &lt;span class=&#34;math inline&#34;&gt;\(b&amp;gt;0\)&lt;/span&gt; ist &lt;em&gt;langsam variierend&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Beweisskizze:&lt;/strong&gt;
+Da &lt;span class=&#34;math inline&#34;&gt;\(\lim_{x \to +\infty} L(x) = b = \lim_{x \to +\infty} L(t\cdot x)\)&lt;/span&gt; ist
+&lt;span class=&#34;math inline&#34;&gt;\(\lim_{x \to +\infty} \frac{L(t\cdot x)}{L(x)} = \frac{\lim_{x \to +\infty} L(t\cdot x)}{\lim_{x \to +\infty} L(x)} = \frac{b}{b} = 1\)&lt;/span&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Für jedes reellwertige &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; ist &lt;span class=&#34;math inline&#34;&gt;\(L(x) = log_\beta(x)\)&lt;/span&gt; &lt;em&gt;langsam variierend&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Beweisskizze:&lt;/strong&gt;
+Es gilt:
+- Für jede reelle Zahl &lt;span class=&#34;math inline&#34;&gt;\(x&amp;gt;0\)&lt;/span&gt; ist &lt;span class=&#34;math inline&#34;&gt;\(\log_x(x) = 1\)&lt;/span&gt;.
+- Für reelle Zahlen &lt;span class=&#34;math inline&#34;&gt;\(a, b\)&lt;/span&gt; gilt: &lt;span class=&#34;math inline&#34;&gt;\(\frac{log(a)}{\log(b)} = \log_b(a)\)&lt;/span&gt;
+- Für reelle Zahlen &lt;span class=&#34;math inline&#34;&gt;\(a, b\)&lt;/span&gt; gilt. &lt;span class=&#34;math inline&#34;&gt;\(\log(a \cdot b) = log(a) + log(b)\)&lt;/span&gt;
+- Für jede Konstante &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; gilt &lt;span class=&#34;math inline&#34;&gt;\(\lim_{x \to +\infty} \log_x (k) = 0\)&lt;/span&gt;
+Somit gilt &lt;span class=&#34;math inline&#34;&gt;\(\frac{\log_\beta(k \cdot x)}{\log_\beta(x)} = \log_x(k\cdot x) = \log_x(k) + \log_x(x) = \log_x(k) +1 \to 1\)&lt;/span&gt; wenn &lt;span class=&#34;math inline&#34;&gt;\(x \to +\infty\)&lt;/span&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(x^\beta\)&lt;/span&gt; ist für alle &lt;span class=&#34;math inline&#34;&gt;\(\beta \neq 0\)&lt;/span&gt; &lt;em&gt;&lt;strong&gt;nicht&lt;/strong&gt; langsam variierend&lt;/em&gt;.
+&lt;strong&gt;Beweisskizze:&lt;/strong&gt;
+Für &lt;span class=&#34;math inline&#34;&gt;\(t \neq 1\)&lt;/span&gt; gilt:
+&lt;span class=&#34;math display&#34;&gt;\[\lim_{x \to +\infty} \frac{(tx)^\beta}{x^\beta} = t^\beta \neq 1\]&lt;/span&gt;
+Damit sind die Funktionen zwar (s.u.) &lt;em&gt;regulär variierend&lt;/em&gt;, aber nicht &lt;em&gt;langsam variierend&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Eine &lt;strong&gt;regulär variierende&lt;/strong&gt; Funktion &lt;span class=&#34;math inline&#34;&gt;\(L:(0,+\infty) \to (0,+\infty)\)&lt;/span&gt;
+ist eine Funktion für die der Term&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\lim_{x \to +\infty} \frac{L(t\cdot x)}{L(x)} = g(t)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;mit &lt;span class=&#34;math inline&#34;&gt;\(g(t)\)&lt;/span&gt; einen endlichen aber nicht verschwindenen Wert
+(m.a.W.: &lt;span class=&#34;math inline&#34;&gt;\(g(t) \neq 0\)&lt;/span&gt;) hat für alle &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Karamata hat die regulär variierenden Funktionen nun wie folgt charaterisiert:&lt;/p&gt;
+&lt;div id=&#34;charakterisierungssatz-von-karamata&#34; class=&#34;section level3 theorem&#34;&gt;
+&lt;h3&gt;Charakterisierungssatz von Karamata&lt;/h3&gt;
+&lt;p&gt;Jede &lt;em&gt;regulär variierende&lt;/em&gt; Funktion &lt;span class=&#34;math inline&#34;&gt;\(f:(0,+\infty) \to (0,+\infty)\)&lt;/span&gt; ist
+von der Form&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x) = x^\beta \cdot L(x),\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;wobei &lt;span class=&#34;math inline&#34;&gt;\(\beta \in \mathbf{R}\)&lt;/span&gt; eine reelle Zahl
+und &lt;span class=&#34;math inline&#34;&gt;\(L(x)\)&lt;/span&gt; eine &lt;em&gt;langsam variiernde&lt;/em&gt; Funktion ist.&lt;/p&gt;
+&lt;!-- ENDE THEOREM--&gt;
+&lt;p&gt;Eine Konsequenz aus dem &lt;em&gt;Charakterisierungssatz von Karamata&lt;/em&gt; ist, das die
+Funktion &lt;span class=&#34;math inline&#34;&gt;\(g(t)\)&lt;/span&gt; aus der Definition der &lt;em&gt;regulär variierenden&lt;/em&gt; Funktionen
+notwenidigerweise die Gestalt&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[g(t) = t^\rho,\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;mit einem &lt;span class=&#34;math inline&#34;&gt;\(\rho \in \mathbf{R}\)&lt;/span&gt;, haben muss.&lt;/p&gt;
+&lt;p&gt;Dieser Wert &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt; wird &lt;strong&gt;Index der Varition&lt;/strong&gt; (engl. &lt;em&gt;index of variation&lt;/em&gt;)
+genannt.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Quellen:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://encyclopediaofmath.org/index.php?title=Karamata_theory&amp;amp;direction=next&amp;amp;oldid=25937&#34;&gt;Encylopedia of Math&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://archive.org/details/regularvariation0000bing&#34;&gt;Bingham, N. H.; Goldie, C. M.; Teugels, J. L. (1987), Regular Variation, Encyclopedia of Mathematics and its Applications, 27, Cambridge: Cambridge University Press, ISBN 0-521-30787-2, MR 0898871, Zbl 0617.26001&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ein paar Gedanken über potenzgesetzliche Verteilungen (power law distributions)</title>
+      <link>https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Eine Verteilungsfunktion &lt;span class=&#34;math inline&#34;&gt;\(F(x)\)&lt;/span&gt; heißt &lt;strong&gt;potenzgesetzliche Verteilung&lt;/strong&gt;,
+falls für die Dichtefunktion &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x) = C \cdot x^a\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;gilt, für mindestens alle reellen &lt;span class=&#34;math inline&#34;&gt;\(x &amp;gt; x_{min}\)&lt;/span&gt;.
+Gewöhnlich setzt man &lt;span class=&#34;math inline&#34;&gt;\(\alpha = -a\)&lt;/span&gt; und schreibt&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x) = C \cdot x^{-\alpha}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;zur Darstellung der Dichte.&lt;/p&gt;
+&lt;p&gt;Damit ergibt sich für &lt;span class=&#34;math inline&#34;&gt;\(F(x)\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ 
+F(x)  = \int_{-\infty}^x f(t) \text{d} t 
+      = \int_{-\infty}^x C \cdot t^{-\alpha} \text{d} t 
+      = - \frac{C}{\alpha -1} \cdot x^{-(\alpha - 1)}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fakten&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sinnvoll nur, wenn &lt;span class=&#34;math inline&#34;&gt;\(\alpha &amp;gt; 0\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Ist &lt;span class=&#34;math inline&#34;&gt;\(\alpha &amp;lt; 3\)&lt;/span&gt;, dann ist die &lt;em&gt;Varianz&lt;/em&gt; und die &lt;em&gt;
+skewness&lt;/em&gt; (mathematisch) nicht definiert.&lt;/li&gt;
+&lt;li&gt;Für &lt;span class=&#34;math inline&#34;&gt;\(k &amp;gt; \alpha-1\)&lt;/span&gt; ist das k. Moment unendlich.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Logarithmiert man &lt;span class=&#34;math inline&#34;&gt;\(y=f(x)=C \cdot x^{-\alpha}\)&lt;/span&gt;, so erhält mensch:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\log(y) = \log(C) -\alpha \cdot \log(x)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Ist eine Verteilung potenzgesetlich, dann kann man &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;,
+wie folgt abschätzen:&lt;/p&gt;
+&lt;p&gt;Seien &lt;span class=&#34;math inline&#34;&gt;\(x_0, x_1 &amp;gt; x_{min}\)&lt;/span&gt; zwei reelle Zahlen, &lt;span class=&#34;math inline&#34;&gt;\(y_0=f(x_0)\)&lt;/span&gt; bzw. &lt;span class=&#34;math inline&#34;&gt;\(y_1 = f(y_1)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Dann gilt wegen:
+&lt;span class=&#34;math display&#34;&gt;\[\begin{align*}
+  \log(y_1) - \log(y_0) &amp;amp;= \log(C) - \alpha \cdot\log(x_1) - \log(C) + \alpha \cdot \log(x_0) \\
+                        &amp;amp;= \alpha \cdot\left(\log(x_0)- \log(x_1) \right)
+\end{align*}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\alpha = \frac{\log(y_1) - \log(y_0)}{\log(x_0)- \log(x_1)}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Hat man &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;, so kann man &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; wegen&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\log(C) = \log(y)+ \alpha\log(x)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;abschätzen mit Hilfe von&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[C = y \cdot x_0^\alpha = f(x_0) \cdot x_0^\alpha\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;für ein &lt;span class=&#34;math inline&#34;&gt;\(x &amp;gt; x_{min}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Beispiel&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Nehmen wir die t-Verteilung mit &lt;span class=&#34;math inline&#34;&gt;\(n=2\)&lt;/span&gt; Freiheitsgeraden.
+Die Dichtefunktion bezeichnen wir mit &lt;span class=&#34;math inline&#34;&gt;\(t_{2}(x)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Dann dann können wir &lt;span class=&#34;math inline&#34;&gt;\(\alpha=3\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(C=1\)&lt;/span&gt; abschätzen.&lt;/p&gt;
+&lt;p&gt;Schauen wir uns das einmal als Grafik an:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lower_bound &amp;lt;- 2
+upper_bound &amp;lt;- 100
+x &amp;lt;- seq(lower_bound, upper_bound, 0.1)
+
+gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_line(C*x**(-alpha) ~ x, 
+          color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_line( C*x**(-alpha) ~ x, 
+           color = &amp;quot;darkgreen&amp;quot;) %&amp;gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Noch ein Beispiel:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Nehmen wir die t-Verteilung mit &lt;span class=&#34;math inline&#34;&gt;\(n=1\)&lt;/span&gt; Freiheitsgeraden.
+Die Dichtefunktion bezeichnen wir mit &lt;span class=&#34;math inline&#34;&gt;\(t_{1}(x)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Dann dann können wir &lt;span class=&#34;math inline&#34;&gt;\(\alpha=2\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(C=0.32\)&lt;/span&gt; abschätzen.&lt;/p&gt;
+&lt;p&gt;Schauen wir uns das einmal als Grafik an:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lower_bound &amp;lt;- 2
+upper_bound &amp;lt;- 100
+x &amp;lt;- seq(lower_bound, upper_bound, 0.1)
+
+gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_line(C*x**(-alpha) ~ x, 
+          color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_line( C*x**(-alpha) ~ x, 
+           color = &amp;quot;darkgreen&amp;quot;) %&amp;gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ein ’Gegen-’Beispiel:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Betrachten wir nun die (rechte Seite – &lt;span class=&#34;math inline&#34;&gt;\(x&amp;gt;1=x_{min}\)&lt;/span&gt;) einer Gauß’schen Standardnormalverteilung.&lt;/p&gt;
+&lt;p&gt;Mit den Stützstellen &lt;span class=&#34;math inline&#34;&gt;\(x_0 = 1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(x_1 = 5\)&lt;/span&gt; können wir &lt;span class=&#34;math inline&#34;&gt;\(\alpha=7.46\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(C=0.24\)&lt;/span&gt; abschätzen.
+Schauen wir uns das einmal als Grafik an:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lower_bound &amp;lt;- 1
+upper_bound &amp;lt;- 8
+x &amp;lt;- seq(lower_bound, upper_bound, 0.1)
+
+gf_dist(&amp;quot;norm&amp;quot;,
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_line(C*x**(-alpha) ~ x, 
+          color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;norm&amp;quot;, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_line( C*x**(-alpha) ~ x, 
+           color = &amp;quot;darkgreen&amp;quot;) %&amp;gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Wir erkennen, dass hier etwas nicht passt.
+Die Standardnormalverteilung ist (vielleicht) keine &lt;em&gt;potenzgesetzich&lt;/em&gt; Verteilung?&lt;/p&gt;
+&lt;p&gt;Ein oft verwendetes Kriterium ist, dass sich die Funktion in der doppelt-logarithmischen Darstellung als Gerade offenbart.&lt;/p&gt;
+&lt;p&gt;Schauen wir daher einmal nach:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lower_bound &amp;lt;- 1
+upper_bound &amp;lt;- 8
+gf_dist(&amp;quot;norm&amp;quot;, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;** — **&lt;/p&gt;
+&lt;p&gt;Weiter gilt für &lt;em&gt;potenzgesetzliche Verteilungen&lt;/em&gt; wegen&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\frac{f(x)}{f(c\cdot x)} = \frac{C \cdot x^{-\alpha}}{C \cdot (c\cdot x)^{-\alpha}}
+ = c^\alpha\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(f(c\cdot x)\)&lt;/span&gt; für alle (beliebig aber festen) &lt;span class=&#34;math inline&#34;&gt;\(c&amp;gt;0\)&lt;/span&gt; &lt;em&gt;proportional&lt;/em&gt;,
+was man gerne als &lt;span class=&#34;math inline&#34;&gt;\(f(x) \propto f(c \cdot x)\)&lt;/span&gt; schreibt.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gedankenstütze zu wichtigen Funktionsbegriffen in der Statistik</title>
+      <link>https://sefiroth.net/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;eine-kleine-liste-von-fundermentalen-begriffen-in-der-statistik.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Eine kleine Liste von fundermentalen Begriffen in der Statistik.&lt;/h1&gt;
+&lt;p&gt;Gilt für eine reelle Funktion &lt;span class=&#34;math inline&#34;&gt;\(f: \mathbf{R} \to \mathbf{R}\)&lt;/span&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; ist &lt;em&gt;nichtnegativ&lt;/em&gt;, d.h., &lt;span class=&#34;math inline&#34;&gt;\(f(x) \geq 0\)&lt;/span&gt;, für alle &lt;span class=&#34;math inline&#34;&gt;\(x \in \mathbf{R}\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; ist &lt;em&gt;integrierbar&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; ist &lt;em&gt;normiert&lt;/em&gt; in dem Sinne, dass
+&lt;span class=&#34;math display&#34;&gt;\[\int_{-\infty}^\infty f(x) \text{d}x = 1\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Dann nennen wir &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; eine &lt;strong&gt;Wahrscheinlichkeitsdichtefunktion&lt;/strong&gt; (engl. &lt;strong&gt;probability density funktion&lt;/strong&gt; kurz &lt;strong&gt;pdf&lt;/strong&gt;) oder kurz &lt;strong&gt;Dichte&lt;/strong&gt; (engl. &lt;strong&gt;density&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;Durch
+&lt;span class=&#34;math display&#34;&gt;\[P([a, b]) := \int_a^b f(x) \text{d} x\]&lt;/span&gt;
+definiert &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; eine &lt;em&gt;Wahrscheinlichkeitsverteilung&lt;/em&gt; auf den reellen Zahlen.&lt;/p&gt;
+&lt;p&gt;Ist &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; eine reelwertige &lt;em&gt;Zufallsvariable&lt;/em&gt; (kurz &lt;strong&gt;ZV&lt;/strong&gt;) und existiert eine
+reelle Funktion &lt;span class=&#34;math inline&#34;&gt;\(f_X(x)\)&lt;/span&gt; der art, dass für alle &lt;span class=&#34;math inline&#34;&gt;\(a \in \mathbf{R}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(X \leq a) = \int_{-\infty}^a f_X(x) \text{d}x\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;gilt, so nennt man &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; die &lt;strong&gt;Wahrscheinlichkeitsdichtefunktion von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Die Funktion&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F_X(a) = P(X \leq a)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;nenen wir &lt;strong&gt;(Wahrscheinlichkeits-)Verteilung(-sfunktion)&lt;/strong&gt;
+(engl. &lt;strong&gt;cumulative distribution function&lt;/strong&gt; kurz &lt;strong&gt;cdf&lt;/strong&gt;
+aber auch nur &lt;strong&gt;distribution function&lt;/strong&gt;) &lt;strong&gt;von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Genau dann ist eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(F: \mathbf{R} \to [0, 1]\)&lt;/span&gt;
+eine &lt;strong&gt;Verteilungsfunktion&lt;/strong&gt;, wenngilt:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to - \infty} F(t)=0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to + \infty} F(t)=1\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;monoton wachsend&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;rechtsseitig stetig&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Die Funktion&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\overline{F}_X(a) = 1 - F_X(a)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;nennen wir
+&lt;strong&gt;Überlebensfunktion&lt;/strong&gt; (engl. &lt;strong&gt;survival function&lt;/strong&gt;, &lt;strong&gt;complementarey cumulative distribution funktion&lt;/strong&gt; kurz &lt;strong&gt;ccdf&lt;/strong&gt;, &lt;strong&gt;tail distribution&lt;/strong&gt;, &lt;strong&gt;exceedance&lt;/strong&gt; oder &lt;strong&gt;reliability function&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;Es gilt &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}_X(a) + F_X(a) = 1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Genau dann ist eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}: \mathbf{R} \to [0, 1]\)&lt;/span&gt;
+eine &lt;strong&gt;Überlebensfunktion&lt;/strong&gt;, wenn gilt:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to - \infty} \overline{F}(t)=1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to + \infty} \overline{F}(t)=0\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;monoton fallend&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;rechtsseitig stetig&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Cook Abstand</title>
@@ -18,7 +1031,7 @@
       <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/cook-abstand/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Eine Möglichkeit Ausreißer zu finden ist der &lt;em&gt;Cook Abstand&lt;/em&gt;
@@ -47,7 +1060,7 @@ Trinkgeldbetrag &lt;code&gt;tip&lt;/code&gt; für unser Modell:&lt;/p&gt;
 &lt;h2&gt;Unser Modell:&lt;/h2&gt;
 &lt;p&gt;Werfen wir zunächst einen Blick auf das Streudiagramm unserer Daten:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(tip ~ total_bill, data = tips)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Und erstellen dann ein lineares Modell:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;erg_lm &amp;lt;- lm(tip ~ total_bill, data = tips)
 summary(erg_lm)&lt;/code&gt;&lt;/pre&gt;
@@ -74,7 +1087,7 @@ summary(erg_lm)&lt;/code&gt;&lt;/pre&gt;
   geom_line(aes(x = total_bill, 
                 y = erg_lm$fitted.values, 
                 color = &amp;quot;Regressionsgerade&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Für lineare Regressionsmodell können einflussreiche Ausreißer sehr hinderlich
 sein.
 Was ändert sich, wenn wir einen Wert, z.B. einen potentiellen Ausreißer,
@@ -113,7 +1126,7 @@ summary(erg_lm_red)&lt;/code&gt;&lt;/pre&gt;
                  y = tips_removed$tip,
                  colour = &amp;quot;Removed Data&amp;quot;),
                  show.legend = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Um zu messen was diese Änderung bewirkt hat, schaut sich der Cook Abstand
 zunächst die Summe der quadrierten Differenzen der vorhergesagten Werte in
 beiden Modellen an:&lt;/p&gt;
@@ -196,7 +1209,7 @@ erg_lm_no_outliers &amp;lt;- lm(tip ~ total_bill, data = tips_no_outliers)&lt;/c
   geom_line(aes(x = total_bill, 
                 y = erg_lm_no_outliers$fitted.values, 
                 color = &amp;quot;Regressionsgerade&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Im direkten Vergleich:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(tip ~ total_bill, data = erg_lm) +
   geom_line(aes(x = total_bill, 
@@ -206,7 +1219,7 @@ erg_lm_no_outliers &amp;lt;- lm(tip ~ total_bill, data = tips_no_outliers)&lt;/c
               intercept = erg_lm_no_outliers$coefficients[1], 
               slope =  erg_lm_no_outliers$coefficients[2])
               )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;unsere-beiden-modelle-als-formeln&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Unsere beiden Modelle als Formeln&lt;/h2&gt;
@@ -224,9 +1237,9 @@ erg_lm_no_outliers &amp;lt;- lm(tip ~ total_bill, data = tips_no_outliers)&lt;/c
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;../../rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;../../rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://sefiroth.net/nap/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
 
 
 &lt;p&gt;Bei der Rangkorrelation werden statt der Werte die Ränge der Werte zur Berechnung herangezogen.&lt;/p&gt;
@@ -308,7 +1321,7 @@ y
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Das Streudiagramm dieser Daten sieht dann so aus:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der Korrelationskoeffizient ist nun:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r = r_{BP} = 0.7944953\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Schauen wir uns nun die Werte der Tabelle mit ihrem Rang an:&lt;/p&gt;
@@ -457,7 +1470,7 @@ ry
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Das Streudiagramm der Ränge sieht nun wie folgt aus:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Und der Korrelationskoeffizient der Ränge ist nun:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r_{sp} = r_{ry,rx}=0.8909091\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Dieser Korrelationskoeffizient der Ränge wird &lt;em&gt;Rangkorrelationkoeffizient&lt;/em&gt; genannt.&lt;/p&gt;
@@ -769,7 +1782,7 @@ ry
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/eine-typische-frage-von-studierenden/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Vor kurzem fand ich mal wieder eine Anfrage einer Studierenden in meinem Email Postfach. Die Frage lautete in etwa wie folgt:&lt;/p&gt;
@@ -832,7 +1845,7 @@ head(daten)&lt;/code&gt;&lt;/pre&gt;
 ##                   2xtäglich 34   26
 ##                   3xtäglich 27   27&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mosaicplot(wetter.ist.gut ~ iphones.tagsüber.unbeachtet, data = daten)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Für später speichern wir die Kreuztabelle in obs.tab
 obs.tab &amp;lt;- tally(iphones.tagsüber.unbeachtet ~ wetter.ist.gut, data = daten)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -961,7 +1974,7 @@ obs.abs &amp;lt;- diffabsobsexp(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffabsobsexp(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
 gf_histogram(~ diffabsobsexp, data = NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert, also die relative Fläche rechts von der roten Linie in unseren Histogramm, abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexp &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -987,7 +2000,7 @@ obs.abs &amp;lt;- diffabsobsexprel(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffabsobsexprel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
 gf_dhistogram(~ diffabsobsexprel, data = NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Auch hier können wir den p-Wert abschätzen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffabsobsexprel &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -1010,7 +2023,7 @@ obs.abs &amp;lt;- diffquad(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffquad(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
 gf_dhistogram(~ diffquad, data = NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquad &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## prop_TRUE 
@@ -1031,7 +2044,7 @@ obs.abs &amp;lt;- diffquadrel(obs.tab, exp.tab)
 NullVert  &amp;lt;- do(loops) * diffquadrel(tally(iphones.tagsüber.unbeachtet ~ shuffle(wetter.ist.gut), data = daten), exp.tab)
 gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&amp;gt;%
   gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Den Wert 1.2344597, den wir mit Hilfe der relativen quadratischen Abweichung berechnet haben, nennen wir auch &lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt; Wert.&lt;/p&gt;
 &lt;p&gt;Wir können nun den p-Wert abschätzen mit:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prop( ~ diffquadrel &amp;gt;= obs.abs, data = NullVert)&lt;/code&gt;&lt;/pre&gt;
@@ -1074,7 +2087,7 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&am
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dhistogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&amp;gt;%
   gf_fun(dchisq(x, df=2) ~ x, xlim = c(0:20), color = &amp;quot;blue&amp;quot;) %&amp;gt;% 
   gf_vline(xintercept = ~ obs.abs, color = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Aber es gibt auch den (exakten) Fisher-Test:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fisher.test(obs.tab, alternative = &amp;quot;greater&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
@@ -1089,7 +2102,7 @@ gf_histogram(~ diffquadrel, binwidth = 0.5, center = 0.25, data = NullVert) %&am
 &lt;p&gt;Wir können die p-Werte der einzelnen Tests nun gegenüber stellen:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
 ## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-02-12-eine-typische-frage-von-studierenden_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Gewöhnlich haben wir ein Signifikanznivau von &lt;span class=&#34;math inline&#34;&gt;\(5\% = 0{,}05\)&lt;/span&gt; angenommen.
 Die rote Linie zeigt diese Grenze.
 Liegt der Balken links vor dieser Linie, so sprechen wir davon, dass der
@@ -1115,7 +2128,7 @@ und betrachte das später einmal.&lt;/p&gt;
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Im Internet fand ich vor kurzem einen sehr interessanten &lt;a href=&#34;http://www.stefanbartz.de/dateien/Vorsicht-bei-der-sigma-Regel.pdf&#34;&gt;Text&lt;/a&gt; von &lt;a href=&#34;http://www.stefanbartz.de&#34;&gt;Stefan Bart&lt;/a&gt;. Eine Aufgabe daraus fand meine besondere Aufmerksamkeit.&lt;/p&gt;
@@ -1234,7 +2247,7 @@ length(iq_maedchen)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Und schauen uns nun einmal an, wie oft – bei zufälliger Auswahl von 200 Paarungen – es vorkommen kann, dass Jungen in den Paarungen einen höheren IQ haben als Mädchen. Das wäre dann dem Zufall geschuldet und nicht der übermässigen Intelligenz der Jungen. (Da nach Vereinbarung beide Gruppen gleich intelligent waren!)&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;NullVerteilung &amp;lt;- do(5000) * count( ~ sample(jungen, 200) - sample(maedchen, 200) &amp;gt; 0, data=paare)
 gf_bar( ~ n_TRUE, data=NullVerteilung)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-01-27-warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-01-27-warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Das HSB für diesen Fall wäre dann:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(hsb &amp;lt;- quantile( ~ n_TRUE, prob=c(0.025, 0.975), data=NullVerteilung))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  2.5% 97.5% 
@@ -1262,7 +2275,7 @@ Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;
 &lt;div id=&#34;moderation&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Moderation&lt;/h2&gt;
 &lt;p&gt;Bei einer &lt;em&gt;Moderation&lt;/em&gt; wirkt die dritte Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (&lt;em&gt;Moderator&lt;/em&gt;) auf die Beziehung zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der Einfluss von &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; ändert also den Effekt von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; auf &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. Der Zusammenhang zwischen &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; ist also je nach &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; unterschiedlich.&lt;/p&gt;
 &lt;p&gt;Statistisch gesehen liegt eine &lt;em&gt;Interaktion&lt;/em&gt; zwischen &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; vor.&lt;/p&gt;
 &lt;div id=&#34;wie-untersucht-man-einen-zusammenhang-auf-eine-moderation&#34; class=&#34;section level3&#34;&gt;
@@ -1279,7 +2292,7 @@ Dabei wird zusätzlich eine dritte Variable &lt;span class=&#34;math inline&#34;
 &lt;p&gt;Bei der &lt;em&gt;Mediation&lt;/em&gt; steht die Variable &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (der &lt;em&gt;Mediator&lt;/em&gt;) sowohl zu &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; als auch zu &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; in Beziehung.
 Der direkte Effekt zwischen &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; wird durch den indirekten Effekt über &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; erklärt, also durch
 &lt;span class=&#34;math inline&#34;&gt;\(X \to M \to Y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png&#34; width=&#34;30%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;wie-untersucht-man-auf-eine-mediation&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Wie untersucht man auf eine Mediation?&lt;/h3&gt;
 &lt;p&gt;In diesem Fall stellen wir mehrere Regressionsmodelle auf. Eine (signifikante) Mediation liegt dann vor, wenn die folgenden Bedinungen erfüllt sind:&lt;/p&gt;
@@ -1303,7 +2316,7 @@ drittesModell &amp;lt;- lm(Y ~ X + M, data=daten)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/die-ersten-schritte-zur-prognose-mitteles-linearer-regression/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Prognosen sind ein wichtiger Bestandteil von Data Science und ist durchaus nicht nur auf moderne Ansätze, wie Neuronale Netze, deep lerning etc. begrenzt. Auch die gute, alte Regression kann ein sehr sinnvolles Mittel sein solche Prognosen zu erstellen.&lt;/p&gt;
@@ -1376,9 +2389,9 @@ tipspruef %&amp;gt;%
 &lt;h2&gt;Die Datenlage&lt;/h2&gt;
 &lt;p&gt;Ein (paar) Blick(e) auf unsere Trainingsdaten:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(total_bill ~ jitter(size), color=~time, data=tipstrain)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(total_bill ~ day | time, color = ~ sex, data=tipstrain)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;prognosemodel-nullmodell&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Prognosemodel: Nullmodell&lt;/h2&gt;
@@ -1440,7 +2453,7 @@ maa.null&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Mon, 11 Jun 2018 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/sbi-simulation-based-inference/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Wenn meine Tochter &lt;em&gt;SBI&lt;/em&gt; hört, denkt sie an &lt;em&gt;Sally Bollywood Investigation&lt;/em&gt;. – Und ich oft auch. – Mit &lt;em&gt;SBI&lt;/em&gt; ist hier aber nicht der Trickfilm für Kinder, sondern &lt;em&gt;&lt;strong&gt;S&lt;/strong&gt;imulation &lt;strong&gt;B&lt;/strong&gt;ased &lt;strong&gt;I&lt;/strong&gt;nference&lt;/em&gt;, gemeint.&lt;/p&gt;
@@ -1456,16 +2469,16 @@ Und ich habe das Glück gehabt,dabei mitwirken zu dürfen.&lt;/p&gt;
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/ein-wenig-schneller-zur-simulierten-nullverteilung/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;../../rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;../../rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;../../rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;../../rmarkdown-libs/profvis/profvis.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;../../rmarkdown-libs/profvis/profvis.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;../../rmarkdown-libs/profvis/scroll.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;../../rmarkdown-libs/highlight/textmate.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;../../rmarkdown-libs/highlight/highlight.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;../../rmarkdown-libs/profvis-binding/profvis.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://sefiroth.net/nap/rmarkdown-libs/profvis/profvis.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/profvis/profvis.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/profvis/scroll.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://sefiroth.net/nap/rmarkdown-libs/highlight/textmate.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/highlight/highlight.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/profvis-binding/profvis.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Ein Nullhypothesentest ist schnell geschrieben.
@@ -1526,12 +2539,12 @@ Im ersten Fall schaut man sich die Anteilsunterschiede an, wenn man die (potenti
 NullVtlgAntwert &amp;lt;- do(10000) * diffprop(sex ~ shuffle(time), 
     success = &amp;quot;Female&amp;quot;, data = tips)
 gf_histogram(~diffprop, nint = 25, data = NullVtlgAntwert)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Schaut man sich nun die Lage der Anteilsdifferenz der Stichprobe &lt;span class=&#34;math inline&#34;&gt;\(\hat\pi=0.2192513\)&lt;/span&gt; in Bezug auf diese Nullverteilung geometrisch an, so kann man schon einen ersten Eindruck erlangen, ob die Nullhypothese abzulehnen ist oder nicht:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;diffpropdach &amp;lt;- diffprop(sex ~ time, success = &amp;quot;Female&amp;quot;, data = tips)
 gf_histogram(~diffprop, nint = 25, data = NullVtlgAntwert) + 
     geom_vline(xintercept = diffpropdach, color = &amp;quot;blue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Offenbar ist &lt;span class=&#34;math inline&#34;&gt;\(\hat\pi\)&lt;/span&gt; kein sehr häufiges Ereignis.&lt;/p&gt;
 &lt;p&gt;Der &lt;em&gt;p-Wert&lt;/em&gt; ist ebenfalls leicht zu ermitteln:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pvalue_aw &amp;lt;- prop(~abs(diffprop) &amp;gt;= abs(diffpropdach), data = NullVtlgAntwert)
@@ -1544,12 +2557,12 @@ pvalue_aw&lt;/code&gt;&lt;/pre&gt;
 NullVtlgMittelwert &amp;lt;- do(10000) * diffmean(total_bill ~ shuffle(time), 
     data = tips)
 gf_histogram(~diffmean, nint = 25, data = NullVtlgMittelwert)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Und können im Anschluss die Mittelwertsdifferenz der Stichprobe geometrisch einordnen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;diffmeandach &amp;lt;- diffmean(total_bill ~ time, data = tips)
 gf_histogram(~diffmean, nint = 25, data = NullVtlgMittelwert) + 
     geom_vline(xintercept = diffmeandach, color = &amp;quot;blue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Auch den &lt;em&gt;p-Wert&lt;/em&gt; können wir wieder leicht bestimmen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pvalue_mw &amp;lt;- prop(~abs(diffmean) &amp;gt;= abs(diffmeandach), data = NullVtlgMittelwert)
 pvalue_mw&lt;/code&gt;&lt;/pre&gt;
@@ -1579,12 +2592,12 @@ Ein Vergleich:&lt;/p&gt;
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_warnings()` to see where this warning was generated.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_qq(~diffprop, color = ~type, data = df.diffprop)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df.diffmean &amp;lt;- data_frame(diffmean = c(NullDistFSNDR_mw$diffmean, 
     NullDistMosaic_mw$diffmean), type = c(rep(&amp;quot;FSNDR&amp;quot;, 10000), 
     rep(&amp;quot;mosaic&amp;quot;, 10000)))
 gf_qq(~diffmean, color = ~type, data = df.diffmean)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-2.png&#34; width=&#34;672&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-05-02-ein-wenig-schneller-zur-simulierten-nullverteilung_files/figure-html/unnamed-chunk-15-2.png&#34; width=&#34;672&#34; /&gt;
 # qqplot(NullDistFSNDR_aw&lt;span class=&#34;math inline&#34;&gt;\(diffprop, NullDistMosaic_aw\)&lt;/span&gt;diffprop)
 gf_qq(FSNDR ~ Mosaic, data=df)
 # qqplot(NullDistFSNDR_mw&lt;span class=&#34;math inline&#34;&gt;\(diffmean, NullDistMosaic_mw\)&lt;/span&gt;diffmean)
@@ -1604,7 +2617,7 @@ gf_qq(NullDistFSNDR_mw&lt;span class=&#34;math inline&#34;&gt;\(diffmean ~ NullD
       <pubDate>Mon, 08 Jan 2018 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/nur-ein-wenig-lineare-regression/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Der &lt;em&gt;tipping&lt;/em&gt; Datensatz wird oft analysiert. Das Verhältnis von Trinkgeld (&lt;em&gt;tip&lt;/em&gt;) und Rechnungsbetrag (&lt;em&gt;total_bill&lt;/em&gt;) steht dabei im Vordergrund einer lineare Regressionsanalyse.
@@ -1661,7 +2674,7 @@ xyplot(
             text = list(c(&amp;quot;Regressionsgerade&amp;quot;))
           )
      )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Was hat es mit dem y-Achsenabschnitt &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta}_0\)&lt;/span&gt; auf sich?&lt;/p&gt;
 &lt;p&gt;Ist es etwa eine Art &lt;em&gt;Grundtrinkgeld&lt;/em&gt;, mit dem der Kellern rechnen kann, auch wenn der Kunde gar nichts bestellt?&lt;/p&gt;
 &lt;p&gt;Nun ja, es so etwas in der Art, aber eben ein rein fiktiver Wert, der durch die Konstruktion der Parameter entsteht.
@@ -1711,7 +2724,7 @@ xyplot(
             lines=list(col=c(&amp;quot;red&amp;quot;), lty=c(2), lwd=1.2),
             text=list(c(&amp;quot;Regressionsgerade&amp;quot;)))
      )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Vergleichen wir die beiden Zusammenfassungen, so stellen wir fest das sich mit Ausnahme der &lt;em&gt;[Intercept]&lt;/em&gt; Zeile praktisch nichts geändert hat. Das ist kein Wunder, sondern Absicht!&lt;/p&gt;
 &lt;p&gt;Die Regressionsgerade stellt für unsere Stichprobe die Gerade mit dem geringsten Fehler an den Datenpunkten dar. Mathematisch heißt das folgendes:&lt;/p&gt;
 &lt;p&gt;An den &lt;span class=&#34;math inline&#34;&gt;\(n=244\)&lt;/span&gt; Datenpunkten unserer Stichprobe &lt;span class=&#34;math inline&#34;&gt;\((x_i, y_i)=(tips\$total\_bill[i], tips\$tip[i])\)&lt;/span&gt; [für &lt;span class=&#34;math inline&#34;&gt;\((i=1, \dots, n)\)&lt;/span&gt;] sind die &lt;em&gt;Residuen&lt;/em&gt;, also die &lt;em&gt;Fehlerterme&lt;/em&gt;,&lt;/p&gt;
@@ -1764,10 +2777,10 @@ xyplot(
             text = list(c(&amp;quot;Regressionsgerade / x-Achse&amp;quot;))
           )
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Wir können die Graphik im wesentlichen auch einfacher über den Befehl&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;xyplot(residuals(linMod) ~ fitted(linMod))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;erhalten.&lt;/p&gt;
 &lt;p&gt;Betrachten wir kurz nur die Residuen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats(~residuals(linMod))&lt;/code&gt;&lt;/pre&gt;
@@ -1794,7 +2807,7 @@ xyplot(
 Es könnte also eine linkssteile, rechtsschiefe Verteilung der Residuen vorliegen.
 Betrachten wir dazu das Histogramm:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;histogram(~residuals(linMod), nint = 19)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Schon beim ersten Blick auf das Histogramm kann an eine Normalverteilung der Residuen nicht mehr so ganz geglaubt werden.&lt;/p&gt;
 &lt;p&gt;Ein Shapiro-Wilk-Test&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; hat als Nullhypothese die Annahme, dass die Daten normalverteilt sind!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shapiro.test(residuals(linMod))&lt;/code&gt;&lt;/pre&gt;
@@ -1805,7 +2818,7 @@ Betrachten wir dazu das Histogramm:&lt;/p&gt;
 ## W = 0.96728, p-value = 2.171e-05&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Davon ist nach dem Ergebnis eben sowenig auszugehen, wie nach einem Blick auf das QQ-Normal-Diagramm:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;qqnorm(residuals(linMod), col = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Ein K.O.-Kriterium für gute Prognosen.&lt;/p&gt;
 &lt;p&gt;Wie gut aber beschreibt unsere Regressionsgerade die Daten?&lt;/p&gt;
 &lt;p&gt;Als Maß dafür können wir das Bestimmtheitsmaß nehmen.&lt;/p&gt;
@@ -1835,7 +2848,7 @@ xyplot(
             text = list(c(&amp;quot;Mittelwert Trinkgeld&amp;quot;, &amp;quot;Regressionsgerade&amp;quot;))
     )
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-08-nur-ein-wenig-lineare-regression_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Die Varianz &lt;span class=&#34;math inline&#34;&gt;\(s^2_{y_i}=1.9144546\)&lt;/span&gt; beschreibt die mittlere quadratische Abweichung der Datenpunkte &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; vom Mittelwert &lt;span class=&#34;math inline&#34;&gt;\(\bar{y}\)&lt;/span&gt;.
 Diese Varianz lässt sich Zerlegen in einen Anteil, der durch die Regressionsgerade &lt;em&gt;erklärt&lt;/em&gt; wird und in einen Anteil, der durch die Regressionsgerade &lt;em&gt;nicht erklärt&lt;/em&gt; wird.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
@@ -1961,7 +2974,7 @@ Wenn der &lt;em&gt;Wald-Test&lt;/em&gt; für eine oder mehrere unabhängige Vari
       <pubDate>Thu, 04 Jan 2018 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/prognose-konfidenz-und-fiduzialintervalle/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;*&lt;strong&gt;WORK IN PROGRESS&lt;/strong&gt;
@@ -1982,7 +2995,7 @@ Dann heißt das (stochastische) Intervall &lt;span class=&#34;math inline&#34;&g
 &lt;p&gt;Wir nehmen zunächst als Population &lt;span class=&#34;math inline&#34;&gt;\(N=1000\)&lt;/span&gt; normalverteilte Zufallszahlen mit dem Mittelwert &lt;span class=&#34;math inline&#34;&gt;\(\mu= 0\)&lt;/span&gt; und der Standardabweichung &lt;span class=&#34;math inline&#34;&gt;\(\sigma=2.0088\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Dazu das Histogramm der Population:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;histogram(pop, xlab=&amp;quot;Population&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Aus dieser Population ziehen wir eine Stichprobe &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; vom Umfang $n=$40 und erhalten die folgenden statistischen Daten:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats(x)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    min      Q1 median    Q3   max   mean    sd  n missing
@@ -2014,7 +3027,7 @@ und&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;##     cover
 ## n     Low  Yes High
 ##   40 0.00 0.98 0.02&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;prognoseintervalle&#34; class=&#34;section level2&#34;&gt;
@@ -2042,7 +3055,7 @@ und&lt;/p&gt;
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/konfidenzintervalle/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Stub!&lt;/p&gt;
@@ -2055,7 +3068,7 @@ und&lt;/p&gt;
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/zentrales-schwankungsintervall/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Das &lt;strong&gt;zentrale Schwankungsintervall&lt;/strong&gt; sagt etwas über die Präzision der Lageschätzung eines Parameters (zum Beispiel eines Mittelwertes) aus. Das Schwankungsintervall schließt einen Bereich um den wahren Wert des Parameters in der Grundgesamtheit ein, der – vereinfacht gesprochen – mit einer zuvor festgelegten Sicherheitswahrscheinlichkeit den aus der Stichprobe geschätzten Parameter enthält.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
@@ -2074,7 +3087,7 @@ und&lt;/p&gt;
       <pubDate>Tue, 19 Dec 2017 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/quartile-quantile-perzentile-etc/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;“Was hat das eigentlich mit den Quartilen, Quantilen und so weiter auf sich?”

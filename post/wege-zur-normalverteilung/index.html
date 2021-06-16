@@ -1,0 +1,1446 @@
+<!DOCTYPE html><html lang="de-de" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.2.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Norman Markgraf" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Der fairen Wurf einer fairen Münze, also eine Münze bei der Kopf und Zahl gleich wahrscheinlich geworfen wird, sei der Ausgang des ersten Weges.
+Wir können den Münzwurf mit R simulieren:" />
+
+  
+  <link rel="alternate" hreflang="de-de" href="https://sefiroth.net/nap/post/wege-zur-normalverteilung/" />
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/nap/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/nap/css/wowchemy.7145a9a307b7b6e0cf40149bdecd66b5.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/nap/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
+
+  <link rel="canonical" href="https://sefiroth.net/nap/post/wege-zur-normalverteilung/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Norman&#39;s Academic Blog" />
+  <meta property="og:url" content="https://sefiroth.net/nap/post/wege-zur-normalverteilung/" />
+  <meta property="og:title" content="Wege zur Normalverteilung | Norman&#39;s Academic Blog" />
+  <meta property="og:description" content="Der fairen Wurf einer fairen Münze, also eine Münze bei der Kopf und Zahl gleich wahrscheinlich geworfen wird, sei der Ausgang des ersten Weges.
+Wir können den Münzwurf mit R simulieren:" /><meta property="og:image" content="https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+    <meta property="twitter:image" content="https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="de-de" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-06-11T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-06-11T11:57:07&#43;02:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sefiroth.net/nap/post/wege-zur-normalverteilung/"
+  },
+  "headline": "Wege zur Normalverteilung",
+  
+  "datePublished": "2021-06-11T00:00:00Z",
+  "dateModified": "2021-06-11T11:57:07+02:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Norman Markgraf"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Norman's Academic Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Der fairen Wurf einer fairen Münze, also eine Münze bei der Kopf und Zahl gleich wahrscheinlich geworfen wird, sei der Ausgang des ersten Weges.\nWir können den Münzwurf mit R simulieren:"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Wege zur Normalverteilung | Norman&#39;s Academic Blog</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d31ff7bf05a6f8364bfb04c0b80492c3" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/nap/js/wowchemy-init.min.b8153d4570dcbb34350a2a846dba8c03.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Suche</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Suche..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Suche...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/nap/">Norman&#39;s Academic Blog</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Navigation einblenden">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/nap/">Norman&#39;s Academic Blog</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#posts"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#projects"><span>Projekte</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#featured"><span>Veröffentlichungen</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#contact"><span>Impressum</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Suche"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Einstellungen anzeigen">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Hell</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dunkel</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatisch</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Wege zur Normalverteilung</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Zuletzt aktualisiert am
+      
+    
+    Jun 11, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min Lesezeit
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/nap/category/statistisches/">Statistisches</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Der fairen Wurf einer fairen Münze, also eine Münze bei der Kopf und Zahl gleich wahrscheinlich geworfen wird, sei der Ausgang des ersten Weges.</p>
+<p>Wir können den Münzwurf mit R simulieren:</p>
+<pre class="r"><code>library(mosaic)
+set.seed(2009)
+
+rflip(1)</code></pre>
+<pre><code>## 
+## Flipping 1 coin [ Prob(Heads) = 0.5 ] ...
+## 
+## T
+## 
+## Number of Heads: 0 [Proportion Heads: 0]</code></pre>
+<p>Genauso wie den Wurf zweier Münzen:</p>
+<pre class="r"><code>rflip(2)</code></pre>
+<pre><code>## 
+## Flipping 2 coins [ Prob(Heads) = 0.5 ] ...
+## 
+## H H
+## 
+## Number of Heads: 2 [Proportion Heads: 1]</code></pre>
+<p>Oder auch von 20 Münzwürfen:</p>
+<pre class="r"><code>rflip(20)</code></pre>
+<pre><code>## 
+## Flipping 20 coins [ Prob(Heads) = 0.5 ] ...
+## 
+## T T T T H H T T T H H H H T H T T H H H
+## 
+## Number of Heads: 10 [Proportion Heads: 0.5]</code></pre>
+<p>Wir wollen uns dafür interessieren, wie der Zufall auf jeweils <span class="math inline">\(n\)</span> Münzwürfe einwirkt</p>
+<p>Und wieder holen dafür die drei Experiment jeweils <span class="math inline">\(N=10^{4}\)</span> mal und schauen
+uns danach anwie die Anzahl der <em>Kopf</em> Würfe variiert:</p>
+<pre class="r"><code>N &lt;- 10000</code></pre>
+<pre class="r"><code>n &lt;- 1
+vrtlg_1 &lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_1) %&gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5,n + 0.5)))</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><span class="math inline">\(n=2\)</span></p>
+<pre class="r"><code>n &lt;- 2
+vrtlg_2 &lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_2) %&gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><span class="math inline">\(n=20\)</span></p>
+<pre class="r"><code>n &lt;- 20
+vrtlg_20 &lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_20) %&gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<span class="math inline">\(n=50\)</span></p>
+<pre class="r"><code>n &lt; -50</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>vrtlg_50 &lt;- do(N) * rflip(n)
+gf_bar(~ heads, data = vrtlg_50) %&gt;%
+  gf_refine(scale_x_continuous(breaks = 0:n, limits = c(-0.5, n + 0.5)))</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Der faire Wurf eine fairen Münze <span class="math inline">\(X\)</span> ist aber vorallem ein Gedanken-Expermiment,
+bei dem wir davon ausgehen, dass die Wahrscheinlichkeit für Kopf gleich der Wahrscheinlichkeit für Zahl ist:</p>
+<p><span class="math display">\[P(X = \text{&quot;Kopf&quot;}) = P(X = \text{&quot;Zahl&quot;}) = 50\,\% = 0{,}5\]</span></p>
+<p>Wir wollen die beiden Ergebnisse kodieren: <span class="math inline">\(\text{&quot;Kopf&quot;}\)</span> mit <span class="math inline">\(1\)</span> und <span class="math inline">\(\text{&quot;Zahl&quot;}\)</span> mit <span class="math inline">\(0\)</span>. Somit können wir schreiben:</p>
+<p><span class="math display">\[P(X = 0)  = 0{,}5 = P(X = 1)\]</span></p>
+<p>Für denn Fall, dass die Münze nicht mehr fair ist wollen wir vereinbaren, dass wir
+mit <span class="math inline">\(q = P(X = 0)\)</span> und <span class="math inline">\(p = P(X = 1)\)</span> die jeweiligen Wahrscheinlichkeiten bezeichnen wollen. Es gilt aber immer, dass <span class="math inline">\(q+p = 1\)</span> ist!</p>
+<p>Eine Variable <span class="math inline">\(X\)</span> die dem Zufall ein Wert <span class="math inline">\(x\)</span> zuweist, wollen wir <strong>Zufallsvariable</strong> nennen.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Ausgehen von der Annahme können wir uns diese theoretischen Verteilungen auch einmal ansehen:</p>
+<pre class="r"><code>p = 0.5
+n = 1
+gf_dist(&quot;binom&quot;, size = n, prob = p)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>n = 2
+tab &lt;- tally( ~ heads, format = &quot;proportion&quot;, data = vrtlg_2)
+dist_2 &lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&quot;binom&quot;, size = n, prob = p) %&gt;%
+  gf_point(density ~ x, data = dist_2, color = &quot;lightgreen&quot;, alpha = 0.7)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>n = 20
+gf_dist(&quot;binom&quot;, size = n, prob = p)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>n = 20
+tab &lt;- tally( ~ heads, format = &quot;proportion&quot;, data = vrtlg_20)
+dist_20 &lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&quot;binom&quot;, size = n, prob = p) %&gt;%
+  gf_point(density ~ x, data = dist_20, color = &quot;lightgreen&quot;, alpha = 0.7)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code>n = 50
+tab &lt;- tally( ~ heads, format = &quot;proportion&quot;, data = vrtlg_50)
+dist_50 &lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&quot;binom&quot;, size = n, prob = 0.5) %&gt;%
+  gf_point(density ~ x, data = dist_50, color = &quot;lightgreen&quot;, alpha = 0.7)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre class="r"><code>n &lt;- 100
+N &lt;- 5 * n**2
+vrtlg_100 &lt;- do(N) * rflip(n)
+tab &lt;- tally( ~ heads, format = &quot;proportion&quot;, data = vrtlg_100)
+dist_100 &lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&quot;binom&quot;, size = n, prob = p) %&gt;%
+  gf_point(density ~ x, data = dist_100, color = &quot;lightgreen&quot;, alpha = 0.7)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre class="r"><code>n &lt;- 300
+N &lt;- 5 * n**2
+vrtlg_300 &lt;- do(N) * rflip(n)
+tab &lt;- tally( ~ heads, format = &quot;proportion&quot;, data = vrtlg_300)
+dist_300 &lt;- data.frame(
+  x = as.numeric(names(tab)),
+  density = as.numeric(tab)
+) 
+
+gf_dist(&quot;binom&quot;, size = n, prob = p) %&gt;%
+  gf_point(density ~ x, data = dist_300, color = &quot;lightgreen&quot;, alpha = 0.7)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Zeichnen wir nun die <em>Gauß’sche Glockenkurve</em> in rot dazu:</p>
+<pre class="r"><code>gf_dist(&quot;binom&quot;, size = n, prob = p) %&gt;%
+  gf_point(density ~ x, data = dist_300, color = &quot;lightgreen&quot;, alpha = 0.7) %&gt;%
+  gf_dist(&quot;norm&quot;, mean = n*p, sd = sqrt(n*p*(1 - p)), color = &quot;red&quot;)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Die <em>Gauß’sche Glockenkurve</em> ist die <strong>Dichtefunktion</strong> der Normalverteilung und ist definiert durch:</p>
+<p><span class="math display">\[f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{(x-\mu)^2}{2\sigma^2}}\]</span></p>
+<p>Mit den beiden Parameter <span class="math inline">\(\mu\)</span> und <span class="math inline">\(\sigma^2\)</span> kann man den <em>Mittelwert der Verteilung</em> (auch <strong>Erwartungswert</strong> genannt) und die <em>Varianz der Verteilung</em> einstellen.</p>
+<p>Wir haben diese Werte oben mit den theoretischen Werten der <em>Binomialverteilung</em>
+<span class="math inline">\(\mu = E[X] = p \cdot n\)</span> und <span class="math inline">\(\sigma = \sqrt{\sigma^2}= \sqrt{Var[X]} = \sqrt{n \cdot p \cdot (1-p)}\)</span> belegt.</p>
+<p>Wir sehen, die (simulierten) relativen Häufigkeiten der Münzwürfe streben mit steigendem <span class="math inline">\(N\)</span> mehr und mehr in Richtung der (theoretischen) Wahrscheinlichkeiten der Binomialverteilung und diese (mit steigendem <span class="math inline">\(n\)</span>) gegen die Gauß’sche Glockenkurve der Normalverteilung.</p>
+<p>Eine <strong>Verteilungsfunktion</strong> <span class="math inline">\(F(x)\)</span> gibt an, wie wahrscheinlich es ist, einen Wert <span class="math inline">\(\leq x\)</span> zu beobachten:</p>
+<p><span class="math display">\[F(x) = P(X \leq x)\]</span></p>
+<p>Natürlich ist damit immer <span class="math inline">\(0 \leq F(x) \leq 1\)</span>.</p>
+<p>Eine <em>empirische Verteilungsfunktion</em> <span class="math inline">\(F_n(x)\)</span>gibt an, wie groß die relative Häufigkeit
+des eintretens von Werten <span class="math inline">\(\leq x\)</span> bei einem Stichprobenumfang von <span class="math inline">\(n\)</span> waren:
+<span class="math display">\[F_n(x) = \frac{\text{Anzahl der Werte} \leq x}{n}\]</span></p>
+<p>Betrachen wir nun <em>empirische Verteilungsfunktion</em> unserer Experimente:</p>
+<p>n = 2</p>
+<pre class="r"><code>gf_ecdf( ~ heads, data=vrtlg_2)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>n = 20</p>
+<pre class="r"><code>gf_ecdf( ~ heads, data=vrtlg_20)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+n = 50</p>
+<pre class="r"><code>gf_ecdf( ~ heads, data=vrtlg_50)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>n = 300</p>
+<pre class="r"><code>gf_ecdf( ~ heads, data=vrtlg_300)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+Tragen wir zur <em>empirische Verteilungsfunktion</em> auch die <em>Verteilungsfunktion</em> der Normalverteilung von oben ein:</p>
+<pre class="r"><code>n &lt;- 300
+gf_ecdf( ~ heads, data = vrtlg_300) %&gt;%
+  gf_dist(&quot;norm&quot;, mean = n*p, sd = sqrt(n*p*(1 - p)), kind=&quot;cdf&quot;, color = &quot;red&quot;)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/wege-zur-normalverteilung/index.de_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Die <em>empirische Verteilungsfunktion</em> strebt also gegen die (theoretisch) <em>Verteilungsfunktion</em> der Normalverteilung. Sie lautet:</p>
+<p><span class="math display">\[F(x) = \int_{-\infty}^x f(u)\, \text{d} u = \int_{-\infty}^x\frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{(x-\mu)^2}{2\sigma^2}}\]</span></p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Eigentlich handelt es sich damit strenggenommen um eine Funktion. Und es müssen noch weitere Eigenschaften erfüllt sein. Aber darauf gehen wir hier nicht weiter ein.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/nap/tag/dichtefunktion/">Dichtefunktion</a>
+  
+  <a class="badge badge-light" href="/nap/tag/dichte/">Dichte</a>
+  
+  <a class="badge badge-light" href="/nap/tag/wahrscheinlichkeitsdichte/">Wahrscheinlichkeitsdichte</a>
+  
+  <a class="badge badge-light" href="/nap/tag/wahrscheinlichkeitsdichtefunktion/">Wahrscheinlichkeitsdichtefunktion</a>
+  
+  <a class="badge badge-light" href="/nap/tag/wahrscheinlichkeitstheorie/">Wahrscheinlichkeitstheorie</a>
+  
+  <a class="badge badge-light" href="/nap/tag/normalverteilung/">Normalverteilung</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://sefiroth.net/nap/post/wege-zur-normalverteilung/&amp;text=Wege%20zur%20Normalverteilung" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://sefiroth.net/nap/post/wege-zur-normalverteilung/&amp;t=Wege%20zur%20Normalverteilung" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Wege%20zur%20Normalverteilung&amp;body=https://sefiroth.net/nap/post/wege-zur-normalverteilung/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://sefiroth.net/nap/post/wege-zur-normalverteilung/&amp;title=Wege%20zur%20Normalverteilung" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Wege%20zur%20Normalverteilung%20https://sefiroth.net/nap/post/wege-zur-normalverteilung/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://sefiroth.net/nap/post/wege-zur-normalverteilung/&amp;title=Wege%20zur%20Normalverteilung" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://sefiroth.net/nap/"><img class="avatar mr-3 avatar-circle" src="/nap/authors/admin/avatar_hu693e4128d00be856374ec0a95c294cb0_23891_270x270_fill_q75_lanczos_center.jpg" alt="Norman Markgraf"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://sefiroth.net/nap/">Norman Markgraf</a></h5>
+      <h6 class="card-subtitle">Diplom-Mathematiker</h6>
+      <p class="card-text">Norman Markgraf ist freiberuflicher Dozent für Mathematik, Statistik, Data Science und Informatik, sowie freiberuflicher Programmierer.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:nmarkgraf@hotmail.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/nap/twitter.com/NormanMarkgraf" >
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//scholar.google.de/citations?user=zR76YpQAAAAJ&amp;hl=de" >
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//github.com/nmarkgraf" >
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//www.xing.com/profile/Norman_Markgraf" >
+        <i class="fab fa-xing"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//www.linkedin.com/in/normanmarkgraf/" >
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Ähnliches</h3>
+    <ul>
+      
+      <li><a href="/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/">Gedankenstütze zu wichtigen Funktionsbegriffen in der Statistik</a></li>
+      
+      <li><a href="/nap/post/konfidenzintervalle/">Konfidenzintervalle</a></li>
+      
+      <li><a href="/nap/post/zentrales-schwankungsintervall/">Zentrales Schwankungsintervall</a></li>
+      
+      <li><a href="/nap/post/quartile-quantile-perzentile-etc/">Quartile, Quantile, Perzentile etc.</a></li>
+      
+      <li><a href="/nap/post/der-zentrale-grenzwertsatz/">Der Zentrale Grenzwertsatz</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+  
+  <p class="powered-by">
+    
+      <a href="/nap/privacy/">Datenschutzerklärung (Privacy Policy)</a>
+    
+    
+       &middot; 
+      <a href="/nap/terms/">Terms</a>
+    
+  </p>
+  
+
+  
+  <p class="powered-by">
+    © 2021 by Norman Markgraf
+  </p>
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Zitieren</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Kopie
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/nap/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/nap/de/js/wowchemy.min.a2cf169acd1081a78eed933b5a5e9871.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

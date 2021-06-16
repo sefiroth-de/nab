@@ -5,9 +5,9 @@
     <link>https://sefiroth.net/nap/category/information/</link>
       <atom:link href="https://sefiroth.net/nap/category/information/index.xml" rel="self" type="application/rss+xml" />
     <description>Information</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Information</title>
       <link>https://sefiroth.net/nap/category/information/</link>
     </image>
@@ -18,7 +18,7 @@
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/erste-schritte-mit-vroom/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Nach &lt;a href=&#34;https://readr.tidyverse.org&#34;&gt;&lt;code&gt;readr&lt;/code&gt;&lt;/a&gt; kommt &lt;a href=&#34;https://vroom.r-lib.org&#34;&gt;&lt;code&gt;vroom&lt;/code&gt;&lt;/a&gt;. In der Zwischenzeit liegt vroom in der Version 1.2.0 vor und daher habe ich mir ein paar Stunden Zeit gekommen um ein paar erste Experimente damit zu machen.&lt;/p&gt;
@@ -258,7 +258,7 @@ tips.csv2 &amp;lt;- read.csv2(&amp;quot;tips.csv&amp;quot;)&lt;/code&gt;&lt;/pre
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Jede Programmiersprache hat Regeln.

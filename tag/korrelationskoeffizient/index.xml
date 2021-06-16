@@ -5,12 +5,565 @@
     <link>https://sefiroth.net/nap/tag/korrelationskoeffizient/</link>
       <atom:link href="https://sefiroth.net/nap/tag/korrelationskoeffizient/index.xml" rel="self" type="application/rss+xml" />
     <description>Korrelationskoeffizient</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 09 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nap/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Korrelationskoeffizient</title>
       <link>https://sefiroth.net/nap/tag/korrelationskoeffizient/</link>
     </image>
+    
+    <item>
+      <title>Über die Koeffizienten einer linearen Regression</title>
+      <link>https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Bei einer &lt;em&gt;einfachen Regression&lt;/em&gt; versuchen wir zu gegebenen
+Datenpunkten &lt;span class=&#34;math inline&#34;&gt;\((x_1, y_1), ... (x_n, y_n)\)&lt;/span&gt; eine &lt;em&gt;möglichst passende&lt;/em&gt; Funktion
+&lt;span class=&#34;math inline&#34;&gt;\(g(x)\)&lt;/span&gt; zu finden, so dass
+&lt;span class=&#34;math display&#34;&gt;\[y_i = g(x_i) + e_i\]&lt;/span&gt;
+gilt. Dabei tollerieren wir eine (kleine) Abweichung &lt;span class=&#34;math inline&#34;&gt;\(e_i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Bei einer &lt;em&gt;einfachen &lt;strong&gt;linearen&lt;/strong&gt; Regression&lt;/em&gt; gehen wir davon aus, dass die Datenpunkte (im wesendlichen) auf einer Geraden&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[y_i = \beta_0 + \beta_1 \cdot x_i + e_i\]&lt;/span&gt;
+liegen.&lt;/p&gt;
+&lt;p&gt;Unsere Aufgabe besteht nun darin die Parameter &lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt; (y-Achenabschnitt) und &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; (Steigung) an hand der Datenpunkte zu schätzen.
+Schätzungen tragen ein Dacht (&lt;span class=&#34;math inline&#34;&gt;\(\hat{.}\)&lt;/span&gt;) um sie von den (in der Regel unbekannten) Parametern zu unterscheiden.&lt;/p&gt;
+&lt;p&gt;Wir suchen somit nach &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta= \left(\hat\beta_0,\, \hat\beta_1\right)\)&lt;/span&gt;,
+so dass die Gerade &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0 + \hat\beta_1 \cdot x\)&lt;/span&gt; zu gegebenem &lt;span class=&#34;math inline&#34;&gt;\(x_i\)&lt;/span&gt;
+eine möglichst gute Schätzung von &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; (genannt &lt;span class=&#34;math inline&#34;&gt;\(\hat{y}_i\)&lt;/span&gt;) bestimmt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\hat{y_i} = \hat\beta_0 + \hat\beta_1 \cdot x_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Die Abweichung &lt;span class=&#34;math inline&#34;&gt;\(\hat{e_i}\)&lt;/span&gt; unserer Schätzung &lt;span class=&#34;math inline&#34;&gt;\(\hat{y}_i\)&lt;/span&gt; von dem
+gegebenen Wert &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; ist somit:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\hat{e_i} =  \hat{y_i} - y_i =  \hat\beta_0 + \hat\beta_1 \cdot x_i - y_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wenn wir diese Abweichung über alle &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; minimieren, finden wir unser &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Doch das wirft eine Frage auf:
+&lt;em&gt;Wie genau messen wir &lt;strong&gt;kleinsten Fehler&lt;/strong&gt; der &lt;span class=&#34;math inline&#34;&gt;\(\hat{e_i}\)&lt;/span&gt;?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Wir betrachten zunächste drei einfache Ideen:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Idee: Summe der Abweichungen&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Idee: Summe der absoluten Abweichungen&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Idee: Summe der quadratischen Abweichungen&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Wir betrachten die drei Ideen in umgekehrter Reihenfolge:&lt;/p&gt;
+&lt;div id=&#34;idee-summe-der-quadratischen-abweichungen&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. Idee: Summe der quadratischen Abweichungen&lt;/h2&gt;
+&lt;p&gt;Wir bezeichnen mit&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+QS &amp;amp;= QS(\hat\beta) = QS(\hat\beta_0, \hat\beta_1) \\
+  &amp;amp;= \sum\limits_{i=1}^n \hat{e_i}^2 = \sum\limits_{i=1}^n \left(\hat{y_i} - y_i \right)^2 \\
+  &amp;amp;= \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right)^2
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;die &lt;strong&gt;Q&lt;/strong&gt;uadrat-&lt;strong&gt;S&lt;/strong&gt;umme der Abweichungen.&lt;/p&gt;
+&lt;p&gt;Gesucht wird &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta=\left(\hat\beta_0,\,\hat\beta_1\right)\)&lt;/span&gt;,
+so das &lt;span class=&#34;math inline&#34;&gt;\(QS\)&lt;/span&gt; minimiert wird.&lt;/p&gt;
+&lt;p&gt;Dieses klassische Minimierungsproblem hat eine (exakte)
+mathematisch-algebraisch Lösung in dem wir die Nullstelle
+der ersten partiellen Ableitung von &lt;span class=&#34;math inline&#34;&gt;\(QS\)&lt;/span&gt; nach &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; bzw.
+&lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; bestimmen. Neben dieser notwendigen Bedindung, müssen wir formal
+noch die dann hinreichende Bedinung auf ein Minimum prüfen.&lt;/p&gt;
+&lt;p&gt;Aber wir beginnen mit den notwenigdigen Bedingungen:&lt;/p&gt;
+&lt;div id=&#34;schätzen-des-y-achenabschnitts-hatbeta_0&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Schätzen des y-Achenabschnitts &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;Es ist:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+ \frac{\partial}{\partial \hat\beta_0} \, QS &amp;amp;= 2 \cdot \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right) \cdot 1 \\
+  &amp;amp;= 2 \cdot \left(\sum\limits_{i=1}^n \hat\beta_0 + \sum\limits_{i=1}^n\hat\beta_1 \cdot x_i - \sum\limits_{i=1}^n y_i\right) \\
+  &amp;amp;= 2 \cdot \left( n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right)
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Für die notwendige Bedingung eines Minimums, setzen wir den Ausdruck
+gleich Null und erhalten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  0 &amp;amp;= \frac{\partial}{\partial \hat\beta_0} \, QS \\
+  &amp;amp;= 2 \cdot \left( n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right) \\
+  &amp;amp;= n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir stellen nach &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; um:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  -n \cdot \hat\beta_0 &amp;amp;= \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \\
+  \hat\beta_0 &amp;amp;= \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i - \hat\beta_1\cdot\frac{1}{n} \cdot \sum\limits_{i=1}^n x_i \\
+  &amp;amp;= \bar{y} - \hat\beta_1\cdot \bar{x}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wenn wir &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; bestimmen, so haben wir auch &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;schätzen-der-steigung-hatbeta_1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Schätzen der Steigung &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;Es ist:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \frac{\partial}{\partial \hat\beta_1} \, QS &amp;amp;= 2 \cdot \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right) \cdot x_i \\
+  &amp;amp;= 2 \cdot \left(\sum\limits_{i=1}^n \hat\beta_0 \cdot x_i + \sum\limits_{i=1}^n \hat\beta_1 \cdot x_i\cdot x_i- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+    &amp;amp;= 2 \cdot \left(\hat\beta_0 \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir ersetzen nun &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; durch &lt;span class=&#34;math inline&#34;&gt;\(\bar{y} - \hat\beta_1\cdot \bar{x}\)&lt;/span&gt; und erhalten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \frac{\partial}{\partial \hat\beta_1} \, QS  &amp;amp;= 2 \cdot \left(\left(\bar{y} - \hat\beta_1\cdot \bar{x}\right) \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+  &amp;amp;= 2 \cdot \left(\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir setzen nun wieder den Ausdruck gleich Null:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+ 0 &amp;amp;= 2 \cdot \left(\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+   &amp;amp;= \bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i \\
+   &amp;amp;= \frac{1}{n} \cdot \bar{y} \cdot \sum\limits_{i=1}^n  x_i- \frac{1}{n} \cdot\hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \frac{1}{n} \cdot\hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+   &amp;amp;=  \bar{y} \cdot \frac{1}{n} \cdot \sum\limits_{i=1}^n  x_i - \hat\beta_1\cdot \bar{x} \cdot \frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i + \frac{1}{n} \cdot\hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+      &amp;amp;=  \bar{y} \cdot \bar{x} - \hat\beta_1\cdot \bar{x} \cdot \bar{x}+ \hat\beta_1 \cdot\frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+      &amp;amp;=  \bar{y} \cdot \bar{x} - \hat\beta_1\cdot\bar{x}^2 + \hat\beta_1 \cdot\frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir stellen nach &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; um:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\hat\beta_1\cdot \bar{x}^2 - \hat\beta_1 \cdot\frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2 
+      &amp;amp;=  \bar{y} \cdot \bar{x} - \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+\hat\beta_1\cdot \left(\bar{x}^2 - \frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2 \right)
+      &amp;amp;=  \bar{y} \cdot \bar{x} - \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+\hat\beta_1 
+      &amp;amp;= \frac{\bar{y} \cdot \bar{x} - \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i}{\bar{x}^2 - \frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Mit Hilfe des &lt;a href=&#34;https://de.wikipedia.org/wiki/Verschiebungssatz_(Statistik)&#34;&gt;&lt;em&gt;Verschiebesatzes von Steiner&lt;/em&gt;&lt;/a&gt; erhalten wir:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\hat\beta_1 
+      &amp;amp;= \frac{\frac{1}{n} \cdot\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\frac{1}{n} \cdot\sum\limits_{i=1}^n  (x_i-\bar{x})^2} \\
+      &amp;amp;= \frac{\sigma_{x,y}}{\sigma^2_x} \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Beachte:
+&lt;em&gt;Da &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt; sowohl im Zähler als auch im Nenner steht
+können wir ihr kürzen und mit &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt; erweitern.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Somit gilt ebenfalls:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\hat\beta_1 
+      &amp;amp;= \frac{\frac{1}{n} \cdot\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\frac{1}{n} \cdot\sum\limits_{i=1}^n  (x_i-\bar{x})^2} 
+      = \frac{\frac{1}{n-1} \cdot\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\frac{1}{n-1} \cdot\sum\limits_{i=1}^n  (x_i-\bar{x})^2} \\
+      &amp;amp;= \frac{s_{x,y}}{s^2_{x}}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir können zur Berechnung sowohl die Kovarianz der Grundgesamtheit &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{x,y}\)&lt;/span&gt; und die Varianz &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2_x\)&lt;/span&gt; von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, als auch deren Schätzer &lt;span class=&#34;math inline&#34;&gt;\(s_{x,y}\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(s^2_x\)&lt;/span&gt; verwendet werden!&lt;/p&gt;
+&lt;p&gt;Diese Methode nennt sich &lt;strong&gt;Methode der kleinsten Quadrate&lt;/strong&gt;
+(engl. &lt;em&gt;ordenary least square method&lt;/em&gt;) und wir sprechen
+dann auch von den &lt;strong&gt;Kleinste-Quadrate-Schätzern&lt;/strong&gt;
+(oder kurz &lt;strong&gt;KQ-Schätzer&lt;/strong&gt; bzw. &lt;strong&gt;OLS-Schätzer&lt;/strong&gt;) &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Erweitern wir den Ausdruck mit Standardabweichung &lt;span class=&#34;math inline&#34;&gt;\(\sigma_y\)&lt;/span&gt; bzw. &lt;span class=&#34;math inline&#34;&gt;\(s_y\)&lt;/span&gt;, so erhalten wir:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\hat\beta_1 &amp;amp;= \frac{\sigma_{x,y}}{\sigma^2_x} \cdot \frac{\sigma_y}{\sigma_y} \\
+ &amp;amp;= \frac{\sigma_{x,y}}{\sigma_x \cdot \sigma_x} \cdot \frac{\sigma_y}{\sigma_y}\\
+ &amp;amp;= \frac{\sigma_{x,y}}{\sigma_x \cdot \sigma_y} \cdot \frac{\sigma_y}{\sigma_x} \\
+ &amp;amp;= \rho_{x,y} \cdot \frac{\sigma_y}{\sigma_x} \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;und analog für die Schätzer:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\hat\beta_1 &amp;amp;= \frac{s_{x,y}}{s^2_x} \cdot \frac{s_y}{s_y} \\
+ &amp;amp;= \frac{s_{x,y}}{s_x \cdot s_x} \cdot \frac{s_y}{s_y}\\
+ &amp;amp;= \frac{s_{x,y}}{s_x \cdot s_y} \cdot \frac{s_y}{s_x} \\
+ &amp;amp;= r_{x,y} \cdot \frac{s_y}{s_x} \\
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Die Steigung &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; hat somit eine direkte Beziehung mit dem &lt;em&gt;Korrelationskoeffizenten&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt; (der Grundgesamtheit) bzw. &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt; (der Stichprobe).&lt;/p&gt;
+&lt;p&gt;Für eine Berechnung in &lt;strong&gt;R&lt;/strong&gt; heißt dies: wir können die Regressionskoeffizienten
+&lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; direkt algebraisch ausrechnen, wenn wir&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;&lt;p&gt;die Standardabweichungen von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; und den Korrelationskoeffizienten oder&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;die Varianz von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und Kovarianz von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;haben.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ein-beispiel-in-r&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Ein Beispiel in R:&lt;/h3&gt;
+&lt;p&gt;Auf Grundlage der Datentabelle &lt;em&gt;mtcars&lt;/em&gt; wollen wir Prüfen wie ein linearer
+Zusammenhang zwischen dem Verbrauch (in Meilen pro Gallone &lt;em&gt;mpg&lt;/em&gt;) und der Leistung
+(Pferdestärke &lt;em&gt;hp&lt;/em&gt;) modelliert werden kann.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+# Wir nehmen eie Datentabelle &amp;#39;mtcars&amp;#39;:
+dt &amp;lt;- mtcars
+# und vergleichen Verbrauch (mpg, miles per gallon) mit der Pferdestärke (hp)
+# Mit Hilfe eines Streudiagramms
+gf_point(mpg ~ hp, data = dt) %&amp;gt;%
+  gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Berechnen wir zunächst die Mittelwerte von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; (also ‘hp’) und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; (also ‘mpg’)&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean_hp = mean(~ hp, data = dt)
+mean_mpg = mean(~ mpg, data = dt)
+mean_hp&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 146.6875&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean_mpg&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 20.09062&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;und zeichnen die Punkt &lt;span class=&#34;math inline&#34;&gt;\((\bar{x}, \bar{y}) = (146.69, 20.09)\)&lt;/span&gt; in unser
+Streudiagramm ein:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(mpg ~ hp, data = dt) %&amp;gt;%
+  gf_hline(yintercept = ~ mean_mpg, color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_vline(xintercept = ~ mean_hp, color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_point(mean_mpg ~ mean_hp, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
+  gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Berechnen wir nun die Schätzwerte für die Regressiongerade&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beta_1 = cov(mpg ~ hp, data = dt) / var(~ hp, data = dt)
+beta_0 = mean_mpg - beta_1 * mean_hp&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;und zeichnen diese ebenfalls in unser Streudiagramm ein:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(mpg ~ hp, data = dt) %&amp;gt;%
+  gf_hline(yintercept = ~ mean_mpg, color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_vline(xintercept = ~ mean_hp, color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_point(mean_mpg ~ mean_hp, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
+  gf_abline(slope = ~ beta_1, intercept = ~beta_0, color = &amp;quot;dodgerblue&amp;quot;) %&amp;gt;%
+  gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;amp;\approx 30.0988605 -0.0682283 \cdot x \\
+          &amp;amp;\approx 30.099 -0.068 \cdot x
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;studentisieren-einmal-hin-und-einmal-zurück&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Studentisieren – einmal hin und einmal zurück&lt;/h3&gt;
+&lt;p&gt;Was passiert eigentlich, wenn wir unsere &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; Werte studentisieren (aka standardisieren oder z-transformieren)?&lt;/p&gt;
+&lt;p&gt;Zur Erinnerung, studentisieren geht so:
+&lt;span class=&#34;math display&#34;&gt;\[x^{stud} = \frac{x - \bar{x}}{s_x}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;R&lt;/strong&gt; können wir das mit der Funktion ‘zscore’ wie folgt:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dt$hp_stud &amp;lt;- zscore(dt$hp)
+dt$mpg_stud&amp;lt;- zscore(dt$mpg)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Natürlich sind die Mittelwerte nun Null und die Standardabweichungen Eins:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats( ~ hp_stud, data = dt)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        min         Q1     median        Q3      max         mean sd  n missing
+##  -1.381032 -0.7319924 -0.3454858 0.4858679 2.746567 1.040834e-17  1 32       0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats( ~ mpg_stud, data = dt)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        min         Q1     median        Q3      max         mean sd  n missing
+##  -1.607883 -0.7741273 -0.1477738 0.4495434 2.291272 7.112366e-17  1 32       0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Der Grund für die kleinen Abweichungen von der Null beim MIttelwert
+sind Rundungsfehler, die der Computer macht!&lt;/p&gt;
+&lt;p&gt;Schauen wir uns nun das Streudiagramm an, zusammen mit dem Mittelpunkt &lt;span class=&#34;math inline&#34;&gt;\((0,0)\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(mpg_stud ~ hp_stud, data = dt) %&amp;gt;%
+  gf_point(0 ~ 0, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
+  gf_lims(y = c(-2, 2))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;90%&#34; /&gt;
+Auch wenn die Skalierungen sich geändert haben, die Diagramme sind sehr ähnlich.&lt;/p&gt;
+&lt;p&gt;Bestimmen wir die Koeffizienten der Regressionsgerade&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beta_stud_1 = cov(mpg_stud ~ hp_stud, data = dt)
+beta_stud_0 = 0 - beta_stud_1 * 0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;und setzen sie in das Steudiagramm ein:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Wir können das studentisierte Problem auch wieder auf unser ursprüngliches
+zurück rechnen.&lt;/p&gt;
+&lt;p&gt;Die Regressionsgerade im studentisierten Problem lautet:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y}^{stud} &amp;amp;= \hat\beta^{stud}_0 + \hat\beta_1^{stud} \cdot x^{stud} \\ 
+          &amp;amp;\approx 0 -0.7761684 \cdot x^{stud} \\
+          &amp;amp;\approx 0 -0.776 \cdot x^{stud}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Rechnen wir nun mittels der Formel
+&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_1 = \hat\beta_1^{stud} \cdot \frac{s_y}{s_x}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;die Steigung um, so erhalten wir:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b1 &amp;lt;- beta_stud_1 * sd(dt$mpg) / sd(dt$hp)
+b1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -0.06822828&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Und setzen wir das in unsere Gleichung zur Bestimmung von &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; ein:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b0 &amp;lt;- mean(dt$mpg) - b1 * mean(dt$hp)
+b0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 30.09886&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;so erhalten wir die Schätzwerte des ursprünglichen Problem.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ein-anderer-weg-um-die-regressionskoeffizenten-zu-bestimmen&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Ein anderer Weg um die Regressionskoeffizenten zu bestimmen…&lt;/h3&gt;
+&lt;p&gt;Gehen wir das Problem noch einmal neu an. Wir suchen &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta=(\hat\beta_0, \hat\beta_1)\)&lt;/span&gt; welches &lt;span class=&#34;math inline&#34;&gt;\(QS(\hat\beta) = QS(\hat\beta_0, \hat\beta_1) = \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right)^2\)&lt;/span&gt; minimiert.&lt;/p&gt;
+&lt;p&gt;Statt es direkt, wie oben durch Nullsetzen der partiellen Ableitungen, zu bestimmen, wählen wir nun einen mathematisch-&lt;em&gt;numerischen&lt;/em&gt; Ansatz und wollen &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta \in \mathbf{R}^2\)&lt;/span&gt; als &lt;em&gt;Optimierungsproblem&lt;/em&gt; mit Hilfe des &lt;em&gt;Gradientenverfahrens&lt;/em&gt; lösen.&lt;/p&gt;
+&lt;p&gt;Beim Gradientenverfahren wird versucht, ausgehend von einem Startwert &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta^0 \in \mathbf{R}^2\)&lt;/span&gt;, gemäß der Iterationsvorschrift
+&lt;span class=&#34;math display&#34;&gt;\[
+\hat\beta^{k+1} = \hat\beta^{k} + \alpha^k \cdot d^k
+\]&lt;/span&gt;
+für alle &lt;span class=&#34;math inline&#34;&gt;\(k=0,1, ...\)&lt;/span&gt; eine Näherungslösung für &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta\)&lt;/span&gt; zu finden.
+Dabei ist &lt;span class=&#34;math inline&#34;&gt;\(\alpha^k &amp;gt; 0\)&lt;/span&gt; eine &lt;em&gt;positive Schrittweite&lt;/em&gt; und &lt;span class=&#34;math inline&#34;&gt;\(d^k\in\mathbf{R}^n\)&lt;/span&gt; eine &lt;em&gt;Abstiegsrichtung&lt;/em&gt;, welche wir in jedem Iterationsschritt &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; so bestimmen,
+dass die Folge &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta^k\)&lt;/span&gt; zu einem stationären Punkt, unserer Näherungslösung, konvergiert.&lt;/p&gt;
+&lt;p&gt;Im einfachsten Fall, dem &lt;strong&gt;Verfahren des steilsten Abstieges&lt;/strong&gt;, wird der
+Abstiegsvektor &lt;span class=&#34;math inline&#34;&gt;\(d^k\)&lt;/span&gt; aus dem Gradienten &lt;span class=&#34;math inline&#34;&gt;\(\nabla QS\)&lt;/span&gt; wie folgt bestimmt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[d^k = -\nabla QS\left(\hat\beta^k\right)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wegen
+&lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial}{\partial \hat\beta_0} \, QS = 2 \cdot \left( n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;und&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial}{\partial \hat\beta_1} \, QS = 2 \cdot \left(\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;gilt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\nabla QS(\hat\beta) &amp;amp;= \nabla QS(\hat\beta_0, \hat\beta_1) \\
+&amp;amp;= 2 \cdot \begin{pmatrix}
+n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \\
+\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i
+\end{pmatrix}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir wollen hier von Anfang an mit den studentisierten Werten arbeiten, weil diese numerisch viele Vorteile haben.
+Darum vereinfachen sich die beiden partiellen Ableitungen noch einmal zu:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial}{\partial \hat\beta_0} \, QS = 2 \cdot \left(\hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;und&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial}{\partial \hat\beta_1} \, QS = 2 \cdot \left(\hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Somit gilt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\nabla QS(\hat\beta) &amp;amp;= \nabla QS(\hat\beta_0, \hat\beta_1) \\
+&amp;amp;= 2 \cdot \begin{pmatrix}
+\hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \\
+ \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2 - \sum\limits_{i=1}^n y_i \cdot x_i 
+\end{pmatrix}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Weil im studentisierten Fall &lt;span class=&#34;math inline&#34;&gt;\(\bar{x}= \bar{y} = 0\)&lt;/span&gt; gilt, können wir
+wegen
+&lt;span class=&#34;math display&#34;&gt;\[n \cdot \bar{x} = \sum\limits_{i=1}^n x_i,\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[n \cdot \bar{y} = \sum\limits_{i=1}^n y_i,\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[(n-1) \cdot s^2_x = \sum\limits_{i=1}^n  x_i^2\]&lt;/span&gt;
+und
+&lt;span class=&#34;math display&#34;&gt;\[(n-1) \cdot \text{cov}_{x,y} = \sum\limits_{i=1}^n y_i \cdot x_i\]&lt;/span&gt;
+den Term &lt;span class=&#34;math inline&#34;&gt;\(\nabla QS\)&lt;/span&gt; weiter vereinfachen:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\nabla QS(\hat\beta) &amp;amp;= \nabla QS(\hat\beta_0, \hat\beta_1) \\
+&amp;amp;= 2 \cdot \begin{pmatrix}
+\hat\beta_1\cdot n \cdot \bar{x} - n \cdot \bar{y} \\
+ \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2 - \sum\limits_{i=1}^n y_i \cdot x_i 
+\end{pmatrix} \\
+&amp;amp;= 2 \cdot \begin{pmatrix}
+0 \\
+ (n-1)\cdot\left(\hat\beta_1 \cdot s^2_x - \text{cov}_{x,y}\right)
+\end{pmatrix} \\
+&amp;amp;= 2 \cdot (n-1) \cdot \begin{pmatrix}
+0 \\
+ \hat\beta_1 \cdot s^2_x - \text{cov}_{x,y}
+\end{pmatrix}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Um die Varianz und die Kovarianz nicht jedesmal neu zu berechnen, speichern
+wir die Ergebnisse vorab. Ebenso, damit der Quellcode kürzer wird, speichern
+wir in &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; die studentisierten Werte von &lt;span class=&#34;math inline&#34;&gt;\(hp\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(mpg\)&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Vorbereitungen 
+sd_x &amp;lt;- var(dt$hp_stud)
+cov_xy &amp;lt;- cov(mpg_stud ~ hp_stud, data = dt)
+
+n &amp;lt;- length(dt$hp_stud)
+
+x &amp;lt;- dt$hp_stud
+y &amp;lt;- dt$mpg_stud&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nun erstellen wir die &lt;span class=&#34;math inline&#34;&gt;\(QS\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\nabla QS\)&lt;/span&gt; Funktionen:
+Wir definieren diese Funktion wie folgt in &lt;strong&gt;R&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;qs &amp;lt;- function(b_0, b_1) {
+  sum((b_1 * x - y)**2)
+}
+
+nabla_qs &amp;lt;- function(b_0, b_1) {
+  c(0,
+    2 * (n - 1) * (b_1 * sd_x - cov_xy)
+  )
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Die Schrittweite &lt;span class=&#34;math inline&#34;&gt;\(alpha\)&lt;/span&gt; bestimmen wir mit Hilfe der &lt;em&gt;Armijo-Bedingung&lt;/em&gt; und der &lt;em&gt;Backtracking Liniensuche&lt;/em&gt;:
+Diese formalisiert das Konzept “genügend” in der geforderten Verringerung des Funktionswertes. Die Bedingung &lt;span class=&#34;math inline&#34;&gt;\(f(x^k + \alpha d^k) &amp;lt; f(x^k)\)&lt;/span&gt; wird modifiziert zu
+&lt;span class=&#34;math display&#34;&gt;\[f(x^k + \alpha d^k) \leq f(x^k) + \sigma \alpha \left(\nabla f(x^k)\right)^T d^k,\]&lt;/span&gt;
+mit &lt;span class=&#34;math inline&#34;&gt;\(\sigma\in (0,1)\)&lt;/span&gt;.
+Die Armijo-Bedingung umgeht Konvergenzprobleme der einfachen Bedingung, indem sie fordert, dass die Verringerung zumindest proportional zur Schrittweite und zur Richtungsableitung &lt;span class=&#34;math inline&#34;&gt;\(\left(\nabla f(x^k)\right)^T d^k\)&lt;/span&gt; ist, mit Hilfe der Proportionalitätskonstante &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt;.
+In der Praxis werden oft sehr kleine Werte verwendet, z.B. &lt;span class=&#34;math inline&#34;&gt;\(\sigma=0.0001\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Die &lt;em&gt;Backtracking-Liniensuche&lt;/em&gt; verringert die Schrittweite wiederholt um den
+Faktor &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt; (&lt;code&gt;rho&lt;/code&gt;) , bis die Armijo-Bedingung erfüllt ist.
+Sie terminiert garantiert nach einer endlichen Anzahl von Schritten. Wesshalb wir
+sie hier einsetzen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;alpha_k &amp;lt;- function(b_0, b_1, d_k, alpha = 1, sigma = 0.0001, rho = 0.5) {
+  d_0 &amp;lt;- d_k[1]
+  d_1 &amp;lt;- d_k[2]
+  nabla &amp;lt;- nabla_qs(b_0, b_1)
+  n_0 &amp;lt;- nabla[1]
+  n_1 &amp;lt;- nabla[2]
+
+  lhs &amp;lt;- qs(b_0 + alpha*d_0, b_1 + alpha*d_1)
+  rhs &amp;lt;- qs(b_0, b_1) + sigma*alpha*(n_0*d_0 + n_1*d_1)
+
+  while (lhs &amp;gt; rhs) {
+    alpha &amp;lt;- rho * alpha
+    lhs &amp;lt;- qs(b_0 + alpha*d_0, b_1 + alpha*d_1)
+    rhs &amp;lt;- qs(b_0, b_1) + sigma*alpha*(n_0*d_0 + n_1*d_1)
+  }
+  return(alpha)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ein paar Einstellungen vorab:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# maximale Anzahl an Iterationen
+max_iter &amp;lt;- 1000
+iter &amp;lt;- 0
+
+# Genauigkeit
+eps &amp;lt;- 10**-6
+
+# Startwerte
+b_0 &amp;lt;- 0 
+b_1 &amp;lt;- -1 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Für eine vorgegebene Genauigkeit &lt;span class=&#34;math inline&#34;&gt;\(eps=10^{-6}\)&lt;/span&gt;, den Startwerten &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0^0 = 0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1^0 = -1\)&lt;/span&gt; können wir somit das Verfahren starten:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;while (TRUE) {
+  iter &amp;lt;- iter + 1
+
+  d_k &amp;lt;- -nabla_qs(b_0, b_1)
+
+  ad_ &amp;lt;- alpha_k(b_0, b_1, d_k) * d_k
+
+  x0 &amp;lt;- b_0 + ad_[1]
+  x1 &amp;lt;- b_1 + ad_[2]
+
+  if ((abs(b_0 - x0) &amp;lt; eps) &amp;amp; (abs(b_1 - x1) &amp;lt; eps) | (iter &amp;gt; max_iter)) {
+    break
+  }
+  b_0 &amp;lt;- x0
+  b_1 &amp;lt;- x1
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Wir haben somit mit &lt;span class=&#34;math inline&#34;&gt;\(203\)&lt;/span&gt; Iterationsschritten das folgende Ergebnisse für die Regressionskoeffizienten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_0^{stud} = 0` \qquad \hat\beta_1 {stud} = -0.7761689\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Betrachten wir die daraus erstellte Regressionsgerade:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Um die ursprünglichen Regressionskoeffizenten zu erhalten müssen wir zurück rechnen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b1 &amp;lt;- b_1 * sd(dt$mpg) / sd(dt$hp)
+b0 &amp;lt;- mean(dt$mpg) -  b1 * mean(dt$hp)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Die Geradengleichung für unser ursprüngliches Problem lautet somit:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;amp;\approx 30.0988668 -0.0682283 \cdot x \\
+          &amp;amp;\approx 30.099 -0.068 \cdot x
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;die-r-funktion-optim&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Die R Funktion &lt;code&gt;optim&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;In &lt;strong&gt;R&lt;/strong&gt; gibt es bessere Optimierungsmethoden, als die hier verwendete.
+Zum Beispiel kännen wir die Funktion &lt;code&gt;optim&lt;/code&gt; verwenden.
+Die Funktion &lt;code&gt;optim&lt;/code&gt; benötigt die zu optimierende &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; und
+ggf. die Gradientenfunkt &lt;span class=&#34;math inline&#34;&gt;\(gf(x)\)&lt;/span&gt; sowie einen Startpunkt &lt;span class=&#34;math inline&#34;&gt;\(x^0\)&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f &amp;lt;- function(beta) {
+  qs(beta[1], beta[2])
+}
+
+grf &amp;lt;- function(beta) {
+  nabla_qs(beta[1], beta[2])
+}
+
+# Der eigentliche Aufruf von optim:
+ergb &amp;lt;- optim(c(0,-1), f, grf)
+
+# Auslesen der Schätzer aus dem Ergbnis:
+optim_beta_0 &amp;lt;- ergb$par[1]
+optim_beta_1 &amp;lt;- ergb$par[2]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Wir erhalten somit für das studentisierte Problem die Gerade:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y}^{stud} &amp;amp;= \hat\beta_0^{stud} + \hat\beta_1^{stud} \cdot x^{stud} \\ 
+          &amp;amp;\approx 0.1505859 -0.7761719 \cdot  x^{stud} \\
+          &amp;amp;\approx 0.151 -0.776 \cdot  x^{stud}
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Für das ursprüngliche Problem rechnen wir mittels&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;optim_b1 &amp;lt;- optim_beta_1 * sd(dt$mpg) / sd(dt$hp)
+optim_b0 &amp;lt;- mean(dt$mpg) -  optim_b1 * mean(dt$hp)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;um und erhalten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;amp;\approx 30.0989057 -0.0682286 \cdot x \\
+          &amp;amp;\approx 30.099 -0.068 \cdot x
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;idee-summe-der-absoluten-abweichungen&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. Idee: Summe der absoluten Abweichungen&lt;/h2&gt;
+&lt;p&gt;Wir ändern nun die Abweichungsmessfunktion von der &lt;em&gt;Q&lt;/em&gt;uadrat-&lt;em&gt;S&lt;/em&gt;umme hin zu
+den &lt;strong&gt;A&lt;/strong&gt;bsolut-&lt;em&gt;S&lt;/em&gt;ummen:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[AS = AS(\hat\beta) = AS(\hat\beta_0, \hat\beta_1) = \sum_{i=1}^n |\hat{y}_i - y_i|\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Auch hier wollen wir mit den studentisierten Daten arbeiten und stellen
+die Funktion der &lt;em&gt;A&lt;/em&gt;bsolut-&lt;em&gt;S&lt;/em&gt;ummen auf:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Absolute Abweichungssummen
+as &amp;lt;- function(b_0, b_1) {
+  return(sum(abs(b_0 + b_1 * x - y)))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Danach konstuieren wir die zu optimierende Funktion &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Zu optimierende Funktion
+f &amp;lt;- function(beta) {
+  as(beta[1], beta[2])
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Diesmal nutzen wir &lt;code&gt;optim&lt;/code&gt; ohne eine Gradientenfunktion:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ergb &amp;lt;- optim(c(0,-1), f)
+
+# Schätzer auslesen
+opti_as_beta_0 &amp;lt;- ergb$par[1]
+opti_as_beta_1 &amp;lt;- ergb$par[2]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Schauen wir uns nun die so erhaltene Gerade im Vergleich mit der ‘normalen’ Regressionsgerade an:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;In grün und gestrichelt sehen wir die Gerade aus der &lt;em&gt;Idee der quadratsichen Abweichungssummen&lt;/em&gt;, in blau die aus der &lt;em&gt;Idee der absoluten Abweichungssummen&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Für unser ursprüngliches Problem rechnen wir um:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Umrechnen in die urspüngliche Fragestellung
+as_b1 &amp;lt;- opti_as_beta_1 * sd(dt$mpg) / sd(dt$hp)
+as_b0 &amp;lt;- (mean(dt$mpg) - as_b1 * mean(dt$hp)) + opti_as_beta_0 * sd(dt$mpg)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Und die dazu gehörige Darstellung:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;90%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;amp;\approx 28.1305094 -0.0601695 \cdot x \\
+          &amp;amp;\approx 28.131 -0.06 \cdot x
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Diese Methode nennt sich &lt;strong&gt;Median-Regression&lt;/strong&gt; und ein ein Spezialfall der &lt;strong&gt;Quantilsregression&lt;/strong&gt;, die sich u.a. mit dem R-Paket &lt;a href=&#34;https://cran.r-project.org/web/packages/quantreg/index.html&#34;&gt;&lt;em&gt;quantreg&lt;/em&gt;&lt;/a&gt;
+unmittelbar umsetzen lässt:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(quantreg)
+ergmedianreg &amp;lt;- rq(mpg ~ hp, data = dt)
+coef(ergmedianreg)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (Intercept)          hp 
+## 28.13050847 -0.06016949&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;idee-summe-der-abweichungen&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Idee: Summe der Abweichungen&lt;/h2&gt;
+&lt;p&gt;Wenn wir die Summe der Abweichungen &lt;span class=&#34;math inline&#34;&gt;\(\sum\limits_{i=1}^n \hat{e}_i\)&lt;/span&gt; minimieren
+wollen, dann ist es sinnvoll den Betrag davon zu minimieren.
+Wir suchen also die Schätzer &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt;, so dass der Ausdruck
+&lt;span class=&#34;math display&#34;&gt;\[
+\left| \sum_{i=1}^n \hat{e}_i \right| = \left| \sum_{i=1}^n (\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i) \right|
+\]&lt;/span&gt;
+minimal ist.&lt;/p&gt;
+&lt;p&gt;Wegen:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\sum_{i=1}^n (\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i)
+&amp;amp;= \sum_{i=1}^n \hat\beta_0 + \sum_{i=1}^n \hat\beta_1 \cdot x_i - \sum_{i=1}^n y_i \\
+&amp;amp;= n \cdot \hat\beta_0 + \hat\beta_1 \cdot \sum_{i=1}^n x_i - \sum_{i=1}^n y_i \\
+&amp;amp;= n \cdot \hat\beta_0 + \hat\beta_1 \cdot n \cdot \bar{x} - n \cdot \bar{y} \\
+&amp;amp;= n \cdot \left( \hat\beta_0 + \hat\beta_1 \cdot \bar{x} - \bar{y} \right) \\
+&amp;amp;= n \cdot \left( \hat\beta_0 - \bar{y} + \hat\beta_1 \cdot \bar{x}  \right)
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;können wir das absolute Mininum bei &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0 - \bar{y} =0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1 \cdot \bar{x}=0\)&lt;/span&gt; erreichen, was zur Lösung
+&lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0 =\bar{y}\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1 = 0\)&lt;/span&gt; führt.
+Dies ist unser &lt;em&gt;Nullmodel&lt;/em&gt; in dem die &lt;span class=&#34;math inline&#34;&gt;\(x_i\)&lt;/span&gt; keinen Einfluss auf die &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; haben und
+wir daher pauschal die &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; mit &lt;span class=&#34;math inline&#34;&gt;\(\hat{y}_i=\bar{y}\)&lt;/span&gt;, also dem Mittelwert der &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; abschätzen.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;zusammenfassung&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Zusammenfassung&lt;/h2&gt;
+&lt;p&gt;Als Vergleich können wir uns die Quadratsumme &lt;span class=&#34;math inline&#34;&gt;\(QS\)&lt;/span&gt; und Absulutsumme &lt;span class=&#34;math inline&#34;&gt;\(AS\)&lt;/span&gt; der drei
+Modelle einmal ansehen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Quadratische Abweichungssummen
+qs &amp;lt;- function(b_0, b_1) {
+  sum( (b_0 + b_1 * dt$hp - dt$mpg )**2)
+}
+
+# Absolute Abweichungssummen
+as &amp;lt;- function(b_0, b_1) {
+  sum( abs(b_0 + b_1 * dt$hp - dt$mpg))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Quadratsummen:
+quad_sum &amp;lt;- c(qs(b0, b1), qs(as_b0, as_b1), qs(mean_mpg, 0))
+# Absolutsummen:
+abs_sum &amp;lt;- c(as(b0, b1), as(as_b0, as_b1), as(mean_mpg, 0))
+
+tab &amp;lt;- tibble(
+  sums = c(quad_sum, abs_sum),
+  sum_type = rep(c(&amp;quot;quad&amp;quot;, &amp;quot;abs&amp;quot;), each = 3),
+  methode = rep(c(&amp;quot;Idee 3&amp;quot;, &amp;quot;Idee 2&amp;quot;, &amp;quot;Idee 1&amp;quot;), 2)
+)
+
+tab&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 3
+##     sums sum_type methode
+##    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;    &amp;lt;chr&amp;gt;  
+## 1  448.  quad     Idee 3 
+## 2  477.  quad     Idee 2 
+## 3 1126.  quad     Idee 1 
+## 4   93.0 abs      Idee 3 
+## 5   87.3 abs      Idee 2 
+## 6  151.  abs      Idee 1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Ein kleines Beispiel zum Rangkorrelationskoeffizienten</title>
@@ -18,9 +571,9 @@
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/</guid>
       <description>
-&lt;script src=&#34;../../rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;../../rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;../../rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://sefiroth.net/nap/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
 
 
 &lt;p&gt;Bei der Rangkorrelation werden statt der Werte die Ränge der Werte zur Berechnung herangezogen.&lt;/p&gt;
@@ -102,7 +655,7 @@ y
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Das Streudiagramm dieser Daten sieht dann so aus:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Der Korrelationskoeffizient ist nun:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r = r_{BP} = 0.7944953\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Schauen wir uns nun die Werte der Tabelle mit ihrem Rang an:&lt;/p&gt;
@@ -251,7 +804,7 @@ ry
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Das Streudiagramm der Ränge sieht nun wie folgt aus:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2020-05-25-ein-kleines-beispiel-zum-rangkorrelationskoeffizienten_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;50%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Und der Korrelationskoeffizient der Ränge ist nun:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r_{sp} = r_{ry,rx}=0.8909091\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Dieser Korrelationskoeffizient der Ränge wird &lt;em&gt;Rangkorrelationkoeffizient&lt;/em&gt; genannt.&lt;/p&gt;
