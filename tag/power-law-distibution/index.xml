@@ -29,7 +29,7 @@ korrekter wäre aber von &lt;strong&gt;langsam variierenden&lt;/strong&gt; Funkt
 auf Änderungen ihres Parameters reagieren.&lt;/p&gt;
 &lt;p&gt;Die Definition dieser &lt;em&gt;behäbigen&lt;/em&gt; besser &lt;strong&gt;langsam variierenden&lt;/strong&gt; Funktionen
 stammt von &lt;a href=&#34;https://de.wikipedia.org/wiki/Jovan_Karamata&#34;&gt;Jovan Karamata&lt;/a&gt;:&lt;/p&gt;
-&lt;p&gt;Eine positive stetige Funktion &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; auf den positiven reelen Zahlen ist
+&lt;p&gt;Eine positive stetige Funktion &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; auf den positiven reelen Zahlen ist
 &lt;strong&gt;langsam variierend (im unendlichen)&lt;/strong&gt;, falls für alle reellen &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;0\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\lim_{x \to +\infty} \frac{L(t\cdot x)}{L(x)} = 1\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;gilt.&lt;/p&gt;
@@ -65,8 +65,8 @@ Damit sind die Funktionen zwar (s.u.) &lt;em&gt;regulär variierend&lt;/em&gt;, 
 &lt;p&gt;Eine &lt;strong&gt;regulär variierende&lt;/strong&gt; Funktion &lt;span class=&#34;math inline&#34;&gt;\(L:(0,+\infty) \to (0,+\infty)\)&lt;/span&gt;
 ist eine Funktion für die der Term&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\lim_{x \to +\infty} \frac{L(t\cdot x)}{L(x)} = g(t)\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;mit &lt;span class=&#34;math inline&#34;&gt;\(g(t)\)&lt;/span&gt; einen endlichen aber nicht verschwindenen Wert
-(m.a.W.: &lt;span class=&#34;math inline&#34;&gt;\(g(t) \neq 0\)&lt;/span&gt;) hat für alle &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;mit &lt;span class=&#34;math inline&#34;&gt;\(g(t)\)&lt;/span&gt; für alle &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;0\)&lt;/span&gt; einen endlichen aber nicht verschwindenen Wert
+(m.a.W.: &lt;span class=&#34;math inline&#34;&gt;\(g(t) \neq 0\)&lt;/span&gt;) hat .&lt;/p&gt;
 &lt;p&gt;Karamata hat die regulär variierenden Funktionen nun wie folgt charaterisiert:&lt;/p&gt;
 &lt;div id=&#34;charakterisierungssatz-von-karamata&#34; class=&#34;section level3 theorem&#34;&gt;
 &lt;h3&gt;Charakterisierungssatz von Karamata&lt;/h3&gt;
@@ -78,16 +78,25 @@ und &lt;span class=&#34;math inline&#34;&gt;\(L(x)\)&lt;/span&gt; eine &lt;em&gt
 &lt;!-- ENDE THEOREM--&gt;
 &lt;p&gt;Eine Konsequenz aus dem &lt;em&gt;Charakterisierungssatz von Karamata&lt;/em&gt; ist, das die
 Funktion &lt;span class=&#34;math inline&#34;&gt;\(g(t)\)&lt;/span&gt; aus der Definition der &lt;em&gt;regulär variierenden&lt;/em&gt; Funktionen
-notwenidigerweise die Gestalt&lt;/p&gt;
+notwendigerweise die Gestalt&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[g(t) = t^\rho,\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;mit einem &lt;span class=&#34;math inline&#34;&gt;\(\rho \in \mathbf{R}\)&lt;/span&gt;, haben muss.&lt;/p&gt;
 &lt;p&gt;Dieser Wert &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt; wird &lt;strong&gt;Index der Varition&lt;/strong&gt; (engl. &lt;em&gt;index of variation&lt;/em&gt;)
 genannt.&lt;/p&gt;
+&lt;p&gt;Die Katamata Theorie ist eine Theorie “erster Ordnung” für reguläre Variation.
+Weiterführend gibt es mit der
+&lt;a href=&#34;https://encyclopediaofmath.org/wiki/De_Haan_theory&#34;&gt;de Haan Theorie&lt;/a&gt; als Theorie “zweiter Ordnung”.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Quellen:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://encyclopediaofmath.org/index.php?title=Karamata_theory&amp;amp;direction=next&amp;amp;oldid=25937&#34;&gt;Encylopedia of Math&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://archive.org/details/regularvariation0000bing&#34;&gt;Bingham, N. H.; Goldie, C. M.; Teugels, J. L. (1987), Regular Variation, Encyclopedia of Mathematics and its Applications, 27, Cambridge: Cambridge University Press, ISBN 0-521-30787-2, MR 0898871, Zbl 0617.26001&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; oder auch &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; wird (angeblich) hier für den Begriff &lt;em&gt;lente&lt;/em&gt; (serb. für &lt;strong&gt;faul&lt;/strong&gt;) verwendet. Behäbig ist also doch nicht so falsch. ;-)&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -101,42 +110,73 @@ genannt.&lt;/p&gt;
 &lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;Eine Verteilungsfunktion &lt;span class=&#34;math inline&#34;&gt;\(F(x)\)&lt;/span&gt; heißt &lt;strong&gt;potenzgesetzliche Verteilung&lt;/strong&gt;,
-falls für die Dichtefunktion &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; heißt &lt;strong&gt;potenzgesetzlich&lt;/strong&gt;,
+falls&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x) = C \cdot x^a\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;gilt, für mindestens alle reellen &lt;span class=&#34;math inline&#34;&gt;\(x &amp;gt; x_{min}\)&lt;/span&gt;.
-Gewöhnlich setzt man &lt;span class=&#34;math inline&#34;&gt;\(\alpha = -a\)&lt;/span&gt; und schreibt&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x) = C \cdot x^{-\alpha}\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;zur Darstellung der Dichte.&lt;/p&gt;
-&lt;p&gt;Damit ergibt sich für &lt;span class=&#34;math inline&#34;&gt;\(F(x)\)&lt;/span&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ 
-F(x)  = \int_{-\infty}^x f(t) \text{d} t 
-      = \int_{-\infty}^x C \cdot t^{-\alpha} \text{d} t 
-      = - \frac{C}{\alpha -1} \cdot x^{-(\alpha - 1)}
+&lt;p&gt;gilt, für mindestens alle reellen &lt;span class=&#34;math inline&#34;&gt;\(x &amp;gt; x_{min}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Gewöhnlich setzt man &lt;span class=&#34;math inline&#34;&gt;\(\alpha = -a\)&lt;/span&gt; und schreibt&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x) = C \cdot x^{-\alpha}.\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Damit ergibt sich für &lt;span class=&#34;math inline&#34;&gt;\(f&amp;#39;(x)\)&lt;/span&gt; die Form:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+f&amp;#39;(x) = -C \cdot \alpha \cdot x^{-\alpha -1} = C^* \cdot x^{-(\alpha + 1)}
+\]&lt;/span&gt;
+mit &lt;span class=&#34;math inline&#34;&gt;\(C^* = -C \cdot \alpha\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Eine &lt;strong&gt;(streng) potenzgesetzliche Verteilungen&lt;/strong&gt; (engl. &lt;strong&gt;(strong) power-law probability distribution&lt;/strong&gt;)
+zur ZV &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;
+ist eine Verteilung deren Überlebensfunktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}_X(x)=P(X &amp;gt; x)\)&lt;/span&gt; die folgende Gestalt hat:
+&lt;span class=&#34;math display&#34;&gt;\[\overline{F}(x)=P(X &amp;gt; x) = C \cdot x^{-\alpha}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Mit der Dichte &lt;span class=&#34;math inline&#34;&gt;\(f_X\)&lt;/span&gt; ergibt sich:
+&lt;span class=&#34;math display&#34;&gt;\[\overline{F}(x)=P(X &amp;gt; x) = C \cdot x^{-\alpha} =\int_x^\infty f_X(t) \text{d}t = C^* \cdot \int_x^\infty  t^{-(\alpha+1)} \text{d}t = C^* \cdot \int_x^\infty t^{-\alpha} \text{d}t\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Anstelle der Konstanten &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; tritt oft eine &lt;strong&gt;langsam variierende Funktion&lt;/strong&gt;
+(engl. &lt;strong&gt;slowly varying funktion&lt;/strong&gt;).
+Wir erhalten somit die folgende, allgemeinere Definition:&lt;/p&gt;
+&lt;p&gt;Eine &lt;strong&gt;potenzgesetzliche Verteilungen&lt;/strong&gt;
+(engl. &lt;strong&gt;power-law probability distribution&lt;/strong&gt;)
+(zu einer Zufallsvariable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;)
+ist eine Verteilung deren Überlebensfunktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(x)=P(X &amp;gt; x)\)&lt;/span&gt;
+die folgende Gestalt hat:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\overline{F}(x)=P(X &amp;gt; x) = L(x) \cdot x^{-\alpha}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Dabei ist &lt;span class=&#34;math inline&#34;&gt;\(L(x):(x_{\min}, +\infty) \to (x_{\min}, +\infty)\)&lt;/span&gt; eine &lt;em&gt;langsam variierende Funktion&lt;/em&gt;,
+also gilt für alle &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;0\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\lim_{x \to +\infty} \frac{L(t \cdot x)}{L(x)} = 1
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Ist nun wieder &lt;span class=&#34;math inline&#34;&gt;\(f_X\)&lt;/span&gt; die Dichte, so erhalten wir:
+&lt;span class=&#34;math display&#34;&gt;\[\overline{F}(x)=P(X &amp;gt; x) = L(x) \cdot x^{-\alpha} = \int_x^\infty f_X(t) dt\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f&amp;#39;(x) = [L(x)x^{-\alpha}]&amp;#39;\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\int_x^\infty f_X(t) dt= \int_x^\infty [L(t)t^{-\alpha}]&amp;#39; dt\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Delta x_0 = h = x_1 - x_0\)&lt;/span&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(x_1 = x_0 + \Delta x_0 = x_0 + h\)&lt;/span&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(x_1 = c \cdot x_0\)&lt;/span&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(x_0 + h = c \cdot x_0 &amp;lt;=&amp;gt; c = 1 + \frac{h}{x_0}\)&lt;/span&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(L(x_1) = L(x_0+h) = L(c \cdot x_0)\)&lt;/span&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(L(x_1) - L(x_0) = L(c \cdot x_0) - L(x_0) = L(x_0 + h) - L(x_0)}\)&lt;/span&gt;
+$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Fakten&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Sinnvoll nur, wenn &lt;span class=&#34;math inline&#34;&gt;\(\alpha &amp;gt; 0\)&lt;/span&gt;.&lt;/li&gt;
-&lt;li&gt;Ist &lt;span class=&#34;math inline&#34;&gt;\(\alpha &amp;lt; 3\)&lt;/span&gt;, dann ist die &lt;em&gt;Varianz&lt;/em&gt; und die &lt;em&gt;
-skewness&lt;/em&gt; (mathematisch) nicht definiert.&lt;/li&gt;
+&lt;li&gt;Ist &lt;span class=&#34;math inline&#34;&gt;\(\alpha &amp;lt; 3\)&lt;/span&gt;, dann ist die &lt;em&gt;Varianz&lt;/em&gt; und die
+&lt;em&gt;Schiefe&lt;/em&gt; (engl. &lt;em&gt;skewness&lt;/em&gt;) (mathematisch) nicht definiert.&lt;/li&gt;
 &lt;li&gt;Für &lt;span class=&#34;math inline&#34;&gt;\(k &amp;gt; \alpha-1\)&lt;/span&gt; ist das k. Moment unendlich.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Logarithmiert man &lt;span class=&#34;math inline&#34;&gt;\(y=f(x)=C \cdot x^{-\alpha}\)&lt;/span&gt;, so erhält mensch:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\log(y) = \log(C) -\alpha \cdot \log(x)\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Ist eine Verteilung potenzgesetlich, dann kann man &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;,
+&lt;p&gt;Ist eine Verteilung potenzgesetzlich, dann kann man &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;,
 wie folgt abschätzen:&lt;/p&gt;
 &lt;p&gt;Seien &lt;span class=&#34;math inline&#34;&gt;\(x_0, x_1 &amp;gt; x_{min}\)&lt;/span&gt; zwei reelle Zahlen, &lt;span class=&#34;math inline&#34;&gt;\(y_0=f(x_0)\)&lt;/span&gt; bzw. &lt;span class=&#34;math inline&#34;&gt;\(y_1 = f(y_1)\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Dann gilt wegen:
-&lt;span class=&#34;math display&#34;&gt;\[\begin{align*}
+&lt;p&gt;Dann kann mensch wegen&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{align*}
   \log(y_1) - \log(y_0) &amp;amp;= \log(C) - \alpha \cdot\log(x_1) - \log(C) + \alpha \cdot \log(x_0) \\
                         &amp;amp;= \alpha \cdot\left(\log(x_0)- \log(x_1) \right)
 \end{align*}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;den Wert für &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;, so kann man mittels&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\alpha = \frac{\log(y_1) - \log(y_0)}{\log(x_0)- \log(x_1)}\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Hat man &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;, so kann man &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; wegen&lt;/p&gt;
+&lt;p&gt;den Wert für &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; bestimmen.&lt;/p&gt;
+&lt;p&gt;Mit dem so ermittelten &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;, können wir &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; wegen&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\log(C) = \log(y)+ \alpha\log(x)\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;abschätzen mit Hilfe von&lt;/p&gt;
+&lt;p&gt;mit Hilfe von&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[C = y \cdot x_0^\alpha = f(x_0) \cdot x_0^\alpha\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;für ein &lt;span class=&#34;math inline&#34;&gt;\(x &amp;gt; x_{min}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;für ein &lt;span class=&#34;math inline&#34;&gt;\(x_0 &amp;gt; x_{min}\)&lt;/span&gt; abschätzen.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Beispiel&lt;/strong&gt;:&lt;/p&gt;
 &lt;p&gt;Nehmen wir die t-Verteilung mit &lt;span class=&#34;math inline&#34;&gt;\(n=2\)&lt;/span&gt; Freiheitsgeraden.
 Die Dichtefunktion bezeichnen wir mit &lt;span class=&#34;math inline&#34;&gt;\(t_{2}(x)\)&lt;/span&gt;.&lt;/p&gt;
@@ -220,6 +260,7 @@ Die Standardnormalverteilung ist (vielleicht) keine &lt;em&gt;potenzgesetzich&lt
 &lt;p&gt;Schauen wir daher einmal nach:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lower_bound &amp;lt;- 1
 upper_bound &amp;lt;- 8
+
 gf_dist(&amp;quot;norm&amp;quot;, 
         xlim = c(lower_bound, upper_bound), 
         color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
@@ -234,6 +275,10 @@ gf_dist(&amp;quot;norm&amp;quot;,
  = c^\alpha\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(f(c\cdot x)\)&lt;/span&gt; für alle (beliebig aber festen) &lt;span class=&#34;math inline&#34;&gt;\(c&amp;gt;0\)&lt;/span&gt; &lt;em&gt;proportional&lt;/em&gt;,
 was man gerne als &lt;span class=&#34;math inline&#34;&gt;\(f(x) \propto f(c \cdot x)\)&lt;/span&gt; schreibt.&lt;/p&gt;
+&lt;p&gt;** — **&lt;/p&gt;
+&lt;p&gt;Die Wahrscheinlichkeit für ein (mindestens) &lt;span class=&#34;math inline&#34;&gt;\(8-\sigma\)&lt;/span&gt; Ereignis liegt bei einer Standardnormalverteilung bei etwa &lt;span class=&#34;math inline&#34;&gt;\(6.66133814775094\times 10^{-16}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Bei einer t-Verteilung mit 2 Freiheitsgeraden bei etwa 0.00763403608266899$.&lt;/p&gt;
+&lt;p&gt;Während die Eintrittschance eines (mindestens) &lt;span class=&#34;math inline&#34;&gt;\(8-\sigma\)&lt;/span&gt; Ereignisses bei der Standardnormalverteilung bei etwa &lt;span class=&#34;math inline&#34;&gt;\(1 : round(1/(1-pnorm(8)),0)\)&lt;/span&gt; liegt, ist diese der t-Verteilung mit einem Freiheitsgrad bei etwa $1 : 131&lt;/p&gt;
 </description>
     </item>
     

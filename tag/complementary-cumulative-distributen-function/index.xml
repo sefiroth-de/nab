@@ -35,7 +35,7 @@
 &lt;span class=&#34;math display&#34;&gt;\[P([a, b]) := \int_a^b f(x) \text{d} x\]&lt;/span&gt;
 definiert &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; eine &lt;em&gt;Wahrscheinlichkeitsverteilung&lt;/em&gt; auf den reellen Zahlen.&lt;/p&gt;
 &lt;p&gt;Ist &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; eine reelwertige &lt;em&gt;Zufallsvariable&lt;/em&gt; (kurz &lt;strong&gt;ZV&lt;/strong&gt;) und existiert eine
-reelle Funktion &lt;span class=&#34;math inline&#34;&gt;\(f_X(x)\)&lt;/span&gt; der art, dass für alle &lt;span class=&#34;math inline&#34;&gt;\(a \in \mathbf{R}\)&lt;/span&gt;&lt;/p&gt;
+reelle Funktion &lt;span class=&#34;math inline&#34;&gt;\(f_X(x)\)&lt;/span&gt; der Art, dass für alle &lt;span class=&#34;math inline&#34;&gt;\(a \in \mathbf{R}\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(X \leq a) = \int_{-\infty}^a f_X(x) \text{d}x\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;gilt, so nennt man &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; die &lt;strong&gt;Wahrscheinlichkeitsdichtefunktion von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Die Funktion&lt;/p&gt;
@@ -46,7 +46,7 @@ aber auch nur &lt;strong&gt;distribution function&lt;/strong&gt;) &lt;strong&gt;
 &lt;p&gt;Genau dann ist eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(F: \mathbf{R} \to [0, 1]\)&lt;/span&gt;
 eine &lt;strong&gt;Verteilungsfunktion&lt;/strong&gt;, wenngilt:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to - \infty} F(t)=0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to + \infty} F(t)=1\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to -\infty} F(t)=0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to +\infty} F(t)=1\)&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;monoton wachsend&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;rechtsseitig stetig&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -58,10 +58,33 @@ eine &lt;strong&gt;Verteilungsfunktion&lt;/strong&gt;, wenngilt:&lt;/p&gt;
 &lt;p&gt;Genau dann ist eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}: \mathbf{R} \to [0, 1]\)&lt;/span&gt;
 eine &lt;strong&gt;Überlebensfunktion&lt;/strong&gt;, wenn gilt:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to - \infty} \overline{F}(t)=1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to + \infty} \overline{F}(t)=0\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_\limits{t \to -\infty} \overline{F}(t)=1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to + \infty}\overline{F}(t)=0\)&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;monoton fallend&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;rechtsseitig stetig&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Ein paar weitere Eigenschaften von &lt;em&gt;Überlebensfunktionen&lt;/em&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nicht-negative stetige ZV &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; mit Erwartungswert, also &lt;span class=&#34;math inline&#34;&gt;\(\int_0^\infty x f(x) \text{d} x = \mu &amp;lt; \infty\)&lt;/span&gt;, erfüllen die &lt;a href=&#34;https://de.wikipedia.org/wiki/Markow-Ungleichung_(Stochastik)&#34;&gt;Markov-Ungleichung&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\overline{F}_X(x) \leq \frac{\operatorname{E}(X)}{x}\]&lt;/span&gt;
+- Ist &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; eine ZV und &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}_X\)&lt;/span&gt; die zugehörige Überlebensfunktion.
+Existiert &lt;span class=&#34;math inline&#34;&gt;\(E(X)\)&lt;/span&gt;, dann gilt &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to +\infty}\overline{F}(x)=0 = o\left(\frac{1}{x}\right)\)&lt;/span&gt;.
+&lt;strong&gt;Beweisskizze:&lt;/strong&gt;
+Sei &lt;span class=&#34;math inline&#34;&gt;\(f_X\)&lt;/span&gt; die Dichtefunktion von &lt;span class=&#34;math inline&#34;&gt;\(F_X\)&lt;/span&gt; zur ZV &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. Fü jedes &lt;span class=&#34;math inline&#34;&gt;\(c&amp;gt;0\)&lt;/span&gt; ist dann
+$$&lt;span class=&#34;math display&#34;&gt;\[\begin{align*}
+      E(X) = \int_0^\infty x \cdot f_X(x) \text{d}x &amp;amp;=  \int_0^cx \cdot f_X(x) \text{d}x +\int_c^\infty x \cdot f_X(x) \text{d}x \\
+      &amp;amp;\geq  \int_0^cx \cdot f_X(x) \text{d}x +\int_c^\infty c \cdot f_X(x) \text{d}x \\
+      &amp;amp;=  \int_0^cx \cdot f_X(x) \text{d}x + c \cdot \int_c^\infty f_X(x) \text{d}x \\
+      &amp;amp;=  \int_0^cx \cdot f_X(x) \text{d}x +c \cdot \overline{F}(c)
+
+  \end{align*}\]&lt;/span&gt;$$&lt;/p&gt;
+&lt;p&gt;Damit gilt nun:
+&lt;span class=&#34;math display&#34;&gt;\[0 \leq c \cdot \overline{F}(c) \leq E(X) - \int_0^cx \cdot f_X(x) \text{d}x\]&lt;/span&gt;
+Wegen &lt;span class=&#34;math inline&#34;&gt;\(\lim\limits_{c \to +\infty} \int_0^cx \cdot f_X(x) \text{d}x = E(X)\)&lt;/span&gt;
+folgt:
+&lt;span class=&#34;math display&#34;&gt;\[0 \leq c \cdot \overline{F}(c) \leq E(X) - \int_0^cx \cdot f_X(x) \text{d}x\to 0 \text{ wenn } c \to \infty\]&lt;/span&gt;
+- Für nicht-negative ZV &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; gilt:
+&lt;span class=&#34;math display&#34;&gt;\[E(X) = \int_0^\infty \overline{F}_X(x) \text{d}    x\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

@@ -59,8 +59,38 @@
     <loc>https://sefiroth.net/nap/tag/r/</loc>
     <lastmod>2021-06-09T13:05:41+02:00</lastmod>
   </url><url>
-    <loc>https://sefiroth.net/nap/post/uber-die-koeffizienten-einer-linearen-regression/</loc>
+    <loc>https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/</loc>
     <lastmod>2021-06-09T13:05:41+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nap/tag/graalpython/</loc>
+    <lastmod>2021-04-08T17:24:57+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nap/tag/graalvm/</loc>
+    <lastmod>2021-04-08T17:24:57+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nap/post/2021-04-08-graalvm-21-0-0-pypy-3-7-7-3-3-und-python3-9-2-im-kurzen-test/</loc>
+    <lastmod>2021-04-08T17:24:57+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nap/category/programmieren/</loc>
+    <lastmod>2021-04-08T17:24:57+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nap/tag/pypy/</loc>
+    <lastmod>2021-04-08T17:24:57+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nap/tag/python/</loc>
+    <lastmod>2021-04-08T17:24:57+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nap/tag/freiheitsgrade/</loc>
+    <lastmod>2021-02-17T12:18:35+01:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nap/tag/student-t/</loc>
+    <lastmod>2021-02-17T12:18:35+01:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nap/tag/t-verteilung/</loc>
+    <lastmod>2021-02-17T12:18:35+01:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</loc>
+    <lastmod>2021-02-17T12:18:35+01:00</lastmod>
   </url><url>
     <loc>https://sefiroth.net/nap/post/2021-02-13-behabige-funktionen-aka-slowly-varying-function/</loc>
     <lastmod>2021-02-13T12:32:32+01:00</lastmod>
@@ -274,9 +304,6 @@
   </url><url>
     <loc>https://sefiroth.net/nap/slides/example/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://sefiroth.net/nap/tag/python/</loc>
-    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sefiroth.net/nap/post/wie-man-es-nicht-machen-sollte-in-python/</loc>
     <lastmod>2019-01-05T00:00:00+00:00</lastmod>

@@ -816,7 +816,7 @@
 <span class="math display">\[P([a, b]) := \int_a^b f(x) \text{d} x\]</span>
 definiert <span class="math inline">\(f\)</span> eine <em>Wahrscheinlichkeitsverteilung</em> auf den reellen Zahlen.</p>
 <p>Ist <span class="math inline">\(X\)</span> eine reelwertige <em>Zufallsvariable</em> (kurz <strong>ZV</strong>) und existiert eine
-reelle Funktion <span class="math inline">\(f_X(x)\)</span> der art, dass für alle <span class="math inline">\(a \in \mathbf{R}\)</span></p>
+reelle Funktion <span class="math inline">\(f_X(x)\)</span> der Art, dass für alle <span class="math inline">\(a \in \mathbf{R}\)</span></p>
 <p><span class="math display">\[P(X \leq a) = \int_{-\infty}^a f_X(x) \text{d}x\]</span></p>
 <p>gilt, so nennt man <span class="math inline">\(f\)</span> die <strong>Wahrscheinlichkeitsdichtefunktion von <span class="math inline">\(X\)</span></strong>.</p>
 <p>Die Funktion</p>
@@ -827,7 +827,7 @@ aber auch nur <strong>distribution function</strong>) <strong>von <span class="m
 <p>Genau dann ist eine Funktion <span class="math inline">\(F: \mathbf{R} \to [0, 1]\)</span>
 eine <strong>Verteilungsfunktion</strong>, wenngilt:</p>
 <ul>
-<li>Es ist <span class="math inline">\(\lim_{t \to - \infty} F(t)=0\)</span> und <span class="math inline">\(\lim_{t \to + \infty} F(t)=1\)</span></li>
+<li>Es ist <span class="math inline">\(\lim_{t \to -\infty} F(t)=0\)</span> und <span class="math inline">\(\lim_{t \to +\infty} F(t)=1\)</span></li>
 <li>Die Funktion <span class="math inline">\(\overline{F}(t)\)</span> ist <strong>monoton wachsend</strong>.</li>
 <li>Die Funktion <span class="math inline">\(\overline{F}(t)\)</span> ist <strong>rechtsseitig stetig</strong></li>
 </ul>
@@ -839,10 +839,33 @@ eine <strong>Verteilungsfunktion</strong>, wenngilt:</p>
 <p>Genau dann ist eine Funktion <span class="math inline">\(\overline{F}: \mathbf{R} \to [0, 1]\)</span>
 eine <strong>Überlebensfunktion</strong>, wenn gilt:</p>
 <ul>
-<li>Es ist <span class="math inline">\(\lim_{t \to - \infty} \overline{F}(t)=1\)</span> und <span class="math inline">\(\lim_{t \to + \infty} \overline{F}(t)=0\)</span></li>
+<li>Es ist <span class="math inline">\(\lim_\limits{t \to -\infty} \overline{F}(t)=1\)</span> und <span class="math inline">\(\lim_{t \to + \infty}\overline{F}(t)=0\)</span></li>
 <li>Die Funktion <span class="math inline">\(\overline{F}(t)\)</span> ist <strong>monoton fallend</strong>.</li>
 <li>Die Funktion <span class="math inline">\(\overline{F}(t)\)</span> ist <strong>rechtsseitig stetig</strong></li>
 </ul>
+<p>Ein paar weitere Eigenschaften von <em>Überlebensfunktionen</em>:</p>
+<ul>
+<li>Nicht-negative stetige ZV <span class="math inline">\(X\)</span> mit Erwartungswert, also <span class="math inline">\(\int_0^\infty x f(x) \text{d} x = \mu &lt; \infty\)</span>, erfüllen die <a href="https://de.wikipedia.org/wiki/Markow-Ungleichung_(Stochastik)">Markov-Ungleichung</a></li>
+</ul>
+<p><span class="math display">\[\overline{F}_X(x) \leq \frac{\operatorname{E}(X)}{x}\]</span>
+- Ist <span class="math inline">\(X\)</span> eine ZV und <span class="math inline">\(\overline{F}_X\)</span> die zugehörige Überlebensfunktion.
+Existiert <span class="math inline">\(E(X)\)</span>, dann gilt <span class="math inline">\(\lim_{t \to +\infty}\overline{F}(x)=0 = o\left(\frac{1}{x}\right)\)</span>.
+<strong>Beweisskizze:</strong>
+Sei <span class="math inline">\(f_X\)</span> die Dichtefunktion von <span class="math inline">\(F_X\)</span> zur ZV <span class="math inline">\(X\)</span>. Fü jedes <span class="math inline">\(c&gt;0\)</span> ist dann
+$$<span class="math display">\[\begin{align*}
+      E(X) = \int_0^\infty x \cdot f_X(x) \text{d}x &amp;=  \int_0^cx \cdot f_X(x) \text{d}x +\int_c^\infty x \cdot f_X(x) \text{d}x \\
+      &amp;\geq  \int_0^cx \cdot f_X(x) \text{d}x +\int_c^\infty c \cdot f_X(x) \text{d}x \\
+      &amp;=  \int_0^cx \cdot f_X(x) \text{d}x + c \cdot \int_c^\infty f_X(x) \text{d}x \\
+      &amp;=  \int_0^cx \cdot f_X(x) \text{d}x +c \cdot \overline{F}(c)
+
+  \end{align*}\]</span>$$</p>
+<p>Damit gilt nun:
+<span class="math display">\[0 \leq c \cdot \overline{F}(c) \leq E(X) - \int_0^cx \cdot f_X(x) \text{d}x\]</span>
+Wegen <span class="math inline">\(\lim\limits_{c \to +\infty} \int_0^cx \cdot f_X(x) \text{d}x = E(X)\)</span>
+folgt:
+<span class="math display">\[0 \leq c \cdot \overline{F}(c) \leq E(X) - \int_0^cx \cdot f_X(x) \text{d}x\to 0 \text{ wenn } c \to \infty\]</span>
+- Für nicht-negative ZV <span class="math inline">\(X\)</span> gilt:
+<span class="math display">\[E(X) = \int_0^\infty \overline{F}_X(x) \text{d}    x\]</span></p>
 </div>
 
     </div>
@@ -1127,6 +1150,8 @@ eine <strong>Überlebensfunktion</strong>, wenn gilt:</p>
     <ul>
       
       <li><a href="/nap/post/wege-zur-normalverteilung/">Wege zur Normalverteilung</a></li>
+      
+      <li><a href="/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/">Über die t-Verteilung mit einem bzw. zwei Freiheitsgraden</a></li>
       
     </ul>
   </div>

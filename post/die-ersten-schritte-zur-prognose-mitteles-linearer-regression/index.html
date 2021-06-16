@@ -797,7 +797,7 @@
 
     <div class="article-style">
       
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/nap/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>Prognosen sind ein wichtiger Bestandteil von Data Science und ist durchaus nicht nur auf moderne Ansätze, wie Neuronale Netze, deep lerning etc. begrenzt. Auch die gute, alte Regression kann ein sehr sinnvolles Mittel sein solche Prognosen zu erstellen.</p>
@@ -870,9 +870,9 @@ tipspruef %&gt;%
 <h2>Die Datenlage</h2>
 <p>Ein (paar) Blick(e) auf unsere Trainingsdaten:</p>
 <pre class="r"><code>gf_point(total_bill ~ jitter(size), color=~time, data=tipstrain)</code></pre>
-<p><img src="/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/nap/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>gf_point(total_bill ~ day | time, color = ~ sex, data=tipstrain)</code></pre>
-<p><img src="/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/nap/post/2019-12-18-die-ersten-schritte-zur-prognose-mitteles-linearer-regression_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="prognosemodel-nullmodell" class="section level2">
 <h2>Prognosemodel: Nullmodell</h2>

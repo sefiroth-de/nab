@@ -797,7 +797,7 @@
 
     <div class="article-style">
       
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/nap/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>Nach <a href="https://readr.tidyverse.org"><code>readr</code></a> kommt <a href="https://vroom.r-lib.org"><code>vroom</code></a>. In der Zwischenzeit liegt vroom in der Version 1.2.0 vor und daher habe ich mir ein paar Stunden Zeit gekommen um ein paar erste Experimente damit zu machen.</p>
@@ -823,14 +823,14 @@ mycols &lt;- cols(
 )</code></pre>
 <pre class="r"><code># Laden mit vroom, Spaltentypen erraten, Locale auf mylocale
 tips.vroom &lt;- vroom(url, locale = mylocale)</code></pre>
-<pre><code>## Rows: 244
-## Columns: 7
+<pre><code>## Rows: 244 Columns: 7</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;;&quot;
-## chr [4]: sex, smoker, day, time
-## dbl [1]: size
-## 
-## Use `spec()` to retrieve the guessed column specification
-## Pass a specification to the `col_types` argument to quiet this message</code></pre>
+## chr (4): sex, smoker, day, time
+## dbl (3): total_bill, tip, size</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>head(tips.vroom)</code></pre>
 <pre><code>## # A tibble: 6 x 7
 ##   total_bill   tip sex    smoker day   time    size
@@ -842,7 +842,7 @@ tips.vroom &lt;- vroom(url, locale = mylocale)</code></pre>
 ## 5       24.6  3.61 Female No     Sun   Dinner     4
 ## 6       25.3  4.71 Male   No     Sun   Dinner     4</code></pre>
 <pre class="r"><code>str(tips.vroom)</code></pre>
-<pre><code>## tibble [244 × 7] (S3: tbl_df/tbl/data.frame)
+<pre><code>## spec_tbl_df [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
 ##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
 ##  $ sex       : chr [1:244] &quot;Female&quot; &quot;Male&quot; &quot;Male&quot; &quot;Male&quot; ...
@@ -852,17 +852,18 @@ tips.vroom &lt;- vroom(url, locale = mylocale)</code></pre>
 ##  $ size      : num [1:244] 2 3 3 2 4 4 2 4 2 2 ...
 ##  - attr(*, &quot;spec&quot;)=
 ##   .. cols(
-##   ..   total_bill = col_number(),
-##   ..   tip = col_number(),
+##   ..   total_bill = col_double(),
+##   ..   tip = col_double(),
 ##   ..   sex = col_character(),
 ##   ..   smoker = col_character(),
 ##   ..   day = col_character(),
 ##   ..   time = col_character(),
 ##   ..   size = col_double(),
 ##   ..   .delim = &quot;;&quot;
-##   .. )</code></pre>
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
 <pre class="r"><code>object.size(tips.vroom)</code></pre>
-<pre><code>## 20392 bytes</code></pre>
+<pre><code>## 20632 bytes</code></pre>
 <pre class="r"><code># Laden mit vroom, Spaltentypen mycols, Locale auf mylocale
 tips.vroom2 &lt;- vroom(url, col_types = mycols, locale = mylocale)
 
@@ -877,12 +878,12 @@ head(tips.vroom2)</code></pre>
 ## 5       24.6  3.61 Female No     Sun   Dinner     4
 ## 6       25.3  4.71 Male   No     Sun   Dinner     4</code></pre>
 <pre class="r"><code>str(tips.vroom2)</code></pre>
-<pre><code>## tibble [244 × 7] (S3: tbl_df/tbl/data.frame)
+<pre><code>## spec_tbl_df [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
 ##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
 ##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 1 2 2 2 2 2 ...
 ##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ day       : Factor w/ 47 levels &quot;Sun&quot;,&quot;Sat&quot;,&quot;Sat&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &quot;Sun&quot;,&quot;Sat&quot;,&quot;Thur&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ size      : int [1:244] 2 3 3 2 4 4 2 4 2 2 ...
 ##  - attr(*, &quot;spec&quot;)=
@@ -895,9 +896,10 @@ head(tips.vroom2)</code></pre>
 ##   ..   time = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
 ##   ..   size = col_integer(),
 ##   ..   .delim = &quot;;&quot;
-##   .. )</code></pre>
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
 <pre class="r"><code>object.size(tips.vroom2)</code></pre>
-<pre><code>## 19520 bytes</code></pre>
+<pre><code>## 19416 bytes</code></pre>
 <pre class="r"><code># Readr
 library(readr)</code></pre>
 <pre><code>## Registered S3 methods overwritten by &#39;readr&#39;:
@@ -910,15 +912,16 @@ library(readr)</code></pre>
 ##   str.col_spec     vroom</code></pre>
 <pre><code>## 
 ## Attache Paket: &#39;readr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:vroom&#39;:
+<pre><code>## Die folgenden Objekte sind maskiert von &#39;package:vroom&#39;:
 ## 
 ##     as.col_spec, col_character, col_date, col_datetime, col_double,
 ##     col_factor, col_guess, col_integer, col_logical, col_number,
 ##     col_skip, col_time, cols, cols_condense, cols_only, date_names,
 ##     date_names_lang, date_names_langs, default_locale, fwf_cols,
-##     fwf_empty, fwf_positions, fwf_widths, locale, output_column, spec</code></pre>
+##     fwf_empty, fwf_positions, fwf_widths, locale, output_column,
+##     problems, spec</code></pre>
 <pre class="r"><code>tips.readr &lt;- readr::read_csv2(url)</code></pre>
-<pre><code>## ℹ Using &#39;,&#39; as decimal and &#39;.&#39; as grouping mark. Use `read_delim()` for more control.</code></pre>
+<pre><code>## ℹ Using &#39;\&#39;,\&#39;&#39; as decimal and &#39;\&#39;.\&#39;&#39; as grouping mark. Use `read_delim()` for more control.</code></pre>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -941,7 +944,7 @@ library(readr)</code></pre>
 ## 5       24.6  3.61 Female No     Sun   Dinner     4
 ## 6       25.3  4.71 Male   No     Sun   Dinner     4</code></pre>
 <pre class="r"><code>str(tips.readr)</code></pre>
-<pre><code>## tibble [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<pre><code>## spec_tbl_df [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
 ##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
 ##  $ sex       : chr [1:244] &quot;Female&quot; &quot;Male&quot; &quot;Male&quot; &quot;Male&quot; ...
@@ -973,7 +976,7 @@ tips.readr2 &lt;- readr::read_csv2(url,
                                 col_integer()  # size
                      )
 )</code></pre>
-<pre><code>## ℹ Using &#39;,&#39; as decimal and &#39;.&#39; as grouping mark. Use `read_delim()` for more control.</code></pre>
+<pre><code>## ℹ Using &#39;\&#39;,\&#39;&#39; as decimal and &#39;\&#39;.\&#39;&#39; as grouping mark. Use `read_delim()` for more control.</code></pre>
 <pre class="r"><code>head(tips.readr2)</code></pre>
 <pre><code>## # A tibble: 6 x 7
 ##   total_bill   tip sex    smoker day   time    size
@@ -985,7 +988,7 @@ tips.readr2 &lt;- readr::read_csv2(url,
 ## 5       24.6  3.61 Female No     Sun   Dinner     4
 ## 6       25.3  4.71 Male   No     Sun   Dinner     4</code></pre>
 <pre class="r"><code>str(tips.readr2)</code></pre>
-<pre><code>## tibble [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<pre><code>## spec_tbl_df [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
 ##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
 ##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 1 2 2 2 2 2 ...
@@ -1296,7 +1299,7 @@ tips.csv2 &lt;- read.csv2(&quot;tips.csv&quot;)</code></pre>
       
       <li><a href="/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/">Auch R markdown Dateien sollten sich an Regeln halten</a></li>
       
-      <li><a href="/nap/post/uber-die-koeffizienten-einer-linearen-regression/">Über die Koeffizienten einer linearen Regression</a></li>
+      <li><a href="/nap/post/ueber-die-koeffizienten-einer-linearen-regression/">Über die Koeffizienten einer linearen Regression</a></li>
       
       <li><a href="/nap/post/korrigieren-von-arbeiten-mit-excel-und-r/">Korrigieren von Arbeiten mit Excel und R</a></li>
       

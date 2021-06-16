@@ -250,7 +250,7 @@ for(n in c(30, 50, 100, 200, 500, 1000, 3000)) {
       <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/der-zentrale-grenzwertsatz/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;der-zentrale-grenzwertsatz-der-statistik-bei-identischer-verteilung.&#34; class=&#34;section level2&#34;&gt;
@@ -295,7 +295,7 @@ zscore(u)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;zscore(y)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1]  0.1677971 -0.1526624 -0.6657361  1.6085958 -0.9579944&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Die Behauptung des Zentralengrenzwertsatzes ist nun, dass mit steigender Anzahl an Werten &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; die standardisierten Werte in der empirischen Verteilungsfunktion sich immer mehr der Verteilungsfunktion der Standardnormalverteilung annähern:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Weiterführende Literatur und Quellen dieses Eintrags:&lt;/strong&gt;&lt;/p&gt;
 &lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;
 &lt;div id=&#34;ref-Schira2005&#34; class=&#34;csl-entry&#34;&gt;

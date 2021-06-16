@@ -797,7 +797,7 @@ Konfidenzintervalle Definition von Konfidenzintervallen1 Für unabhängig identi
 
     <div class="article-style">
       
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/nap/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>*<strong>WORK IN PROGRESS</strong>
@@ -818,7 +818,7 @@ Dann heißt das (stochastische) Intervall <span class="math inline">\([U, V]\)</
 <p>Wir nehmen zunächst als Population <span class="math inline">\(N=1000\)</span> normalverteilte Zufallszahlen mit dem Mittelwert <span class="math inline">\(\mu= 0\)</span> und der Standardabweichung <span class="math inline">\(\sigma=2.0088\)</span>.</p>
 <p>Dazu das Histogramm der Population:</p>
 <pre class="r"><code>histogram(pop, xlab=&quot;Population&quot;)</code></pre>
-<p><img src="/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/nap/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Aus dieser Population ziehen wir eine Stichprobe <span class="math inline">\(x\)</span> vom Umfang $n=$40 und erhalten die folgenden statistischen Daten:</p>
 <pre class="r"><code>favstats(x)</code></pre>
 <pre><code>##    min      Q1 median    Q3   max   mean    sd  n missing
@@ -850,7 +850,7 @@ und</p>
 <pre><code>##     cover
 ## n     Low  Yes High
 ##   40 0.00 0.98 0.02</code></pre>
-<p><img src="/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/nap/post/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 </div>
 <div id="prognoseintervalle" class="section level2">

@@ -1,0 +1,1534 @@
+<!DOCTYPE html><html lang="de-de" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.2.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Norman Markgraf" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Vorbereitungen für R Für die graphischen Ausgaben nutzen wir R und das Paket mosaic:
+library(mosaic)  Vorbemerkungen und Notationen Da alle t-Verteilungen symmetrisch sind, betrachten wir im wesendlichen nur den positiven Teil." />
+
+  
+  <link rel="alternate" hreflang="de-de" href="https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/" />
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/nap/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/nap/css/wowchemy.7145a9a307b7b6e0cf40149bdecd66b5.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/nap/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
+
+  <link rel="canonical" href="https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Norman&#39;s Academic Blog" />
+  <meta property="og:url" content="https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/" />
+  <meta property="og:title" content="Über die t-Verteilung mit einem bzw. zwei Freiheitsgraden | Norman&#39;s Academic Blog" />
+  <meta property="og:description" content="Vorbereitungen für R Für die graphischen Ausgaben nutzen wir R und das Paket mosaic:
+library(mosaic)  Vorbemerkungen und Notationen Da alle t-Verteilungen symmetrisch sind, betrachten wir im wesendlichen nur den positiven Teil." /><meta property="og:image" content="https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+    <meta property="twitter:image" content="https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="de-de" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-02-17T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-02-17T12:18:35&#43;01:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/"
+  },
+  "headline": "Über die t-Verteilung mit einem bzw. zwei Freiheitsgraden",
+  
+  "datePublished": "2021-02-17T00:00:00Z",
+  "dateModified": "2021-02-17T12:18:35+01:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Norman Markgraf"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Norman's Academic Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Vorbereitungen für R Für die graphischen Ausgaben nutzen wir R und das Paket mosaic:\nlibrary(mosaic)  Vorbemerkungen und Notationen Da alle t-Verteilungen symmetrisch sind, betrachten wir im wesendlichen nur den positiven Teil."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Über die t-Verteilung mit einem bzw. zwei Freiheitsgraden | Norman&#39;s Academic Blog</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="1cf52859f92cbad9bf06d83269a11dcd" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/nap/js/wowchemy-init.min.b8153d4570dcbb34350a2a846dba8c03.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Suche</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Suche..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Suche...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/nap/">Norman&#39;s Academic Blog</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Navigation einblenden">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/nap/">Norman&#39;s Academic Blog</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#posts"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#projects"><span>Projekte</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#featured"><span>Veröffentlichungen</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#contact"><span>Impressum</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Suche"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Einstellungen anzeigen">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Hell</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dunkel</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatisch</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Über die t-Verteilung mit einem bzw. zwei Freiheitsgraden</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Zuletzt aktualisiert am
+      
+    
+    Feb 17, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min Lesezeit
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/nap/category/statistisches/">Statistisches</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="vorbereitungen-für-r" class="section level2">
+<h2>Vorbereitungen für R</h2>
+<p>Für die graphischen Ausgaben nutzen wir R und das Paket <code>mosaic</code>:</p>
+<pre class="r"><code>library(mosaic)</code></pre>
+</div>
+<div id="vorbemerkungen-und-notationen" class="section level2">
+<h2>Vorbemerkungen und Notationen</h2>
+<p>Da alle t-Verteilungen symmetrisch sind, betrachten wir im wesendlichen nur den
+positiven Teil.</p>
+<p>Zwei reelle Funktionen <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span> sind genau dann, im Sinne von de Bruijn<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> (§1.4), <strong>asymptotisch äquivalent</strong> <span class="math inline">\(f \sim g\)</span>, wenn</p>
+<p><span class="math display">\[
+\lim\limits_{x \to \infty} \frac{f(x)}{g(x)} = 1
+\]</span></p>
+<p>gilt.</p>
+<p>Ist <span class="math inline">\(f \sim g\)</span>, so können wir auch</p>
+<p><span class="math display">\[
+f(x) = g(x)\cdot(1+o(1))
+\]</span></p>
+<p>dafür schreiben.
+Dabei ist <span class="math inline">\(h(x) = o(\phi(x))\)</span> für <span class="math inline">\(x \to \infty\)</span>, falls <span class="math inline">\(\lim\limits_{x \to \infty} \frac{h(x)}{\phi(x)} = 0\)</span> gilt.
+Aus der asymptotischen Äquivalenz von <span class="math inline">\(f\)</span> und <span class="math inline">\(g\)</span> folgt nun direkt:</p>
+<p><span class="math display">\[
+\lim\limits_{x \to \infty}\frac{f(x)}{g(x)}-1 =\frac{f(x)-g(x)}{g(x)} = 0
+\]</span></p>
+<p>Mit <span class="math inline">\(h(x) = \frac{f(x)-g(x)}{g(x)}\)</span> ist <span class="math inline">\(h(x) = o(1)\)</span> und daher <span class="math inline">\(f(x)-g(x) = g(x)o(1)\)</span> und schliesslich <span class="math inline">\(f(x) = g(x)+g(x)o(1)\)</span>.</p>
+<p>Ein wichtiges Korrolar sagt:</p>
+<p>Ist <span class="math inline">\(f \sim g\)</span>, so ist auch <span class="math inline">\(\log(f) \sim \log(g)\)</span>.</p>
+</div>
+<div id="die-t-verteilung-im-allgemeinen" class="section level2">
+<h2>Die t-Verteilung im Allgemeinen</h2>
+<p>Die Dichtefunktion der t-Verteilung lauten im Allgemeinen:</p>
+<p><span class="math display">\[
+f_n(x) = \frac{\Gamma\left(\frac{n+1}{2}\right)} {\sqrt{n\pi}~\Gamma\left(\frac{n}{2}\right)}\left(1+\frac{x^{2}}{n}\right)^{-\frac{n+1}{2}}\quad \mathrm{für}\quad -\infty &lt; x &lt; +\infty
+\]</span></p>
+<p>wobei wir mit <span class="math inline">\(\Gamma(x)\)</span> die Gammafunktion</p>
+<p><span class="math display">\[
+\Gamma(x)=\int\limits_{0}^{+\infty}t^{x-1}e^{-t}\operatorname{d}t
+\]</span></p>
+<p>bezeichnen.
+Für einige <span class="math inline">\(x\)</span> nimmt die Gammafunktion leicht zu berechnende Werte an:</p>
+<p>So ist für alle <span class="math inline">\(n\in\mathbf{N_0}\)</span>:</p>
+<p><span class="math inline">\(\Gamma(n+1) = n!\)</span> und <span class="math inline">\(\Gamma\left(n + \frac{1}{2}\right) = \frac{(2n)!}{n!4^n}\sqrt{\pi}\)</span></p>
+<p>mit der gewöhnlichen Fakultät <span class="math inline">\(n! = \prod_{i=0}^n i\)</span>, wobei per Definition <span class="math inline">\(0!=1\)</span> ist.</p>
+</div>
+<div id="die-t-verteilung-mit-einem-freiheitsgrad" class="section level2">
+<h2>Die t-Verteilung mit einem Freiheitsgrad</h2>
+<p>Für <span class="math inline">\(f_1(x)\)</span> ergibt sich somit:</p>
+<p><span class="math display">\[
+\begin{align*}
+f_1(x) &amp;= \frac{\Gamma\left(\frac{n+1}{2}\right)} {\sqrt{n\pi}~\Gamma\left(\frac{n}{2}\right)}\left(1+\frac{x^{2}}{n}\right)^{-\frac{n+1}{2}} \\
+ &amp;= \frac{\Gamma\left(\frac{2}{2}\right)} {\sqrt{\pi}~\Gamma\left(\frac{1}{2}\right)}\left(1+x^{2}\right)^{-\frac{2}{2}} \\
+ &amp;= \frac{\Gamma\left(1\right)} {\sqrt{\pi}~\Gamma\left(\frac{1}{2}\right)}\left(1+x^{2}\right)^{-1} \\
+\end{align*}
+\]</span></p>
+<p>Wegen <span class="math inline">\(\Gamma(1) = 0! = 1\)</span> und <span class="math inline">\(\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}\)</span> ergibt sich nun:</p>
+<p><span class="math display">\[
+\begin{align*}
+f_1(x) &amp;= \frac{1} {\sqrt{\pi} \cdot \sqrt{\pi}} \cdot \left(1+x^{2}\right)^{-1} \\
+       &amp;= \frac{1}{\pi} \cdot \frac{1}{1+x^{2}} 
+\end{align*}
+\]</span></p>
+<p>Das ist die Dichtefunktion der standardisierten Cauchy-Verteilung</p>
+<p><span class="math display">\[
+f_{(\mu,\lambda)}(x) = \frac{1}{\pi} \cdot \frac{\lambda}{\lambda^2+(x-\mu)^2}
+\]</span></p>
+<p>mit (<span class="math inline">\(\mu = 0\)</span> und <span class="math inline">\(\lambda=1\)</span>), welche – bekanntermaßen – keinen Erwartungwert hat.</p>
+<p>Wegen</p>
+<p><span class="math display">\[
+\begin{align*}
+\lim_{x \to +\infty} \frac{f_1(k \cdot x)}{f_1(x)} 
+      &amp;= \lim_{x \to +\infty} \frac{\frac{1}{\pi} \cdot \frac{1}{1+(kx)^{2}}}{\frac{1}{\pi} \cdot \frac{1}{1+x^{2}}} = \lim_{x \to +\infty} \frac{1+x^2}{1+k^2x^2} \\
+      &amp;=\lim_{x \to +\infty} \frac{\frac{1}{x^2}+\frac{x^2}{x^2}}{\frac{1}{x^2}+k^2\frac{x^2}{x^2}} =\frac{1}{k^2}=k^{-2}
+\end{align*}
+\]</span></p>
+<p>für alle reellen <span class="math inline">\(k&gt;0\)</span> ist <span class="math inline">\(f_1(x)\)</span> eine regulär variierende Funktion mit Variationsindex <span class="math inline">\(\rho = -2\)</span>.</p>
+<p>Die Überlebensfunktion zur t-Verteilung mit einem Freiheitsgrad lautet nun:</p>
+<p><span class="math display">\[
+\overline{F}_1(x) = \int_x^\infty f_1(t) \operatorname{d}t = \frac{1}{\pi} \cdot \int_x^\infty  \frac{1}{1+x^{2}} \operatorname{d}t = \frac{\arctan(x)}{\pi}
+\]</span></p>
+<p>da wir das optionale <span class="math inline">\(+C\)</span> mit <span class="math inline">\(C=0\)</span> annehmen dürfen.</p>
+<p>Es gilt nun:</p>
+<p><span class="math display">\[
+\arctan`(x)= \frac{1}{1+x^2} \to \frac{1}{x^2} \text{ für } x\to \infty
+\]</span></p>
+<p>Genauer gilt wegen</p>
+<p><span class="math display">\[
+\lim\limits_{x \to \infty} \frac{\frac{1}{1+x^2}}{\frac{1}{x^2}} 
+ = \lim\limits_{x \to \infty} \frac{x^2}{1+x^2} =1,
+\]</span>
+dass <span class="math inline">\(\frac{1}{1+x^2} \sim \frac{1}{x^2}\)</span>,
+also asymptotisch äquivalent sind und somit auch
+<span class="math inline">\(\log\left(\frac{1}{1+x^2}\right) \sim \log\left(\frac{1}{x^2}\right)\)</span>.</p>
+<p>Zusammen gefasst gilt somit:
+<span class="math display">\[
+ \log\left(\frac{1}{\pi} \cdot \frac{1}{1+x^{2}}\right) \to -2\log(x) - \log(\pi) \text{ für } x \to \infty
+\]</span></p>
+<p>Sei <span class="math inline">\(f_1^*(x) = C \cdot x^{-\alpha}\)</span> mit <span class="math inline">\(\alpha = 2\)</span> und <span class="math inline">\(C=\frac{1}{\pi} \approx0.3183\)</span>.</p>
+<p>Schauen wir uns das einmal als Grafik an:</p>
+<pre class="r"><code>lower_bound &lt;- 2
+upper_bound &lt;- 100
+dfree &lt;- 1
+
+f_star &lt;- function(x) {
+  alpha &lt;- 2
+  C &lt;- 1/pi
+  C * x**(-alpha)
+}
+
+x &lt;- seq(lower_bound, upper_bound, 0.1)
+
+gf_dist(&quot;t&quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &quot;darkred&quot;) %&gt;%
+  gf_line(f_star(x) ~ x, 
+          color = &quot;darkgreen&quot;)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-2-1.png" width="384" /></p>
+<p>Hier eine doppelt-logarithmische Darstellung:</p>
+<pre class="r"><code>gf_dist(&quot;t&quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &quot;darkred&quot;) %&gt;%
+  gf_line( f_star(x) ~ x, 
+           color = &quot;darkgreen&quot;) %&gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )</code></pre>
+<p><img src="https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-3-1.png" width="384" /></p>
+<p>Wie groß ist nun der (absolute) Fehler zwischen <span class="math inline">\(f_1^*\)</span> und <span class="math inline">\(f_1\)</span>?</p>
+<p>Eine Grafik von <span class="math inline">\(f_1^*-f_1\)</span> zeigt:</p>
+<pre class="r"><code>x &lt;- seq(1,1000,1)
+  gf_line(x**-2 - 1/(1+x**2) ~ x, 
+           color = &quot;darkgreen&quot;) %&gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )</code></pre>
+<p><img src="https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-4-1.png" width="384" /></p>
+<p>Genauer gilt:</p>
+<p><span class="math display">\[
+f_1^*(x) - f_1(x) = \frac{1}{x^2+x^4}
+\]</span></p>
+<p>Wir können also für ein hinreichend großes <span class="math inline">\(x &gt;&gt; 1\)</span> statt <span class="math inline">\(f_1\)</span> auch <span class="math inline">\(f_1^*\)</span>
+verwenden und erhalten somit:</p>
+<p><span class="math display">\[
+\begin{align*}
+\overline{F}_1(x) &amp;\approx \int_x^\infty f_1^*(t) \operatorname{d}t 
+  = \int_x^\infty  C \cdot t^{-\alpha} \operatorname{d}t \\
+  &amp;= \frac{1}{\pi} \cdot \int_x^\infty  t^{-2} \operatorname{d}t
+  = \frac{1}{\pi}\left[\lim\limits_{\epsilon \to \infty} \left(-\epsilon^{-1}\right) -\left(-x^{-1}\right)\right]\\
+  &amp;= \frac{1}{\pi}\cdot\left[0 + \frac{1}{x}\right] = \frac{1}{\pi \cdot x}
+\end{align*}
+\]</span></p>
+<p><strong>Wie hinreichend ist hier hinreichend groß?</strong></p>
+<p>Taleb schreibt an dieser Stelle gerne, dass man jenseits des <em>Karamata-Punktes</em>
+die <em>Karamata-Konstante</em> anwenden kann.
+Beides Begriffe, die keine echte Definition haben und ausserhalb der Sphäre von Taleb auch kaum Verwendung finden.</p>
+<p>Die <em>Karamata-Konstante</em> ist <span class="math inline">\(\rho = -\alpha\)</span>.</p>
+<p>Der <em>Karamata-Punkt</em> bleibt nebulös. Vermutlich könnte man hier so argumentieren:</p>
+<p>Wenn die Fehler zwischen <span class="math inline">\(f\)</span> und <span class="math inline">\(f^*\)</span> hinreichend klein ist.</p>
+<p>Hierfür könnte man einen absoluten Fehler oder einen relativen Fehler als Maßstab ansehen.</p>
+<p>Für einen relativen Fehler vielleicht <span class="math inline">\(\frac{f^*-f}{x} &lt; k\)</span>?</p>
+<p>Oder man betrachtet hier gleich <span class="math inline">\(\frac{f^*-f}{\log(x)} &lt; k^*\)</span>?</p>
+</div>
+<div id="t-verteilung-mit-zwei-freiheitsgeraden" class="section level2">
+<h2>t-Verteilung mit zwei Freiheitsgeraden</h2>
+<p>Für <span class="math inline">\(f_2(x)\)</span> ergibt sich somit:</p>
+<p><span class="math display">\[
+\begin{align*}
+f_2(x) &amp;= \frac{\Gamma\left(\frac{n+1}{2}\right)} {\sqrt{n\pi}~\Gamma\left(\frac{n}{2}\right)}\left(1+\frac{x^{2}}{n}\right)^{-\frac{n+1}{2}} \\
+       &amp;= \frac{\Gamma\left(\frac{3}{2}\right)} {\sqrt{2\pi}~\Gamma\left(\frac{2}{2}\right)}\left(1+\frac{x^{2}}{2}\right)^{-\frac{3}{2}} \\
+       &amp;= \frac{\Gamma\left(\frac{3}{2}\right)} {\sqrt{2\pi}~\Gamma\left(1\right)}\left(1+\frac{x^{2}}{2}\right)^{-\frac{3}{2}} \\
+\end{align*}
+\]</span></p>
+<p>Wegen <span class="math inline">\(\Gamma(1) = 0! = 1\)</span> und <span class="math inline">\(\Gamma\left(\frac{3}{2}\right)=\frac{\sqrt{\pi}}{2}\)</span> ergibt sich nun:</p>
+<p><span class="math display">\[
+\begin{align*}
+f_2(x) &amp;= \frac{1}{2\sqrt{2}} \cdot \left(1+\frac{x^{2}}{2}\right)^{-\frac{3}{2}} \\
+  &amp;= \frac{1}{\sqrt[2]{2^3} \cdot \sqrt[2]{\left(1+\frac{x^{2}}{2}\right)^3}}  \\
+  &amp;= \frac{1}{(x^2+2)^{\frac{3}{2}}} \\
+  &amp;= \frac{1}{\sqrt{(x^2+2)^3}}
+\end{align*}
+\]</span></p>
+<p>Wegen</p>
+<p><span class="math display">\[
+\begin{align*}
+\lim_{x \to +\infty} \frac{f_2(k \cdot x)}{f_2(x)} 
+    &amp;= \lim_{x \to +\infty} \frac{\frac{1}{\sqrt{((k\cdot x)^2+2)^3}}}{\frac{1}{\sqrt{(x^2+2)^3}}} = \lim_{x \to +\infty} \frac{\sqrt{(x^2+2)^3}}{\sqrt{((k\cdot x)^2+2)^3}} \\
+    &amp;= \lim_{x \to +\infty} \left(\frac{x^2+2}{k^2x^2+2}\right)^\frac{3}{2}=\lim_{x \to +\infty} \left(\frac{\frac{x^2}{x^2}+\frac{2}{x^2}}{k^2\frac{x^2}{x^2}+\frac{2}{x^2}}\right)^\frac{3}{2} \\ 
+    &amp;=\left(\frac{1}{k^2}\right)^\frac{3}{2}=\frac{1}{k^3}=k^{-3}
+\end{align*}
+\]</span></p>
+<p>für alle reellen <span class="math inline">\(k&gt;0\)</span> ist <span class="math inline">\(f_2(x)\)</span> eine regulär variierende Funktion mit Variationsindex <span class="math inline">\(\rho = -3\)</span>.</p>
+<p>Die Überlebensfunktion zur t-Verteilung mit einem Freiheitsgrad lautet nun:</p>
+<p><span class="math display">\[
+\begin{align*}
+\overline{F}_2(x) &amp;= \int_x^\infty f_2(t) \operatorname{d}t = \int_x^\infty \frac{1}{\sqrt{(t^2+2)^3}} \operatorname{d}t \\
+  &amp;= \frac{x}{2 \cdot \sqrt{x^2+2}}
+\end{align*}
+\]</span></p>
+<p>da wir das optionale <span class="math inline">\(+C\)</span> mit <span class="math inline">\(C=0\)</span> annehmen dürfen.</p>
+<p>Es gilt für jedes feste <span class="math inline">\(k&gt;0\)</span>:</p>
+<p><span class="math display">\[
+\begin{align*}
+\lim\limits_{x \to \infty} \frac{\overline{F}_2(k x)}{\overline{F}_2(x)} &amp;= \lim\limits_{x \to \infty}k \cdot \sqrt{\frac{x^2+2}{k^2x^2+2}} \\
+  &amp;=  k \cdot \lim\limits_{x \to \infty}  \sqrt{\frac{1}{k^2} \cdot \frac{x^2+2}{x^2+\frac{2}{k^2}}} \\
+  &amp;= \frac{k}{k} \cdot \lim\limits_{x \to \infty}  \sqrt{ \frac{x^2+2}{x^2+\frac{2}{k^2}}} = 1\end{align*}
+\]</span></p>
+<p>Wegen</p>
+<p><span class="math display">\[
+\lim_{x \to \infty} \frac{\frac{1}{\sqrt{(x^2+2)^3}}}{\frac{1}{x^3}} =\lim\limits_{x \to \infty} \frac{x^3}{(\sqrt{x^2+2})^3} = \lim\limits_{x \to \infty} \left(\frac{x}{\sqrt{x^2+2}}\right)^3= 1
+\]</span></p>
+<p>ist <span class="math inline">\(f_2 \sim f^*_2\)</span> und somit auch <span class="math inline">\(\log(f_2) \sim \log(f^*_2)\)</span>.</p>
+<p>Aus <span class="math inline">\(\log\left(\frac{1}{x^3}\right) = \log(1)- 3\cdot\log(x)\)</span> können wir daher
+auf <span class="math inline">\(\alpha = 3\)</span> und <span class="math inline">\(C=1\)</span> schliesse und schreiben:</p>
+<p><span class="math display">\[
+f_2^*(x) = C \cdot x^{-\alpha} = x^{-3}
+\]</span></p>
+<p>Schauen wir uns das einmal als Grafik an:</p>
+<pre class="r"><code>lower_bound &lt;- 2
+upper_bound &lt;- 100
+dfree &lt;- 2
+
+f_star &lt;- function(x) {
+  alpha &lt;- 3
+  C &lt;- 1
+  C * x**(-alpha)
+}
+
+x &lt;- seq(lower_bound, upper_bound, 0.1)
+
+gf_dist(&quot;t&quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &quot;darkred&quot;) %&gt;%
+  gf_line(f_star(x) ~ x, 
+          color = &quot;darkgreen&quot;)</code></pre>
+<p><img src="https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-5-1.png" width="384" /></p>
+<p>Hier eine doppelt-logarithmische Darstellung:</p>
+<pre class="r"><code>gf_dist(&quot;t&quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &quot;darkred&quot;) %&gt;%
+  gf_line( f_star(x) ~ x, 
+           color = &quot;darkgreen&quot;) %&gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )</code></pre>
+<p><img src="https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-6-1.png" width="384" /></p>
+<p>Wie groß ist nun der absolute Fehler zwischen <span class="math inline">\(f_2^*\)</span> und <span class="math inline">\(f_2\)</span> genau?</p>
+<p>Eine Grafik zeigt von <span class="math inline">\(f_2^*-2_1\)</span> zeigt:</p>
+<pre class="r"><code>x &lt;- seq(1,1000,1)
+  gf_line(f_star(x) - dt(x,df=2) ~ x, 
+           color = &quot;darkgreen&quot;) %&gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )</code></pre>
+<p><img src="https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-7-1.png" width="384" /></p>
+</div>
+<div id="fussnoten" class="section level2">
+<h2>Fussnoten</h2>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://de.wikipedia.org/wiki/Nicolaas_Govert_de_Bruijn">de Bruijn, N. G.</a> (1981), <a href="https://books.google.com/books?id=Oqj9AgAAQBAJ">Asymptotic Methods in Analysis</a>, Dover Publications, ISBN 9780486642215<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/nap/tag/dichtefunktion/">Dichtefunktion</a>
+  
+  <a class="badge badge-light" href="/nap/tag/t-verteilung/">t-Verteilung</a>
+  
+  <a class="badge badge-light" href="/nap/tag/student-t/">student-t</a>
+  
+  <a class="badge badge-light" href="/nap/tag/freiheitsgrade/">Freiheitsgrade</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/&amp;text=%c3%9cber%20die%20t-Verteilung%20mit%20einem%20bzw.%20zwei%20Freiheitsgraden" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/&amp;t=%c3%9cber%20die%20t-Verteilung%20mit%20einem%20bzw.%20zwei%20Freiheitsgraden" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%c3%9cber%20die%20t-Verteilung%20mit%20einem%20bzw.%20zwei%20Freiheitsgraden&amp;body=https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/&amp;title=%c3%9cber%20die%20t-Verteilung%20mit%20einem%20bzw.%20zwei%20Freiheitsgraden" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%c3%9cber%20die%20t-Verteilung%20mit%20einem%20bzw.%20zwei%20Freiheitsgraden%20https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/&amp;title=%c3%9cber%20die%20t-Verteilung%20mit%20einem%20bzw.%20zwei%20Freiheitsgraden" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://sefiroth.net/nap/"><img class="avatar mr-3 avatar-circle" src="/nap/authors/admin/avatar_hu693e4128d00be856374ec0a95c294cb0_23891_270x270_fill_q75_lanczos_center.jpg" alt="Norman Markgraf"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://sefiroth.net/nap/">Norman Markgraf</a></h5>
+      <h6 class="card-subtitle">Diplom-Mathematiker</h6>
+      <p class="card-text">Norman Markgraf ist freiberuflicher Dozent für Mathematik, Statistik, Data Science und Informatik, sowie freiberuflicher Programmierer.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:nmarkgraf@hotmail.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/nap/twitter.com/NormanMarkgraf" >
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//scholar.google.de/citations?user=zR76YpQAAAAJ&amp;hl=de" >
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//github.com/nmarkgraf" >
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//www.xing.com/profile/Norman_Markgraf" >
+        <i class="fab fa-xing"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//www.linkedin.com/in/normanmarkgraf/" >
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Ähnliches</h3>
+    <ul>
+      
+      <li><a href="/nap/post/wege-zur-normalverteilung/">Wege zur Normalverteilung</a></li>
+      
+      <li><a href="/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/">Gedankenstütze zu wichtigen Funktionsbegriffen in der Statistik</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+  
+  <p class="powered-by">
+    
+      <a href="/nap/privacy/">Datenschutzerklärung (Privacy Policy)</a>
+    
+    
+       &middot; 
+      <a href="/nap/terms/">Terms</a>
+    
+  </p>
+  
+
+  
+  <p class="powered-by">
+    © 2021 by Norman Markgraf
+  </p>
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Zitieren</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Kopie
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/nap/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/nap/de/js/wowchemy.min.a2cf169acd1081a78eed933b5a5e9871.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

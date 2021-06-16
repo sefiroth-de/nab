@@ -30,9 +30,11 @@
   
     
   
-  <meta name="description" content="Eine Verteilungsfunktion \(F(x)\) heißt potenzgesetzliche Verteilung, falls für die Dichtefunktion \(f(x)\)
+  <meta name="description" content="Eine Funktion \(f(x)\) heißt potenzgesetzlich, falls
 \[f(x) = C \cdot x^a\]
-gilt, für mindestens alle reellen \(x &gt; x_{min}\). Gewöhnlich setzt man \(\alpha = -a\) und schreibt" />
+gilt, für mindestens alle reellen \(x &gt; x_{min}\).
+Gewöhnlich setzt man \(\alpha = -a\) und schreibt
+\[f(x) = C \cdot x^{-\alpha}." />
 
   
   <link rel="alternate" hreflang="de-de" href="https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/" />
@@ -304,9 +306,11 @@ gilt, für mindestens alle reellen \(x &gt; x_{min}\). Gewöhnlich setzt man \(\
   <meta property="og:site_name" content="Norman&#39;s Academic Blog" />
   <meta property="og:url" content="https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/" />
   <meta property="og:title" content="Ein paar Gedanken über potenzgesetzliche Verteilungen (power law distributions) | Norman&#39;s Academic Blog" />
-  <meta property="og:description" content="Eine Verteilungsfunktion \(F(x)\) heißt potenzgesetzliche Verteilung, falls für die Dichtefunktion \(f(x)\)
+  <meta property="og:description" content="Eine Funktion \(f(x)\) heißt potenzgesetzlich, falls
 \[f(x) = C \cdot x^a\]
-gilt, für mindestens alle reellen \(x &gt; x_{min}\). Gewöhnlich setzt man \(\alpha = -a\) und schreibt" /><meta property="og:image" content="https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+gilt, für mindestens alle reellen \(x &gt; x_{min}\).
+Gewöhnlich setzt man \(\alpha = -a\) und schreibt
+\[f(x) = C \cdot x^{-\alpha}." /><meta property="og:image" content="https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
     <meta property="twitter:image" content="https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="de-de" />
   
     
@@ -359,7 +363,7 @@ gilt, für mindestens alle reellen \(x &gt; x_{min}\). Gewöhnlich setzt man \(\
       "url": "https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Eine Verteilungsfunktion \\(F(x)\\) heißt potenzgesetzliche Verteilung, falls für die Dichtefunktion \\(f(x)\\)\n\\[f(x) = C \\cdot x^a\\]\ngilt, für mindestens alle reellen \\(x \u0026gt; x_{min}\\). Gewöhnlich setzt man \\(\\alpha = -a\\) und schreibt"
+  "description": "Eine Funktion \\(f(x)\\) heißt potenzgesetzlich, falls\n\\[f(x) = C \\cdot x^a\\]\ngilt, für mindestens alle reellen \\(x \u0026gt; x_{min}\\).\nGewöhnlich setzt man \\(\\alpha = -a\\) und schreibt\n\\[f(x) = C \\cdot x^{-\\alpha}."
 }
 </script>
 
@@ -766,7 +770,7 @@ gilt, für mindestens alle reellen \(x &gt; x_{min}\). Gewöhnlich setzt man \(\
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min Lesezeit
+    4 min Lesezeit
   </span>
   
 
@@ -804,42 +808,73 @@ gilt, für mindestens alle reellen \(x &gt; x_{min}\). Gewöhnlich setzt man \(\
 <script src="https://sefiroth.net/nap/post/2021-02-12-ein-paar-gedanken-uber-potenzgesetzliche-verteilungen-power-law-distributions/index_files/header-attrs/header-attrs.js"></script>
 
 
-<p>Eine Verteilungsfunktion <span class="math inline">\(F(x)\)</span> heißt <strong>potenzgesetzliche Verteilung</strong>,
-falls für die Dichtefunktion <span class="math inline">\(f(x)\)</span></p>
+<p>Eine Funktion <span class="math inline">\(f(x)\)</span> heißt <strong>potenzgesetzlich</strong>,
+falls</p>
 <p><span class="math display">\[f(x) = C \cdot x^a\]</span></p>
-<p>gilt, für mindestens alle reellen <span class="math inline">\(x &gt; x_{min}\)</span>.
-Gewöhnlich setzt man <span class="math inline">\(\alpha = -a\)</span> und schreibt</p>
-<p><span class="math display">\[f(x) = C \cdot x^{-\alpha}\]</span></p>
-<p>zur Darstellung der Dichte.</p>
-<p>Damit ergibt sich für <span class="math inline">\(F(x)\)</span>:</p>
-<p><span class="math display">\[ 
-F(x)  = \int_{-\infty}^x f(t) \text{d} t 
-      = \int_{-\infty}^x C \cdot t^{-\alpha} \text{d} t 
-      = - \frac{C}{\alpha -1} \cdot x^{-(\alpha - 1)}
+<p>gilt, für mindestens alle reellen <span class="math inline">\(x &gt; x_{min}\)</span>.</p>
+<p>Gewöhnlich setzt man <span class="math inline">\(\alpha = -a\)</span> und schreibt</p>
+<p><span class="math display">\[f(x) = C \cdot x^{-\alpha}.\]</span></p>
+<p>Damit ergibt sich für <span class="math inline">\(f&#39;(x)\)</span> die Form:</p>
+<p><span class="math display">\[
+f&#39;(x) = -C \cdot \alpha \cdot x^{-\alpha -1} = C^* \cdot x^{-(\alpha + 1)}
+\]</span>
+mit <span class="math inline">\(C^* = -C \cdot \alpha\)</span>.</p>
+<p>Eine <strong>(streng) potenzgesetzliche Verteilungen</strong> (engl. <strong>(strong) power-law probability distribution</strong>)
+zur ZV <span class="math inline">\(X\)</span>
+ist eine Verteilung deren Überlebensfunktion <span class="math inline">\(\overline{F}_X(x)=P(X &gt; x)\)</span> die folgende Gestalt hat:
+<span class="math display">\[\overline{F}(x)=P(X &gt; x) = C \cdot x^{-\alpha}\]</span></p>
+<p>Mit der Dichte <span class="math inline">\(f_X\)</span> ergibt sich:
+<span class="math display">\[\overline{F}(x)=P(X &gt; x) = C \cdot x^{-\alpha} =\int_x^\infty f_X(t) \text{d}t = C^* \cdot \int_x^\infty  t^{-(\alpha+1)} \text{d}t = C^* \cdot \int_x^\infty t^{-\alpha} \text{d}t\]</span></p>
+<p>Anstelle der Konstanten <span class="math inline">\(C\)</span> tritt oft eine <strong>langsam variierende Funktion</strong>
+(engl. <strong>slowly varying funktion</strong>).
+Wir erhalten somit die folgende, allgemeinere Definition:</p>
+<p>Eine <strong>potenzgesetzliche Verteilungen</strong>
+(engl. <strong>power-law probability distribution</strong>)
+(zu einer Zufallsvariable <span class="math inline">\(X\)</span>)
+ist eine Verteilung deren Überlebensfunktion <span class="math inline">\(\overline{F}(x)=P(X &gt; x)\)</span>
+die folgende Gestalt hat:</p>
+<p><span class="math display">\[\overline{F}(x)=P(X &gt; x) = L(x) \cdot x^{-\alpha}\]</span></p>
+<p>Dabei ist <span class="math inline">\(L(x):(x_{\min}, +\infty) \to (x_{\min}, +\infty)\)</span> eine <em>langsam variierende Funktion</em>,
+also gilt für alle <span class="math inline">\(t&gt;0\)</span>:</p>
+<p><span class="math display">\[
+\lim_{x \to +\infty} \frac{L(t \cdot x)}{L(x)} = 1
 \]</span></p>
+<p>Ist nun wieder <span class="math inline">\(f_X\)</span> die Dichte, so erhalten wir:
+<span class="math display">\[\overline{F}(x)=P(X &gt; x) = L(x) \cdot x^{-\alpha} = \int_x^\infty f_X(t) dt\]</span></p>
+<p><span class="math display">\[f&#39;(x) = [L(x)x^{-\alpha}]&#39;\]</span>
+<span class="math display">\[\int_x^\infty f_X(t) dt= \int_x^\infty [L(t)t^{-\alpha}]&#39; dt\]</span></p>
+<p><span class="math inline">\(\Delta x_0 = h = x_1 - x_0\)</span>
+<span class="math inline">\(x_1 = x_0 + \Delta x_0 = x_0 + h\)</span>
+<span class="math inline">\(x_1 = c \cdot x_0\)</span>
+<span class="math inline">\(x_0 + h = c \cdot x_0 &lt;=&gt; c = 1 + \frac{h}{x_0}\)</span>
+<span class="math inline">\(L(x_1) = L(x_0+h) = L(c \cdot x_0)\)</span>
+<span class="math inline">\(L(x_1) - L(x_0) = L(c \cdot x_0) - L(x_0) = L(x_0 + h) - L(x_0)}\)</span>
+$</p>
 <p><strong>Fakten</strong>:</p>
 <ul>
 <li>Sinnvoll nur, wenn <span class="math inline">\(\alpha &gt; 0\)</span>.</li>
-<li>Ist <span class="math inline">\(\alpha &lt; 3\)</span>, dann ist die <em>Varianz</em> und die <em>
-skewness</em> (mathematisch) nicht definiert.</li>
+<li>Ist <span class="math inline">\(\alpha &lt; 3\)</span>, dann ist die <em>Varianz</em> und die
+<em>Schiefe</em> (engl. <em>skewness</em>) (mathematisch) nicht definiert.</li>
 <li>Für <span class="math inline">\(k &gt; \alpha-1\)</span> ist das k. Moment unendlich.</li>
 </ul>
 <p>Logarithmiert man <span class="math inline">\(y=f(x)=C \cdot x^{-\alpha}\)</span>, so erhält mensch:</p>
 <p><span class="math display">\[\log(y) = \log(C) -\alpha \cdot \log(x)\]</span></p>
-<p>Ist eine Verteilung potenzgesetlich, dann kann man <span class="math inline">\(\alpha\)</span>,
+<p>Ist eine Verteilung potenzgesetzlich, dann kann man <span class="math inline">\(\alpha\)</span>,
 wie folgt abschätzen:</p>
 <p>Seien <span class="math inline">\(x_0, x_1 &gt; x_{min}\)</span> zwei reelle Zahlen, <span class="math inline">\(y_0=f(x_0)\)</span> bzw. <span class="math inline">\(y_1 = f(y_1)\)</span>.</p>
-<p>Dann gilt wegen:
-<span class="math display">\[\begin{align*}
+<p>Dann kann mensch wegen</p>
+<p><span class="math display">\[\begin{align*}
   \log(y_1) - \log(y_0) &amp;= \log(C) - \alpha \cdot\log(x_1) - \log(C) + \alpha \cdot \log(x_0) \\
                         &amp;= \alpha \cdot\left(\log(x_0)- \log(x_1) \right)
 \end{align*}\]</span></p>
+<p>den Wert für <span class="math inline">\(\alpha\)</span>, so kann man mittels</p>
 <p><span class="math display">\[\alpha = \frac{\log(y_1) - \log(y_0)}{\log(x_0)- \log(x_1)}\]</span></p>
-<p>Hat man <span class="math inline">\(\alpha\)</span>, so kann man <span class="math inline">\(C\)</span> wegen</p>
+<p>den Wert für <span class="math inline">\(\alpha\)</span> bestimmen.</p>
+<p>Mit dem so ermittelten <span class="math inline">\(\alpha\)</span>, können wir <span class="math inline">\(C\)</span> wegen</p>
 <p><span class="math display">\[\log(C) = \log(y)+ \alpha\log(x)\]</span></p>
-<p>abschätzen mit Hilfe von</p>
+<p>mit Hilfe von</p>
 <p><span class="math display">\[C = y \cdot x_0^\alpha = f(x_0) \cdot x_0^\alpha\]</span></p>
-<p>für ein <span class="math inline">\(x &gt; x_{min}\)</span>.</p>
+<p>für ein <span class="math inline">\(x_0 &gt; x_{min}\)</span> abschätzen.</p>
 <p><strong>Beispiel</strong>:</p>
 <p>Nehmen wir die t-Verteilung mit <span class="math inline">\(n=2\)</span> Freiheitsgeraden.
 Die Dichtefunktion bezeichnen wir mit <span class="math inline">\(t_{2}(x)\)</span>.</p>
@@ -923,6 +958,7 @@ Die Standardnormalverteilung ist (vielleicht) keine <em>potenzgesetzich</em> Ver
 <p>Schauen wir daher einmal nach:</p>
 <pre class="r"><code>lower_bound &lt;- 1
 upper_bound &lt;- 8
+
 gf_dist(&quot;norm&quot;, 
         xlim = c(lower_bound, upper_bound), 
         color = &quot;darkred&quot;) %&gt;%
@@ -937,6 +973,10 @@ gf_dist(&quot;norm&quot;,
  = c^\alpha\]</span></p>
 <p><span class="math inline">\(f(x)\)</span> und <span class="math inline">\(f(c\cdot x)\)</span> für alle (beliebig aber festen) <span class="math inline">\(c&gt;0\)</span> <em>proportional</em>,
 was man gerne als <span class="math inline">\(f(x) \propto f(c \cdot x)\)</span> schreibt.</p>
+<p>** — **</p>
+<p>Die Wahrscheinlichkeit für ein (mindestens) <span class="math inline">\(8-\sigma\)</span> Ereignis liegt bei einer Standardnormalverteilung bei etwa <span class="math inline">\(6.66133814775094\times 10^{-16}\)</span>.</p>
+<p>Bei einer t-Verteilung mit 2 Freiheitsgeraden bei etwa 0.00763403608266899$.</p>
+<p>Während die Eintrittschance eines (mindestens) <span class="math inline">\(8-\sigma\)</span> Ereignisses bei der Standardnormalverteilung bei etwa <span class="math inline">\(1 : round(1/(1-pnorm(8)),0)\)</span> liegt, ist diese der t-Verteilung mit einem Freiheitsgrad bei etwa $1 : 131</p>
 
     </div>
 

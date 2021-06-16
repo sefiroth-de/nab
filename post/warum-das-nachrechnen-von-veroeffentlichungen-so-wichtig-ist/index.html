@@ -799,7 +799,7 @@
 
     <div class="article-style">
       
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/nap/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>Im Internet fand ich vor kurzem einen sehr interessanten <a href="http://www.stefanbartz.de/dateien/Vorsicht-bei-der-sigma-Regel.pdf">Text</a> von <a href="http://www.stefanbartz.de">Stefan Bart</a>. Eine Aufgabe daraus fand meine besondere Aufmerksamkeit.</p>
@@ -918,7 +918,7 @@ length(iq_maedchen)</code></pre>
 <p>Und schauen uns nun einmal an, wie oft – bei zufälliger Auswahl von 200 Paarungen – es vorkommen kann, dass Jungen in den Paarungen einen höheren IQ haben als Mädchen. Das wäre dann dem Zufall geschuldet und nicht der übermässigen Intelligenz der Jungen. (Da nach Vereinbarung beide Gruppen gleich intelligent waren!)</p>
 <pre class="r"><code>NullVerteilung &lt;- do(5000) * count( ~ sample(jungen, 200) - sample(maedchen, 200) &gt; 0, data=paare)
 gf_bar( ~ n_TRUE, data=NullVerteilung)</code></pre>
-<p><img src="/post/2020-01-27-warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/nap/post/2020-01-27-warum-das-nachrechnen-von-veroeffentlichungen-so-wichtig-ist_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Das HSB für diesen Fall wäre dann:</p>
 <pre class="r"><code>(hsb &lt;- quantile( ~ n_TRUE, prob=c(0.025, 0.975), data=NullVerteilung))</code></pre>
 <pre><code>##  2.5% 97.5% 

@@ -18,7 +18,7 @@
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/erste-schritte-mit-vroom/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Nach &lt;a href=&#34;https://readr.tidyverse.org&#34;&gt;&lt;code&gt;readr&lt;/code&gt;&lt;/a&gt; kommt &lt;a href=&#34;https://vroom.r-lib.org&#34;&gt;&lt;code&gt;vroom&lt;/code&gt;&lt;/a&gt;. In der Zwischenzeit liegt vroom in der Version 1.2.0 vor und daher habe ich mir ein paar Stunden Zeit gekommen um ein paar erste Experimente damit zu machen.&lt;/p&gt;
@@ -44,14 +44,14 @@ mycols &amp;lt;- cols(
 )&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Laden mit vroom, Spaltentypen erraten, Locale auf mylocale
 tips.vroom &amp;lt;- vroom(url, locale = mylocale)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Rows: 244
-## Columns: 7
+&lt;pre&gt;&lt;code&gt;## Rows: 244 Columns: 7&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &amp;quot;;&amp;quot;
-## chr [4]: sex, smoker, day, time
-## dbl [1]: size
-## 
-## Use `spec()` to retrieve the guessed column specification
-## Pass a specification to the `col_types` argument to quiet this message&lt;/code&gt;&lt;/pre&gt;
+## chr (4): sex, smoker, day, time
+## dbl (3): total_bill, tip, size&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tips.vroom)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
 ##   total_bill   tip sex    smoker day   time    size
@@ -63,7 +63,7 @@ tips.vroom &amp;lt;- vroom(url, locale = mylocale)&lt;/code&gt;&lt;/pre&gt;
 ## 5       24.6  3.61 Female No     Sun   Dinner     4
 ## 6       25.3  4.71 Male   No     Sun   Dinner     4&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(tips.vroom)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## tibble [244 × 7] (S3: tbl_df/tbl/data.frame)
+&lt;pre&gt;&lt;code&gt;## spec_tbl_df [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
 ##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
 ##  $ sex       : chr [1:244] &amp;quot;Female&amp;quot; &amp;quot;Male&amp;quot; &amp;quot;Male&amp;quot; &amp;quot;Male&amp;quot; ...
@@ -73,17 +73,18 @@ tips.vroom &amp;lt;- vroom(url, locale = mylocale)&lt;/code&gt;&lt;/pre&gt;
 ##  $ size      : num [1:244] 2 3 3 2 4 4 2 4 2 2 ...
 ##  - attr(*, &amp;quot;spec&amp;quot;)=
 ##   .. cols(
-##   ..   total_bill = col_number(),
-##   ..   tip = col_number(),
+##   ..   total_bill = col_double(),
+##   ..   tip = col_double(),
 ##   ..   sex = col_character(),
 ##   ..   smoker = col_character(),
 ##   ..   day = col_character(),
 ##   ..   time = col_character(),
 ##   ..   size = col_double(),
 ##   ..   .delim = &amp;quot;;&amp;quot;
-##   .. )&lt;/code&gt;&lt;/pre&gt;
+##   .. )
+##  - attr(*, &amp;quot;problems&amp;quot;)=&amp;lt;externalptr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;object.size(tips.vroom)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 20392 bytes&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 20632 bytes&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Laden mit vroom, Spaltentypen mycols, Locale auf mylocale
 tips.vroom2 &amp;lt;- vroom(url, col_types = mycols, locale = mylocale)
 
@@ -98,12 +99,12 @@ head(tips.vroom2)&lt;/code&gt;&lt;/pre&gt;
 ## 5       24.6  3.61 Female No     Sun   Dinner     4
 ## 6       25.3  4.71 Male   No     Sun   Dinner     4&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(tips.vroom2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## tibble [244 × 7] (S3: tbl_df/tbl/data.frame)
+&lt;pre&gt;&lt;code&gt;## spec_tbl_df [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
 ##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
 ##  $ sex       : Factor w/ 2 levels &amp;quot;Female&amp;quot;,&amp;quot;Male&amp;quot;: 1 2 2 2 1 2 2 2 2 2 ...
 ##  $ smoker    : Factor w/ 2 levels &amp;quot;No&amp;quot;,&amp;quot;Yes&amp;quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ day       : Factor w/ 47 levels &amp;quot;Sun&amp;quot;,&amp;quot;Sat&amp;quot;,&amp;quot;Sat&amp;quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &amp;quot;Sun&amp;quot;,&amp;quot;Sat&amp;quot;,&amp;quot;Thur&amp;quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ time      : Factor w/ 2 levels &amp;quot;Dinner&amp;quot;,&amp;quot;Lunch&amp;quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ size      : int [1:244] 2 3 3 2 4 4 2 4 2 2 ...
 ##  - attr(*, &amp;quot;spec&amp;quot;)=
@@ -116,9 +117,10 @@ head(tips.vroom2)&lt;/code&gt;&lt;/pre&gt;
 ##   ..   time = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
 ##   ..   size = col_integer(),
 ##   ..   .delim = &amp;quot;;&amp;quot;
-##   .. )&lt;/code&gt;&lt;/pre&gt;
+##   .. )
+##  - attr(*, &amp;quot;problems&amp;quot;)=&amp;lt;externalptr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;object.size(tips.vroom2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 19520 bytes&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 19416 bytes&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Readr
 library(readr)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Registered S3 methods overwritten by &amp;#39;readr&amp;#39;:
@@ -131,15 +133,16 @@ library(readr)&lt;/code&gt;&lt;/pre&gt;
 ##   str.col_spec     vroom&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## Attache Paket: &amp;#39;readr&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:vroom&amp;#39;:
+&lt;pre&gt;&lt;code&gt;## Die folgenden Objekte sind maskiert von &amp;#39;package:vroom&amp;#39;:
 ## 
 ##     as.col_spec, col_character, col_date, col_datetime, col_double,
 ##     col_factor, col_guess, col_integer, col_logical, col_number,
 ##     col_skip, col_time, cols, cols_condense, cols_only, date_names,
 ##     date_names_lang, date_names_langs, default_locale, fwf_cols,
-##     fwf_empty, fwf_positions, fwf_widths, locale, output_column, spec&lt;/code&gt;&lt;/pre&gt;
+##     fwf_empty, fwf_positions, fwf_widths, locale, output_column,
+##     problems, spec&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tips.readr &amp;lt;- readr::read_csv2(url)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ℹ Using &amp;#39;,&amp;#39; as decimal and &amp;#39;.&amp;#39; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ℹ Using &amp;#39;\&amp;#39;,\&amp;#39;&amp;#39; as decimal and &amp;#39;\&amp;#39;.\&amp;#39;&amp;#39; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -162,7 +165,7 @@ library(readr)&lt;/code&gt;&lt;/pre&gt;
 ## 5       24.6  3.61 Female No     Sun   Dinner     4
 ## 6       25.3  4.71 Male   No     Sun   Dinner     4&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(tips.readr)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## tibble [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+&lt;pre&gt;&lt;code&gt;## spec_tbl_df [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
 ##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
 ##  $ sex       : chr [1:244] &amp;quot;Female&amp;quot; &amp;quot;Male&amp;quot; &amp;quot;Male&amp;quot; &amp;quot;Male&amp;quot; ...
@@ -194,7 +197,7 @@ tips.readr2 &amp;lt;- readr::read_csv2(url,
                                 col_integer()  # size
                      )
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ℹ Using &amp;#39;,&amp;#39; as decimal and &amp;#39;.&amp;#39; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ℹ Using &amp;#39;\&amp;#39;,\&amp;#39;&amp;#39; as decimal and &amp;#39;\&amp;#39;.\&amp;#39;&amp;#39; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tips.readr2)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
 ##   total_bill   tip sex    smoker day   time    size
@@ -206,7 +209,7 @@ tips.readr2 &amp;lt;- readr::read_csv2(url,
 ## 5       24.6  3.61 Female No     Sun   Dinner     4
 ## 6       25.3  4.71 Male   No     Sun   Dinner     4&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(tips.readr2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## tibble [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+&lt;pre&gt;&lt;code&gt;## spec_tbl_df [244 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ total_bill: num [1:244] 17 10.3 21 23.7 24.6 ...
 ##  $ tip       : num [1:244] 1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
 ##  $ sex       : Factor w/ 2 levels &amp;quot;Female&amp;quot;,&amp;quot;Male&amp;quot;: 1 2 2 2 1 2 2 2 2 2 ...
@@ -258,7 +261,7 @@ tips.csv2 &amp;lt;- read.csv2(&amp;quot;tips.csv&amp;quot;)&lt;/code&gt;&lt;/pre
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       <guid>https://sefiroth.net/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nap/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Jede Programmiersprache hat Regeln.

@@ -1,0 +1,1814 @@
+<!DOCTYPE html><html lang="de-de" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.2.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Norman Markgraf" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Bei einer einfachen Regression versuchen wir zu gegebenen Datenpunkten \((x_1, y_1), ... (x_n, y_n)\) eine möglichst passende Funktion \(g(x)\) zu finden, so dass \[y_i = g(x_i) &#43; e_i\] gilt." />
+
+  
+  <link rel="alternate" hreflang="de-de" href="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/" />
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/nap/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/nap/css/wowchemy.7145a9a307b7b6e0cf40149bdecd66b5.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/nap/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
+
+  <link rel="canonical" href="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Norman&#39;s Academic Blog" />
+  <meta property="og:url" content="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/" />
+  <meta property="og:title" content="Über die Koeffizienten einer linearen Regression | Norman&#39;s Academic Blog" />
+  <meta property="og:description" content="Bei einer einfachen Regression versuchen wir zu gegebenen Datenpunkten \((x_1, y_1), ... (x_n, y_n)\) eine möglichst passende Funktion \(g(x)\) zu finden, so dass \[y_i = g(x_i) &#43; e_i\] gilt." /><meta property="og:image" content="https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+    <meta property="twitter:image" content="https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="de-de" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-06-09T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-06-09T13:05:41&#43;02:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/"
+  },
+  "headline": "Über die Koeffizienten einer linearen Regression",
+  
+  "datePublished": "2021-06-09T00:00:00Z",
+  "dateModified": "2021-06-09T13:05:41+02:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Norman Markgraf"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Norman's Academic Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sefiroth.net/nap/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Bei einer einfachen Regression versuchen wir zu gegebenen Datenpunkten \\((x_1, y_1), ... (x_n, y_n)\\) eine möglichst passende Funktion \\(g(x)\\) zu finden, so dass \\[y_i = g(x_i) + e_i\\] gilt."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Über die Koeffizienten einer linearen Regression | Norman&#39;s Academic Blog</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="6691179654657ef4b22cf67e2d790d00" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/nap/js/wowchemy-init.min.b8153d4570dcbb34350a2a846dba8c03.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Suche</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Suche..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Suche...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/nap/">Norman&#39;s Academic Blog</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Navigation einblenden">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/nap/">Norman&#39;s Academic Blog</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#posts"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#projects"><span>Projekte</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#featured"><span>Veröffentlichungen</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nap/#contact"><span>Impressum</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Suche"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Einstellungen anzeigen">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Hell</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dunkel</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatisch</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Über die Koeffizienten einer linearen Regression</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Zuletzt aktualisiert am
+      
+    
+    Jun 9, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    16 min Lesezeit
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/nap/category/statistisches/">Statistisches</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Bei einer <em>einfachen Regression</em> versuchen wir zu gegebenen
+Datenpunkten <span class="math inline">\((x_1, y_1), ... (x_n, y_n)\)</span> eine <em>möglichst passende</em> Funktion
+<span class="math inline">\(g(x)\)</span> zu finden, so dass
+<span class="math display">\[y_i = g(x_i) + e_i\]</span>
+gilt. Dabei tollerieren wir eine (kleine) Abweichung <span class="math inline">\(e_i\)</span>.</p>
+<p>Bei einer <em>einfachen <strong>linearen</strong> Regression</em> gehen wir davon aus, dass die Datenpunkte (im wesendlichen) auf einer Geraden</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1 \cdot x_i + e_i\]</span>
+liegen.</p>
+<p>Unsere Aufgabe besteht nun darin die Parameter <span class="math inline">\(\beta_0\)</span> (y-Achenabschnitt) und <span class="math inline">\(\beta_1\)</span> (Steigung) an hand der Datenpunkte zu schätzen.
+Schätzungen tragen ein Dacht (<span class="math inline">\(\hat{.}\)</span>) um sie von den (in der Regel unbekannten) Parametern zu unterscheiden.</p>
+<p>Wir suchen somit nach <span class="math inline">\(\hat\beta= \left(\hat\beta_0,\, \hat\beta_1\right)\)</span>,
+so dass die Gerade <span class="math inline">\(\hat\beta_0 + \hat\beta_1 \cdot x\)</span> zu gegebenem <span class="math inline">\(x_i\)</span>
+eine möglichst gute Schätzung von <span class="math inline">\(y_i\)</span> (genannt <span class="math inline">\(\hat{y}_i\)</span>) bestimmt:</p>
+<p><span class="math display">\[
+\hat{y_i} = \hat\beta_0 + \hat\beta_1 \cdot x_i
+\]</span></p>
+<p>Die Abweichung <span class="math inline">\(\hat{e_i}\)</span> unserer Schätzung <span class="math inline">\(\hat{y}_i\)</span> von dem
+gegebenen Wert <span class="math inline">\(y_i\)</span> ist somit:</p>
+<p><span class="math display">\[
+\hat{e_i} =  \hat{y_i} - y_i =  \hat\beta_0 + \hat\beta_1 \cdot x_i - y_i
+\]</span></p>
+<p>Wenn wir diese Abweichung über alle <span class="math inline">\(i\)</span> minimieren, finden wir unser <span class="math inline">\(\hat\beta\)</span>.</p>
+<p>Doch das wirft eine Frage auf:
+<em>Wie genau messen wir <strong>kleinsten Fehler</strong> der <span class="math inline">\(\hat{e_i}\)</span>?</em></p>
+<p>Wir betrachten zunächste drei einfache Ideen:</p>
+<ol style="list-style-type: decimal">
+<li><p>Idee: Summe der Abweichungen</p></li>
+<li><p>Idee: Summe der absoluten Abweichungen</p></li>
+<li><p>Idee: Summe der quadratischen Abweichungen</p></li>
+</ol>
+<p>Wir betrachten die drei Ideen in umgekehrter Reihenfolge:</p>
+<div id="idee-summe-der-quadratischen-abweichungen" class="section level2">
+<h2>3. Idee: Summe der quadratischen Abweichungen</h2>
+<p>Wir bezeichnen mit</p>
+<p><span class="math display">\[\begin{aligned}
+QS &amp;= QS(\hat\beta) = QS(\hat\beta_0, \hat\beta_1) \\
+  &amp;= \sum\limits_{i=1}^n \hat{e_i}^2 = \sum\limits_{i=1}^n \left(\hat{y_i} - y_i \right)^2 \\
+  &amp;= \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right)^2
+\end{aligned}\]</span></p>
+<p>die <strong>Q</strong>uadrat-<strong>S</strong>umme der Abweichungen.</p>
+<p>Gesucht wird <span class="math inline">\(\hat\beta=\left(\hat\beta_0,\,\hat\beta_1\right)\)</span>,
+so das <span class="math inline">\(QS\)</span> minimiert wird.</p>
+<p>Dieses klassische Minimierungsproblem hat eine (exakte)
+mathematisch-algebraisch Lösung in dem wir die Nullstelle
+der ersten partiellen Ableitung von <span class="math inline">\(QS\)</span> nach <span class="math inline">\(\hat\beta_0\)</span> bzw.
+<span class="math inline">\(\hat\beta_1\)</span> bestimmen. Neben dieser notwendigen Bedindung, müssen wir formal
+noch die dann hinreichende Bedinung auf ein Minimum prüfen.</p>
+<p>Aber wir beginnen mit den notwenigdigen Bedingungen:</p>
+<div id="schätzen-des-y-achenabschnitts-hatbeta_0" class="section level3">
+<h3>Schätzen des y-Achenabschnitts <span class="math inline">\(\hat\beta_0\)</span></h3>
+<p>Es ist:</p>
+<p><span class="math display">\[\begin{aligned}
+ \frac{\partial}{\partial \hat\beta_0} \, QS &amp;= 2 \cdot \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right) \cdot 1 \\
+  &amp;= 2 \cdot \left(\sum\limits_{i=1}^n \hat\beta_0 + \sum\limits_{i=1}^n\hat\beta_1 \cdot x_i - \sum\limits_{i=1}^n y_i\right) \\
+  &amp;= 2 \cdot \left( n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right)
+\end{aligned}\]</span></p>
+<p>Für die notwendige Bedingung eines Minimums, setzen wir den Ausdruck
+gleich Null und erhalten:</p>
+<p><span class="math display">\[\begin{aligned}
+  0 &amp;= \frac{\partial}{\partial \hat\beta_0} \, QS \\
+  &amp;= 2 \cdot \left( n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right) \\
+  &amp;= n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i
+\end{aligned}\]</span></p>
+<p>Wir stellen nach <span class="math inline">\(\hat\beta_0\)</span> um:</p>
+<p><span class="math display">\[\begin{aligned}
+  -n \cdot \hat\beta_0 &amp;= \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \\
+  \hat\beta_0 &amp;= \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i - \hat\beta_1\cdot\frac{1}{n} \cdot \sum\limits_{i=1}^n x_i \\
+  &amp;= \bar{y} - \hat\beta_1\cdot \bar{x}
+\end{aligned}\]</span></p>
+<p>Wenn wir <span class="math inline">\(\hat\beta_1\)</span> bestimmen, so haben wir auch <span class="math inline">\(\hat\beta_0\)</span>.</p>
+</div>
+<div id="schätzen-der-steigung-hatbeta_1" class="section level3">
+<h3>Schätzen der Steigung <span class="math inline">\(\hat\beta_1\)</span></h3>
+<p>Es ist:</p>
+<p><span class="math display">\[\begin{aligned}
+  \frac{\partial}{\partial \hat\beta_1} \, QS &amp;= 2 \cdot \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right) \cdot x_i \\
+  &amp;= 2 \cdot \left(\sum\limits_{i=1}^n \hat\beta_0 \cdot x_i + \sum\limits_{i=1}^n \hat\beta_1 \cdot x_i\cdot x_i- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+    &amp;= 2 \cdot \left(\hat\beta_0 \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+\end{aligned}\]</span></p>
+<p>Wir ersetzen nun <span class="math inline">\(\hat\beta_0\)</span> durch <span class="math inline">\(\bar{y} - \hat\beta_1\cdot \bar{x}\)</span> und erhalten:</p>
+<p><span class="math display">\[\begin{aligned}
+  \frac{\partial}{\partial \hat\beta_1} \, QS  &amp;= 2 \cdot \left(\left(\bar{y} - \hat\beta_1\cdot \bar{x}\right) \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+  &amp;= 2 \cdot \left(\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+\end{aligned}\]</span></p>
+<p>Wir setzen nun wieder den Ausdruck gleich Null:</p>
+<p><span class="math display">\[\begin{aligned}
+ 0 &amp;= 2 \cdot \left(\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right) \\
+   &amp;= \bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i \\
+   &amp;= \frac{1}{n} \cdot \bar{y} \cdot \sum\limits_{i=1}^n  x_i- \frac{1}{n} \cdot\hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \frac{1}{n} \cdot\hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+   &amp;=  \bar{y} \cdot \frac{1}{n} \cdot \sum\limits_{i=1}^n  x_i - \hat\beta_1\cdot \bar{x} \cdot \frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i + \frac{1}{n} \cdot\hat\beta_1 \cdot\sum\limits_{i=1}^n x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+      &amp;=  \bar{y} \cdot \bar{x} - \hat\beta_1\cdot \bar{x} \cdot \bar{x}+ \hat\beta_1 \cdot\frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+      &amp;=  \bar{y} \cdot \bar{x} - \hat\beta_1\cdot\bar{x}^2 + \hat\beta_1 \cdot\frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2- \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+\end{aligned}\]</span></p>
+<p>Wir stellen nach <span class="math inline">\(\hat\beta_1\)</span> um:</p>
+<p><span class="math display">\[\begin{aligned}
+\hat\beta_1\cdot \bar{x}^2 - \hat\beta_1 \cdot\frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2 
+      &amp;=  \bar{y} \cdot \bar{x} - \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+\hat\beta_1\cdot \left(\bar{x}^2 - \frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2 \right)
+      &amp;=  \bar{y} \cdot \bar{x} - \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i \\
+\hat\beta_1 
+      &amp;= \frac{\bar{y} \cdot \bar{x} - \frac{1}{n} \cdot\sum\limits_{i=1}^n y_i \cdot x_i}{\bar{x}^2 - \frac{1}{n} \cdot\sum\limits_{i=1}^n  x_i^2}
+\end{aligned}\]</span></p>
+<p>Mit Hilfe des <a href="https://de.wikipedia.org/wiki/Verschiebungssatz_(Statistik)"><em>Verschiebesatzes von Steiner</em></a> erhalten wir:</p>
+<p><span class="math display">\[\begin{aligned}
+\hat\beta_1 
+      &amp;= \frac{\frac{1}{n} \cdot\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\frac{1}{n} \cdot\sum\limits_{i=1}^n  (x_i-\bar{x})^2} \\
+      &amp;= \frac{\sigma_{x,y}}{\sigma^2_x} \\
+\end{aligned}\]</span></p>
+<p>Beachte:
+<em>Da <span class="math inline">\(\frac{1}{n}\)</span> sowohl im Zähler als auch im Nenner steht
+können wir ihr kürzen und mit <span class="math inline">\(\frac{1}{n-1}\)</span> erweitern.</em></p>
+<p>Somit gilt ebenfalls:</p>
+<p><span class="math display">\[\begin{aligned}
+\hat\beta_1 
+      &amp;= \frac{\frac{1}{n} \cdot\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\frac{1}{n} \cdot\sum\limits_{i=1}^n  (x_i-\bar{x})^2} 
+      = \frac{\frac{1}{n-1} \cdot\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\frac{1}{n-1} \cdot\sum\limits_{i=1}^n  (x_i-\bar{x})^2} \\
+      &amp;= \frac{s_{x,y}}{s^2_{x}}
+\end{aligned}\]</span></p>
+<p>Wir können zur Berechnung sowohl die Kovarianz der Grundgesamtheit <span class="math inline">\(\sigma_{x,y}\)</span> und die Varianz <span class="math inline">\(\sigma^2_x\)</span> von <span class="math inline">\(x\)</span>, als auch deren Schätzer <span class="math inline">\(s_{x,y}\)</span> und <span class="math inline">\(s^2_x\)</span> verwendet werden!</p>
+<p>Diese Methode nennt sich <strong>Methode der kleinsten Quadrate</strong>
+(engl. <em>ordenary least square method</em>) und wir sprechen
+dann auch von den <strong>Kleinste-Quadrate-Schätzern</strong>
+(oder kurz <strong>KQ-Schätzer</strong> bzw. <strong>OLS-Schätzer</strong>) <span class="math inline">\(\hat\beta_0\)</span> und <span class="math inline">\(\hat\beta_1\)</span>.</p>
+<p>Erweitern wir den Ausdruck mit Standardabweichung <span class="math inline">\(\sigma_y\)</span> bzw. <span class="math inline">\(s_y\)</span>, so erhalten wir:</p>
+<p><span class="math display">\[\begin{aligned}
+\hat\beta_1 &amp;= \frac{\sigma_{x,y}}{\sigma^2_x} \cdot \frac{\sigma_y}{\sigma_y} \\
+ &amp;= \frac{\sigma_{x,y}}{\sigma_x \cdot \sigma_x} \cdot \frac{\sigma_y}{\sigma_y}\\
+ &amp;= \frac{\sigma_{x,y}}{\sigma_x \cdot \sigma_y} \cdot \frac{\sigma_y}{\sigma_x} \\
+ &amp;= \rho_{x,y} \cdot \frac{\sigma_y}{\sigma_x} \\
+\end{aligned}\]</span></p>
+<p>und analog für die Schätzer:</p>
+<p><span class="math display">\[\begin{aligned}
+\hat\beta_1 &amp;= \frac{s_{x,y}}{s^2_x} \cdot \frac{s_y}{s_y} \\
+ &amp;= \frac{s_{x,y}}{s_x \cdot s_x} \cdot \frac{s_y}{s_y}\\
+ &amp;= \frac{s_{x,y}}{s_x \cdot s_y} \cdot \frac{s_y}{s_x} \\
+ &amp;= r_{x,y} \cdot \frac{s_y}{s_x} \\
+\end{aligned}\]</span></p>
+<p>Die Steigung <span class="math inline">\(\hat\beta_1\)</span> hat somit eine direkte Beziehung mit dem <em>Korrelationskoeffizenten</em> <span class="math inline">\(\rho\)</span> (der Grundgesamtheit) bzw. <span class="math inline">\(r\)</span> (der Stichprobe).</p>
+<p>Für eine Berechnung in <strong>R</strong> heißt dies: wir können die Regressionskoeffizienten
+<span class="math inline">\(\hat\beta_0\)</span> und <span class="math inline">\(\hat\beta_1\)</span> direkt algebraisch ausrechnen, wenn wir</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>die Standardabweichungen von <span class="math inline">\(x\)</span> und <span class="math inline">\(y\)</span> und den Korrelationskoeffizienten oder</p></li>
+<li><p>die Varianz von <span class="math inline">\(x\)</span> und Kovarianz von <span class="math inline">\(x\)</span> und <span class="math inline">\(y\)</span></p></li>
+</ol>
+<p>haben.</p>
+</div>
+<div id="ein-beispiel-in-r" class="section level3">
+<h3>Ein Beispiel in R:</h3>
+<p>Auf Grundlage der Datentabelle <em>mtcars</em> wollen wir Prüfen wie ein linearer
+Zusammenhang zwischen dem Verbrauch (in Meilen pro Gallone <em>mpg</em>) und der Leistung
+(Pferdestärke <em>hp</em>) modelliert werden kann.</p>
+<pre class="r"><code>library(mosaic)
+# Wir nehmen eie Datentabelle &#39;mtcars&#39;:
+dt &lt;- mtcars
+# und vergleichen Verbrauch (mpg, miles per gallon) mit der Pferdestärke (hp)
+# Mit Hilfe eines Streudiagramms
+gf_point(mpg ~ hp, data = dt) %&gt;%
+  gf_lims(y = c(5,35))</code></pre>
+<p><img src="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-1-1.png" width="90%" /></p>
+<p>Berechnen wir zunächst die Mittelwerte von <span class="math inline">\(x\)</span> (also ‘hp’) und <span class="math inline">\(y\)</span> (also ‘mpg’)</p>
+<pre class="r"><code>mean_hp = mean(~ hp, data = dt)
+mean_mpg = mean(~ mpg, data = dt)
+mean_hp</code></pre>
+<pre><code>## [1] 146.6875</code></pre>
+<pre class="r"><code>mean_mpg</code></pre>
+<pre><code>## [1] 20.09062</code></pre>
+<p>und zeichnen die Punkt <span class="math inline">\((\bar{x}, \bar{y}) = (146.69, 20.09)\)</span> in unser
+Streudiagramm ein:</p>
+<pre class="r"><code>gf_point(mpg ~ hp, data = dt) %&gt;%
+  gf_hline(yintercept = ~ mean_mpg, color = &quot;grey60&quot;, linetype = &quot;dashed&quot;) %&gt;%
+  gf_vline(xintercept = ~ mean_hp, color = &quot;grey60&quot;, linetype = &quot;dashed&quot;) %&gt;%
+  gf_point(mean_mpg ~ mean_hp, color = &quot;red&quot;, size = 5, alpha = 0.2) %&gt;%
+  gf_lims(y = c(5,35))</code></pre>
+<p><img src="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png" width="90%" /></p>
+<p>Berechnen wir nun die Schätzwerte für die Regressiongerade</p>
+<pre class="r"><code>beta_1 = cov(mpg ~ hp, data = dt) / var(~ hp, data = dt)
+beta_0 = mean_mpg - beta_1 * mean_hp</code></pre>
+<p>und zeichnen diese ebenfalls in unser Streudiagramm ein:</p>
+<pre class="r"><code>gf_point(mpg ~ hp, data = dt) %&gt;%
+  gf_hline(yintercept = ~ mean_mpg, color = &quot;grey60&quot;, linetype = &quot;dashed&quot;) %&gt;%
+  gf_vline(xintercept = ~ mean_hp, color = &quot;grey60&quot;, linetype = &quot;dashed&quot;) %&gt;%
+  gf_point(mean_mpg ~ mean_hp, color = &quot;red&quot;, size = 5, alpha = 0.2) %&gt;%
+  gf_abline(slope = ~ beta_1, intercept = ~beta_0, color = &quot;dodgerblue&quot;) %&gt;%
+  gf_lims(y = c(5,35))</code></pre>
+<p><img src="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-5-1.png" width="90%" /></p>
+<p>Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:</p>
+<p><span class="math display">\[\begin{aligned}
+  \hat{y} &amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;\approx 30.0988605 -0.0682283 \cdot x \\
+          &amp;\approx 30.099 -0.068 \cdot x
+\end{aligned}\]</span></p>
+</div>
+<div id="studentisieren-einmal-hin-und-einmal-zurück" class="section level3">
+<h3>Studentisieren – einmal hin und einmal zurück</h3>
+<p>Was passiert eigentlich, wenn wir unsere <span class="math inline">\(x\)</span> und <span class="math inline">\(y\)</span> Werte studentisieren (aka standardisieren oder z-transformieren)?</p>
+<p>Zur Erinnerung, studentisieren geht so:
+<span class="math display">\[x^{stud} = \frac{x - \bar{x}}{s_x}\]</span></p>
+<p>In <strong>R</strong> können wir das mit der Funktion ‘zscore’ wie folgt:</p>
+<pre class="r"><code>dt$hp_stud &lt;- zscore(dt$hp)
+dt$mpg_stud&lt;- zscore(dt$mpg)</code></pre>
+<p>Natürlich sind die Mittelwerte nun Null und die Standardabweichungen Eins:</p>
+<pre class="r"><code>favstats( ~ hp_stud, data = dt)</code></pre>
+<pre><code>##        min         Q1     median        Q3      max         mean sd  n missing
+##  -1.381032 -0.7319924 -0.3454858 0.4858679 2.746567 1.040834e-17  1 32       0</code></pre>
+<pre class="r"><code>favstats( ~ mpg_stud, data = dt)</code></pre>
+<pre><code>##        min         Q1     median        Q3      max         mean sd  n missing
+##  -1.607883 -0.7741273 -0.1477738 0.4495434 2.291272 7.112366e-17  1 32       0</code></pre>
+<p>Der Grund für die kleinen Abweichungen von der Null beim MIttelwert
+sind Rundungsfehler, die der Computer macht!</p>
+<p>Schauen wir uns nun das Streudiagramm an, zusammen mit dem Mittelpunkt <span class="math inline">\((0,0)\)</span></p>
+<pre class="r"><code>gf_point(mpg_stud ~ hp_stud, data = dt) %&gt;%
+  gf_point(0 ~ 0, color = &quot;red&quot;, size = 5, alpha = 0.2) %&gt;%
+  gf_lims(y = c(-2, 2))</code></pre>
+<p><img src="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-8-1.png" width="90%" />
+Auch wenn die Skalierungen sich geändert haben, die Diagramme sind sehr ähnlich.</p>
+<p>Bestimmen wir die Koeffizienten der Regressionsgerade</p>
+<pre class="r"><code>beta_stud_1 = cov(mpg_stud ~ hp_stud, data = dt)
+beta_stud_0 = 0 - beta_stud_1 * 0</code></pre>
+<p>und setzen sie in das Steudiagramm ein:</p>
+<p><img src="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png" width="90%" /></p>
+<p>Wir können das studentisierte Problem auch wieder auf unser ursprüngliches
+zurück rechnen.</p>
+<p>Die Regressionsgerade im studentisierten Problem lautet:</p>
+<p><span class="math display">\[\begin{aligned}
+  \hat{y}^{stud} &amp;= \hat\beta^{stud}_0 + \hat\beta_1^{stud} \cdot x^{stud} \\ 
+          &amp;\approx 0 -0.7761684 \cdot x^{stud} \\
+          &amp;\approx 0 -0.776 \cdot x^{stud}
+\end{aligned}\]</span></p>
+<p>Rechnen wir nun mittels der Formel
+<span class="math display">\[\hat\beta_1 = \hat\beta_1^{stud} \cdot \frac{s_y}{s_x}\]</span></p>
+<p>die Steigung um, so erhalten wir:</p>
+<pre class="r"><code>b1 &lt;- beta_stud_1 * sd(dt$mpg) / sd(dt$hp)
+b1</code></pre>
+<pre><code>## [1] -0.06822828</code></pre>
+<p>Und setzen wir das in unsere Gleichung zur Bestimmung von <span class="math inline">\(\hat\beta_0\)</span> ein:</p>
+<pre class="r"><code>b0 &lt;- mean(dt$mpg) - b1 * mean(dt$hp)
+b0</code></pre>
+<pre><code>## [1] 30.09886</code></pre>
+<p>so erhalten wir die Schätzwerte des ursprünglichen Problem.</p>
+</div>
+<div id="ein-anderer-weg-um-die-regressionskoeffizenten-zu-bestimmen" class="section level3">
+<h3>Ein anderer Weg um die Regressionskoeffizenten zu bestimmen…</h3>
+<p>Gehen wir das Problem noch einmal neu an. Wir suchen <span class="math inline">\(\hat\beta=(\hat\beta_0, \hat\beta_1)\)</span> welches <span class="math inline">\(QS(\hat\beta) = QS(\hat\beta_0, \hat\beta_1) = \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right)^2\)</span> minimiert.</p>
+<p>Statt es direkt, wie oben durch Nullsetzen der partiellen Ableitungen, zu bestimmen, wählen wir nun einen mathematisch-<em>numerischen</em> Ansatz und wollen <span class="math inline">\(\hat\beta \in \mathbf{R}^2\)</span> als <em>Optimierungsproblem</em> mit Hilfe des <em>Gradientenverfahrens</em> lösen.</p>
+<p>Beim Gradientenverfahren wird versucht, ausgehend von einem Startwert <span class="math inline">\(\hat\beta^0 \in \mathbf{R}^2\)</span>, gemäß der Iterationsvorschrift
+<span class="math display">\[
+\hat\beta^{k+1} = \hat\beta^{k} + \alpha^k \cdot d^k
+\]</span>
+für alle <span class="math inline">\(k=0,1, ...\)</span> eine Näherungslösung für <span class="math inline">\(\hat\beta\)</span> zu finden.
+Dabei ist <span class="math inline">\(\alpha^k &gt; 0\)</span> eine <em>positive Schrittweite</em> und <span class="math inline">\(d^k\in\mathbf{R}^n\)</span> eine <em>Abstiegsrichtung</em>, welche wir in jedem Iterationsschritt <span class="math inline">\(k\)</span> so bestimmen,
+dass die Folge <span class="math inline">\(\hat\beta^k\)</span> zu einem stationären Punkt, unserer Näherungslösung, konvergiert.</p>
+<p>Im einfachsten Fall, dem <strong>Verfahren des steilsten Abstieges</strong>, wird der
+Abstiegsvektor <span class="math inline">\(d^k\)</span> aus dem Gradienten <span class="math inline">\(\nabla QS\)</span> wie folgt bestimmt:</p>
+<p><span class="math display">\[d^k = -\nabla QS\left(\hat\beta^k\right)\]</span></p>
+<p>Wegen
+<span class="math display">\[
+\frac{\partial}{\partial \hat\beta_0} \, QS = 2 \cdot \left( n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right)
+\]</span></p>
+<p>und</p>
+<p><span class="math display">\[
+\frac{\partial}{\partial \hat\beta_1} \, QS = 2 \cdot \left(\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right)
+\]</span></p>
+<p>gilt:</p>
+<p><span class="math display">\[\begin{aligned}
+\nabla QS(\hat\beta) &amp;= \nabla QS(\hat\beta_0, \hat\beta_1) \\
+&amp;= 2 \cdot \begin{pmatrix}
+n \cdot \hat\beta_0 + \hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \\
+\bar{y} \cdot \sum\limits_{i=1}^n  x_i- \hat\beta_1\cdot \bar{x} \cdot \sum\limits_{i=1}^n  x_i + \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>Wir wollen hier von Anfang an mit den studentisierten Werten arbeiten, weil diese numerisch viele Vorteile haben.
+Darum vereinfachen sich die beiden partiellen Ableitungen noch einmal zu:</p>
+<p><span class="math display">\[
+\frac{\partial}{\partial \hat\beta_0} \, QS = 2 \cdot \left(\hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \right)
+\]</span></p>
+<p>und</p>
+<p><span class="math display">\[
+\frac{\partial}{\partial \hat\beta_1} \, QS = 2 \cdot \left(\hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2- \sum\limits_{i=1}^n y_i \cdot x_i\right)
+\]</span></p>
+<p>Somit gilt:</p>
+<p><span class="math display">\[\begin{aligned}
+\nabla QS(\hat\beta) &amp;= \nabla QS(\hat\beta_0, \hat\beta_1) \\
+&amp;= 2 \cdot \begin{pmatrix}
+\hat\beta_1\cdot\sum\limits_{i=1}^n x_i - \sum\limits_{i=1}^n y_i \\
+ \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2 - \sum\limits_{i=1}^n y_i \cdot x_i 
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>Weil im studentisierten Fall <span class="math inline">\(\bar{x}= \bar{y} = 0\)</span> gilt, können wir
+wegen
+<span class="math display">\[n \cdot \bar{x} = \sum\limits_{i=1}^n x_i,\]</span>
+<span class="math display">\[n \cdot \bar{y} = \sum\limits_{i=1}^n y_i,\]</span>
+<span class="math display">\[(n-1) \cdot s^2_x = \sum\limits_{i=1}^n  x_i^2\]</span>
+und
+<span class="math display">\[(n-1) \cdot \text{cov}_{x,y} = \sum\limits_{i=1}^n y_i \cdot x_i\]</span>
+den Term <span class="math inline">\(\nabla QS\)</span> weiter vereinfachen:</p>
+<p><span class="math display">\[\begin{aligned}
+\nabla QS(\hat\beta) &amp;= \nabla QS(\hat\beta_0, \hat\beta_1) \\
+&amp;= 2 \cdot \begin{pmatrix}
+\hat\beta_1\cdot n \cdot \bar{x} - n \cdot \bar{y} \\
+ \hat\beta_1 \cdot\sum\limits_{i=1}^n  x_i^2 - \sum\limits_{i=1}^n y_i \cdot x_i 
+\end{pmatrix} \\
+&amp;= 2 \cdot \begin{pmatrix}
+0 \\
+ (n-1)\cdot\left(\hat\beta_1 \cdot s^2_x - \text{cov}_{x,y}\right)
+\end{pmatrix} \\
+&amp;= 2 \cdot (n-1) \cdot \begin{pmatrix}
+0 \\
+ \hat\beta_1 \cdot s^2_x - \text{cov}_{x,y}
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>Um die Varianz und die Kovarianz nicht jedesmal neu zu berechnen, speichern
+wir die Ergebnisse vorab. Ebenso, damit der Quellcode kürzer wird, speichern
+wir in <span class="math inline">\(x\)</span> und <span class="math inline">\(y\)</span> die studentisierten Werte von <span class="math inline">\(hp\)</span> und <span class="math inline">\(mpg\)</span>:</p>
+<pre class="r"><code># Vorbereitungen 
+sd_x &lt;- var(dt$hp_stud)
+cov_xy &lt;- cov(mpg_stud ~ hp_stud, data = dt)
+
+n &lt;- length(dt$hp_stud)
+
+x &lt;- dt$hp_stud
+y &lt;- dt$mpg_stud</code></pre>
+<p>Nun erstellen wir die <span class="math inline">\(QS\)</span> und <span class="math inline">\(\nabla QS\)</span> Funktionen:
+Wir definieren diese Funktion wie folgt in <strong>R</strong>:</p>
+<pre class="r"><code>qs &lt;- function(b_0, b_1) {
+  sum((b_1 * x - y)**2)
+}
+
+nabla_qs &lt;- function(b_0, b_1) {
+  c(0,
+    2 * (n - 1) * (b_1 * sd_x - cov_xy)
+  )
+}</code></pre>
+<p>Die Schrittweite <span class="math inline">\(alpha\)</span> bestimmen wir mit Hilfe der <em>Armijo-Bedingung</em> und der <em>Backtracking Liniensuche</em>:
+Diese formalisiert das Konzept “genügend” in der geforderten Verringerung des Funktionswertes. Die Bedingung <span class="math inline">\(f(x^k + \alpha d^k) &lt; f(x^k)\)</span> wird modifiziert zu
+<span class="math display">\[f(x^k + \alpha d^k) \leq f(x^k) + \sigma \alpha \left(\nabla f(x^k)\right)^T d^k,\]</span>
+mit <span class="math inline">\(\sigma\in (0,1)\)</span>.
+Die Armijo-Bedingung umgeht Konvergenzprobleme der einfachen Bedingung, indem sie fordert, dass die Verringerung zumindest proportional zur Schrittweite und zur Richtungsableitung <span class="math inline">\(\left(\nabla f(x^k)\right)^T d^k\)</span> ist, mit Hilfe der Proportionalitätskonstante <span class="math inline">\(\sigma\)</span>.
+In der Praxis werden oft sehr kleine Werte verwendet, z.B. <span class="math inline">\(\sigma=0.0001\)</span>.</p>
+<p>Die <em>Backtracking-Liniensuche</em> verringert die Schrittweite wiederholt um den
+Faktor <span class="math inline">\(\rho\)</span> (<code>rho</code>) , bis die Armijo-Bedingung erfüllt ist.
+Sie terminiert garantiert nach einer endlichen Anzahl von Schritten. Wesshalb wir
+sie hier einsetzen:</p>
+<pre class="r"><code>alpha_k &lt;- function(b_0, b_1, d_k, alpha = 1, sigma = 0.0001, rho = 0.5) {
+  d_0 &lt;- d_k[1]
+  d_1 &lt;- d_k[2]
+  nabla &lt;- nabla_qs(b_0, b_1)
+  n_0 &lt;- nabla[1]
+  n_1 &lt;- nabla[2]
+
+  lhs &lt;- qs(b_0 + alpha*d_0, b_1 + alpha*d_1)
+  rhs &lt;- qs(b_0, b_1) + sigma*alpha*(n_0*d_0 + n_1*d_1)
+
+  while (lhs &gt; rhs) {
+    alpha &lt;- rho * alpha
+    lhs &lt;- qs(b_0 + alpha*d_0, b_1 + alpha*d_1)
+    rhs &lt;- qs(b_0, b_1) + sigma*alpha*(n_0*d_0 + n_1*d_1)
+  }
+  return(alpha)
+}</code></pre>
+<p>Ein paar Einstellungen vorab:</p>
+<pre class="r"><code># maximale Anzahl an Iterationen
+max_iter &lt;- 1000
+iter &lt;- 0
+
+# Genauigkeit
+eps &lt;- 10**-6
+
+# Startwerte
+b_0 &lt;- 0 
+b_1 &lt;- -1 </code></pre>
+<p>Für eine vorgegebene Genauigkeit <span class="math inline">\(eps=10^{-6}\)</span>, den Startwerten <span class="math inline">\(\hat\beta_0^0 = 0\)</span> und <span class="math inline">\(\hat\beta_1^0 = -1\)</span> können wir somit das Verfahren starten:</p>
+<pre class="r"><code>while (TRUE) {
+  iter &lt;- iter + 1
+
+  d_k &lt;- -nabla_qs(b_0, b_1)
+
+  ad_ &lt;- alpha_k(b_0, b_1, d_k) * d_k
+
+  x0 &lt;- b_0 + ad_[1]
+  x1 &lt;- b_1 + ad_[2]
+
+  if ((abs(b_0 - x0) &lt; eps) &amp; (abs(b_1 - x1) &lt; eps) | (iter &gt; max_iter)) {
+    break
+  }
+  b_0 &lt;- x0
+  b_1 &lt;- x1
+}</code></pre>
+<p>Wir haben somit mit <span class="math inline">\(203\)</span> Iterationsschritten das folgende Ergebnisse für die Regressionskoeffizienten:</p>
+<p><span class="math display">\[\hat\beta_0^{stud} = 0` \qquad \hat\beta_1 {stud} = -0.7761689\]</span></p>
+<p>Betrachten wir die daraus erstellte Regressionsgerade:</p>
+<p><img src="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-18-1.png" width="90%" /></p>
+<p>Um die ursprünglichen Regressionskoeffizenten zu erhalten müssen wir zurück rechnen:</p>
+<pre class="r"><code>b1 &lt;- b_1 * sd(dt$mpg) / sd(dt$hp)
+b0 &lt;- mean(dt$mpg) -  b1 * mean(dt$hp)</code></pre>
+<p>Die Geradengleichung für unser ursprüngliches Problem lautet somit:</p>
+<p><span class="math display">\[\begin{aligned}
+  \hat{y} &amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;\approx 30.0988668 -0.0682283 \cdot x \\
+          &amp;\approx 30.099 -0.068 \cdot x
+\end{aligned}\]</span></p>
+</div>
+<div id="die-r-funktion-optim" class="section level3">
+<h3>Die R Funktion <code>optim</code></h3>
+<p>In <strong>R</strong> gibt es bessere Optimierungsmethoden, als die hier verwendete.
+Zum Beispiel kännen wir die Funktion <code>optim</code> verwenden.
+Die Funktion <code>optim</code> benötigt die zu optimierende <span class="math inline">\(f(x)\)</span> und
+ggf. die Gradientenfunkt <span class="math inline">\(gf(x)\)</span> sowie einen Startpunkt <span class="math inline">\(x^0\)</span>:</p>
+<pre class="r"><code>f &lt;- function(beta) {
+  qs(beta[1], beta[2])
+}
+
+grf &lt;- function(beta) {
+  nabla_qs(beta[1], beta[2])
+}
+
+# Der eigentliche Aufruf von optim:
+ergb &lt;- optim(c(0,-1), f, grf)
+
+# Auslesen der Schätzer aus dem Ergbnis:
+optim_beta_0 &lt;- ergb$par[1]
+optim_beta_1 &lt;- ergb$par[2]</code></pre>
+<p>Wir erhalten somit für das studentisierte Problem die Gerade:</p>
+<p><span class="math display">\[\begin{aligned}
+  \hat{y}^{stud} &amp;= \hat\beta_0^{stud} + \hat\beta_1^{stud} \cdot x^{stud} \\ 
+          &amp;\approx 0.1505859 -0.7761719 \cdot  x^{stud} \\
+          &amp;\approx 0.151 -0.776 \cdot  x^{stud}
+\end{aligned}\]</span></p>
+<p>Für das ursprüngliche Problem rechnen wir mittels</p>
+<pre class="r"><code>optim_b1 &lt;- optim_beta_1 * sd(dt$mpg) / sd(dt$hp)
+optim_b0 &lt;- mean(dt$mpg) -  optim_b1 * mean(dt$hp)</code></pre>
+<p>um und erhalten:</p>
+<p><span class="math display">\[\begin{aligned}
+  \hat{y} &amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;\approx 30.0989057 -0.0682286 \cdot x \\
+          &amp;\approx 30.099 -0.068 \cdot x
+\end{aligned}\]</span></p>
+</div>
+</div>
+<div id="idee-summe-der-absoluten-abweichungen" class="section level2">
+<h2>2. Idee: Summe der absoluten Abweichungen</h2>
+<p>Wir ändern nun die Abweichungsmessfunktion von der <em>Q</em>uadrat-<em>S</em>umme hin zu
+den <strong>A</strong>bsolut-<em>S</em>ummen:</p>
+<p><span class="math display">\[AS = AS(\hat\beta) = AS(\hat\beta_0, \hat\beta_1) = \sum_{i=1}^n |\hat{y}_i - y_i|\]</span></p>
+<p>Auch hier wollen wir mit den studentisierten Daten arbeiten und stellen
+die Funktion der <em>A</em>bsolut-<em>S</em>ummen auf:</p>
+<pre class="r"><code># Absolute Abweichungssummen
+as &lt;- function(b_0, b_1) {
+  return(sum(abs(b_0 + b_1 * x - y)))
+}</code></pre>
+<p>Danach konstuieren wir die zu optimierende Funktion <span class="math inline">\(f\)</span>:</p>
+<pre class="r"><code># Zu optimierende Funktion
+f &lt;- function(beta) {
+  as(beta[1], beta[2])
+}</code></pre>
+<p>Diesmal nutzen wir <code>optim</code> ohne eine Gradientenfunktion:</p>
+<pre class="r"><code>ergb &lt;- optim(c(0,-1), f)
+
+# Schätzer auslesen
+opti_as_beta_0 &lt;- ergb$par[1]
+opti_as_beta_1 &lt;- ergb$par[2]</code></pre>
+<p>Schauen wir uns nun die so erhaltene Gerade im Vergleich mit der ‘normalen’ Regressionsgerade an:</p>
+<p><img src="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-25-1.png" width="90%" /></p>
+<p>In grün und gestrichelt sehen wir die Gerade aus der <em>Idee der quadratsichen Abweichungssummen</em>, in blau die aus der <em>Idee der absoluten Abweichungssummen</em>.</p>
+<p>Für unser ursprüngliches Problem rechnen wir um:</p>
+<pre class="r"><code># Umrechnen in die urspüngliche Fragestellung
+as_b1 &lt;- opti_as_beta_1 * sd(dt$mpg) / sd(dt$hp)
+as_b0 &lt;- (mean(dt$mpg) - as_b1 * mean(dt$hp)) + opti_as_beta_0 * sd(dt$mpg)</code></pre>
+<p>Und die dazu gehörige Darstellung:</p>
+<p><img src="https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-27-1.png" width="90%" /></p>
+<p>Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:</p>
+<p><span class="math display">\[\begin{aligned}
+  \hat{y} &amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;\approx 28.1305094 -0.0601695 \cdot x \\
+          &amp;\approx 28.131 -0.06 \cdot x
+\end{aligned}\]</span></p>
+<p>Diese Methode nennt sich <strong>Median-Regression</strong> und ein ein Spezialfall der <strong>Quantilsregression</strong>, die sich u.a. mit dem R-Paket <a href="https://cran.r-project.org/web/packages/quantreg/index.html"><em>quantreg</em></a>
+unmittelbar umsetzen lässt:</p>
+<pre class="r"><code>library(quantreg)
+ergmedianreg &lt;- rq(mpg ~ hp, data = dt)
+coef(ergmedianreg)</code></pre>
+<pre><code>## (Intercept)          hp 
+## 28.13050847 -0.06016949</code></pre>
+</div>
+<div id="idee-summe-der-abweichungen" class="section level2">
+<h2>1. Idee: Summe der Abweichungen</h2>
+<p>Wenn wir die Summe der Abweichungen <span class="math inline">\(\sum\limits_{i=1}^n \hat{e}_i\)</span> minimieren
+wollen, dann ist es sinnvoll den Betrag davon zu minimieren.
+Wir suchen also die Schätzer <span class="math inline">\(\hat\beta_0\)</span> und <span class="math inline">\(\hat\beta_1\)</span>, so dass der Ausdruck
+<span class="math display">\[
+\left| \sum_{i=1}^n \hat{e}_i \right| = \left| \sum_{i=1}^n (\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i) \right|
+\]</span>
+minimal ist.</p>
+<p>Wegen:</p>
+<p><span class="math display">\[\begin{aligned}
+\sum_{i=1}^n (\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i)
+&amp;= \sum_{i=1}^n \hat\beta_0 + \sum_{i=1}^n \hat\beta_1 \cdot x_i - \sum_{i=1}^n y_i \\
+&amp;= n \cdot \hat\beta_0 + \hat\beta_1 \cdot \sum_{i=1}^n x_i - \sum_{i=1}^n y_i \\
+&amp;= n \cdot \hat\beta_0 + \hat\beta_1 \cdot n \cdot \bar{x} - n \cdot \bar{y} \\
+&amp;= n \cdot \left( \hat\beta_0 + \hat\beta_1 \cdot \bar{x} - \bar{y} \right) \\
+&amp;= n \cdot \left( \hat\beta_0 - \bar{y} + \hat\beta_1 \cdot \bar{x}  \right)
+\end{aligned}\]</span></p>
+<p>können wir das absolute Mininum bei <span class="math inline">\(\hat\beta_0 - \bar{y} =0\)</span> und <span class="math inline">\(\hat\beta_1 \cdot \bar{x}=0\)</span> erreichen, was zur Lösung
+<span class="math inline">\(\hat\beta_0 =\bar{y}\)</span> und <span class="math inline">\(\hat\beta_1 = 0\)</span> führt.
+Dies ist unser <em>Nullmodel</em> in dem die <span class="math inline">\(x_i\)</span> keinen Einfluss auf die <span class="math inline">\(y_i\)</span> haben und
+wir daher pauschal die <span class="math inline">\(y_i\)</span> mit <span class="math inline">\(\hat{y}_i=\bar{y}\)</span>, also dem Mittelwert der <span class="math inline">\(y_i\)</span> abschätzen.</p>
+</div>
+<div id="zusammenfassung" class="section level2">
+<h2>Zusammenfassung</h2>
+<p>Als Vergleich können wir uns die Quadratsumme <span class="math inline">\(QS\)</span> und Absulutsumme <span class="math inline">\(AS\)</span> der drei
+Modelle einmal ansehen:</p>
+<pre class="r"><code># Quadratische Abweichungssummen
+qs &lt;- function(b_0, b_1) {
+  sum( (b_0 + b_1 * dt$hp - dt$mpg )**2)
+}
+
+# Absolute Abweichungssummen
+as &lt;- function(b_0, b_1) {
+  sum( abs(b_0 + b_1 * dt$hp - dt$mpg))
+}</code></pre>
+<pre class="r"><code># Quadratsummen:
+quad_sum &lt;- c(qs(b0, b1), qs(as_b0, as_b1), qs(mean_mpg, 0))
+# Absolutsummen:
+abs_sum &lt;- c(as(b0, b1), as(as_b0, as_b1), as(mean_mpg, 0))
+
+tab &lt;- tibble(
+  sums = c(quad_sum, abs_sum),
+  sum_type = rep(c(&quot;quad&quot;, &quot;abs&quot;), each = 3),
+  methode = rep(c(&quot;Idee 3&quot;, &quot;Idee 2&quot;, &quot;Idee 1&quot;), 2)
+)
+
+tab</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##     sums sum_type methode
+##    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  
+## 1  448.  quad     Idee 3 
+## 2  477.  quad     Idee 2 
+## 3 1126.  quad     Idee 1 
+## 4   93.0 abs      Idee 3 
+## 5   87.3 abs      Idee 2 
+## 6  151.  abs      Idee 1</code></pre>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/nap/tag/allgemein/">Allgemein</a>
+  
+  <a class="badge badge-light" href="/nap/tag/data-science/">Data Science</a>
+  
+  <a class="badge badge-light" href="/nap/tag/lineare-regression/">Lineare Regression</a>
+  
+  <a class="badge badge-light" href="/nap/tag/korrelationskoeffizient/">Korrelationskoeffizient</a>
+  
+  <a class="badge badge-light" href="/nap/tag/r/">R</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/&amp;text=%c3%9cber%20die%20Koeffizienten%20einer%20linearen%20Regression" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/&amp;t=%c3%9cber%20die%20Koeffizienten%20einer%20linearen%20Regression" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%c3%9cber%20die%20Koeffizienten%20einer%20linearen%20Regression&amp;body=https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/&amp;title=%c3%9cber%20die%20Koeffizienten%20einer%20linearen%20Regression" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%c3%9cber%20die%20Koeffizienten%20einer%20linearen%20Regression%20https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://sefiroth.net/nap/post/ueber-die-koeffizienten-einer-linearen-regression/&amp;title=%c3%9cber%20die%20Koeffizienten%20einer%20linearen%20Regression" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://sefiroth.net/nap/"><img class="avatar mr-3 avatar-circle" src="/nap/authors/admin/avatar_hu693e4128d00be856374ec0a95c294cb0_23891_270x270_fill_q75_lanczos_center.jpg" alt="Norman Markgraf"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://sefiroth.net/nap/">Norman Markgraf</a></h5>
+      <h6 class="card-subtitle">Diplom-Mathematiker</h6>
+      <p class="card-text">Norman Markgraf ist freiberuflicher Dozent für Mathematik, Statistik, Data Science und Informatik, sowie freiberuflicher Programmierer.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:nmarkgraf@hotmail.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/nap/twitter.com/NormanMarkgraf" >
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//scholar.google.de/citations?user=zR76YpQAAAAJ&amp;hl=de" >
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//github.com/nmarkgraf" >
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//www.xing.com/profile/Norman_Markgraf" >
+        <i class="fab fa-xing"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//www.linkedin.com/in/normanmarkgraf/" >
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Ähnliches</h3>
+    <ul>
+      
+      <li><a href="/nap/post/nur-ein-wenig-lineare-regression/">Nur ein wenig lineare Regression</a></li>
+      
+      <li><a href="/nap/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/">Auch R markdown Dateien sollten sich an Regeln halten</a></li>
+      
+      <li><a href="/nap/project/etwas-r-am-abend/">Etwas R am Abend</a></li>
+      
+      <li><a href="/nap/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/">Ein kleines Beispiel zum Rangkorrelationskoeffizienten</a></li>
+      
+      <li><a href="/nap/post/eine-typische-frage-von-studierenden/">Eine typische Frage von Studierenden</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+  
+  <p class="powered-by">
+    
+      <a href="/nap/privacy/">Datenschutzerklärung (Privacy Policy)</a>
+    
+    
+       &middot; 
+      <a href="/nap/terms/">Terms</a>
+    
+  </p>
+  
+
+  
+  <p class="powered-by">
+    © 2021 by Norman Markgraf
+  </p>
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Zitieren</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Kopie
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/nap/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/nap/de/js/wowchemy.min.a2cf169acd1081a78eed933b5a5e9871.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

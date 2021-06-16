@@ -797,7 +797,7 @@
 
     <div class="article-style">
       
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/nap/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>Eine Möglichkeit Ausreißer zu finden ist der <em>Cook Abstand</em>
@@ -826,7 +826,7 @@ Trinkgeldbetrag <code>tip</code> für unser Modell:</p>
 <h2>Unser Modell:</h2>
 <p>Werfen wir zunächst einen Blick auf das Streudiagramm unserer Daten:</p>
 <pre class="r"><code>gf_point(tip ~ total_bill, data = tips)</code></pre>
-<p><img src="/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Und erstellen dann ein lineares Modell:</p>
 <pre class="r"><code>erg_lm &lt;- lm(tip ~ total_bill, data = tips)
 summary(erg_lm)</code></pre>
@@ -853,7 +853,7 @@ summary(erg_lm)</code></pre>
   geom_line(aes(x = total_bill, 
                 y = erg_lm$fitted.values, 
                 color = &quot;Regressionsgerade&quot;))</code></pre>
-<p><img src="/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Für lineare Regressionsmodell können einflussreiche Ausreißer sehr hinderlich
 sein.
 Was ändert sich, wenn wir einen Wert, z.B. einen potentiellen Ausreißer,
@@ -892,7 +892,7 @@ summary(erg_lm_red)</code></pre>
                  y = tips_removed$tip,
                  colour = &quot;Removed Data&quot;),
                  show.legend = FALSE)</code></pre>
-<p><img src="/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Um zu messen was diese Änderung bewirkt hat, schaut sich der Cook Abstand
 zunächst die Summe der quadrierten Differenzen der vorhergesagten Werte in
 beiden Modellen an:</p>
@@ -975,7 +975,7 @@ erg_lm_no_outliers &lt;- lm(tip ~ total_bill, data = tips_no_outliers)</code></p
   geom_line(aes(x = total_bill, 
                 y = erg_lm_no_outliers$fitted.values, 
                 color = &quot;Regressionsgerade&quot;))</code></pre>
-<p><img src="/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>Im direkten Vergleich:</p>
 <pre class="r"><code>gf_point(tip ~ total_bill, data = erg_lm) +
   geom_line(aes(x = total_bill, 
@@ -985,7 +985,7 @@ erg_lm_no_outliers &lt;- lm(tip ~ total_bill, data = tips_no_outliers)</code></p
               intercept = erg_lm_no_outliers$coefficients[1], 
               slope =  erg_lm_no_outliers$coefficients[2])
               )</code></pre>
-<p><img src="/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="/nap/post/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 <div id="unsere-beiden-modelle-als-formeln" class="section level2">
 <h2>Unsere beiden Modelle als Formeln</h2>

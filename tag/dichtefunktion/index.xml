@@ -194,6 +194,285 @@ gf_ecdf( ~ heads, data = vrtlg_300) %&amp;gt;%
     </item>
     
     <item>
+      <title>Über die t-Verteilung mit einem bzw. zwei Freiheitsgraden</title>
+      <link>https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</link>
+      <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;vorbereitungen-für-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Vorbereitungen für R&lt;/h2&gt;
+&lt;p&gt;Für die graphischen Ausgaben nutzen wir R und das Paket &lt;code&gt;mosaic&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;vorbemerkungen-und-notationen&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Vorbemerkungen und Notationen&lt;/h2&gt;
+&lt;p&gt;Da alle t-Verteilungen symmetrisch sind, betrachten wir im wesendlichen nur den
+positiven Teil.&lt;/p&gt;
+&lt;p&gt;Zwei reelle Funktionen &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt; sind genau dann, im Sinne von de Bruijn&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; (§1.4), &lt;strong&gt;asymptotisch äquivalent&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(f \sim g\)&lt;/span&gt;, wenn&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\lim\limits_{x \to \infty} \frac{f(x)}{g(x)} = 1
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;gilt.&lt;/p&gt;
+&lt;p&gt;Ist &lt;span class=&#34;math inline&#34;&gt;\(f \sim g\)&lt;/span&gt;, so können wir auch&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+f(x) = g(x)\cdot(1+o(1))
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;dafür schreiben.
+Dabei ist &lt;span class=&#34;math inline&#34;&gt;\(h(x) = o(\phi(x))\)&lt;/span&gt; für &lt;span class=&#34;math inline&#34;&gt;\(x \to \infty\)&lt;/span&gt;, falls &lt;span class=&#34;math inline&#34;&gt;\(\lim\limits_{x \to \infty} \frac{h(x)}{\phi(x)} = 0\)&lt;/span&gt; gilt.
+Aus der asymptotischen Äquivalenz von &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt; folgt nun direkt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\lim\limits_{x \to \infty}\frac{f(x)}{g(x)}-1 =\frac{f(x)-g(x)}{g(x)} = 0
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Mit &lt;span class=&#34;math inline&#34;&gt;\(h(x) = \frac{f(x)-g(x)}{g(x)}\)&lt;/span&gt; ist &lt;span class=&#34;math inline&#34;&gt;\(h(x) = o(1)\)&lt;/span&gt; und daher &lt;span class=&#34;math inline&#34;&gt;\(f(x)-g(x) = g(x)o(1)\)&lt;/span&gt; und schliesslich &lt;span class=&#34;math inline&#34;&gt;\(f(x) = g(x)+g(x)o(1)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Ein wichtiges Korrolar sagt:&lt;/p&gt;
+&lt;p&gt;Ist &lt;span class=&#34;math inline&#34;&gt;\(f \sim g\)&lt;/span&gt;, so ist auch &lt;span class=&#34;math inline&#34;&gt;\(\log(f) \sim \log(g)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;die-t-verteilung-im-allgemeinen&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Die t-Verteilung im Allgemeinen&lt;/h2&gt;
+&lt;p&gt;Die Dichtefunktion der t-Verteilung lauten im Allgemeinen:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+f_n(x) = \frac{\Gamma\left(\frac{n+1}{2}\right)} {\sqrt{n\pi}~\Gamma\left(\frac{n}{2}\right)}\left(1+\frac{x^{2}}{n}\right)^{-\frac{n+1}{2}}\quad \mathrm{für}\quad -\infty &amp;lt; x &amp;lt; +\infty
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;wobei wir mit &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(x)\)&lt;/span&gt; die Gammafunktion&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\Gamma(x)=\int\limits_{0}^{+\infty}t^{x-1}e^{-t}\operatorname{d}t
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;bezeichnen.
+Für einige &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; nimmt die Gammafunktion leicht zu berechnende Werte an:&lt;/p&gt;
+&lt;p&gt;So ist für alle &lt;span class=&#34;math inline&#34;&gt;\(n\in\mathbf{N_0}\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(n+1) = n!\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\Gamma\left(n + \frac{1}{2}\right) = \frac{(2n)!}{n!4^n}\sqrt{\pi}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;mit der gewöhnlichen Fakultät &lt;span class=&#34;math inline&#34;&gt;\(n! = \prod_{i=0}^n i\)&lt;/span&gt;, wobei per Definition &lt;span class=&#34;math inline&#34;&gt;\(0!=1\)&lt;/span&gt; ist.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;die-t-verteilung-mit-einem-freiheitsgrad&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Die t-Verteilung mit einem Freiheitsgrad&lt;/h2&gt;
+&lt;p&gt;Für &lt;span class=&#34;math inline&#34;&gt;\(f_1(x)\)&lt;/span&gt; ergibt sich somit:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+f_1(x) &amp;amp;= \frac{\Gamma\left(\frac{n+1}{2}\right)} {\sqrt{n\pi}~\Gamma\left(\frac{n}{2}\right)}\left(1+\frac{x^{2}}{n}\right)^{-\frac{n+1}{2}} \\
+ &amp;amp;= \frac{\Gamma\left(\frac{2}{2}\right)} {\sqrt{\pi}~\Gamma\left(\frac{1}{2}\right)}\left(1+x^{2}\right)^{-\frac{2}{2}} \\
+ &amp;amp;= \frac{\Gamma\left(1\right)} {\sqrt{\pi}~\Gamma\left(\frac{1}{2}\right)}\left(1+x^{2}\right)^{-1} \\
+\end{align*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wegen &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1) = 0! = 1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}\)&lt;/span&gt; ergibt sich nun:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+f_1(x) &amp;amp;= \frac{1} {\sqrt{\pi} \cdot \sqrt{\pi}} \cdot \left(1+x^{2}\right)^{-1} \\
+       &amp;amp;= \frac{1}{\pi} \cdot \frac{1}{1+x^{2}} 
+\end{align*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Das ist die Dichtefunktion der standardisierten Cauchy-Verteilung&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+f_{(\mu,\lambda)}(x) = \frac{1}{\pi} \cdot \frac{\lambda}{\lambda^2+(x-\mu)^2}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;mit (&lt;span class=&#34;math inline&#34;&gt;\(\mu = 0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lambda=1\)&lt;/span&gt;), welche – bekanntermaßen – keinen Erwartungwert hat.&lt;/p&gt;
+&lt;p&gt;Wegen&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+\lim_{x \to +\infty} \frac{f_1(k \cdot x)}{f_1(x)} 
+      &amp;amp;= \lim_{x \to +\infty} \frac{\frac{1}{\pi} \cdot \frac{1}{1+(kx)^{2}}}{\frac{1}{\pi} \cdot \frac{1}{1+x^{2}}} = \lim_{x \to +\infty} \frac{1+x^2}{1+k^2x^2} \\
+      &amp;amp;=\lim_{x \to +\infty} \frac{\frac{1}{x^2}+\frac{x^2}{x^2}}{\frac{1}{x^2}+k^2\frac{x^2}{x^2}} =\frac{1}{k^2}=k^{-2}
+\end{align*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;für alle reellen &lt;span class=&#34;math inline&#34;&gt;\(k&amp;gt;0\)&lt;/span&gt; ist &lt;span class=&#34;math inline&#34;&gt;\(f_1(x)\)&lt;/span&gt; eine regulär variierende Funktion mit Variationsindex &lt;span class=&#34;math inline&#34;&gt;\(\rho = -2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Die Überlebensfunktion zur t-Verteilung mit einem Freiheitsgrad lautet nun:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\overline{F}_1(x) = \int_x^\infty f_1(t) \operatorname{d}t = \frac{1}{\pi} \cdot \int_x^\infty  \frac{1}{1+x^{2}} \operatorname{d}t = \frac{\arctan(x)}{\pi}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;da wir das optionale &lt;span class=&#34;math inline&#34;&gt;\(+C\)&lt;/span&gt; mit &lt;span class=&#34;math inline&#34;&gt;\(C=0\)&lt;/span&gt; annehmen dürfen.&lt;/p&gt;
+&lt;p&gt;Es gilt nun:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\arctan`(x)= \frac{1}{1+x^2} \to \frac{1}{x^2} \text{ für } x\to \infty
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Genauer gilt wegen&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\lim\limits_{x \to \infty} \frac{\frac{1}{1+x^2}}{\frac{1}{x^2}} 
+ = \lim\limits_{x \to \infty} \frac{x^2}{1+x^2} =1,
+\]&lt;/span&gt;
+dass &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{1+x^2} \sim \frac{1}{x^2}\)&lt;/span&gt;,
+also asymptotisch äquivalent sind und somit auch
+&lt;span class=&#34;math inline&#34;&gt;\(\log\left(\frac{1}{1+x^2}\right) \sim \log\left(\frac{1}{x^2}\right)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Zusammen gefasst gilt somit:
+&lt;span class=&#34;math display&#34;&gt;\[
+ \log\left(\frac{1}{\pi} \cdot \frac{1}{1+x^{2}}\right) \to -2\log(x) - \log(\pi) \text{ für } x \to \infty
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Sei &lt;span class=&#34;math inline&#34;&gt;\(f_1^*(x) = C \cdot x^{-\alpha}\)&lt;/span&gt; mit &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 2\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(C=\frac{1}{\pi} \approx0.3183\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Schauen wir uns das einmal als Grafik an:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lower_bound &amp;lt;- 2
+upper_bound &amp;lt;- 100
+dfree &amp;lt;- 1
+
+f_star &amp;lt;- function(x) {
+  alpha &amp;lt;- 2
+  C &amp;lt;- 1/pi
+  C * x**(-alpha)
+}
+
+x &amp;lt;- seq(lower_bound, upper_bound, 0.1)
+
+gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_line(f_star(x) ~ x, 
+          color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_line( f_star(x) ~ x, 
+           color = &amp;quot;darkgreen&amp;quot;) %&amp;gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Wie groß ist nun der (absolute) Fehler zwischen &lt;span class=&#34;math inline&#34;&gt;\(f_1^*\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(f_1\)&lt;/span&gt;?&lt;/p&gt;
+&lt;p&gt;Eine Grafik von &lt;span class=&#34;math inline&#34;&gt;\(f_1^*-f_1\)&lt;/span&gt; zeigt:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- seq(1,1000,1)
+  gf_line(x**-2 - 1/(1+x**2) ~ x, 
+           color = &amp;quot;darkgreen&amp;quot;) %&amp;gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Genauer gilt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+f_1^*(x) - f_1(x) = \frac{1}{x^2+x^4}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir können also für ein hinreichend großes &lt;span class=&#34;math inline&#34;&gt;\(x &amp;gt;&amp;gt; 1\)&lt;/span&gt; statt &lt;span class=&#34;math inline&#34;&gt;\(f_1\)&lt;/span&gt; auch &lt;span class=&#34;math inline&#34;&gt;\(f_1^*\)&lt;/span&gt;
+verwenden und erhalten somit:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+\overline{F}_1(x) &amp;amp;\approx \int_x^\infty f_1^*(t) \operatorname{d}t 
+  = \int_x^\infty  C \cdot t^{-\alpha} \operatorname{d}t \\
+  &amp;amp;= \frac{1}{\pi} \cdot \int_x^\infty  t^{-2} \operatorname{d}t
+  = \frac{1}{\pi}\left[\lim\limits_{\epsilon \to \infty} \left(-\epsilon^{-1}\right) -\left(-x^{-1}\right)\right]\\
+  &amp;amp;= \frac{1}{\pi}\cdot\left[0 + \frac{1}{x}\right] = \frac{1}{\pi \cdot x}
+\end{align*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Wie hinreichend ist hier hinreichend groß?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Taleb schreibt an dieser Stelle gerne, dass man jenseits des &lt;em&gt;Karamata-Punktes&lt;/em&gt;
+die &lt;em&gt;Karamata-Konstante&lt;/em&gt; anwenden kann.
+Beides Begriffe, die keine echte Definition haben und ausserhalb der Sphäre von Taleb auch kaum Verwendung finden.&lt;/p&gt;
+&lt;p&gt;Die &lt;em&gt;Karamata-Konstante&lt;/em&gt; ist &lt;span class=&#34;math inline&#34;&gt;\(\rho = -\alpha\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Der &lt;em&gt;Karamata-Punkt&lt;/em&gt; bleibt nebulös. Vermutlich könnte man hier so argumentieren:&lt;/p&gt;
+&lt;p&gt;Wenn die Fehler zwischen &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(f^*\)&lt;/span&gt; hinreichend klein ist.&lt;/p&gt;
+&lt;p&gt;Hierfür könnte man einen absoluten Fehler oder einen relativen Fehler als Maßstab ansehen.&lt;/p&gt;
+&lt;p&gt;Für einen relativen Fehler vielleicht &lt;span class=&#34;math inline&#34;&gt;\(\frac{f^*-f}{x} &amp;lt; k\)&lt;/span&gt;?&lt;/p&gt;
+&lt;p&gt;Oder man betrachtet hier gleich &lt;span class=&#34;math inline&#34;&gt;\(\frac{f^*-f}{\log(x)} &amp;lt; k^*\)&lt;/span&gt;?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;t-verteilung-mit-zwei-freiheitsgeraden&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;t-Verteilung mit zwei Freiheitsgeraden&lt;/h2&gt;
+&lt;p&gt;Für &lt;span class=&#34;math inline&#34;&gt;\(f_2(x)\)&lt;/span&gt; ergibt sich somit:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+f_2(x) &amp;amp;= \frac{\Gamma\left(\frac{n+1}{2}\right)} {\sqrt{n\pi}~\Gamma\left(\frac{n}{2}\right)}\left(1+\frac{x^{2}}{n}\right)^{-\frac{n+1}{2}} \\
+       &amp;amp;= \frac{\Gamma\left(\frac{3}{2}\right)} {\sqrt{2\pi}~\Gamma\left(\frac{2}{2}\right)}\left(1+\frac{x^{2}}{2}\right)^{-\frac{3}{2}} \\
+       &amp;amp;= \frac{\Gamma\left(\frac{3}{2}\right)} {\sqrt{2\pi}~\Gamma\left(1\right)}\left(1+\frac{x^{2}}{2}\right)^{-\frac{3}{2}} \\
+\end{align*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wegen &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1) = 0! = 1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\Gamma\left(\frac{3}{2}\right)=\frac{\sqrt{\pi}}{2}\)&lt;/span&gt; ergibt sich nun:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+f_2(x) &amp;amp;= \frac{1}{2\sqrt{2}} \cdot \left(1+\frac{x^{2}}{2}\right)^{-\frac{3}{2}} \\
+  &amp;amp;= \frac{1}{\sqrt[2]{2^3} \cdot \sqrt[2]{\left(1+\frac{x^{2}}{2}\right)^3}}  \\
+  &amp;amp;= \frac{1}{(x^2+2)^{\frac{3}{2}}} \\
+  &amp;amp;= \frac{1}{\sqrt{(x^2+2)^3}}
+\end{align*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wegen&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+\lim_{x \to +\infty} \frac{f_2(k \cdot x)}{f_2(x)} 
+    &amp;amp;= \lim_{x \to +\infty} \frac{\frac{1}{\sqrt{((k\cdot x)^2+2)^3}}}{\frac{1}{\sqrt{(x^2+2)^3}}} = \lim_{x \to +\infty} \frac{\sqrt{(x^2+2)^3}}{\sqrt{((k\cdot x)^2+2)^3}} \\
+    &amp;amp;= \lim_{x \to +\infty} \left(\frac{x^2+2}{k^2x^2+2}\right)^\frac{3}{2}=\lim_{x \to +\infty} \left(\frac{\frac{x^2}{x^2}+\frac{2}{x^2}}{k^2\frac{x^2}{x^2}+\frac{2}{x^2}}\right)^\frac{3}{2} \\ 
+    &amp;amp;=\left(\frac{1}{k^2}\right)^\frac{3}{2}=\frac{1}{k^3}=k^{-3}
+\end{align*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;für alle reellen &lt;span class=&#34;math inline&#34;&gt;\(k&amp;gt;0\)&lt;/span&gt; ist &lt;span class=&#34;math inline&#34;&gt;\(f_2(x)\)&lt;/span&gt; eine regulär variierende Funktion mit Variationsindex &lt;span class=&#34;math inline&#34;&gt;\(\rho = -3\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Die Überlebensfunktion zur t-Verteilung mit einem Freiheitsgrad lautet nun:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+\overline{F}_2(x) &amp;amp;= \int_x^\infty f_2(t) \operatorname{d}t = \int_x^\infty \frac{1}{\sqrt{(t^2+2)^3}} \operatorname{d}t \\
+  &amp;amp;= \frac{x}{2 \cdot \sqrt{x^2+2}}
+\end{align*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;da wir das optionale &lt;span class=&#34;math inline&#34;&gt;\(+C\)&lt;/span&gt; mit &lt;span class=&#34;math inline&#34;&gt;\(C=0\)&lt;/span&gt; annehmen dürfen.&lt;/p&gt;
+&lt;p&gt;Es gilt für jedes feste &lt;span class=&#34;math inline&#34;&gt;\(k&amp;gt;0\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+\lim\limits_{x \to \infty} \frac{\overline{F}_2(k x)}{\overline{F}_2(x)} &amp;amp;= \lim\limits_{x \to \infty}k \cdot \sqrt{\frac{x^2+2}{k^2x^2+2}} \\
+  &amp;amp;=  k \cdot \lim\limits_{x \to \infty}  \sqrt{\frac{1}{k^2} \cdot \frac{x^2+2}{x^2+\frac{2}{k^2}}} \\
+  &amp;amp;= \frac{k}{k} \cdot \lim\limits_{x \to \infty}  \sqrt{ \frac{x^2+2}{x^2+\frac{2}{k^2}}} = 1\end{align*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wegen&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\lim_{x \to \infty} \frac{\frac{1}{\sqrt{(x^2+2)^3}}}{\frac{1}{x^3}} =\lim\limits_{x \to \infty} \frac{x^3}{(\sqrt{x^2+2})^3} = \lim\limits_{x \to \infty} \left(\frac{x}{\sqrt{x^2+2}}\right)^3= 1
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;ist &lt;span class=&#34;math inline&#34;&gt;\(f_2 \sim f^*_2\)&lt;/span&gt; und somit auch &lt;span class=&#34;math inline&#34;&gt;\(\log(f_2) \sim \log(f^*_2)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Aus &lt;span class=&#34;math inline&#34;&gt;\(\log\left(\frac{1}{x^3}\right) = \log(1)- 3\cdot\log(x)\)&lt;/span&gt; können wir daher
+auf &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 3\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(C=1\)&lt;/span&gt; schliesse und schreiben:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+f_2^*(x) = C \cdot x^{-\alpha} = x^{-3}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Schauen wir uns das einmal als Grafik an:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lower_bound &amp;lt;- 2
+upper_bound &amp;lt;- 100
+dfree &amp;lt;- 2
+
+f_star &amp;lt;- function(x) {
+  alpha &amp;lt;- 3
+  C &amp;lt;- 1
+  C * x**(-alpha)
+}
+
+x &amp;lt;- seq(lower_bound, upper_bound, 0.1)
+
+gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_line(f_star(x) ~ x, 
+          color = &amp;quot;darkgreen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Hier eine doppelt-logarithmische Darstellung:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_dist(&amp;quot;t&amp;quot;, df = dfree, 
+        xlim = c(lower_bound, upper_bound), 
+        color = &amp;quot;darkred&amp;quot;) %&amp;gt;%
+  gf_line( f_star(x) ~ x, 
+           color = &amp;quot;darkgreen&amp;quot;) %&amp;gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Wie groß ist nun der absolute Fehler zwischen &lt;span class=&#34;math inline&#34;&gt;\(f_2^*\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(f_2\)&lt;/span&gt; genau?&lt;/p&gt;
+&lt;p&gt;Eine Grafik zeigt von &lt;span class=&#34;math inline&#34;&gt;\(f_2^*-2_1\)&lt;/span&gt; zeigt:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- seq(1,1000,1)
+  gf_line(f_star(x) - dt(x,df=2) ~ x, 
+           color = &amp;quot;darkgreen&amp;quot;) %&amp;gt;%
+  gf_refine(
+    scale_x_log10(),
+    scale_y_log10()
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2021-02-14-uber-die-t-verteilung-mit-einem-bzw-zwei-freiheitsgraden/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;fussnoten&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Fussnoten&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://de.wikipedia.org/wiki/Nicolaas_Govert_de_Bruijn&#34;&gt;de Bruijn, N. G.&lt;/a&gt; (1981), &lt;a href=&#34;https://books.google.com/books?id=Oqj9AgAAQBAJ&#34;&gt;Asymptotic Methods in Analysis&lt;/a&gt;, Dover Publications, ISBN 9780486642215&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Gedankenstütze zu wichtigen Funktionsbegriffen in der Statistik</title>
       <link>https://sefiroth.net/nap/post/2021-02-12-gedankenstutze-zu-wichtigen-funktionsbegriffen-in-der-statistik/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
@@ -216,7 +495,7 @@ gf_ecdf( ~ heads, data = vrtlg_300) %&amp;gt;%
 &lt;span class=&#34;math display&#34;&gt;\[P([a, b]) := \int_a^b f(x) \text{d} x\]&lt;/span&gt;
 definiert &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; eine &lt;em&gt;Wahrscheinlichkeitsverteilung&lt;/em&gt; auf den reellen Zahlen.&lt;/p&gt;
 &lt;p&gt;Ist &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; eine reelwertige &lt;em&gt;Zufallsvariable&lt;/em&gt; (kurz &lt;strong&gt;ZV&lt;/strong&gt;) und existiert eine
-reelle Funktion &lt;span class=&#34;math inline&#34;&gt;\(f_X(x)\)&lt;/span&gt; der art, dass für alle &lt;span class=&#34;math inline&#34;&gt;\(a \in \mathbf{R}\)&lt;/span&gt;&lt;/p&gt;
+reelle Funktion &lt;span class=&#34;math inline&#34;&gt;\(f_X(x)\)&lt;/span&gt; der Art, dass für alle &lt;span class=&#34;math inline&#34;&gt;\(a \in \mathbf{R}\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(X \leq a) = \int_{-\infty}^a f_X(x) \text{d}x\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;gilt, so nennt man &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; die &lt;strong&gt;Wahrscheinlichkeitsdichtefunktion von &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Die Funktion&lt;/p&gt;
@@ -227,7 +506,7 @@ aber auch nur &lt;strong&gt;distribution function&lt;/strong&gt;) &lt;strong&gt;
 &lt;p&gt;Genau dann ist eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(F: \mathbf{R} \to [0, 1]\)&lt;/span&gt;
 eine &lt;strong&gt;Verteilungsfunktion&lt;/strong&gt;, wenngilt:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to - \infty} F(t)=0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to + \infty} F(t)=1\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to -\infty} F(t)=0\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to +\infty} F(t)=1\)&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;monoton wachsend&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;rechtsseitig stetig&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -239,10 +518,33 @@ eine &lt;strong&gt;Verteilungsfunktion&lt;/strong&gt;, wenngilt:&lt;/p&gt;
 &lt;p&gt;Genau dann ist eine Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}: \mathbf{R} \to [0, 1]\)&lt;/span&gt;
 eine &lt;strong&gt;Überlebensfunktion&lt;/strong&gt;, wenn gilt:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to - \infty} \overline{F}(t)=1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to + \infty} \overline{F}(t)=0\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Es ist &lt;span class=&#34;math inline&#34;&gt;\(\lim_\limits{t \to -\infty} \overline{F}(t)=1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to + \infty}\overline{F}(t)=0\)&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;monoton fallend&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;Die Funktion &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}(t)\)&lt;/span&gt; ist &lt;strong&gt;rechtsseitig stetig&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Ein paar weitere Eigenschaften von &lt;em&gt;Überlebensfunktionen&lt;/em&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nicht-negative stetige ZV &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; mit Erwartungswert, also &lt;span class=&#34;math inline&#34;&gt;\(\int_0^\infty x f(x) \text{d} x = \mu &amp;lt; \infty\)&lt;/span&gt;, erfüllen die &lt;a href=&#34;https://de.wikipedia.org/wiki/Markow-Ungleichung_(Stochastik)&#34;&gt;Markov-Ungleichung&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\overline{F}_X(x) \leq \frac{\operatorname{E}(X)}{x}\]&lt;/span&gt;
+- Ist &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; eine ZV und &lt;span class=&#34;math inline&#34;&gt;\(\overline{F}_X\)&lt;/span&gt; die zugehörige Überlebensfunktion.
+Existiert &lt;span class=&#34;math inline&#34;&gt;\(E(X)\)&lt;/span&gt;, dann gilt &lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to +\infty}\overline{F}(x)=0 = o\left(\frac{1}{x}\right)\)&lt;/span&gt;.
+&lt;strong&gt;Beweisskizze:&lt;/strong&gt;
+Sei &lt;span class=&#34;math inline&#34;&gt;\(f_X\)&lt;/span&gt; die Dichtefunktion von &lt;span class=&#34;math inline&#34;&gt;\(F_X\)&lt;/span&gt; zur ZV &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. Fü jedes &lt;span class=&#34;math inline&#34;&gt;\(c&amp;gt;0\)&lt;/span&gt; ist dann
+$$&lt;span class=&#34;math display&#34;&gt;\[\begin{align*}
+      E(X) = \int_0^\infty x \cdot f_X(x) \text{d}x &amp;amp;=  \int_0^cx \cdot f_X(x) \text{d}x +\int_c^\infty x \cdot f_X(x) \text{d}x \\
+      &amp;amp;\geq  \int_0^cx \cdot f_X(x) \text{d}x +\int_c^\infty c \cdot f_X(x) \text{d}x \\
+      &amp;amp;=  \int_0^cx \cdot f_X(x) \text{d}x + c \cdot \int_c^\infty f_X(x) \text{d}x \\
+      &amp;amp;=  \int_0^cx \cdot f_X(x) \text{d}x +c \cdot \overline{F}(c)
+
+  \end{align*}\]&lt;/span&gt;$$&lt;/p&gt;
+&lt;p&gt;Damit gilt nun:
+&lt;span class=&#34;math display&#34;&gt;\[0 \leq c \cdot \overline{F}(c) \leq E(X) - \int_0^cx \cdot f_X(x) \text{d}x\]&lt;/span&gt;
+Wegen &lt;span class=&#34;math inline&#34;&gt;\(\lim\limits_{c \to +\infty} \int_0^cx \cdot f_X(x) \text{d}x = E(X)\)&lt;/span&gt;
+folgt:
+&lt;span class=&#34;math display&#34;&gt;\[0 \leq c \cdot \overline{F}(c) \leq E(X) - \int_0^cx \cdot f_X(x) \text{d}x\to 0 \text{ wenn } c \to \infty\]&lt;/span&gt;
+- Für nicht-negative ZV &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; gilt:
+&lt;span class=&#34;math display&#34;&gt;\[E(X) = \int_0^\infty \overline{F}_X(x) \text{d}    x\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

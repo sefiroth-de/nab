@@ -29,7 +29,7 @@ korrekter wäre aber von &lt;strong&gt;langsam variierenden&lt;/strong&gt; Funkt
 auf Änderungen ihres Parameters reagieren.&lt;/p&gt;
 &lt;p&gt;Die Definition dieser &lt;em&gt;behäbigen&lt;/em&gt; besser &lt;strong&gt;langsam variierenden&lt;/strong&gt; Funktionen
 stammt von &lt;a href=&#34;https://de.wikipedia.org/wiki/Jovan_Karamata&#34;&gt;Jovan Karamata&lt;/a&gt;:&lt;/p&gt;
-&lt;p&gt;Eine positive stetige Funktion &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; auf den positiven reelen Zahlen ist
+&lt;p&gt;Eine positive stetige Funktion &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; auf den positiven reelen Zahlen ist
 &lt;strong&gt;langsam variierend (im unendlichen)&lt;/strong&gt;, falls für alle reellen &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;0\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\lim_{x \to +\infty} \frac{L(t\cdot x)}{L(x)} = 1\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;gilt.&lt;/p&gt;
@@ -65,8 +65,8 @@ Damit sind die Funktionen zwar (s.u.) &lt;em&gt;regulär variierend&lt;/em&gt;, 
 &lt;p&gt;Eine &lt;strong&gt;regulär variierende&lt;/strong&gt; Funktion &lt;span class=&#34;math inline&#34;&gt;\(L:(0,+\infty) \to (0,+\infty)\)&lt;/span&gt;
 ist eine Funktion für die der Term&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\lim_{x \to +\infty} \frac{L(t\cdot x)}{L(x)} = g(t)\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;mit &lt;span class=&#34;math inline&#34;&gt;\(g(t)\)&lt;/span&gt; einen endlichen aber nicht verschwindenen Wert
-(m.a.W.: &lt;span class=&#34;math inline&#34;&gt;\(g(t) \neq 0\)&lt;/span&gt;) hat für alle &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;mit &lt;span class=&#34;math inline&#34;&gt;\(g(t)\)&lt;/span&gt; für alle &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;0\)&lt;/span&gt; einen endlichen aber nicht verschwindenen Wert
+(m.a.W.: &lt;span class=&#34;math inline&#34;&gt;\(g(t) \neq 0\)&lt;/span&gt;) hat .&lt;/p&gt;
 &lt;p&gt;Karamata hat die regulär variierenden Funktionen nun wie folgt charaterisiert:&lt;/p&gt;
 &lt;div id=&#34;charakterisierungssatz-von-karamata&#34; class=&#34;section level3 theorem&#34;&gt;
 &lt;h3&gt;Charakterisierungssatz von Karamata&lt;/h3&gt;
@@ -78,16 +78,25 @@ und &lt;span class=&#34;math inline&#34;&gt;\(L(x)\)&lt;/span&gt; eine &lt;em&gt
 &lt;!-- ENDE THEOREM--&gt;
 &lt;p&gt;Eine Konsequenz aus dem &lt;em&gt;Charakterisierungssatz von Karamata&lt;/em&gt; ist, das die
 Funktion &lt;span class=&#34;math inline&#34;&gt;\(g(t)\)&lt;/span&gt; aus der Definition der &lt;em&gt;regulär variierenden&lt;/em&gt; Funktionen
-notwenidigerweise die Gestalt&lt;/p&gt;
+notwendigerweise die Gestalt&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[g(t) = t^\rho,\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;mit einem &lt;span class=&#34;math inline&#34;&gt;\(\rho \in \mathbf{R}\)&lt;/span&gt;, haben muss.&lt;/p&gt;
 &lt;p&gt;Dieser Wert &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt; wird &lt;strong&gt;Index der Varition&lt;/strong&gt; (engl. &lt;em&gt;index of variation&lt;/em&gt;)
 genannt.&lt;/p&gt;
+&lt;p&gt;Die Katamata Theorie ist eine Theorie “erster Ordnung” für reguläre Variation.
+Weiterführend gibt es mit der
+&lt;a href=&#34;https://encyclopediaofmath.org/wiki/De_Haan_theory&#34;&gt;de Haan Theorie&lt;/a&gt; als Theorie “zweiter Ordnung”.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Quellen:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://encyclopediaofmath.org/index.php?title=Karamata_theory&amp;amp;direction=next&amp;amp;oldid=25937&#34;&gt;Encylopedia of Math&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://archive.org/details/regularvariation0000bing&#34;&gt;Bingham, N. H.; Goldie, C. M.; Teugels, J. L. (1987), Regular Variation, Encyclopedia of Mathematics and its Applications, 27, Cambridge: Cambridge University Press, ISBN 0-521-30787-2, MR 0898871, Zbl 0617.26001&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; oder auch &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; wird (angeblich) hier für den Begriff &lt;em&gt;lente&lt;/em&gt; (serb. für &lt;strong&gt;faul&lt;/strong&gt;) verwendet. Behäbig ist also doch nicht so falsch. ;-)&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/div&gt;
 </description>
     </item>
