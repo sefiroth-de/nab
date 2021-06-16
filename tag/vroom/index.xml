@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vroom | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/tag/vroom/</link>
-      <atom:link href="https://sefiroth.net/tag/vroom/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/nab/tag/vroom/</link>
+      <atom:link href="https://sefiroth.net/nab/tag/vroom/index.xml" rel="self" type="application/rss+xml" />
     <description>vroom</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>vroom</title>
-      <link>https://sefiroth.net/tag/vroom/</link>
+      <link>https://sefiroth.net/nab/tag/vroom/</link>
     </image>
     
     <item>
       <title>Erste Schritte mit `vroom`</title>
-      <link>https://sefiroth.net/post/erste-schritte-mit-vroom/</link>
+      <link>https://sefiroth.net/nab/post/erste-schritte-mit-vroom/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/post/erste-schritte-mit-vroom/</guid>
+      <guid>https://sefiroth.net/nab/post/erste-schritte-mit-vroom/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nab/nabrmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Nach &lt;a href=&#34;https://readr.tidyverse.org&#34;&gt;&lt;code&gt;readr&lt;/code&gt;&lt;/a&gt; kommt &lt;a href=&#34;https://vroom.r-lib.org&#34;&gt;&lt;code&gt;vroom&lt;/code&gt;&lt;/a&gt;. In der Zwischenzeit liegt vroom in der Version 1.2.0 vor und daher habe ich mir ein paar Stunden Zeit gekommen um ein paar erste Experimente damit zu machen.&lt;/p&gt;

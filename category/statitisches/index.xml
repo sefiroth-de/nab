@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statitisches | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/category/statitisches/</link>
-      <atom:link href="https://sefiroth.net/category/statitisches/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/nab/category/statitisches/</link>
+      <atom:link href="https://sefiroth.net/nab/category/statitisches/index.xml" rel="self" type="application/rss+xml" />
     <description>Statitisches</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 22 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 22 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Statitisches</title>
-      <link>https://sefiroth.net/category/statitisches/</link>
+      <link>https://sefiroth.net/nab/category/statitisches/</link>
     </image>
     
     <item>
       <title>Der Standardfehler aus klassischer Sicht - Ein kleiner Überblick</title>
-      <link>https://sefiroth.net/post/der-standardfehler-aus-klassischer-sicht-ein-kleiner-uberblick/</link>
+      <link>https://sefiroth.net/nab/post/der-standardfehler-aus-klassischer-sicht-ein-kleiner-uberblick/</link>
       <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/post/der-standardfehler-aus-klassischer-sicht-ein-kleiner-uberblick/</guid>
+      <guid>https://sefiroth.net/nab/post/der-standardfehler-aus-klassischer-sicht-ein-kleiner-uberblick/</guid>
       <description>
 &lt;script src=&#34;2020-01-22-der-standardfehler-aus-klassischer-sicht-ein-kleiner-überblick_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
@@ -246,11 +246,11 @@ for(n in c(30, 50, 100, 200, 500, 1000, 3000)) {
     
     <item>
       <title>Der Zentrale Grenzwertsatz</title>
-      <link>https://sefiroth.net/post/der-zentrale-grenzwertsatz/</link>
+      <link>https://sefiroth.net/nab/post/der-zentrale-grenzwertsatz/</link>
       <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
-      <guid>https://sefiroth.net/post/der-zentrale-grenzwertsatz/</guid>
+      <guid>https://sefiroth.net/nab/post/der-zentrale-grenzwertsatz/</guid>
       <description>
-&lt;script src=&#34;https://sefiroth.net/nap/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://sefiroth.net/nab/nabrmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;der-zentrale-grenzwertsatz-der-statistik-bei-identischer-verteilung.&#34; class=&#34;section level2&#34;&gt;
@@ -295,7 +295,7 @@ zscore(u)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;zscore(y)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1]  0.1677971 -0.1526624 -0.6657361  1.6085958 -0.9579944&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Die Behauptung des Zentralengrenzwertsatzes ist nun, dass mit steigender Anzahl an Werten &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; die standardisierten Werte in der empirischen Verteilungsfunktion sich immer mehr der Verteilungsfunktion der Standardnormalverteilung annähern:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nap/post/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/nabpost/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nab/nabpost/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nab/nabpost/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://sefiroth.net/nab/nabpost/2017-04-05-der-zentrale-grenzwertsatz_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Weiterführende Literatur und Quellen dieses Eintrags:&lt;/strong&gt;&lt;/p&gt;
 &lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;
 &lt;div id=&#34;ref-Schira2005&#34; class=&#34;csl-entry&#34;&gt;

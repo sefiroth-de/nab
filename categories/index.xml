@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories | Norman&#39;s Academic Blog</title>
-    <link>https://sefiroth.net/categories/</link>
-      <atom:link href="https://sefiroth.net/categories/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sefiroth.net/nab/categories/</link>
+      <atom:link href="https://sefiroth.net/nab/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 11 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 11 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Categories</title>
-      <link>https://sefiroth.net/categories/</link>
+      <link>https://sefiroth.net/nab/categories/</link>
     </image>
     
   </channel>
