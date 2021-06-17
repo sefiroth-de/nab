@@ -30,7 +30,9 @@
   
     
   
-  <meta name="description" content="Eine Möglichkeit Ausreißer zu finden ist der Cook Abstand (eng.: Cook’s distance). Die Idee ist es zu messen welchen Einfluss ein Wert auf das Modell hat. Dazu schaut mich sich das Modell einmal mit und einmal ohne den Wert an und vergleicht diese Ergebnisse." />
+  <meta name="description" content="Frage: Was macht einen Wert zum Ausreißer?
+Eine mögliche Antwort wäre: Er liegt weit weg von den anderen Werten und hat einen (starken) Einfluss auf unser Modell.
+Eine Möglichkeit solche Ausreißer zu finden ist der Cook Abstand (eng." />
 
   
   <link rel="alternate" hreflang="de-de" href="https://sefiroth.net/nab/post/cook-abstand/" />
@@ -302,7 +304,9 @@
   <meta property="og:site_name" content="Norman&#39;s Academic Blog" />
   <meta property="og:url" content="https://sefiroth.net/nab/post/cook-abstand/" />
   <meta property="og:title" content="Cook Abstand | Norman&#39;s Academic Blog" />
-  <meta property="og:description" content="Eine Möglichkeit Ausreißer zu finden ist der Cook Abstand (eng.: Cook’s distance). Die Idee ist es zu messen welchen Einfluss ein Wert auf das Modell hat. Dazu schaut mich sich das Modell einmal mit und einmal ohne den Wert an und vergleicht diese Ergebnisse." /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+  <meta property="og:description" content="Frage: Was macht einen Wert zum Ausreißer?
+Eine mögliche Antwort wäre: Er liegt weit weg von den anderen Werten und hat einen (starken) Einfluss auf unser Modell.
+Eine Möglichkeit solche Ausreißer zu finden ist der Cook Abstand (eng." /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
     <meta property="twitter:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="de-de" />
   
     
@@ -311,7 +315,7 @@
         content="2020-06-29T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2020-06-29T10:52:38&#43;02:00">
+    <meta property="article:modified_time" content="2021-06-17T09:11:11&#43;02:00">
   
 
   
@@ -340,7 +344,7 @@
   "headline": "Cook Abstand",
   
   "datePublished": "2020-06-29T00:00:00Z",
-  "dateModified": "2020-06-29T10:52:38+02:00",
+  "dateModified": "2021-06-17T09:11:11+02:00",
   
   "author": {
     "@type": "Person",
@@ -355,7 +359,7 @@
       "url": "https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Eine Möglichkeit Ausreißer zu finden ist der Cook Abstand (eng.: Cook’s distance). Die Idee ist es zu messen welchen Einfluss ein Wert auf das Modell hat. Dazu schaut mich sich das Modell einmal mit und einmal ohne den Wert an und vergleicht diese Ergebnisse."
+  "description": "Frage: Was macht einen Wert zum Ausreißer?\nEine mögliche Antwort wäre: Er liegt weit weg von den anderen Werten und hat einen (starken) Einfluss auf unser Modell.\nEine Möglichkeit solche Ausreißer zu finden ist der Cook Abstand (eng."
 }
 </script>
 
@@ -375,7 +379,7 @@
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="7949c027a46875d6af2a91d7da9ad192" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="da19fda6d3fb008252eaf4be5189936a" >
 
   
   
@@ -753,7 +757,7 @@
           Zuletzt aktualisiert am
       
     
-    Jun 29, 2020
+    Jun 17, 2021
   </span>
   
 
@@ -797,26 +801,29 @@
 
     <div class="article-style">
       
-<script src="/nabrmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="https://sefiroth.net/nab/post/cook-abstand/index.de_files/header-attrs/header-attrs.js"></script>
 
 
-<p>Eine Möglichkeit Ausreißer zu finden ist der <em>Cook Abstand</em>
+<p>Frage: <em>Was macht einen Wert zum Ausreißer?</em></p>
+<p>Eine mögliche Antwort wäre: <em>Er liegt weit weg von den anderen Werten <strong>und</strong>
+hat einen (starken) Einfluss auf unser Modell.</em></p>
+<p>Eine Möglichkeit solche Ausreißer zu finden ist der <em>Cook Abstand</em>
 (eng.: <em>Cook’s distance</em>).
-Die Idee ist es zu messen welchen Einfluss ein Wert auf das Modell hat.
-Dazu schaut mich sich das Modell einmal mit und einmal ohne den Wert an und
+Die Idee dabei ist es zu messen welchen Einfluss ein Wert auf das Modell hat.
+Dazu schauen wir uns das Modell einmal mit und einmal ohne diesen Wert an und
 vergleicht diese Ergebnisse.</p>
 <p>Schauen wir uns den Cook Abstand einmal für ein (einfaches) lineares
 Regressionmodell konkret an:</p>
 <div id="vorbereitungen" class="section level3">
 <h3>Vorbereitungen</h3>
-<p>Wir wollen mit <em>mosaic</em> arbeiten, also laden wir das Paket als erstes:</p>
+<p>Wir wollen mit <code>mosaic</code> arbeiten, also laden wir das Paket als erstes:</p>
 <pre class="r"><code>library(mosaic)</code></pre>
 <p>Falls die <strong>tipping</strong>-Daten noch nicht im Verzeichnis liegen,
 laden wir diese aus dem Internet nach:</p>
 <pre class="r"><code>if (!file.exists(&quot;tips.csv&quot;)) {
   download.file(&quot;https://goo.gl/whKjnl&quot;, destfile = &quot;tips.csv&quot;)
 }</code></pre>
-<p>Nun laden wir die <strong>tipping</strong>-Daten in den Speicher in den Datenrahmen <code>tips</code>:</p>
+<p>Nun laden wir die <strong>tipping</strong>-Daten in den Datenrahmen <code>tips</code>:</p>
 <pre class="r"><code>tips &lt;- read.csv2(&quot;tips.csv&quot;)</code></pre>
 <p>Wir brauchen für unser Modell nur den Rechnungsbetrag <code>total_bill</code> und den
 Trinkgeldbetrag <code>tip</code> für unser Modell:</p>
@@ -826,7 +833,7 @@ Trinkgeldbetrag <code>tip</code> für unser Modell:</p>
 <h2>Unser Modell:</h2>
 <p>Werfen wir zunächst einen Blick auf das Streudiagramm unserer Daten:</p>
 <pre class="r"><code>gf_point(tip ~ total_bill, data = tips)</code></pre>
-<p><img src="/nabpost/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="https://sefiroth.net/nab/post/cook-abstand/index.de_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Und erstellen dann ein lineares Modell:</p>
 <pre class="r"><code>erg_lm &lt;- lm(tip ~ total_bill, data = tips)
 summary(erg_lm)</code></pre>
@@ -849,11 +856,13 @@ summary(erg_lm)</code></pre>
 ## Multiple R-squared:  0.4566, Adjusted R-squared:  0.4544 
 ## F-statistic: 203.4 on 1 and 242 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Betrachten wir nun die Regressionsgerade in unseren Daten:</p>
-<pre class="r"><code>gf_point(tip ~ total_bill, data = tips) +
-  geom_line(aes(x = total_bill, 
-                y = erg_lm$fitted.values, 
-                color = &quot;Regressionsgerade&quot;))</code></pre>
-<p><img src="/nabpost/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>gf_point(tip ~ total_bill, data = tips) %&gt;%
+  gf_coefline(
+    model = erg_lm,
+    color = ~ &quot;Regressionsgerade&quot;,
+    show.legend = FALSE
+  ) </code></pre>
+<p><img src="https://sefiroth.net/nab/post/cook-abstand/index.de_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Für lineare Regressionsmodell können einflussreiche Ausreißer sehr hinderlich
 sein.
 Was ändert sich, wenn wir einen Wert, z.B. einen potentiellen Ausreißer,
@@ -884,15 +893,16 @@ summary(erg_lm_red)</code></pre>
 ## Residual standard error: 0.9992 on 241 degrees of freedom
 ## Multiple R-squared:  0.4776, Adjusted R-squared:  0.4754 
 ## F-statistic: 220.3 on 1 and 241 DF,  p-value: &lt; 2.2e-16</code></pre>
-<pre class="r"><code>gf_point(tip ~ total_bill, data = tips_red) +
-  geom_line(aes(x = total_bill, 
-                y = erg_lm_red$fitted.values, 
-                color = &quot;Regressionsgerade&quot;)) +
-  geom_point(aes(x = tips_removed$total_bill,
-                 y = tips_removed$tip,
-                 colour = &quot;Removed Data&quot;),
-                 show.legend = FALSE)</code></pre>
-<p><img src="/nabpost/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>gf_point(tip ~ total_bill, data = tips_red) %&gt;%
+  gf_coefline(
+    model = erg_lm,
+    color = ~ &quot;Regressionsgerade&quot;
+    ) %&gt;%
+  gf_point(
+    tip ~ total_bill, 
+    colour = ~ &quot;Entfernter Punkt&quot;,
+    data = tips_removed)</code></pre>
+<p><img src="https://sefiroth.net/nab/post/cook-abstand/index.de_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Um zu messen was diese Änderung bewirkt hat, schaut sich der Cook Abstand
 zunächst die Summe der quadrierten Differenzen der vorhergesagten Werte in
 beiden Modellen an:</p>
@@ -907,15 +917,17 @@ Beobachtung aus dem Modell gestrichen hat.</p>
 d_j</code></pre>
 <pre><code>## [1] 0.1511406</code></pre>
 <p>Der Cook Abstand <span class="math inline">\(D_j\)</span> wird nun noch <em>normiert</em> durch
-<span class="math display">\[var_{cook} = p \cdot s_{\epsilon_i^2}^2\]</span>
+<span class="math display">\[{\text{var}_{\text{cook}}} = p \cdot s_{\epsilon_i^2}^2\]</span>
 Dabei ist <span class="math inline">\(s_{\epsilon_i^2}^2\)</span> der erwartungstreue Schätzer der Varianz der
 Residuen und <span class="math inline">\(p\)</span> die Anzahl aller erklärenden Variablen (hier <span class="math inline">\(1\)</span>) <span class="math inline">\(+ 1\)</span>.</p>
 <p>Es ist also:</p>
-<p><span class="math display">\[D_j = \frac{d_j}{var_{cook}} = \frac{\sum\limits_{i=1}^n \left(\hat{y}_i - \hat{y}_{i(j)}\right)^2}{p \cdot s_{\epsilon_i^2}^2}\]</span></p>
+<p><span class="math display">\[D_j = \frac{d_j}{\text{var}_{\text{cook}}} = \frac{\sum\limits_{i=1}^n \left(\hat{y}_i - \hat{y}_{i(j)}\right)^2}{p \cdot s_{\epsilon_i^2}^2}\]</span></p>
 <pre class="r"><code># Summary des Modells
 selm &lt;- summary(erg_lm)
+
 # Wir finden p als rank im Modell
 p &lt;- erg_lm$rank 
+
 # Wir finden den erwatungtreuen Schätzer im Summary des Modells
 s_quad_eps_quad &lt;- (selm$sigma)^2 
 
@@ -943,13 +955,14 @@ any(cooks &gt; 1)</code></pre>
 .</p>
 <pre class="r"><code>any(cooks &gt; 4/n)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<p>dann gibt es Ausreißer.
-Die Indices dieser finden wir mit:</p>
+<p>dann gibt es Ausreißer.</p>
+<p>Die Indices dieser finden wir mit:</p>
 <pre class="r"><code>which(cooks &gt; 4/n)</code></pre>
 <pre><code>##  [1]  24  48  57 103 142 157 171 173 179 183 184 185 188 208 211 213 215 238</code></pre>
 <p>Bereinigen wir nun unsere Daten um genau diese Werte:</p>
 <pre class="r"><code>remove &lt;- which(cooks &gt; 4/n)
 tips %&gt;% slice(-remove) -&gt; tips_no_outliers
+tips %&gt;% slice(remove) -&gt; tips_removed
 erg_lm_no_outliers &lt;- lm(tip ~ total_bill, data = tips_no_outliers)</code></pre>
 <p>Und schauen uns das Ergebnis an:</p>
 <pre class="r"><code>summary(erg_lm_no_outliers)</code></pre>
@@ -971,21 +984,28 @@ erg_lm_no_outliers &lt;- lm(tip ~ total_bill, data = tips_no_outliers)</code></p
 ## Residual standard error: 0.7778 on 224 degrees of freedom
 ## Multiple R-squared:  0.5355, Adjusted R-squared:  0.5334 
 ## F-statistic: 258.2 on 1 and 224 DF,  p-value: &lt; 2.2e-16</code></pre>
-<pre class="r"><code>gf_point(tip ~ total_bill, data = erg_lm_no_outliers) +
-  geom_line(aes(x = total_bill, 
-                y = erg_lm_no_outliers$fitted.values, 
-                color = &quot;Regressionsgerade&quot;))</code></pre>
-<p><img src="/nabpost/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<pre class="r"><code>gf_point(tip ~ total_bill, data = erg_lm_no_outliers) %&gt;%
+  gf_coefline(
+    model = erg_lm_no_outliers, 
+    color = ~&quot;Regressionsgerade&quot;
+  )</code></pre>
+<p><img src="https://sefiroth.net/nab/post/cook-abstand/index.de_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>Im direkten Vergleich:</p>
-<pre class="r"><code>gf_point(tip ~ total_bill, data = erg_lm) +
-  geom_line(aes(x = total_bill, 
-                y = erg_lm$fitted.values, 
-                colour = &quot;Regressionsgerade (Orginal)&quot;)) +
-  geom_abline(aes( colour = &quot;Regressionsgerade (No Outliers)&quot;,
-              intercept = erg_lm_no_outliers$coefficients[1], 
-              slope =  erg_lm_no_outliers$coefficients[2])
-              )</code></pre>
-<p><img src="/nabpost/2020-06-29-cook-abstand.de_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<pre class="r"><code>gf_point(tip ~ total_bill, data = erg_lm) %&gt;%
+  gf_coefline(
+    model =  erg_lm,
+    color = ~ &quot;Regressionsgerade (Orginal)&quot;
+  ) %&gt;%
+  gf_coefline(
+    model = erg_lm_no_outliers,
+    color = ~ &quot;Regressionsgerade (No Outliers)&quot;
+  ) %&gt;%
+  gf_point(
+    tip ~ total_bill,
+    color = ~ &quot;Entfernte Punkte&quot;,
+    data = tips_removed
+  )</code></pre>
+<p><img src="https://sefiroth.net/nab/post/cook-abstand/index.de_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 <div id="unsere-beiden-modelle-als-formeln" class="section level2">
 <h2>Unsere beiden Modelle als Formeln</h2>

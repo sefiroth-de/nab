@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Bei einer einfachen Regression versuchen wir zu gegebenen Datenpunkten \((x_1, y_1), ... (x_n, y_n)\) eine möglichst passende Funktion \(g(x)\) zu finden, so dass \[y_i = g(x_i) &#43; e_i\] gilt." />
+  <meta name="description" content="Bei einer einfachen Regression versuchen wir zu gegebenen Datenpunkten \((x_1, y_1), ..., (x_n, y_n)\) eine möglichst passende Funktion \(g(x)\) zu finden, so dass \[y_i = g(x_i) &#43; e_i\] gilt." />
 
   
   <link rel="alternate" hreflang="de-de" href="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/" />
@@ -302,7 +302,7 @@
   <meta property="og:site_name" content="Norman&#39;s Academic Blog" />
   <meta property="og:url" content="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/" />
   <meta property="og:title" content="Über die Koeffizienten einer linearen Regression | Norman&#39;s Academic Blog" />
-  <meta property="og:description" content="Bei einer einfachen Regression versuchen wir zu gegebenen Datenpunkten \((x_1, y_1), ... (x_n, y_n)\) eine möglichst passende Funktion \(g(x)\) zu finden, so dass \[y_i = g(x_i) &#43; e_i\] gilt." /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+  <meta property="og:description" content="Bei einer einfachen Regression versuchen wir zu gegebenen Datenpunkten \((x_1, y_1), ..., (x_n, y_n)\) eine möglichst passende Funktion \(g(x)\) zu finden, so dass \[y_i = g(x_i) &#43; e_i\] gilt." /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
     <meta property="twitter:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="de-de" />
   
     
@@ -355,7 +355,7 @@
       "url": "https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Bei einer einfachen Regression versuchen wir zu gegebenen Datenpunkten \\((x_1, y_1), ... (x_n, y_n)\\) eine möglichst passende Funktion \\(g(x)\\) zu finden, so dass \\[y_i = g(x_i) + e_i\\] gilt."
+  "description": "Bei einer einfachen Regression versuchen wir zu gegebenen Datenpunkten \\((x_1, y_1), ..., (x_n, y_n)\\) eine möglichst passende Funktion \\(g(x)\\) zu finden, so dass \\[y_i = g(x_i) + e_i\\] gilt."
 }
 </script>
 
@@ -801,7 +801,7 @@
 
 
 <p>Bei einer <em>einfachen Regression</em> versuchen wir zu gegebenen
-Datenpunkten <span class="math inline">\((x_1, y_1), ... (x_n, y_n)\)</span> eine <em>möglichst passende</em> Funktion
+Datenpunkten <span class="math inline">\((x_1, y_1), ..., (x_n, y_n)\)</span> eine <em>möglichst passende</em> Funktion
 <span class="math inline">\(g(x)\)</span> zu finden, so dass
 <span class="math display">\[y_i = g(x_i) + e_i\]</span>
 gilt. Dabei tollerieren wir eine (kleine) Abweichung <span class="math inline">\(e_i\)</span>.</p>
@@ -826,11 +826,12 @@ gegebenen Wert <span class="math inline">\(y_i\)</span> ist somit:</p>
 <em>Wie genau messen wir <strong>kleinsten Fehler</strong> der <span class="math inline">\(\hat{e_i}\)</span>?</em></p>
 <p>Wir betrachten zunächste drei einfache Ideen:</p>
 <ol style="list-style-type: decimal">
-<li><p>Idee: Summe der Abweichungen</p></li>
-<li><p>Idee: Summe der absoluten Abweichungen</p></li>
-<li><p>Idee: Summe der quadratischen Abweichungen</p></li>
+<li><p>Idee: <em>Summe der Abweichungen</em></p></li>
+<li><p>Idee: <em>Summe der absoluten Abweichungen</em></p></li>
+<li><p>Idee: <em>Summe der quadratischen Abweichungen</em></p></li>
 </ol>
-<p>Wir betrachten die drei Ideen in umgekehrter Reihenfolge:</p>
+<p>Da gewöhnlich mit den <em>quadratischen Abweichungen</em> angfangen wird, betrachten
+wir die drei Ideen ebenso in umgekehrter Reihenfolge:</p>
 <div id="idee-summe-der-quadratischen-abweichungen" class="section level2">
 <h2>3. Idee: Summe der quadratischen Abweichungen</h2>
 <p>Wir bezeichnen mit</p>

@@ -22,7 +22,7 @@
 
 
 &lt;p&gt;Bei einer &lt;em&gt;einfachen Regression&lt;/em&gt; versuchen wir zu gegebenen
-Datenpunkten &lt;span class=&#34;math inline&#34;&gt;\((x_1, y_1), ... (x_n, y_n)\)&lt;/span&gt; eine &lt;em&gt;möglichst passende&lt;/em&gt; Funktion
+Datenpunkten &lt;span class=&#34;math inline&#34;&gt;\((x_1, y_1), ..., (x_n, y_n)\)&lt;/span&gt; eine &lt;em&gt;möglichst passende&lt;/em&gt; Funktion
 &lt;span class=&#34;math inline&#34;&gt;\(g(x)\)&lt;/span&gt; zu finden, so dass
 &lt;span class=&#34;math display&#34;&gt;\[y_i = g(x_i) + e_i\]&lt;/span&gt;
 gilt. Dabei tollerieren wir eine (kleine) Abweichung &lt;span class=&#34;math inline&#34;&gt;\(e_i\)&lt;/span&gt;.&lt;/p&gt;
@@ -47,11 +47,12 @@ gegebenen Wert &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; ist 
 &lt;em&gt;Wie genau messen wir &lt;strong&gt;kleinsten Fehler&lt;/strong&gt; der &lt;span class=&#34;math inline&#34;&gt;\(\hat{e_i}\)&lt;/span&gt;?&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Wir betrachten zunächste drei einfache Ideen:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Idee: Summe der Abweichungen&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Idee: Summe der absoluten Abweichungen&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Idee: Summe der quadratischen Abweichungen&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Idee: &lt;em&gt;Summe der Abweichungen&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Idee: &lt;em&gt;Summe der absoluten Abweichungen&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Idee: &lt;em&gt;Summe der quadratischen Abweichungen&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Wir betrachten die drei Ideen in umgekehrter Reihenfolge:&lt;/p&gt;
+&lt;p&gt;Da gewöhnlich mit den &lt;em&gt;quadratischen Abweichungen&lt;/em&gt; angfangen wird, betrachten
+wir die drei Ideen ebenso in umgekehrter Reihenfolge:&lt;/p&gt;
 &lt;div id=&#34;idee-summe-der-quadratischen-abweichungen&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;3. Idee: Summe der quadratischen Abweichungen&lt;/h2&gt;
 &lt;p&gt;Wir bezeichnen mit&lt;/p&gt;
