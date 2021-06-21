@@ -963,12 +963,12 @@ mtcars %&gt;%
 # Mit Hilfe eines Streudiagramms
 gf_point(mpg ~ hp, data = dt) %&gt;%
   gf_lims(y = c(5,35))</code></pre>
-<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-1-1.png" width="90%" /></p>
+<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-1-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Berechnen wir zunächst die Mittelwerte von <span class="math inline">\(x\)</span> (also ‘hp’) und <span class="math inline">\(y\)</span> (also ‘mpg’)</p>
-<pre class="r"><code>(mean_hp = mean(~ hp, data = dt))</code></pre>
-<pre><code>## [1] 146.6875</code></pre>
-<pre class="r"><code>(mean_mpg = mean(~ mpg, data = dt))</code></pre>
-<pre><code>## [1] 20.09062</code></pre>
+<pre class="r"><code>(mean_hp = mean(~ hp, data = dt))
+#&gt; [1] 146.6875
+(mean_mpg = mean(~ mpg, data = dt))
+#&gt; [1] 20.09062</code></pre>
 <p>und zeichnen die Punkt <span class="math inline">\((\bar{x}, \bar{y}) = (146.69, 20.09)\)</span> in unser
 Streudiagramm ein:</p>
 <pre class="r"><code>gf_point(mpg ~ hp, data = dt) %&gt;%
@@ -976,12 +976,12 @@ Streudiagramm ein:</p>
   gf_vline(xintercept = ~ mean_hp, color = &quot;grey60&quot;, linetype = &quot;dashed&quot;) %&gt;%
   gf_point(mean_mpg ~ mean_hp, color = &quot;red&quot;, size = 5, alpha = 0.2) %&gt;%
   gf_lims(y = c(5,35))</code></pre>
-<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png" width="90%" /></p>
+<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Berechnen wir nun die Schätzwerte für die Regressiongerade</p>
-<pre class="r"><code>(beta_1 = cov(mpg ~ hp, data = dt) / var(~ hp, data = dt))</code></pre>
-<pre><code>## [1] -0.06822828</code></pre>
-<pre class="r"><code>(beta_0 = mean_mpg - beta_1 * mean_hp)</code></pre>
-<pre><code>## [1] 30.09886</code></pre>
+<pre class="r"><code>(beta_1 = cov(mpg ~ hp, data = dt) / var(~ hp, data = dt))
+#&gt; [1] -0.06822828
+(beta_0 = mean_mpg - beta_1 * mean_hp)
+#&gt; [1] 30.09886</code></pre>
 <p>und zeichnen diese in unser Streudiagramm ein:</p>
 <pre class="r"><code>gf_point(mpg ~ hp, data = dt) %&gt;%
   gf_hline(yintercept = ~ mean_mpg, color = &quot;grey60&quot;, linetype = &quot;dashed&quot;) %&gt;%
@@ -989,7 +989,7 @@ Streudiagramm ein:</p>
   gf_point(mean_mpg ~ mean_hp, color = &quot;red&quot;, size = 5, alpha = 0.2) %&gt;%
   gf_abline(slope = ~ beta_1, intercept = ~beta_0, color = &quot;dodgerblue&quot;) %&gt;%
   gf_lims(y = c(5,35))</code></pre>
-<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-5-1.png" width="90%" /></p>
+<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:</p>
 <p><span class="math display">\[\begin{aligned}
   \hat{y} &amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
@@ -1009,25 +1009,25 @@ Streudiagramm ein:</p>
     mpg_stud = zscore(mpg)
   ) -&gt; dt</code></pre>
 <p>Natürlich sind die Mittelwerte nun Null und die Standardabweichungen Eins:</p>
-<pre class="r"><code>c(mean( ~ hp_stud, data = dt), mean( ~ mpg_stud, data = dt))</code></pre>
-<pre><code>## [1] 1.040834e-17 7.112366e-17</code></pre>
-<pre class="r"><code>c(sd( ~ hp_stud, data = dt), sd( ~ mpg_stud, data = dt))</code></pre>
-<pre><code>## [1] 1 1</code></pre>
+<pre class="r"><code>c(mean( ~ hp_stud, data = dt), mean( ~ mpg_stud, data = dt))
+#&gt; [1] 1.040834e-17 7.112366e-17
+c(sd( ~ hp_stud, data = dt), sd( ~ mpg_stud, data = dt))
+#&gt; [1] 1 1</code></pre>
 <p>Der Grund für die kleinen Abweichungen von der Null beim Mittelwert
 sind Rundungsfehler, die der Computer macht!</p>
 <p>Schauen wir uns nun das Streudiagramm an, zusammen mit dem Mittelpunkt <span class="math inline">\((0,0)\)</span></p>
 <pre class="r"><code>gf_point(mpg_stud ~ hp_stud, data = dt) %&gt;%
   gf_point(0 ~ 0, color = &quot;red&quot;, size = 5, alpha = 0.2) %&gt;%
   gf_lims(y = c(-2, 2))</code></pre>
-<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-8-1.png" width="90%" />
+<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-8-1.png" width="90%" style="display: block; margin: auto;" />
 Auch wenn die Skalierungen sich geändert haben, die Diagramme sind sehr ähnlich.</p>
 <p>Bestimmen wir die Koeffizienten der Regressionsgerade</p>
-<pre class="r"><code>(beta_stud_1 = cov(mpg_stud ~ hp_stud, data = dt))</code></pre>
-<pre><code>## [1] -0.7761684</code></pre>
-<pre class="r"><code>(beta_stud_0 = 0 - beta_stud_1 * 0)</code></pre>
-<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>(beta_stud_1 = cov(mpg_stud ~ hp_stud, data = dt))
+#&gt; [1] -0.7761684
+(beta_stud_0 = 0 - beta_stud_1 * 0)
+#&gt; [1] 0</code></pre>
 <p>und setzen sie in das Steudiagramm ein:</p>
-<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png" width="90%" /></p>
+<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Wir können das studentisierte Problem auch wieder auf unser ursprüngliches
 zurück rechnen.</p>
 <p>Die Regressionsgerade im studentisierten Problem lautet:</p>
@@ -1039,11 +1039,11 @@ zurück rechnen.</p>
 <p>Rechnen wir nun mittels der Formel
 <span class="math display">\[\hat\beta_1 = \hat\beta_1^{stud} \cdot \frac{s_y}{s_x}\]</span></p>
 <p>die Steigung um, so erhalten wir:</p>
-<pre class="r"><code>(b1 &lt;- beta_stud_1 * sd(dt$mpg) / sd(dt$hp))</code></pre>
-<pre><code>## [1] -0.06822828</code></pre>
+<pre class="r"><code>(b1 &lt;- beta_stud_1 * sd(dt$mpg) / sd(dt$hp))
+#&gt; [1] -0.06822828</code></pre>
 <p>Und setzen wir das in unsere Gleichung zur Bestimmung von <span class="math inline">\(\hat\beta_0\)</span> ein:</p>
-<pre class="r"><code>(b0 &lt;- mean(dt$mpg) - b1 * mean(dt$hp))</code></pre>
-<pre><code>## [1] 30.09886</code></pre>
+<pre class="r"><code>(b0 &lt;- mean(dt$mpg) - b1 * mean(dt$hp))
+#&gt; [1] 30.09886</code></pre>
 <p>so erhalten wir die Schätzwerte des ursprünglichen Problem.</p>
 </div>
 <div id="ein-anderer-weg-um-die-regressionskoeffizenten-zu-bestimmen" class="section level3">
@@ -1174,12 +1174,12 @@ b_1 &lt;- -1 </code></pre>
 <p>Wir haben somit mit <span class="math inline">\(203\)</span> Iterationsschritten das folgende Ergebnisse für die Regressionskoeffizienten:</p>
 <p><span class="math display">\[\hat\beta_0^{stud} = 0` \qquad \hat\beta_1 {stud} = -0.7761689\]</span></p>
 <p>Betrachten wir die daraus erstellte Regressionsgerade:</p>
-<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-18-1.png" width="90%" /></p>
+<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-18-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Um die ursprünglichen Regressionskoeffizenten zu erhalten müssen wir zurück rechnen:</p>
-<pre class="r"><code>(b1 &lt;- b_1 * sd(dt$mpg) / sd(dt$hp))</code></pre>
-<pre><code>## [1] -0.06822832</code></pre>
-<pre class="r"><code>(b0 &lt;- mean(dt$mpg) -  b1 * mean(dt$hp))</code></pre>
-<pre><code>## [1] 30.09887</code></pre>
+<pre class="r"><code>(b1 &lt;- b_1 * sd(dt$mpg) / sd(dt$hp))
+#&gt; [1] -0.06822832
+(b0 &lt;- mean(dt$mpg) -  b1 * mean(dt$hp))
+#&gt; [1] 30.09887</code></pre>
 <p>Die Geradengleichung für unser ursprüngliches Problem lautet somit:</p>
 <p><span class="math display">\[\begin{aligned}
   \hat{y} &amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
@@ -1205,10 +1205,10 @@ grf &lt;- function(beta) {
 ergb &lt;- optim(c(0,-0.5),f , grf, method = &quot;CG&quot;)
 
 # Auslesen der Schätzer aus dem Ergbnis:
-(optim_beta_0 &lt;- ergb$par[1])</code></pre>
-<pre><code>## [1] 0</code></pre>
-<pre class="r"><code>(optim_beta_1 &lt;- ergb$par[2])</code></pre>
-<pre><code>## [1] -0.7761683</code></pre>
+(optim_beta_0 &lt;- ergb$par[1])
+#&gt; [1] 0
+(optim_beta_1 &lt;- ergb$par[2])
+#&gt; [1] -0.7761683</code></pre>
 <p>Wir erhalten somit für das studentisierte Problem die Gerade:</p>
 <p><span class="math display">\[\begin{aligned}
   \hat{y}^{stud} &amp;= \hat\beta_0^{stud} + \hat\beta_1^{stud} \cdot x^{stud} \\ 
@@ -1246,21 +1246,21 @@ f &lt;- function(beta) {
 <pre class="r"><code>ergb &lt;- optim(c(0,-1), f)
 
 # Schätzer auslesen
-(opti_as_beta_0 &lt;- ergb$par[1])</code></pre>
-<pre><code>## [1] -0.1304518</code></pre>
-<pre class="r"><code>(opti_as_beta_1 &lt;- ergb$par[2])</code></pre>
-<pre><code>## [1] -0.6844911</code></pre>
+(opti_as_beta_0 &lt;- ergb$par[1])
+#&gt; [1] -0.1304518
+(opti_as_beta_1 &lt;- ergb$par[2])
+#&gt; [1] -0.6844911</code></pre>
 <p>Schauen wir uns nun die so erhaltene Gerade im Vergleich mit der ‘normalen’ Regressionsgerade an:</p>
-<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-25-1.png" width="90%" /></p>
+<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-25-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>In grün und gestrichelt sehen wir die Gerade aus der <em>Idee der quadratsichen Abweichungssummen</em>, in blau die aus der <em>Idee der absoluten Abweichungssummen</em>.</p>
 <p>Für unser ursprüngliches Problem rechnen wir um:</p>
 <pre class="r"><code># Umrechnen in die urspüngliche Fragestellung
-(as_b1 &lt;- opti_as_beta_1 * sd(dt$mpg) / sd(dt$hp))</code></pre>
-<pre><code>## [1] -0.06016948</code></pre>
-<pre class="r"><code>(as_b0 &lt;- (mean(dt$mpg) - as_b1 * mean(dt$hp)) + opti_as_beta_0 * sd(dt$mpg))</code></pre>
-<pre><code>## [1] 28.13051</code></pre>
+(as_b1 &lt;- opti_as_beta_1 * sd(dt$mpg) / sd(dt$hp))
+#&gt; [1] -0.06016948
+(as_b0 &lt;- (mean(dt$mpg) - as_b1 * mean(dt$hp)) + opti_as_beta_0 * sd(dt$mpg))
+#&gt; [1] 28.13051</code></pre>
 <p>Und die dazu gehörige Darstellung:</p>
-<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-27-1.png" width="90%" /></p>
+<p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-27-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:</p>
 <p><span class="math display">\[\begin{aligned}
   \hat{y} &amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
@@ -1271,9 +1271,9 @@ f &lt;- function(beta) {
 unmittelbar umsetzen lässt:</p>
 <pre class="r"><code>library(quantreg)
 ergmedianreg &lt;- rq(mpg ~ hp, data = dt)
-coef(ergmedianreg)</code></pre>
-<pre><code>## (Intercept)          hp 
-## 28.13050847 -0.06016949</code></pre>
+coef(ergmedianreg)
+#&gt; (Intercept)          hp 
+#&gt; 28.13050847 -0.06016949</code></pre>
 </div>
 <div id="idee-betrag-der-summe-der-abweichungen" class="section level2">
 <h2>1. Idee: Betrag der Summe der Abweichungen</h2>
@@ -1323,24 +1323,24 @@ tab &lt;- tibble(
   methode = rep(c(&quot;Idee 3&quot;, &quot;Idee 2&quot;, &quot;Idee 1&quot;), 2)
 )
 
-pivot_wider(tab, names_from=sum_type, values_from=sums, names_sort=T)</code></pre>
-<pre><code>## # A tibble: 3 x 3
-##   methode   abs  quad
-##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
-## 1 Idee 3   93.0  448.
-## 2 Idee 2   87.3  477.
-## 3 Idee 1  151.  1126.</code></pre>
+pivot_wider(tab, names_from=sum_type, values_from=sums, names_sort=T)
+#&gt; # A tibble: 3 x 3
+#&gt;   methode   abs  quad
+#&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Idee 3   93.0  448.
+#&gt; 2 Idee 2   87.3  477.
+#&gt; 3 Idee 1  151.  1126.</code></pre>
 </div>
 <div id="reproduzierbarkeitsinformationen" class="section level2">
 <h2>Reproduzierbarkeitsinformationen</h2>
-<pre><code>## R version 4.1.0 (2021-05-18)
-## Platform: x86_64-apple-darwin17.0 (64-bit)
-## Running under: macOS Catalina 10.15.7
-## 
-## Locale: de_DE.UTF-8 / de_DE.UTF-8 / de_DE.UTF-8 / C / de_DE.UTF-8 / de_DE.UTF-8
-## 
-## Package version:
-##   mosaic_1.8.3  quantreg_5.86 tidyr_1.1.3   xfun_0.24</code></pre>
+<pre><code>#&gt; R version 4.1.0 (2021-05-18)
+#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&gt; Running under: macOS Catalina 10.15.7
+#&gt; 
+#&gt; Locale: de_DE.UTF-8 / de_DE.UTF-8 / de_DE.UTF-8 / C / de_DE.UTF-8 / de_DE.UTF-8
+#&gt; 
+#&gt; Package version:
+#&gt;   mosaic_1.8.3  quantreg_5.86 tidyr_1.1.3   xfun_0.24</code></pre>
 </div>
 
     </div>
