@@ -71,6 +71,8 @@ und&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;##     cover
 ## n     Low  Yes High
 ##   40 0.00 0.98 0.02&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
+## use `guide = &amp;quot;none&amp;quot;` instead.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/nabpost/2018-01-04-prognose-konfidenz-und-fiduzialintervalle_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
