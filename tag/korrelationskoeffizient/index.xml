@@ -319,7 +319,7 @@ n \cdot \hat\beta_0 \\
 wir die Ergebnisse vorab. Ebenso, damit der Quellcode kürzer wird, speichern
 wir in &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; die studentisierten Werte von &lt;span class=&#34;math inline&#34;&gt;\(hp\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(mpg\)&lt;/span&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Vorbereitungen 
-sd_x &amp;lt;- var(~ hp_stud, data = dt)
+var_x &amp;lt;- var(~ hp_stud, data = dt)
 cov_xy &amp;lt;- cov(mpg_stud ~ hp_stud, data = dt)
 
 n &amp;lt;- length(dt$hp_stud)
@@ -334,7 +334,7 @@ Wir definieren diese Funktion wie folgt in &lt;strong&gt;R&lt;/strong&gt;:&lt;/p
 
 nabla_qs &amp;lt;- function(b_0, b_1) {
   c(2 * n * b_0,
-    2 * (n - 1) * (b_1 * sd_x - cov_xy)
+    2 * (n - 1) * (b_1 * var_x - cov_xy)
   )
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Die Schrittweite &lt;span class=&#34;math inline&#34;&gt;\(alpha\)&lt;/span&gt; bestimmen wir mit Hilfe der &lt;em&gt;Armijo-Bedingung&lt;/em&gt; und der &lt;em&gt;Backtracking Liniensuche&lt;/em&gt;:

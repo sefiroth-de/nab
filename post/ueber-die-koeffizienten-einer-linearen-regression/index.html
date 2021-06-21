@@ -1098,7 +1098,7 @@ n \cdot \hat\beta_0 \\
 wir die Ergebnisse vorab. Ebenso, damit der Quellcode kürzer wird, speichern
 wir in <span class="math inline">\(x\)</span> und <span class="math inline">\(y\)</span> die studentisierten Werte von <span class="math inline">\(hp\)</span> und <span class="math inline">\(mpg\)</span>:</p>
 <pre class="r"><code># Vorbereitungen 
-sd_x &lt;- var(~ hp_stud, data = dt)
+var_x &lt;- var(~ hp_stud, data = dt)
 cov_xy &lt;- cov(mpg_stud ~ hp_stud, data = dt)
 
 n &lt;- length(dt$hp_stud)
@@ -1113,7 +1113,7 @@ Wir definieren diese Funktion wie folgt in <strong>R</strong>:</p>
 
 nabla_qs &lt;- function(b_0, b_1) {
   c(2 * n * b_0,
-    2 * (n - 1) * (b_1 * sd_x - cov_xy)
+    2 * (n - 1) * (b_1 * var_x - cov_xy)
   )
 }</code></pre>
 <p>Die Schrittweite <span class="math inline">\(alpha\)</span> bestimmen wir mit Hilfe der <em>Armijo-Bedingung</em> und der <em>Backtracking Liniensuche</em>:
