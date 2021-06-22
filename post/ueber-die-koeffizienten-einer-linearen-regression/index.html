@@ -804,10 +804,10 @@
 Datenpunkten <span class="math inline">\((x_1, y_1), ..., (x_n, y_n)\)</span> eine <em>möglichst passende</em> Funktion
 <span class="math inline">\(g(x)\)</span> zu finden, so dass
 <span class="math display">\[y_i = g(x_i) + e_i\]</span>
-gilt. Dabei tollerieren wir eine (kleine) Abweichung <span class="math inline">\(e_i\)</span>.</p>
-<p>Bei einer <em>einfachen <strong>linearen</strong> Regression</em> gehen wir davon aus, dass die Datenpunkte (im wesendlichen) auf einer Geraden liegen. Mit <span class="math inline">\(g(x)=\beta_0 + \beta1 \cdot x\)</span> ergibt sich dann für die Datenpunkte die Gleichung:</p>
+gilt. Dabei tolerieren wir eine (kleine) Abweichung <span class="math inline">\(e_i\)</span>.</p>
+<p>Bei einer <em>einfachen <strong>linearen</strong> Regression</em> gehen wir davon aus, dass die Datenpunkte (im wesentlichen) auf einer Geraden liegen. Mit <span class="math inline">\(g(x)=\beta_0 + \beta1 \cdot x\)</span> ergibt sich dann für die Datenpunkte die Gleichung:</p>
 <p><span class="math display">\[y_i = \beta_0 + \beta_1 \cdot x_i + e_i\]</span></p>
-<p>Unsere Aufgabe besteht nun darin die Parameter <span class="math inline">\(\beta_0\)</span> (y-Achenabschnitt) und <span class="math inline">\(\beta_1\)</span> (Steigung) an hand der <span class="math inline">\(n\)</span> Datenpunkte zu schätzen.
+<p>Unsere Aufgabe besteht nun darin die Parameter <span class="math inline">\(\beta_0\)</span> (y-Achsenabschnitt) und <span class="math inline">\(\beta_1\)</span> (Steigung) an Hand der <span class="math inline">\(n\)</span> Datenpunkte zu schätzen.
 Alle unsere Schätzungen kennzeichnen wir mit einem Dach (<span class="math inline">\(\hat{.}\)</span>), um sie von den (in der Regel unbekannten) Parametern besser zu unterscheiden.</p>
 <p>Wir suchen somit nach <span class="math inline">\(\hat\beta= \left(\hat\beta_0,\, \hat\beta_1\right)\)</span>,
 so dass die Gerade <span class="math inline">\(\hat\beta_0 + \hat\beta_1 \cdot x\)</span> zu gegebenem <span class="math inline">\(x_i\)</span>
@@ -829,7 +829,7 @@ gegebenen Wert <span class="math inline">\(y_i\)</span> lässt sich schreiben al
 <li><p>Idee: <em>Summe der absoluten Abweichungen</em></p></li>
 <li><p>Idee: <em>Summe der quadratischen Abweichungen</em></p></li>
 </ol>
-<p>Gewöhnlich nutzen wir die <em>quadratischen Abweichungen</em>, wesshalb
+<p>Gewöhnlich nutzen wir die <em>quadratischen Abweichungen</em>, weshalb
 wir die drei Ideen ebenso in umgekehrter Reihenfolge betrachten wollen:</p>
 <div id="idee-summe-der-quadratischen-abweichungen" class="section level2">
 <h2>3. Idee: Summe der quadratischen Abweichungen</h2>
@@ -842,7 +842,7 @@ QS &amp;= QS(\hat\beta) = QS(\hat\beta_0, \hat\beta_1) \\
 <p>die <strong>Q</strong>uadrat-<strong>S</strong>umme der Abweichungen.</p>
 <p>Gesucht wird <span class="math inline">\(\hat\beta=\left(\hat\beta_0,\,\hat\beta_1\right)\)</span>,
 so das <span class="math inline">\(QS\)</span> minimiert wird.</p>
-<p>Dies ist ein Minimierungsproblem, bei dem wir zumindestens eine (exakte)
+<p>Dies ist ein Minimierungsproblem, bei dem wir zu mindestens eine (exakte)
 mathematisch-algebraisch Lösung in Form eines stationären Punktes finden können.
 Dazu berechnen wir die Nullstelle der ersten partiellen Ableitung von <span class="math inline">\(QS\)</span> nach <span class="math inline">\(\hat\beta_0\)</span> bzw. <span class="math inline">\(\hat\beta_1\)</span>.</p>
 <div id="vorbemerkungen" class="section level3">
@@ -910,7 +910,7 @@ Wir setzen nun wieder den Ausdruck gleich Null:</p>
     &amp;= \frac{\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\sum\limits_{i=1}^n(x_i-\bar{x})^2}
 \end{aligned}\]</span></p>
 <p>Wir können nun Zähler und Nenner der rechten Seite mit <span class="math inline">\(\frac{1}{n}\)</span> erweitern
-und erhlaten so:</p>
+und erhalten so:</p>
 <p><span class="math display">\[\begin{aligned}
 \hat\beta_1 
       &amp;= \frac{\frac{1}{n} \cdot\sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})}{\frac{1}{n} \cdot\sum\limits_{i=1}^n  (x_i-\bar{x})^2} \\
@@ -929,16 +929,14 @@ dann auch von den <strong>Kleinste-Quadrate-Schätzern</strong>
 (oder kurz <strong>KQ-Schätzer</strong> bzw. <strong>OLS-Schätzer</strong>) <span class="math inline">\(\hat\beta_0\)</span> und <span class="math inline">\(\hat\beta_1\)</span>.</p>
 <p>Erweitern wir den Ausdruck mit Standardabweichung <span class="math inline">\(\sigma_y\)</span> bzw. <span class="math inline">\(s_y\)</span>, so erhalten wir:</p>
 <p><span class="math display">\[\begin{aligned}
-\hat\beta_1 &amp;= \frac{\sigma_{x,y}}{\sigma^2_x} \cdot \frac{\sigma_y}{\sigma_y} \\
- &amp;= \frac{\sigma_{x,y}}{\sigma_x \cdot \sigma_x} \cdot \frac{\sigma_y}{\sigma_y}\\
- &amp;= \frac{\sigma_{x,y}}{\sigma_x \cdot \sigma_y} \cdot \frac{\sigma_y}{\sigma_x} \\
+\hat\beta_1 &amp;= \frac{\sigma_{x,y}}{\sigma^2_x} \cdot \frac{\sigma_y}{\sigma_y} = \frac{\sigma_{x,y}}{\sigma_x \cdot \sigma_x} \cdot \frac{\sigma_y}{\sigma_y} = \frac{\sigma_{x,y}}{\sigma_x \cdot \sigma_y} \cdot \frac{\sigma_y}{\sigma_x} \\
  &amp;= \rho_{x,y} \cdot \frac{\sigma_y}{\sigma_x} \\
 \end{aligned}\]</span></p>
 <p>und analog für die Schätzer:</p>
 <p><span class="math display">\[\begin{aligned}
-\hat\beta_1 &amp;= \frac{s_{x,y}}{s^2_x} \cdot \frac{s_y}{s_y} \\
- &amp;= \frac{s_{x,y}}{s_x \cdot s_x} \cdot \frac{s_y}{s_y}\\
- &amp;= \frac{s_{x,y}}{s_x \cdot s_y} \cdot \frac{s_y}{s_x} \\
+\hat\beta_1 &amp;= \frac{s_{x,y}}{s^2_x} \cdot \frac{s_y}{s_y} 
+  = \frac{s_{x,y}}{s_x \cdot s_x} \cdot \frac{s_y}{s_y}
+  = \frac{s_{x,y}}{s_x \cdot s_y} \cdot \frac{s_y}{s_x} \\
  &amp;= r_{x,y} \cdot \frac{s_y}{s_x} \\
 \end{aligned}\]</span></p>
 <p>Die Steigung <span class="math inline">\(\hat\beta_1\)</span> hat somit eine direkte Beziehung mit dem <em>Korrelationskoeffizenten</em> <span class="math inline">\(\rho\)</span> (der Grundgesamtheit) bzw. <span class="math inline">\(r\)</span> (der Stichprobe).</p>
@@ -956,7 +954,7 @@ dann auch von den <strong>Kleinste-Quadrate-Schätzern</strong>
 Zusammenhang zwischen dem Verbrauch (in Meilen pro Gallone <em>mpg</em>) und der Leistung
 (Pferdestärke <em>hp</em>) modelliert werden kann.</p>
 <pre class="r"><code>library(mosaic)
-# Wir nehmen eie Datentabelle &#39;mtcars&#39;:
+# Wir nehmen die Datentabelle &#39;mtcars&#39;:
 mtcars %&gt;%
   select(hp, mpg) -&gt; dt
 # und vergleichen Verbrauch (mpg, miles per gallon) mit der Pferdestärke (hp)
@@ -977,7 +975,7 @@ Streudiagramm ein:</p>
   gf_point(mean_mpg ~ mean_hp, color = &quot;red&quot;, size = 5, alpha = 0.2) %&gt;%
   gf_lims(y = c(5,35))</code></pre>
 <p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png" width="90%" style="display: block; margin: auto;" /></p>
-<p>Berechnen wir nun die Schätzwerte für die Regressiongerade</p>
+<p>Berechnen wir nun die Schätzwerte für die Regressionsgerade</p>
 <pre class="r"><code>(beta_1 = cov(mpg ~ hp, data = dt) / var(~ hp, data = dt))
 #&gt; [1] -0.06822828
 (beta_0 = mean_mpg - beta_1 * mean_hp)
@@ -1026,7 +1024,7 @@ Auch wenn die Skalierungen sich geändert haben, die Diagramme sind sehr ähnlic
 #&gt; [1] -0.7761684
 (beta_stud_0 = 0 - beta_stud_1 * 0)
 #&gt; [1] 0</code></pre>
-<p>und setzen sie in das Steudiagramm ein:</p>
+<p>und setzen sie in das Streudiagramm ein:</p>
 <p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Wir können das studentisierte Problem auch wieder auf unser ursprüngliches
 zurück rechnen.</p>
@@ -1049,7 +1047,7 @@ zurück rechnen.</p>
 <div id="ein-anderer-weg-um-die-regressionskoeffizenten-zu-bestimmen" class="section level3">
 <h3>Ein anderer Weg um die Regressionskoeffizenten zu bestimmen…</h3>
 <p>Gehen wir das Problem noch einmal neu an. Wir suchen <span class="math inline">\(\hat\beta=(\hat\beta_0, \hat\beta_1)\)</span> welches <span class="math inline">\(QS(\hat\beta) = QS(\hat\beta_0, \hat\beta_1) = \sum\limits_{i=1}^n \left(\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i \right)^2\)</span> minimiert.</p>
-<p>Statt es direkt, wie oben durch Nullsetzen der partiellen Ableitungen, zu bestimmen, wählen wir nun einen mathematisch-<em>numerischen</em> Ansatz und wollen <span class="math inline">\(\hat\beta \in \mathbf{R}^2\)</span> als <em>Optimierungsproblem</em> mit Hilfe des <em>Gradientenverfahrens</em> lösen.</p>
+<p>Statt es direkt, wie oben durch Null setzen der partiellen Ableitungen, zu bestimmen, wählen wir nun einen mathematisch-<em>numerischen</em> Ansatz und wollen <span class="math inline">\(\hat\beta \in \mathbf{R}^2\)</span> als <em>Optimierungsproblem</em> mit Hilfe des <em>Gradientenverfahrens</em> lösen.</p>
 <p>Beim Gradientenverfahren wird versucht, ausgehend von einem Startwert <span class="math inline">\(\hat\beta^0 \in \mathbf{R}^2\)</span>, gemäß der Iterationsvorschrift</p>
 <p><span class="math display">\[
 \hat\beta^{k+1} = \hat\beta^{k} + \alpha^k \cdot d^k
@@ -1124,7 +1122,7 @@ Die Armijo-Bedingung umgeht Konvergenzprobleme der einfachen Bedingung, indem si
 In der Praxis werden oft sehr kleine Werte verwendet, z.B. <span class="math inline">\(\sigma=0.0001\)</span>.</p>
 <p>Die <em>Backtracking-Liniensuche</em> verringert die Schrittweite wiederholt um den
 Faktor <span class="math inline">\(\rho\)</span> (<code>rho</code>) , bis die Armijo-Bedingung erfüllt ist.
-Sie terminiert garantiert nach einer endlichen Anzahl von Schritten. Wesshalb wir
+Sie terminiert garantiert nach einer endlichen Anzahl von Schritten. Weshalb wir
 sie hier einsetzen:</p>
 <pre class="r"><code>alpha_k &lt;- function(b_0, b_1, d_k, alpha = 1, sigma = 0.0001, rho = 0.5) {
   d_0 &lt;- d_k[1]
@@ -1171,16 +1169,17 @@ b_1 &lt;- -1 </code></pre>
   b_0 &lt;- x0
   b_1 &lt;- x1
 }</code></pre>
-<p>Wir haben somit mit <span class="math inline">\(203\)</span> Iterationsschritten das folgende Ergebnisse für die Regressionskoeffizienten:</p>
-<p><span class="math display">\[\hat\beta_0^{stud} = 0` \qquad \hat\beta_1 {stud} = -0.7761689\]</span></p>
+<p>Wir haben in <span class="math inline">\(203\)</span> Iterationsschritten das folgende Ergebnis für die Regressionskoeffizienten:</p>
+<p><span class="math display">\[\hat\beta_0^{stud} = 0 \qquad \hat\beta_1^{stud} = -0.7761689\]</span></p>
 <p>Betrachten wir die daraus erstellte Regressionsgerade:</p>
 <p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-18-1.png" width="90%" style="display: block; margin: auto;" /></p>
-<p>Um die ursprünglichen Regressionskoeffizenten zu erhalten müssen wir zurück rechnen:</p>
+<p>Um die Regressionskoeffizienten für unser ursprüngliches Problem zu erhalten
+müssen wir wie folgt zurück rechnen:</p>
 <pre class="r"><code>(b1 &lt;- b_1 * sd(dt$mpg) / sd(dt$hp))
 #&gt; [1] -0.06822832
 (b0 &lt;- mean(dt$mpg) -  b1 * mean(dt$hp))
 #&gt; [1] 30.09887</code></pre>
-<p>Die Geradengleichung für unser ursprüngliches Problem lautet somit:</p>
+<p>Die Geradengleichung für das ursprüngliches Problem lautet somit:</p>
 <p><span class="math display">\[\begin{aligned}
   \hat{y} &amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
           &amp;\approx 30.0988668 -0.0682283 \cdot x \\
@@ -1190,9 +1189,9 @@ b_1 &lt;- -1 </code></pre>
 <div id="die-r-funktion-optim" class="section level3">
 <h3>Die R Funktion <code>optim</code></h3>
 <p>In <strong>R</strong> gibt es bessere Optimierungsmethoden, als die hier verwendete.
-Zum Beispiel kännen wir die Funktion <code>optim</code> verwenden.
+Zum Beispiel können wir die Funktion <code>optim</code> verwenden.
 Die Funktion <code>optim</code> benötigt die zu optimierende <span class="math inline">\(f(x)\)</span> und
-ggf. die Gradientenfunkt <span class="math inline">\(gf(x)\)</span> sowie einen Startpunkt <span class="math inline">\(x^0\)</span>:</p>
+ggf. die Gradientenfunktion <span class="math inline">\(gf(x)\)</span> sowie einen Startpunkt <span class="math inline">\(x^0\)</span>:</p>
 <pre class="r"><code>f &lt;- function(beta) {
   qs(beta[1], beta[2])
 }
@@ -1202,9 +1201,9 @@ grf &lt;- function(beta) {
 }
 
 # Der eigentliche Aufruf von optim:
-ergb &lt;- optim(c(0,-0.5),f , grf, method = &quot;CG&quot;)
+ergb &lt;- optim(c(0,-0.5),f ,grf, method = &quot;CG&quot;)
 
-# Auslesen der Schätzer aus dem Ergbnis:
+# Auslesen der Schätzer aus dem Ergebnis:
 (optim_beta_0 &lt;- ergb$par[1])
 #&gt; [1] 0
 (optim_beta_1 &lt;- ergb$par[2])
@@ -1237,7 +1236,7 @@ die Funktion der <em>A</em>bsolut-<em>S</em>ummen auf:</p>
 as &lt;- function(b_0, b_1) {
   return(sum(abs(b_0 + b_1 * x - y)))
 }</code></pre>
-<p>Danach konstuieren wir die zu optimierende Funktion <span class="math inline">\(f\)</span>:</p>
+<p>Danach konstruieren wir die zu optimierende Funktion <span class="math inline">\(f\)</span>:</p>
 <pre class="r"><code># Zu optimierende Funktion
 f &lt;- function(beta) {
   as(beta[1], beta[2])
@@ -1252,9 +1251,9 @@ f &lt;- function(beta) {
 #&gt; [1] -0.6844911</code></pre>
 <p>Schauen wir uns nun die so erhaltene Gerade im Vergleich mit der ‘normalen’ Regressionsgerade an:</p>
 <p><img src="https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-25-1.png" width="90%" style="display: block; margin: auto;" /></p>
-<p>In grün und gestrichelt sehen wir die Gerade aus der <em>Idee der quadratsichen Abweichungssummen</em>, in blau die aus der <em>Idee der absoluten Abweichungssummen</em>.</p>
+<p>In grün und gestrichelt sehen wir die Gerade aus der <em>Idee der quadratischen Abweichungssummen</em>, in blau die aus der <em>Idee der absoluten Abweichungssummen</em>.</p>
 <p>Für unser ursprüngliches Problem rechnen wir um:</p>
-<pre class="r"><code># Umrechnen in die urspüngliche Fragestellung
+<pre class="r"><code># Umrechnen in die ursprüngliche Fragestellung
 (as_b1 &lt;- opti_as_beta_1 * sd(dt$mpg) / sd(dt$hp))
 #&gt; [1] -0.06016948
 (as_b0 &lt;- (mean(dt$mpg) - as_b1 * mean(dt$hp)) + opti_as_beta_0 * sd(dt$mpg))
@@ -1279,11 +1278,11 @@ coef(ergmedianreg)
 <h2>1. Idee: Betrag der Summe der Abweichungen</h2>
 <p>Wenn wir die Summe der Abweichungen <span class="math inline">\(\sum\limits_{i=1}^n \hat{e}_i\)</span> minimieren
 wollen, dann ist es sinnvoll den Betrag davon zu minimieren.
-Wir suchen also die Schätzer <span class="math inline">\(\hat\beta_0\)</span> und <span class="math inline">\(\hat\beta_1\)</span>, so dass der Ausdruck
-<span class="math display">\[
+Wir suchen also die Schätzer <span class="math inline">\(\hat\beta_0\)</span> und <span class="math inline">\(\hat\beta_1\)</span>, so dass der Ausdruck</p>
+<p><span class="math display">\[
 \left| \sum_{i=1}^n \hat{e}_i \right| = \left| \sum_{i=1}^n (\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i) \right|
-\]</span>
-minimal ist.</p>
+\]</span></p>
+<p>minimal ist.</p>
 <p>Wegen:</p>
 <p><span class="math display">\[\begin{aligned}
 \sum_{i=1}^n (\hat\beta_0 + \hat\beta_1 \cdot x_i - y_i)
@@ -1293,7 +1292,7 @@ minimal ist.</p>
 &amp;= n \cdot \left( \hat\beta_0 + \hat\beta_1 \cdot \bar{x} - \bar{y} \right) \\
 &amp;= n \cdot \left( \hat\beta_0 - \bar{y} + \hat\beta_1 \cdot \bar{x}  \right)
 \end{aligned}\]</span></p>
-<p>können wir das absolute Mininum bei <span class="math inline">\(\hat\beta_0 - \bar{y} =0\)</span> und <span class="math inline">\(\hat\beta_1 \cdot \bar{x}=0\)</span> erreichen, was zur Lösung
+<p>können wir das absolute Minimum bei <span class="math inline">\(\hat\beta_0 - \bar{y} =0\)</span> und <span class="math inline">\(\hat\beta_1 \cdot \bar{x}=0\)</span> erreichen, was zur Lösung
 <span class="math inline">\(\hat\beta_0 =\bar{y}\)</span> und <span class="math inline">\(\hat\beta_1 = 0\)</span> führt.
 Dies ist unser <em>Nullmodel</em> in dem die <span class="math inline">\(x_i\)</span> keinen Einfluss auf die <span class="math inline">\(y_i\)</span> haben und
 wir daher pauschal die <span class="math inline">\(y_i\)</span> mit <span class="math inline">\(\hat{y}_i=\bar{y}\)</span>, also dem Mittelwert der <span class="math inline">\(y_i\)</span> abschätzen.</p>
