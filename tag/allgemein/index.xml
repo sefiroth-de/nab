@@ -5,12 +5,205 @@
     <link>https://sefiroth.net/nab/tag/allgemein/</link>
       <atom:link href="https://sefiroth.net/nab/tag/allgemein/index.xml" rel="self" type="application/rss+xml" />
     <description>Allgemein</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 09 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 23 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Allgemein</title>
       <link>https://sefiroth.net/nab/tag/allgemein/</link>
     </image>
+    
+    <item>
+      <title>Regression mit studentisierten Daten</title>
+      <link>https://sefiroth.net/nab/post/regression-mit-studentisierten-daten/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nab/post/regression-mit-studentisierten-daten/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nab/post/regression-mit-studentisierten-daten/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Bei einer einfachen linearen Regression versuchen wir zu vorgegebenen Datenpunkten &lt;span class=&#34;math inline&#34;&gt;\((x_1, y_1), \cdots (x_n, y_n)\)&lt;/span&gt; die Parameter einer
+möglichst passenden Gerade &lt;span class=&#34;math inline&#34;&gt;\(g(x)=\beta_0 + \beta_1 \cdot x\)&lt;/span&gt; zu schätzen.&lt;/p&gt;
+&lt;p&gt;Die Schätzung des y-Achsenabschnitts &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; und der Steigung &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; erfolgt dabei algebraisch exakt mittels:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_0 = \bar{y} - \hat\beta_1 \cdot \bar{x} \quad\text{und}\quad \hat\beta_1 = \frac{s_x}{s_y}\cdot r_{x,y}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Dabei sind &lt;span class=&#34;math inline&#34;&gt;\(\bar{x}\)&lt;/span&gt; bzw. &lt;span class=&#34;math inline&#34;&gt;\(\bar{y}\)&lt;/span&gt; die Mittelwerte und &lt;span class=&#34;math inline&#34;&gt;\(s_x\)&lt;/span&gt; bzw. &lt;span class=&#34;math inline&#34;&gt;\(s_y\)&lt;/span&gt; die Standardabweichungen der Datenpunkte &lt;span class=&#34;math inline&#34;&gt;\(x_i\)&lt;/span&gt; bzw. &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt;; darüberhinaus ist &lt;span class=&#34;math inline&#34;&gt;\(r_{x,y}\)&lt;/span&gt; der Korrelationskoeffizient der Datenpunkte.&lt;/p&gt;
+&lt;p&gt;Beim studentisieren werden die Datenpunkte bzgl. des Mittelwertes zentriert und bzgl der Standardabweichung normiert:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[x_i^{\text{stud}} = \frac{x_i-\bar{x}}{s_x} \quad\text{bzw.}\quad y_i^{\text{stud}} = \frac{y_i-\bar{y}}{s_y}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Was passiert nun durch eine solche Studentisierung (oft auch z-Transformation genannt) mit den geschätzen Parametern?&lt;/p&gt;
+&lt;p&gt;Die Mittelwerte &lt;span class=&#34;math inline&#34;&gt;\(\bar{x}^{stud}\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\bar{y}^{stud}\)&lt;/span&gt; werden zu Null. Die Standardabweichungen &lt;span class=&#34;math inline&#34;&gt;\(s_{x^{stud}}\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(s_{y^stud}\)&lt;/span&gt; werden zur Eins:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\bar{x}^{stud}=0=\bar{y}^{stud} \qquad s_{x^{stud}}= 1 = s_{y^{stud}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Der y-Achsenabschnitt wird nun durch&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_0^{stud} 
+= \bar{y}^{stud} - \hat\beta_1^{stud} \cdot \bar{x}^{stud}
+= 0 - \hat\beta_1^{stud} \cdot 0 = 0\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;und die Steigung durch&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\hat\beta_1^{stud} 
+= \frac{s_{x^{stud}}}{s_{y^{stud}}}\cdot r_{x^{stud},y^{stud}}
+= \frac{1}{1}\cdot r_{x^{stud},y^{stud}} = r_{x^{stud},y^{stud}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;geschätzt.&lt;/p&gt;
+&lt;p&gt;Für den Korrelationskoeffienten gilt nun
+&lt;span class=&#34;math display&#34;&gt;\[
+r_{x^{stud},y^{stud}} 
+= \frac{s_{x^{stud},y^{stud}}}{s_{x^{stud}}\cdot_{y^{stud}}}
+= \frac{s_{x^{stud},y^{stud}}}{1 \cdot 1}
+= s_{x^{stud},y^{stud}}.
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Damit Schätzen wir unsere Steigung &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1^{stud}\)&lt;/span&gt; direkt aus der Kovarianz &lt;span class=&#34;math inline&#34;&gt;\(s_{x^{stud},y^{stud}}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Damit gilt:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_1^{stud} = r_{x^{stud},y^{stud}} = s_{x^{stud},y^{stud}} \in [-1, 1]\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In Worten zusammengefasst:
+&lt;em&gt;Im studentisierten Fall ist&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;der y-Achsenabschnitt immer 0 und&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;die Steigung immer ein Wert zwischen -1 und 1&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;beispiel-mtcars--daten&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Beispiel: &lt;code&gt;mtcars&lt;/code&gt;- Daten&lt;/h3&gt;
+&lt;p&gt;Auf Grundlage der Datentabelle &lt;em&gt;mtcars&lt;/em&gt; wollen wir den linearer
+Zusammenhang zwischen dem Verbrauch (in Meilen pro Gallone &lt;em&gt;mpg&lt;/em&gt;)
+und der Leistung (Pferdestärke &lt;em&gt;hp&lt;/em&gt;) modellieren.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+
+# Wir nehmen die Datentabelle &amp;#39;mtcars&amp;#39;:
+mtcars %&amp;gt;%
+  select(hp, mpg) -&amp;gt; dt
+
+# Ein kurzer Blick aus die Daten:
+df_stats( ~ hp + mpg, mean, sd, data = dt)
+#&amp;gt;   response      mean        sd
+#&amp;gt; 1       hp 146.68750 68.562868
+#&amp;gt; 2      mpg  20.09062  6.026948
+
+# Wir vergleichen den Verbrauch (mpg, miles per gallon) 
+# mit den Pferdestärken (hp) mit Hilfe eines Streudiagramms.
+# Dazu berechnen wir vorab die Mittelwerte
+mean_hp &amp;lt;- mean(~ hp, data = dt)
+mean_mpg &amp;lt;- mean(~ mpg, data = dt)
+
+# und berechnen nun die Schätzwerte für die Regressionsgerade
+beta_1 &amp;lt;- cov(mpg ~ hp, data = dt) / var(~ hp, data = dt)
+beta_0 &amp;lt;- mean_mpg - beta_1 * mean_hp
+
+# schliesslich zeichnen alles in das Streudiagramm ein:
+gf_point(mpg ~ hp, data = dt) %&amp;gt;%
+  gf_hline(yintercept = ~ mean_mpg, 
+           color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_vline(xintercept = ~ mean_hp, 
+           color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_point(mean_mpg ~ mean_hp, 
+           color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
+  gf_abline(slope = ~ beta_1, intercept = ~beta_0, 
+            color = &amp;quot;dodgerblue&amp;quot;) %&amp;gt;%
+  gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/regression-mit-studentisierten-daten/index.de_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;90%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Die Funktionsvorschrift für die (blaue) Regressionsgerade lautet:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+  \hat{y} &amp;amp;= \hat\beta_0 + \hat\beta_1 \cdot x \\ 
+          &amp;amp;\approx 30.0988605 -0.0682283 \cdot x \\
+          &amp;amp;\approx 30.099 -0.068 \cdot x
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Studentisieren wir nun die &lt;em&gt;mpg&lt;/em&gt; und &lt;em&gt;hp&lt;/em&gt; Werte. In &lt;strong&gt;R&lt;/strong&gt; können wir das mit der Funktion ‘zscore()’&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; wie folgt machen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dt %&amp;gt;%
+  mutate(
+    hp_stud = zscore(hp),
+    mpg_stud = zscore(mpg)
+  ) -&amp;gt; dt
+
+# Ein kurzer Blick aus die Daten:
+df_stats( ~ hp_stud + mpg_stud, mean, sd, data = dt)
+#&amp;gt;   response         mean sd
+#&amp;gt; 1  hp_stud 1.040834e-17  1
+#&amp;gt; 2 mpg_stud 7.112366e-17  1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Der Grund für die kleinen Abweichungen von der Null bei den Mittelwerten
+sind unumgängliche Rundungsfehler, die der Computer macht!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Wir &amp;quot;berechnen&amp;quot; die Mittelwerte:
+mean_hp_stud &amp;lt;- 0 # = mean(~ hp_stud, data = dt)
+mean_mpg_stud &amp;lt;- 0 # = mean(~ mpg_stud, data = dt)
+
+# Berechnen wir nun die Schätzwerte für die Regressionsgerade:
+beta_1_stud &amp;lt;- cov(mpg_stud ~ hp_stud, data = dt)
+beta_0_stud &amp;lt;- 0 # = mean_mpg_stud - beta_1_stud * mean_hp_stud
+
+# und zeichnen diese in unser Streudiagramm ein:
+gf_point(mpg_stud ~ hp_stud, data = dt) %&amp;gt;%
+  gf_hline(yintercept = ~ mean_mpg_stud, 
+           color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_vline(xintercept = ~ mean_hp_stud, 
+           color = &amp;quot;grey60&amp;quot;, linetype = &amp;quot;dashed&amp;quot;) %&amp;gt;%
+  gf_point(mean_mpg_stud ~ mean_hp_stud, 
+           color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
+  gf_abline(slope = ~ beta_1_stud, intercept = ~beta_0_stud, 
+            color = &amp;quot;dodgerblue&amp;quot;) %&amp;gt;%
+  gf_lims(y = c(-2,2))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/regression-mit-studentisierten-daten/index.de_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;90%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Die Regressionsgerade im studentisierten Problem lautet nun:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+  \hat{y}^{stud} &amp;amp;= \hat\beta^{stud}_0 + \hat\beta_1^{stud} \cdot x^{stud} \\ 
+    &amp;amp;\approx 0 - 0.7761684 \cdot x^{stud} \\
+    &amp;amp;\approx 0 -0.776 \cdot x^{stud} 
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;direkt-mit-r&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Direkt mit ‘R’&lt;/h3&gt;
+&lt;p&gt;Wir erhalten unsere Ergebnisse natürlich auch direkt in R, ohne selber die Werte auszurechnen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Ursprüngliches Modell:
+erglm &amp;lt;- lm(mpg ~ hp, data = dt)
+coef(erglm)
+#&amp;gt; (Intercept)          hp 
+#&amp;gt; 30.09886054 -0.06822828
+
+# Studentisiertes Modell:
+erglm_stud &amp;lt;- lm(mpg_stud ~ hp_stud, data = dt)
+coef(erglm_stud)
+#&amp;gt;   (Intercept)       hp_stud 
+#&amp;gt; -3.149357e-17 -7.761684e-01&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;zurückrechnen-der-studentisierten-werte-in-das-ursprüngliche-problem&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Zurückrechnen der studentisierten Werte in das ursprüngliche Problem&lt;/h3&gt;
+&lt;p&gt;Aus dem Ergebnis des studentisierten Modells können wir die Koeffizenten des ursprünglichen Modells wie folgt berechnen:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_1 = \hat\beta_1^{stud} \cdot \frac{s_y}{s_x}\]&lt;/span&gt;
+und&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\hat\beta_0 = \bar{y} - \hat\beta_1 \cdot \bar{x}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;R&lt;/strong&gt; geht das wie folgt:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean_mpg &amp;lt;- mean( ~ mpg, data = dt)
+sd_mpg &amp;lt;- sd( ~ mpg, data = dt)
+mean_hp &amp;lt;- mean( ~ hp, data = dt)
+sd_hp &amp;lt;- sd( ~ hp, data = dt)
+
+(beta_1 &amp;lt;- beta_1_stud * sd_mpg / sd_hp)
+#&amp;gt; [1] -0.06822828
+(beta_0 &amp;lt;- mean_mpg - beta_1 * mean_hp)
+#&amp;gt; [1] 30.09886&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+### Fazit
+
+...
+
+## Reproduzierbarkeitsinformationen
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;#&amp;gt; R version 4.1.0 (2021-05-18)
+#&amp;gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&amp;gt; Running under: macOS Catalina 10.15.7
+#&amp;gt;
+#&amp;gt; Locale: de_DE.UTF-8 / de_DE.UTF-8 / de_DE.UTF-8 / C / de_DE.UTF-8 / de_DE.UTF-8
+#&amp;gt;
+#&amp;gt; Package version:
+#&amp;gt; mosaic_1.8.3 tidyr_1.1.3 xfun_0.24
+```&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Das “Cookbook” zur Datentabelle können Sie mit Hilfe von &lt;code&gt;help(&#34;mtcars&#34;)&lt;/code&gt; aufrufen!&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Sie können hier auch die Funktion &lt;code&gt;scale()&lt;/code&gt; verwenden!&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Über die Koeffizienten einer linearen Regression</title>
@@ -117,8 +310,8 @@ Dazu berechnen wir die Nullstelle der ersten partiellen Ableitung von &lt;span c
     &amp;amp;=2 \cdot \left(- \left(\sum\limits_{i=1}^n y_i \cdot x_i - n \cdot \bar{y} \cdot \bar{x}   \right)+ \hat\beta_1 \cdot \left(\sum\limits_{i=1}^n  x_i^2- n \cdot  \bar{x}^2\right)\right) \\
     &amp;amp;=2 \cdot \left(\hat\beta_1 \cdot \left(\sum\limits_{i=1}^n  x_i^2- n \cdot  \bar{x}^2\right)- \left(\sum\limits_{i=1}^n y_i \cdot x_i - n \cdot \bar{y} \cdot \bar{x}   \right)\right) \\
     &amp;amp;= 2 \cdot \left(\hat\beta_1 \cdot \sum\limits_{i=1}^n(x_i-\bar{x})^2 - \sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})\right)
-\end{aligned}\]&lt;/span&gt;
-Wir setzen nun wieder den Ausdruck gleich Null:&lt;/p&gt;
+\end{aligned}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir setzen nun wieder den Ausdruck gleich Null:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
  0 &amp;amp;= 2 \cdot \left(\hat\beta_1 \cdot \sum\limits_{i=1}^n(x_i-\bar{x})^2 - \sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})\right)  \qquad | : 2\\
    &amp;amp;= \hat\beta_1 \cdot \sum\limits_{i=1}^n(x_i-\bar{x})^2 - \sum\limits_{i=1}^n (x_i-\bar{x}) \cdot (y_i-\bar{y})
@@ -173,20 +366,30 @@ dann auch von den &lt;strong&gt;Kleinste-Quadrate-Schätzern&lt;/strong&gt;
 &lt;h3&gt;Ein Beispiel in R:&lt;/h3&gt;
 &lt;p&gt;Auf Grundlage der Datentabelle &lt;em&gt;mtcars&lt;/em&gt; wollen wir Prüfen wie ein linearer
 Zusammenhang zwischen dem Verbrauch (in Meilen pro Gallone &lt;em&gt;mpg&lt;/em&gt;) und der Leistung
-(Pferdestärke &lt;em&gt;hp&lt;/em&gt;) modelliert werden kann.&lt;/p&gt;
+(Pferdestärke &lt;em&gt;hp&lt;/em&gt;) modelliert werden kann.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+
 # Wir nehmen die Datentabelle &amp;#39;mtcars&amp;#39;:
 mtcars %&amp;gt;%
   select(hp, mpg) -&amp;gt; dt
-# und vergleichen Verbrauch (mpg, miles per gallon) mit der Pferdestärke (hp)
-# Mit Hilfe eines Streudiagramms
+
+# Ein kurzer Blick auf die Daten:
+favstats(~ hp, data=dt)[c(&amp;quot;mean&amp;quot;,&amp;quot;sd&amp;quot;)]
+#&amp;gt;      mean       sd
+#&amp;gt;  146.6875 68.56287
+favstats(~ mpg, data=dt)[c(&amp;quot;mean&amp;quot;,&amp;quot;sd&amp;quot;)]
+#&amp;gt;      mean       sd
+#&amp;gt;  20.09062 6.026948
+
+# Wir vergleichen den Verbrauch (mpg, miles per gallon) 
+# mit den Pferdestärken (hp) mit Hilfe eines Streudiagramms:
 gf_point(mpg ~ hp, data = dt) %&amp;gt;%
   gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;90%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Berechnen wir zunächst die Mittelwerte von &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; (also ‘hp’) und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; (also ‘mpg’)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(mean_hp = mean(~ hp, data = dt))
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(mean_hp &amp;lt;- mean(~ hp, data = dt))
 #&amp;gt; [1] 146.6875
-(mean_mpg = mean(~ mpg, data = dt))
+(mean_mpg &amp;lt;- mean(~ mpg, data = dt))
 #&amp;gt; [1] 20.09062&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;und zeichnen die Punkt &lt;span class=&#34;math inline&#34;&gt;\((\bar{x}, \bar{y}) = (146.69, 20.09)\)&lt;/span&gt; in unser
 Streudiagramm ein:&lt;/p&gt;
@@ -197,9 +400,9 @@ Streudiagramm ein:&lt;/p&gt;
   gf_lims(y = c(5,35))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;90%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Berechnen wir nun die Schätzwerte für die Regressionsgerade&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(beta_1 = cov(mpg ~ hp, data = dt) / var(~ hp, data = dt))
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(beta_1 &amp;lt;- cov(mpg ~ hp, data = dt) / var(~ hp, data = dt))
 #&amp;gt; [1] -0.06822828
-(beta_0 = mean_mpg - beta_1 * mean_hp)
+(beta_0 &amp;lt;- mean_mpg - beta_1 * mean_hp)
 #&amp;gt; [1] 30.09886&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;und zeichnen diese in unser Streudiagramm ein:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(mpg ~ hp, data = dt) %&amp;gt;%
@@ -221,19 +424,21 @@ Streudiagramm ein:&lt;/p&gt;
 &lt;p&gt;Was passiert eigentlich, wenn wir unsere &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; Werte studentisieren (aka standardisieren oder z-transformieren)?&lt;/p&gt;
 &lt;p&gt;Zur Erinnerung, studentisieren geht so:
 &lt;span class=&#34;math display&#34;&gt;\[x^{stud} = \frac{x - \bar{x}}{s_x}\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;In &lt;strong&gt;R&lt;/strong&gt; können wir das mit der Funktion ‘zscore’ wie folgt:&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;R&lt;/strong&gt; können wir das mit der Funktion ‘zscore’ wie folgt machen:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dt %&amp;gt;%
   mutate(
     hp_stud = zscore(hp),
     mpg_stud = zscore(mpg)
   ) -&amp;gt; dt&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Natürlich sind die Mittelwerte nun Null und die Standardabweichungen Eins:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(mean( ~ hp_stud, data = dt), mean( ~ mpg_stud, data = dt))
-#&amp;gt; [1] 1.040834e-17 7.112366e-17
-c(sd( ~ hp_stud, data = dt), sd( ~ mpg_stud, data = dt))
-#&amp;gt; [1] 1 1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Der Grund für die kleinen Abweichungen von der Null beim Mittelwert
-sind Rundungsfehler, die der Computer macht!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;favstats(~ hp_stud, data=dt)[c(&amp;quot;mean&amp;quot;,&amp;quot;sd&amp;quot;)]
+#&amp;gt;          mean sd
+#&amp;gt;  1.040834e-17  1
+favstats(~ mpg_stud, data=dt)[c(&amp;quot;mean&amp;quot;,&amp;quot;sd&amp;quot;)]
+#&amp;gt;          mean sd
+#&amp;gt;  7.112366e-17  1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Der Grund für die kleinen Abweichungen von der Null bei den Mittelwerten
+sind unumgängliche Rundungsfehler, die der Computer macht!&lt;/p&gt;
 &lt;p&gt;Schauen wir uns nun das Streudiagramm an, zusammen mit dem Mittelpunkt &lt;span class=&#34;math inline&#34;&gt;\((0,0)\)&lt;/span&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(mpg_stud ~ hp_stud, data = dt) %&amp;gt;%
   gf_point(0 ~ 0, color = &amp;quot;red&amp;quot;, size = 5, alpha = 0.2) %&amp;gt;%
@@ -241,9 +446,9 @@ sind Rundungsfehler, die der Computer macht!&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;90%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 Auch wenn die Skalierungen sich geändert haben, die Diagramme sind sehr ähnlich.&lt;/p&gt;
 &lt;p&gt;Bestimmen wir die Koeffizienten der Regressionsgerade&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(beta_stud_1 = cov(mpg_stud ~ hp_stud, data = dt))
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(beta_stud_1 &amp;lt;- cov(mpg_stud ~ hp_stud, data = dt))
 #&amp;gt; [1] -0.7761684
-(beta_stud_0 = 0 - beta_stud_1 * 0)
+(beta_stud_0 &amp;lt;- 0 - beta_stud_1 * 0)
 #&amp;gt; [1] 0&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;und setzen sie in das Streudiagramm ein:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/ueber-die-koeffizienten-einer-linearen-regression/index.de_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;90%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
@@ -561,6 +766,12 @@ pivot_wider(tab, names_from=sum_type, values_from=sums, names_sort=T)
 #&amp;gt; 
 #&amp;gt; Package version:
 #&amp;gt;   mosaic_1.8.3  quantreg_5.86 tidyr_1.1.3   xfun_0.24&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Das “Cookbook” zur Datentabelle können Sie mit Hilfe von &lt;code&gt;help(&#34;mtcars&#34;)&lt;/code&gt; aufrufen!&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/div&gt;
 </description>
     </item>

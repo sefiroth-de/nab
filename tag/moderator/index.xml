@@ -5,12 +5,193 @@
     <link>https://sefiroth.net/nab/tag/moderator/</link>
       <atom:link href="https://sefiroth.net/nab/tag/moderator/index.xml" rel="self" type="application/rss+xml" />
     <description>Moderator</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Tue, 31 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 23 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Moderator</title>
       <link>https://sefiroth.net/nab/tag/moderator/</link>
     </image>
+    
+    <item>
+      <title>Interaktionseffekte leichter interpretieren durch Transformationen</title>
+      <link>https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;einleitung&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Einleitung&lt;/h3&gt;
+&lt;p&gt;Bei einer multiplen linearen Regression kann man den Einfluss einer unabhägigen Variable auf das Verhalten einer anderen unabhägigen Variable in Bezug auf die abhägige Variable mit modellieren.&lt;/p&gt;
+&lt;p&gt;Wir wollen das einmal an dem Beispiel der folgenden Datentabelle &lt;a href=&#34;https://vincentarelbundock.github.io/Rdatasets/doc/AER/TeachingRatings.html&#34;&gt;&lt;em&gt;Impact of Beauty on Instructor’s Teaching Ratings&lt;/em&gt;&lt;/a&gt; und der Fragestellung in wie weit das Alter und das Geschlecht einen Einfluss auf das Evaluationsergebnis haben.&lt;/p&gt;
+&lt;p&gt;Dazu stellen laden wir die Daten aus dem Internet:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+url &amp;lt;- paste0(&amp;quot;https://vincentarelbundock.github.io/Rdatasets/csv/AER/&amp;quot;,
+              &amp;quot;TeachingRatings.csv&amp;quot;)
+teacherratings &amp;lt;- read.csv(url)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;und betrachten das Streudiagramm:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gf_point(eval ~ age, color = ~gender, data = teacherratings)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/index.de_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;90%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ein-lineares-modell&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Ein lineares Modell&lt;/h3&gt;
+&lt;p&gt;Ein klassisches lineares Modell sieht wie folgt aus:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;erglm &amp;lt;- lm(eval ~ age + gender + age:gender, data = teacherratings)
+coef(erglm)
+#&amp;gt;    (Intercept)            age     gendermale age:gendermale 
+#&amp;gt;     4.49018892    -0.01306572    -0.32104348     0.01109285&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Doch was bedeuten diese Werte konkret:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(Intercept) = 4.4901889: Gibt das (theoretische) Evaluationsergebnis für einer Frau im Alter von 0 Jahren an.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;age = -0.0130657: Gibt an, um wie viele Punkte im Schnitt sich eine Frau pro Lebensjahr mehr verändert. (Da der Wert negativ ist, also verschlechtert.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;gendermale = -0.3210435: Gibt an, um wie viel sich das Startwert bei 0 Jahren verändert, wenn es ein Mann gewesen wäre. Wir kommen damit auf einen Startwert bei 0 Jahren für Männer von 4.1691454&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;age:gendermale = 0.0110928: Gibt an um wie viel sich die Steigung ändert, wenn statt einer Frau ein Mann betrachtet wird. Statt einer Änderung um -0.0130657 bei Frauen beträgt sie bei Männern &lt;span class=&#34;math inline&#34;&gt;\(-0.0130657-0.0110928 = -0.0019729\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;coef_female = c(coef(erglm)[1], coef(erglm)[2])
+coef_male = c(
+  coef(erglm)[1] + coef(erglm)[3],
+  coef(erglm)[2] + coef(erglm)[4]
+)
+gf_point(eval ~ age, color = ~gender, data = teacherratings) %&amp;gt;%
+  gf_coefline(coef = coef_female, color = ~&amp;quot;female&amp;quot;) %&amp;gt;%
+  gf_coefline(coef = coef_male, color = ~&amp;quot;male&amp;quot;) 
+  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/index.de_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;90%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Wir können so die folgenden Modellgleichungen aufstellen:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Für Frauen:
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+  \widehat{eval}_{\text{female}} 
+  &amp;amp; = 4.4901889 - 0.0130657 \cdot age \\
+  &amp;amp;\approx 4.49 - 0.013 \cdot age
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Für Männer:
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\widehat{eval}_{\text{male}} 
+  &amp;amp;= 4.1691454 - 0.0019729 \cdot age\\
+  &amp;amp;\approx 4.169 - 0.002 \cdot age
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;besserer-blick-durch-gute-transformation-der-daten&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Besserer Blick durch gute Transformation der Daten&lt;/h3&gt;
+&lt;p&gt;Spannender wäre es aber, wenn die y-Achenabschnitte nicht so weit ausserhalb unseres Betrachungsbereichs (29; 73) liegen würde.&lt;/p&gt;
+&lt;p&gt;Wir zentrieren daher einmal unsere Altersangaben mit der Transformation:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[age_i^\text{center} =  age_i - \overline{age}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;R&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Mittelwert bestimmen und speichern:
+mean_age = mean( ~ age, data = teacherratings)
+
+# Transformation durchführen:
+teacherratings %&amp;gt;%
+  mutate(
+    age_center = age - mean_age
+  ) -&amp;gt; teacherratings
+
+# Das Ergebnis kurz zusammenfassen:
+df_stats(~ age + age_center, min, mean, sd, max, 
+         data = teacherratings)
+#&amp;gt;     response       min         mean       sd      max
+#&amp;gt; 1        age  29.00000 4.836501e+01 9.802742 73.00000
+#&amp;gt; 2 age_center -19.36501 3.514033e-15 9.802742 24.63499&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Das der Mittelwert bei den zentrierten Daten nicht exakt Null ist liegt an den numerischen Besonderheiten des Rechners. Kurz: Computer können gar nicht richitg rechnen und haben daher hier einen kleinen Rundungsfehler!&lt;/p&gt;
+&lt;p&gt;Betrachten wir die gerundeten Werte, so ergibt sich das folgende, etwas übersichtlichere Bild:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Wir bauen uns gerundete Funktionen:
+round_digits &amp;lt;- 3  # Anzahl der Nachkommastellen
+
+mean_r &amp;lt;- function(x) round(mean(x), round_digits)
+sd_r &amp;lt;- function(x) round(sd(x), round_digits)
+min_r &amp;lt;- function(x) round(min(x), round_digits)
+max_r &amp;lt;- function(x) round(max(x), round_digits)
+
+# Wir benutzen nun die gerundeten Werte:
+df_stats(~ age + age_center, min_r, mean_r, sd_r, max_r, 
+         data = teacherratings)
+#&amp;gt;     response   min_r mean_r  sd_r  max_r
+#&amp;gt; 1        age  29.000 48.365 9.803 73.000
+#&amp;gt; 2 age_center -19.365  0.000 9.803 24.635&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Im Mittel sind unsere Lehrer:innen also &lt;span class=&#34;math inline&#34;&gt;\(48.365\)&lt;/span&gt; alt, die Jüngsten mit 29 etwa &lt;span class=&#34;math inline&#34;&gt;\(19.365\)&lt;/span&gt; jünger und die Ältesten mit 73 etwa &lt;span class=&#34;math inline&#34;&gt;\(24.635\)&lt;/span&gt; älter als der Altersdurchschnitt.&lt;/p&gt;
+&lt;p&gt;Ein Blick auf die Koeffizenten des linearen Modells bzgl. der zentrierten Daten:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;erglm_c &amp;lt;- lm(eval ~ age_center + gender + age_center:gender, 
+              data = teacherratings)
+coef(erglm_c)
+#&amp;gt;           (Intercept)            age_center            gendermale 
+#&amp;gt;            3.85826543           -0.01306572            0.21546232 
+#&amp;gt; age_center:gendermale 
+#&amp;gt;            0.01109285&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Das dazu passende Streudiagramm mit den Regressionsgeraden:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;coef_c_female = c(coef(erglm_c)[1], coef(erglm_c)[2])
+coef_c_male = c(
+  coef(erglm_c)[1] + coef(erglm_c)[3],
+  coef(erglm_c)[2] + coef(erglm_c)[4]
+)
+gf_point(eval ~ age_center, color = ~gender, 
+         data = teacherratings) %&amp;gt;%
+  gf_coefline(coef = coef_c_female, color = ~&amp;quot;female&amp;quot;) %&amp;gt;%
+  gf_coefline(coef = coef_c_male, color = ~&amp;quot;male&amp;quot;) 
+  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/index.de_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;90%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Was bedeuten nun diese Werte konkret:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(Intercept) = 3.8582654: Gibt das Evaluationsergebnis für einer Frau mit Durchschnittsalter (48) an.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;age = -0.0130657: Gibt an, um wie viele Punkte im Schnitt sich eine Frau pro Lebensjahr mehr verändert.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;gendermale = -0.3210435: Gibt an, um wie viel sich das Evaluationsergebnis eines Mannes im Durchschnittsalter ändert gegenüber dem einer Frau. Für das Durchschnittalter liegen Männer im Schnitt bei 4.0737278&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;age:gendermale = 0.0110928: Gibt an, um wie viel sich die Steigung ändert, wenn statt einer Frau ein Mann betrachtet wird. Statt einer Änderung um -0.0130657 bei Frauen beträgt sie bei Männern &lt;span class=&#34;math inline&#34;&gt;\(-0.0130657-0.0110928 = -0.0019729\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Wir können daher die folgenden Modellgleichungen aufstellen:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Für Frauen:
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+  \widehat{eval}_{\text{female}} 
+  &amp;amp; = 3.8582654 - 0.0130657 \cdot (age - 48.3650108) \\
+  &amp;amp;\approx 3.858 - 0.013 \cdot (age - 48.365) 
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Für Männer:
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\widehat{eval}_{\text{male}} 
+  &amp;amp;= 4.0737278 - 0.0019729 \cdot (age - 48.3650108) \\
+  &amp;amp;\approx 4.074 - 0.002 \cdot (age - 48.365)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;zur-interpretation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Zur Interpretation&lt;/h3&gt;
+&lt;p&gt;Im durchschnittlichen Alter ist das erwartete Evaluationsergebnis bei Frauen (&lt;span class=&#34;math inline&#34;&gt;\(3.8582654\)&lt;/span&gt;) um rund &lt;span class=&#34;math inline&#34;&gt;\(0.215\)&lt;/span&gt; Punkte schlechter als bei Männern (&lt;span class=&#34;math inline&#34;&gt;\(4.0737278\)&lt;/span&gt;).
+Mit jedem Lebensjahr sinkt dabei in beiden Fällen, also sowohl bei Frauen als auch bei Männern, das Evaluationsergbnis.
+Bei den Frauen aber mit ca. &lt;span class=&#34;math inline&#34;&gt;\(-0.013\)&lt;/span&gt; deutlich stärker als mit ca. &lt;span class=&#34;math inline&#34;&gt;\(-0.002\)&lt;/span&gt; bei den Männern .&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;fazit&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Fazit&lt;/h3&gt;
+&lt;p&gt;Eine gute Transformation einiger Daten kann, dank der angepassten
+Modellgleichungen, die Interpretation der Ergebnisse deutlich
+vereinfachen!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;nachtrag-und-danksagung&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Nachtrag und Danksagung&lt;/h2&gt;
+&lt;p&gt;Die Idee zu diesem Blog-Post verdanke ich dem Blog von &lt;em&gt;Prof. Dr. Sebastian Sauer&lt;/em&gt;. Hier der Link zum Orginal-Blog: &lt;a href=&#34;https://data-se.netlify.app/2021/06/17/beispiel-zur-interpretation-des-interaktionseffekts/&#34;&gt;https://data-se.netlify.app/2021/06/17/beispiel-zur-interpretation-des-interaktionseffekts/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reproduzierbarkeitsinformationen&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Reproduzierbarkeitsinformationen&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;gt; R version 4.1.0 (2021-05-18)
+#&amp;gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&amp;gt; Running under: macOS Catalina 10.15.7
+#&amp;gt; 
+#&amp;gt; Locale: de_DE.UTF-8 / de_DE.UTF-8 / de_DE.UTF-8 / C / de_DE.UTF-8 / de_DE.UTF-8
+#&amp;gt; 
+#&amp;gt; Package version:
+#&amp;gt;   mosaic_1.8.3 xfun_0.24&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen</title>

@@ -1,0 +1,1450 @@
+<!DOCTYPE html><html lang="de-de" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.2.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Norman Markgraf" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Einleitung Bei einer multiplen linearen Regression kann man den Einfluss einer unabhägigen Variable auf das Verhalten einer anderen unabhägigen Variable in Bezug auf die abhägige Variable mit modellieren." />
+
+  
+  <link rel="alternate" hreflang="de-de" href="https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/" />
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/nab/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/nab/css/wowchemy.7145a9a307b7b6e0cf40149bdecd66b5.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/nab/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
+
+  <link rel="canonical" href="https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Norman&#39;s Academic Blog" />
+  <meta property="og:url" content="https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/" />
+  <meta property="og:title" content="Interaktionseffekte leichter interpretieren durch Transformationen | Norman&#39;s Academic Blog" />
+  <meta property="og:description" content="Einleitung Bei einer multiplen linearen Regression kann man den Einfluss einer unabhägigen Variable auf das Verhalten einer anderen unabhägigen Variable in Bezug auf die abhägige Variable mit modellieren." /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+    <meta property="twitter:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="de-de" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-06-23T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-06-23T10:24:28&#43;02:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/"
+  },
+  "headline": "Interaktionseffekte leichter interpretieren durch Transformationen",
+  
+  "datePublished": "2021-06-23T00:00:00Z",
+  "dateModified": "2021-06-23T10:24:28+02:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Norman Markgraf"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Norman's Academic Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Einleitung Bei einer multiplen linearen Regression kann man den Einfluss einer unabhägigen Variable auf das Verhalten einer anderen unabhägigen Variable in Bezug auf die abhägige Variable mit modellieren."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Interaktionseffekte leichter interpretieren durch Transformationen | Norman&#39;s Academic Blog</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="eb2caecaefbc83c2e438a399b89addc9" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/nab/js/wowchemy-init.min.b8153d4570dcbb34350a2a846dba8c03.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Suche</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Suche..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Suche...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/nab/">Norman&#39;s Academic Blog</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Navigation einblenden">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/nab/">Norman&#39;s Academic Blog</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nab/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nab/#posts"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nab/#projects"><span>Projekte</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nab/#featured"><span>Veröffentlichungen</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nab/#contact"><span>Impressum</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Suche"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Einstellungen anzeigen">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Hell</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dunkel</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatisch</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Interaktionseffekte leichter interpretieren durch Transformationen</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Zuletzt aktualisiert am
+      
+    
+    Jun 23, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min Lesezeit
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/nab/category/statistisches/">Statistisches</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/index.de_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="einleitung" class="section level3">
+<h3>Einleitung</h3>
+<p>Bei einer multiplen linearen Regression kann man den Einfluss einer unabhägigen Variable auf das Verhalten einer anderen unabhägigen Variable in Bezug auf die abhägige Variable mit modellieren.</p>
+<p>Wir wollen das einmal an dem Beispiel der folgenden Datentabelle <a href="https://vincentarelbundock.github.io/Rdatasets/doc/AER/TeachingRatings.html"><em>Impact of Beauty on Instructor’s Teaching Ratings</em></a> und der Fragestellung in wie weit das Alter und das Geschlecht einen Einfluss auf das Evaluationsergebnis haben.</p>
+<p>Dazu stellen laden wir die Daten aus dem Internet:</p>
+<pre class="r"><code>library(mosaic)
+url &lt;- paste0(&quot;https://vincentarelbundock.github.io/Rdatasets/csv/AER/&quot;,
+              &quot;TeachingRatings.csv&quot;)
+teacherratings &lt;- read.csv(url)</code></pre>
+<p>und betrachten das Streudiagramm:</p>
+<pre class="r"><code>gf_point(eval ~ age, color = ~gender, data = teacherratings)</code></pre>
+<p><img src="https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/index.de_files/figure-html/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ein-lineares-modell" class="section level3">
+<h3>Ein lineares Modell</h3>
+<p>Ein klassisches lineares Modell sieht wie folgt aus:</p>
+<pre class="r"><code>erglm &lt;- lm(eval ~ age + gender + age:gender, data = teacherratings)
+coef(erglm)
+#&gt;    (Intercept)            age     gendermale age:gendermale 
+#&gt;     4.49018892    -0.01306572    -0.32104348     0.01109285</code></pre>
+<p>Doch was bedeuten diese Werte konkret:</p>
+<ul>
+<li><p>(Intercept) = 4.4901889: Gibt das (theoretische) Evaluationsergebnis für einer Frau im Alter von 0 Jahren an.</p></li>
+<li><p>age = -0.0130657: Gibt an, um wie viele Punkte im Schnitt sich eine Frau pro Lebensjahr mehr verändert. (Da der Wert negativ ist, also verschlechtert.)</p></li>
+<li><p>gendermale = -0.3210435: Gibt an, um wie viel sich das Startwert bei 0 Jahren verändert, wenn es ein Mann gewesen wäre. Wir kommen damit auf einen Startwert bei 0 Jahren für Männer von 4.1691454</p></li>
+<li><p>age:gendermale = 0.0110928: Gibt an um wie viel sich die Steigung ändert, wenn statt einer Frau ein Mann betrachtet wird. Statt einer Änderung um -0.0130657 bei Frauen beträgt sie bei Männern <span class="math inline">\(-0.0130657-0.0110928 = -0.0019729\)</span>.</p></li>
+</ul>
+<pre class="r"><code>coef_female = c(coef(erglm)[1], coef(erglm)[2])
+coef_male = c(
+  coef(erglm)[1] + coef(erglm)[3],
+  coef(erglm)[2] + coef(erglm)[4]
+)
+gf_point(eval ~ age, color = ~gender, data = teacherratings) %&gt;%
+  gf_coefline(coef = coef_female, color = ~&quot;female&quot;) %&gt;%
+  gf_coefline(coef = coef_male, color = ~&quot;male&quot;) 
+  </code></pre>
+<p><img src="https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/index.de_files/figure-html/unnamed-chunk-4-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>Wir können so die folgenden Modellgleichungen aufstellen:</p>
+<ol style="list-style-type: decimal">
+<li><p>Für Frauen:
+<span class="math display">\[
+\begin{aligned}
+  \widehat{eval}_{\text{female}} 
+  &amp; = 4.4901889 - 0.0130657 \cdot age \\
+  &amp;\approx 4.49 - 0.013 \cdot age
+\end{aligned}
+\]</span></p></li>
+<li><p>Für Männer:
+<span class="math display">\[
+\begin{aligned}
+\widehat{eval}_{\text{male}} 
+  &amp;= 4.1691454 - 0.0019729 \cdot age\\
+  &amp;\approx 4.169 - 0.002 \cdot age
+\end{aligned}
+\]</span></p></li>
+</ol>
+</div>
+<div id="besserer-blick-durch-gute-transformation-der-daten" class="section level3">
+<h3>Besserer Blick durch gute Transformation der Daten</h3>
+<p>Spannender wäre es aber, wenn die y-Achenabschnitte nicht so weit ausserhalb unseres Betrachungsbereichs (29; 73) liegen würde.</p>
+<p>Wir zentrieren daher einmal unsere Altersangaben mit der Transformation:</p>
+<p><span class="math display">\[age_i^\text{center} =  age_i - \overline{age}\]</span></p>
+<p>In <strong>R</strong>:</p>
+<pre class="r"><code># Mittelwert bestimmen und speichern:
+mean_age = mean( ~ age, data = teacherratings)
+
+# Transformation durchführen:
+teacherratings %&gt;%
+  mutate(
+    age_center = age - mean_age
+  ) -&gt; teacherratings
+
+# Das Ergebnis kurz zusammenfassen:
+df_stats(~ age + age_center, min, mean, sd, max, 
+         data = teacherratings)
+#&gt;     response       min         mean       sd      max
+#&gt; 1        age  29.00000 4.836501e+01 9.802742 73.00000
+#&gt; 2 age_center -19.36501 3.514033e-15 9.802742 24.63499</code></pre>
+<p>Das der Mittelwert bei den zentrierten Daten nicht exakt Null ist liegt an den numerischen Besonderheiten des Rechners. Kurz: Computer können gar nicht richitg rechnen und haben daher hier einen kleinen Rundungsfehler!</p>
+<p>Betrachten wir die gerundeten Werte, so ergibt sich das folgende, etwas übersichtlichere Bild:</p>
+<pre class="r"><code># Wir bauen uns gerundete Funktionen:
+round_digits &lt;- 3  # Anzahl der Nachkommastellen
+
+mean_r &lt;- function(x) round(mean(x), round_digits)
+sd_r &lt;- function(x) round(sd(x), round_digits)
+min_r &lt;- function(x) round(min(x), round_digits)
+max_r &lt;- function(x) round(max(x), round_digits)
+
+# Wir benutzen nun die gerundeten Werte:
+df_stats(~ age + age_center, min_r, mean_r, sd_r, max_r, 
+         data = teacherratings)
+#&gt;     response   min_r mean_r  sd_r  max_r
+#&gt; 1        age  29.000 48.365 9.803 73.000
+#&gt; 2 age_center -19.365  0.000 9.803 24.635</code></pre>
+<p>Im Mittel sind unsere Lehrer:innen also <span class="math inline">\(48.365\)</span> alt, die Jüngsten mit 29 etwa <span class="math inline">\(19.365\)</span> jünger und die Ältesten mit 73 etwa <span class="math inline">\(24.635\)</span> älter als der Altersdurchschnitt.</p>
+<p>Ein Blick auf die Koeffizenten des linearen Modells bzgl. der zentrierten Daten:</p>
+<pre class="r"><code>erglm_c &lt;- lm(eval ~ age_center + gender + age_center:gender, 
+              data = teacherratings)
+coef(erglm_c)
+#&gt;           (Intercept)            age_center            gendermale 
+#&gt;            3.85826543           -0.01306572            0.21546232 
+#&gt; age_center:gendermale 
+#&gt;            0.01109285</code></pre>
+<p>Das dazu passende Streudiagramm mit den Regressionsgeraden:</p>
+<pre class="r"><code>coef_c_female = c(coef(erglm_c)[1], coef(erglm_c)[2])
+coef_c_male = c(
+  coef(erglm_c)[1] + coef(erglm_c)[3],
+  coef(erglm_c)[2] + coef(erglm_c)[4]
+)
+gf_point(eval ~ age_center, color = ~gender, 
+         data = teacherratings) %&gt;%
+  gf_coefline(coef = coef_c_female, color = ~&quot;female&quot;) %&gt;%
+  gf_coefline(coef = coef_c_male, color = ~&quot;male&quot;) 
+  </code></pre>
+<p><img src="https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/index.de_files/figure-html/unnamed-chunk-8-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>Was bedeuten nun diese Werte konkret:</p>
+<ul>
+<li><p>(Intercept) = 3.8582654: Gibt das Evaluationsergebnis für einer Frau mit Durchschnittsalter (48) an.</p></li>
+<li><p>age = -0.0130657: Gibt an, um wie viele Punkte im Schnitt sich eine Frau pro Lebensjahr mehr verändert.</p></li>
+<li><p>gendermale = -0.3210435: Gibt an, um wie viel sich das Evaluationsergebnis eines Mannes im Durchschnittsalter ändert gegenüber dem einer Frau. Für das Durchschnittalter liegen Männer im Schnitt bei 4.0737278</p></li>
+<li><p>age:gendermale = 0.0110928: Gibt an, um wie viel sich die Steigung ändert, wenn statt einer Frau ein Mann betrachtet wird. Statt einer Änderung um -0.0130657 bei Frauen beträgt sie bei Männern <span class="math inline">\(-0.0130657-0.0110928 = -0.0019729\)</span>.</p></li>
+</ul>
+<p>Wir können daher die folgenden Modellgleichungen aufstellen:</p>
+<ol style="list-style-type: decimal">
+<li><p>Für Frauen:
+<span class="math display">\[
+\begin{aligned}
+  \widehat{eval}_{\text{female}} 
+  &amp; = 3.8582654 - 0.0130657 \cdot (age - 48.3650108) \\
+  &amp;\approx 3.858 - 0.013 \cdot (age - 48.365) 
+\end{aligned}
+\]</span></p></li>
+<li><p>Für Männer:
+<span class="math display">\[
+\begin{aligned}
+\widehat{eval}_{\text{male}} 
+  &amp;= 4.0737278 - 0.0019729 \cdot (age - 48.3650108) \\
+  &amp;\approx 4.074 - 0.002 \cdot (age - 48.365)
+\end{aligned}
+\]</span></p></li>
+</ol>
+</div>
+<div id="zur-interpretation" class="section level3">
+<h3>Zur Interpretation</h3>
+<p>Im durchschnittlichen Alter ist das erwartete Evaluationsergebnis bei Frauen (<span class="math inline">\(3.8582654\)</span>) um rund <span class="math inline">\(0.215\)</span> Punkte schlechter als bei Männern (<span class="math inline">\(4.0737278\)</span>).
+Mit jedem Lebensjahr sinkt dabei in beiden Fällen, also sowohl bei Frauen als auch bei Männern, das Evaluationsergbnis.
+Bei den Frauen aber mit ca. <span class="math inline">\(-0.013\)</span> deutlich stärker als mit ca. <span class="math inline">\(-0.002\)</span> bei den Männern .</p>
+</div>
+<div id="fazit" class="section level3">
+<h3>Fazit</h3>
+<p>Eine gute Transformation einiger Daten kann, dank der angepassten
+Modellgleichungen, die Interpretation der Ergebnisse deutlich
+vereinfachen!</p>
+</div>
+<div id="nachtrag-und-danksagung" class="section level2">
+<h2>Nachtrag und Danksagung</h2>
+<p>Die Idee zu diesem Blog-Post verdanke ich dem Blog von <em>Prof. Dr. Sebastian Sauer</em>. Hier der Link zum Orginal-Blog: <a href="https://data-se.netlify.app/2021/06/17/beispiel-zur-interpretation-des-interaktionseffekts/">https://data-se.netlify.app/2021/06/17/beispiel-zur-interpretation-des-interaktionseffekts/</a></p>
+</div>
+<div id="reproduzierbarkeitsinformationen" class="section level2">
+<h2>Reproduzierbarkeitsinformationen</h2>
+<pre><code>#&gt; R version 4.1.0 (2021-05-18)
+#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&gt; Running under: macOS Catalina 10.15.7
+#&gt; 
+#&gt; Locale: de_DE.UTF-8 / de_DE.UTF-8 / de_DE.UTF-8 / C / de_DE.UTF-8 / de_DE.UTF-8
+#&gt; 
+#&gt; Package version:
+#&gt;   mosaic_1.8.3 xfun_0.24</code></pre>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/nab/tag/lineare-regression/">Lineare Regression</a>
+  
+  <a class="badge badge-light" href="/nab/tag/interaktionseffekte/">Interaktionseffekte</a>
+  
+  <a class="badge badge-light" href="/nab/tag/data-science/">Data Science</a>
+  
+  <a class="badge badge-light" href="/nab/tag/mediator/">Mediator</a>
+  
+  <a class="badge badge-light" href="/nab/tag/moderator/">Moderator</a>
+  
+  <a class="badge badge-light" href="/nab/tag/mediatorenanalyse/">Mediatorenanalyse</a>
+  
+  <a class="badge badge-light" href="/nab/tag/moderatorenanalyse/">Moderatorenanalyse</a>
+  
+  <a class="badge badge-light" href="/nab/tag/r/">R</a>
+  
+  <a class="badge badge-light" href="/nab/tag/statistik/">Statistik</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/&amp;text=Interaktionseffekte%20leichter%20interpretieren%20durch%20Transformationen" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/&amp;t=Interaktionseffekte%20leichter%20interpretieren%20durch%20Transformationen" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Interaktionseffekte%20leichter%20interpretieren%20durch%20Transformationen&amp;body=https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/&amp;title=Interaktionseffekte%20leichter%20interpretieren%20durch%20Transformationen" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Interaktionseffekte%20leichter%20interpretieren%20durch%20Transformationen%20https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://sefiroth.net/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/&amp;title=Interaktionseffekte%20leichter%20interpretieren%20durch%20Transformationen" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://sefiroth.net/nab"><img class="avatar mr-3 avatar-circle" src="/nab/authors/admin/avatar_hu693e4128d00be856374ec0a95c294cb0_23891_270x270_fill_q75_lanczos_center.jpg" alt="Norman Markgraf"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://sefiroth.net/nab">Norman Markgraf</a></h5>
+      <h6 class="card-subtitle">Diplom-Mathematiker</h6>
+      <p class="card-text">Norman Markgraf ist freiberuflicher Dozent für Mathematik, Statistik, Data Science und Informatik, sowie freiberuflicher Programmierer.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:nmarkgraf@hotmail.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/nab/twitter.com/NormanMarkgraf" >
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//scholar.google.de/citations?user=zR76YpQAAAAJ&amp;hl=de" >
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//github.com/nmarkgraf" >
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//www.xing.com/profile/Norman_Markgraf" >
+        <i class="fab fa-xing"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="//www.linkedin.com/in/normanmarkgraf/" >
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Ähnliches</h3>
+    <ul>
+      
+      <li><a href="/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/">Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen</a></li>
+      
+      <li><a href="/nab/post/regression-mit-studentisierten-daten/">Regression mit studentisierten Daten</a></li>
+      
+      <li><a href="/nab/post/ueber-die-koeffizienten-einer-linearen-regression/">Über die Koeffizienten einer linearen Regression</a></li>
+      
+      <li><a href="/nab/post/nur-ein-wenig-lineare-regression/">Nur ein wenig lineare Regression</a></li>
+      
+      <li><a href="/nab/project/etwas-r-am-abend/">Etwas R am Abend</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+  
+  <p class="powered-by">
+    
+      <a href="/nab/privacy/">Datenschutzerklärung (Privacy Policy)</a>
+    
+    
+       &middot; 
+      <a href="/nab/terms/">Terms</a>
+    
+  </p>
+  
+
+  
+  <p class="powered-by">
+    © in 2017-2021 by Norman Markgraf
+  </p>
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Zitieren</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Kopie
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/nab/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/nab/de/js/wowchemy.min.d9b311232cc234ef3dafdc7ce0b876bb.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>
