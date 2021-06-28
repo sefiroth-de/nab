@@ -5,12 +5,187 @@
     <link>https://sefiroth.net/nab/tag/data-science/</link>
       <atom:link href="https://sefiroth.net/nab/tag/data-science/index.xml" rel="self" type="application/rss+xml" />
     <description>Data Science</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 23 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Data Science</title>
       <link>https://sefiroth.net/nab/tag/data-science/</link>
     </image>
+    
+    <item>
+      <title>Dinge die man in zwei Dimensionen machen kann - Multiple lineare Regression</title>
+      <link>https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Wir wollen den Fall unterschen bei dem wir mit zwei statistischen Variabeln (&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;) eine dritte Variable (&lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;) mittels einer multiplen linearen Regression modellieren.&lt;/p&gt;
+&lt;p&gt;Es seien die Datenpunkte &lt;span class=&#34;math inline&#34;&gt;\((x_1, y_1, z_1), \dots, (x_n, y_n, z_n)\)&lt;/span&gt; gegeben und wir wollen eine lineare Funktion &lt;span class=&#34;math inline&#34;&gt;\(g(x,y)\)&lt;/span&gt; finden, so dass&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+z_i = g(x_i,y_i)+ \epsilon_i =\beta_0 + \beta_1 \cdot x_i + \beta_2 \cdot y_i + \epsilon_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;gilt und der Abweichungsterm &lt;span class=&#34;math inline&#34;&gt;\(\epsilon_i\)&lt;/span&gt; möglichst klein ist.&lt;/p&gt;
+&lt;p&gt;Auf Grundlage unserer Datenpunkt wollen wir die Koeffizienten so schätzen, dass die Summe der quadratische Abweichungen minimal ist.
+&lt;span class=&#34;math display&#34;&gt;\[
+  QS = QS(\hat\beta_0, \hat\beta_1, \hat\beta_2) 
+  = \sum\limits_{i=1}^n (z_i - \hat\beta_0 - \hat\beta_1 \cdot x_i - \hat\beta_2 \cdot y_i )^2
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Das führt zu der folgenden, notwendigen Bedingen (für stationäre Punkte):&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\nabla QS(\hat\beta_0, \hat\beta_1, \hat\beta_2) = \begin{pmatrix} 0\\ 0\\ 0\end{pmatrix}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Im einzelnen heißt das:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{\partial}{\partial \hat\beta_0} QS(\hat\beta_0, \hat\beta_1, \hat\beta_2) &amp;amp;= -2 \cdot\sum\limits_{i=1}^n \left(z_i - \hat\beta_0 - \hat\beta_1 \cdot x_i - \hat\beta_2 \cdot y_i \right) \\
+&amp;amp;= -2 \cdot n \cdot \left(\bar{z} - \hat\beta_0 - \hat\beta_1 \cdot\bar{x} - \hat\beta_2 \cdot\bar{y} \right) \\
+\\
+\frac{\partial}{\partial \hat\beta_1} QS(\hat\beta_0, \hat\beta_1, \hat\beta_2) &amp;amp;= -2 \cdot \sum\limits_{i=1}^n \left( z_i\cdot x_i - \hat\beta_0 \cdot x_i - \hat\beta_1 \cdot x_i\cdot x_i - \hat\beta_2 \cdot y_i\cdot x_i \right) \\
+&amp;amp;= -2 \cdot \left(\sum\limits_{i=1}^n  z_i\cdot x_i -  \hat\beta_0 \cdot n \cdot \bar{x}- \hat\beta_1 \cdot \sum\limits_{i=1}^n x_i^2 - \hat\beta_2 \cdot \sum\limits_{i=1}^n y_i\cdot x_i \right) \\
+\\
+\frac{\partial}{\partial \hat\beta_2} QS(\hat\beta_0, \hat\beta_1, \hat\beta_2) &amp;amp;= -2 \cdot \sum\limits_{i=1}^n \left( z_i\cdot y_i - \hat\beta_0 \cdot y_i - \hat\beta_1 \cdot x_i\cdot y_i - \hat\beta_2 \cdot y_i\cdot y_i \right) \\
+&amp;amp;= -2 \cdot \left(\sum\limits_{i=1}^n  z_i\cdot y_i -  \hat\beta_0 \cdot n \cdot \bar{y}- \hat\beta_1 \cdot \sum\limits_{i=1}^n x_i\cdot y_i - \hat\beta_2 \cdot \sum\limits_{i=1}^n y_i^2 \right) \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir setzen die 1. Gleichung gleich Null und stellen nach &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; um:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+  \hat\beta_0 = \bar{z}  - \hat\beta_1 \cdot \bar{x} - \hat\beta_2 \cdot \bar{y}
+\]&lt;/span&gt;
+Nun ersetzen wir &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_0\)&lt;/span&gt; in den verbleibenden Gleichungen durch &lt;span class=&#34;math inline&#34;&gt;\(z_i - \hat\beta_1 \cdot x_i - \hat\beta_2 \cdot y_i\)&lt;/span&gt; und nutzen den Verschiebesatz:
+&lt;!--
+% &amp;= -2 \cdot \left(\sum\limits_{i=1}^n  z_i\cdot x_i - n \cdot \bar{z}\cdot \bar{x} + \hat\beta_1 \cdot n \cdot \bar{x}^2 + \hat\beta_2 \cdot n \cdot \bar{y}\cdot \bar{x}- \hat\beta_1 \cdot \sum\limits_{i=1}^n x_i^2 - \hat\beta_2 \cdot \sum\limits_{i=1}^n y_i\cdot x_i \right) \\
+--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{\partial}{\partial \hat\beta_1} QS
+&amp;amp;= -2 \cdot \left(\sum\limits_{i=1}^n  z_i\cdot x_i - (\bar{z}  - \hat\beta_1 \cdot \bar{x} - \hat\beta_2 \cdot \bar{y}) \cdot n \cdot \bar{x}- \hat\beta_1 \cdot \sum\limits_{i=1}^n x_i^2 - \hat\beta_2 \cdot \sum\limits_{i=1}^n y_i\cdot x_i \right) \\
+&amp;amp;= -2 \cdot \left(\sum\limits_{i=1}^n (z_i-\bar{z})(x_i - \bar{x}) - \hat\beta_1 \cdot \sum\limits_{i=1}^n (x_i -\bar{x})^2 - \hat\beta_2 \cdot \sum\limits_{i=1}^n (y_i-\bar{y})(x_i- \bar{x}) \right) \\
+\\
+\frac{\partial}{\partial \hat\beta_2} QS 
+&amp;amp;= -2 \cdot \left(\sum\limits_{i=1}^n  z_i\cdot y_i - (\bar{z}  - \hat\beta_1 \cdot \bar{x} - \hat\beta_2 \cdot \bar{y}) \cdot n \cdot \bar{y}- \hat\beta_1 \cdot \sum\limits_{i=1}^n x_i\cdot y_i - \hat\beta_2 \cdot \sum\limits_{i=1}^n y_i^2 \right) \\
+&amp;amp;= -2 \cdot \left(\sum\limits_{i=1}^n (z_i-\bar{z})(y_i - \bar{y}) - \hat\beta_2 \cdot \sum\limits_{i=1}^n (y_i -\bar{y})^2 - \hat\beta_1 \cdot \sum\limits_{i=1}^n (y_i-\bar{y})(x_i- \bar{x}) \right) \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir setzen die beiden Gleichungen nun gleich Null und formen nach &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_2\)&lt;/span&gt; um:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+  \hat\beta_1 
+  &amp;amp;= \frac{\sum\limits_{i=1}^n (z_i-\bar{z})(x_i - \bar{x}) - \hat\beta_2 \cdot \sum\limits_{i=1}^n (y_i-\bar{y})(x_i- \bar{x})}{\sum\limits_{i=1}^n (x_i -\bar{x})^2} \\
+  \\
+  \hat\beta_2 
+  &amp;amp;= \frac{\sum\limits_{i=1}^n (z_i-\bar{z})(y_i - \bar{y}) - \hat\beta_1 \cdot \sum\limits_{i=1}^n (y_i-\bar{y})(x_i- \bar{x})}{\sum\limits_{i=1}^n (y_i -\bar{y})^2}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Durch Erweiterung von Zähler nun Nenner mit &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt; erhalten wir:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+  \hat\beta_1 
+  &amp;amp;= \frac{\frac{1}{n-1}\cdot\sum\limits_{i=1}^n (z_i-\bar{z})(x_i - \bar{x}) - \hat\beta_2 \cdot \frac{1}{n-1}\cdot\sum\limits_{i=1}^n (y_i-\bar{y})(x_i- \bar{x})}{\frac{1}{n-1}\cdot\sum\limits_{i=1}^n (x_i -\bar{x})^2} \\
+  &amp;amp;= \frac{s_{x,z}-\hat\beta_2\cdot s_{x,y}}{s^2_{x}} = \frac{s_{x,z}}{s^2_x}-\hat\beta_2 \frac{s_{x,y}}{s^2_{x}} \\
+  \\
+  \hat\beta_2 
+  &amp;amp;= \frac{\frac{1}{n-1}\cdot\sum\limits_{i=1}^n (z_i-\bar{z})(y_i - \bar{y}) - \hat\beta_1 \cdot \frac{1}{n-1}\cdot\sum\limits_{i=1}^n (y_i-\bar{y})(x_i - \bar{x})}{\frac{1}{n-1}\cdot\sum\limits_{i=1}^n (y_i -\bar{y})^2} \\
+  &amp;amp;= \frac{s_{y,z}-\hat\beta_1\cdot s_{x,y}}{s^2_{y}} = \frac{s_{y,z}}{s^2_y}-\hat\beta_1 \frac{s_{x,y}}{s^2_{y}} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;wir setzen nun die erste in die zweite Gleichung ein und erhalten:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\hat\beta_2 
+  &amp;amp;= \frac{s_{y,z}}{s^2_y} - \left(\frac{s_{x,z}}{s^2_x}-\hat\beta_2 \frac{s_{x,y}}{s^2_{x}}\right) \frac{s_{x,y}}{s^2_{y}} \\
+  &amp;amp;= \frac{s_{y,z}}{s^2_y} - \frac{s_{x,z}}{s^2_x}\frac{s_{x,y}}{s^2_{y}} + \hat\beta_2 \frac{s_{x,y}}{s^2_{x}}\frac{s_{x,y}}{s^2_{y}} \\
+  &amp;amp;= \frac{\frac{s_{y,z}}{s^2_y} - \frac{s_{x,z}}{s^2_x}\frac{s_{x,y}}{s^2_{y}}}{1-\frac{s_{x,y}}{s^2_{x}}\frac{s_{x,y}}{s^2_{y}}} \\
+  &amp;amp;= \frac{\frac{s_{y,z}\cdot s^2_x - s_{x,z} s_{x,y}}{s^2_x\cdot s^2_y}}{\frac{s^2_x s^2_y-(s_{x,y})^2}{s^2_x \cdot s^2_y}}
+  = \frac{s_{y,z}\cdot s^2_x - s_{x,z} s_{x,y}}{s^2_x s^2_y-(s_{x,y})^2}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Und damit weiter:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\hat\beta_1  
+  &amp;amp;= \frac{s_{x,z}}{s^2_x}-\hat\beta_2 \frac{s_{x,y}}{s^2_{x}} \\
+  &amp;amp;= \frac{s_{x,z}}{s^2_x} - \frac{s_{y,z}\cdot s^2_x - s_{x,z} s_{x,y}}{s^2_x s^2_y-(s_{x,y})^2} \frac{s_{x,y}}{s^2_{x}} \\
+  &amp;amp;= \frac{s_{x,z} (s^2_x s^2_y - (s_{x,y})^2) - s_{y,z}s_{x,y}s^2_x + s_{x,z}s_{x,y}s_{x,y}}{s^2_x (s^2_x s^2_y - (s_{x,y})^2)} \\
+    &amp;amp;= \frac{s_{x,z}s^2_x s^2_y - s_{x,z}(s_{x,y})^2 - s_{y,z}s_{x,y}s^2_x + s_{x,z}(s_{x,y})^2}{s^2_x s^2_x s^2_y- s^2_x(s_{x,y})^2} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+
+mtcars %&amp;gt;%
+  select(mpg, hp, wt) -&amp;gt; dt
+
+# Von R berechnete Koeffizienten:
+coef(lm(mpg ~ hp + wt, data = dt))
+#&amp;gt; (Intercept)          hp          wt 
+#&amp;gt; 37.22727012 -0.03177295 -3.87783074
+
+mean_x = mean( ~ hp, data = dt)
+mean_y = mean( ~ wt, data = dt)
+mean_z = mean( ~ mpg, data = dt)
+
+s_xy &amp;lt;- cov(hp ~ wt, data = dt)
+s_xz &amp;lt;- cov(hp ~ mpg, data = dt)
+s_yz &amp;lt;- cov(wt ~ mpg, data = dt)
+
+var_x &amp;lt;- var(~ hp, data = dt)
+var_y &amp;lt;- var(~ wt, data = dt)
+
+b1 &amp;lt;- (s_xz*var_x*var_y - s_xz*(s_xy)**2 - s_yz*s_xy*var_x + s_xz*s_xy**2) / (var_x*var_x*var_y - var_x*s_xy**2)
+b2 &amp;lt;- (s_yz*var_x - s_xz*s_xy) / (var_x * var_y- s_xy*s_xy)
+b0 &amp;lt;- mean_z - b1 * mean_x - b2 * mean_y
+
+# Koeffizienten zur Ausgabe aufbereiten:
+my_coef &amp;lt;- c(b0, b1, b2)
+names(my_coef) &amp;lt;- c(&amp;quot;(Intercept)&amp;quot;, &amp;quot;hp&amp;quot;, &amp;quot;wt&amp;quot;)
+
+# Von Hand berechnete Koeffizienten:
+my_coef
+#&amp;gt; (Intercept)          hp          wt 
+#&amp;gt; 37.22727012 -0.03177295 -3.87783074&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;was-passiert-wenn-wir-alle-datenpunkte-studentisieren&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Was passiert, wenn wir alle Datenpunkte studentisieren?&lt;/h2&gt;
+&lt;p&gt;Wir rechnen um in:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+x_i^{\text{stud}} = \frac{x_i-\bar{x}}{s_x}; \quad y_i^{\text{stud}} = \frac{y_i-\bar{y}}{s_y}; \quad z_i^{\text{stud}} = \frac{z_i-\bar{z}}{s_z}
+\]&lt;/span&gt;
+Damit ist
+&lt;span class=&#34;math display&#34;&gt;\[
+\bar{x_i}^\text{stud} = 0; \quad \bar{y_i}^\text{stud} = 0;\quad \bar{z_i}^\text{stud} = 0
+\]&lt;/span&gt;
+und&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+s_{{x_i}^\text{stud}} = 1; \quad s_{{y_i}^\text{stud}} = 1;\quad s_{{z_i}^\text{stud}} = 1
+\]&lt;/span&gt;
+Zur Vereinfachung lassen wir die Kennzeichnung “stud” weg.
+Damit ist dann:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\hat\beta_0
+  &amp;amp;= 0\\
+\\
+\hat\beta_1
+  &amp;amp;= \frac{s_{x,z} \cdot s^2_x \cdot s^2_y - s_{x,z} \cdot (s_{x,y})^2 - s_{y,z} \cdot s_{x,y}s^2_x + s_{x,z} \cdot (s_{x,y})^2}{s^2_x \cdot s^2_x s^2_y- s^2_x \cdot (s_{x,y})^2} \\ 
+  &amp;amp;= \frac{s_{x,z} \cdot 1 \cdot 1 -  s_{x,z} \cdot (s_{x,y})^2 - s_{y,z} \cdot s_{x,y} \cdot 1 + s_{x,z} \cdot (s_{x,y})^2}{1 \cdot 1 \cdot 1 - 1 \cdot (s_{x,y})^2}\\
+  &amp;amp;= \frac{s_{x,z} -  s_{x,z} \cdot (s_{x,y})^2 - s_{y,z} \cdot s_{x,y} + s_{x,z} \cdot (s_{x,y})^2}{1 - (s_{x,y})^2} \\
+  &amp;amp;= \frac{s_{x,z} - s_{y,z} \cdot s_{x,y} }{1 - (s_{x,y})^2} \\
+\\
+\hat\beta_2
+  &amp;amp;= \frac{s_{y,z} \cdot s^2_x - s_{x,z} \cdot s_{x,y}}{s^2_x \cdot s^2_y - (s_{x,y})^2} \\ 
+  &amp;amp;= \frac{s_{y,z} \cdot 1 - s_{x,z} \cdot s_{x,y}}{1 \cdot 1 - (s_{x,y})^2} \\
+  &amp;amp;= \frac{s_{y,z} - s_{x,z} \cdot s_{x,y}}{1 - (s_{x,y})^2} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Wir schauen uns ein paar Fälle genauer an:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Fall: &lt;strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; sind unabhängig.&lt;/strong&gt; Dann ist &lt;span class=&#34;math inline&#34;&gt;\(s_{x,y}=0\)&lt;/span&gt; und wir erhalten &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1=s_{x,z}\in[-1;1]\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_2=s_{y,z}\in[-1;1]\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fall: &lt;strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; sind abhängig.&lt;/strong&gt; Dann ist &lt;span class=&#34;math inline&#34;&gt;\(|s_{x,y}|=1\)&lt;/span&gt; und es gibt keine Lösung für &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_1\)&lt;/span&gt; und &lt;span class=&#34;math inline&#34;&gt;\(\hat\beta_2\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fall: &lt;strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; |s_{x,y}| &amp;lt; 1\)&lt;/span&gt;.&lt;/strong&gt; …&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Interaktionseffekte leichter interpretieren durch Transformationen</title>
@@ -178,6 +353,7 @@ vereinfachen!&lt;/p&gt;
 &lt;div id=&#34;nachtrag-und-danksagung&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Nachtrag und Danksagung&lt;/h2&gt;
 &lt;p&gt;Die Idee zu diesem Blog-Post verdanke ich dem Blog von &lt;em&gt;Prof. Dr. Sebastian Sauer&lt;/em&gt;. Hier der Link zum Orginal-Blog: &lt;a href=&#34;https://data-se.netlify.app/2021/06/17/beispiel-zur-interpretation-des-interaktionseffekts/&#34;&gt;https://data-se.netlify.app/2021/06/17/beispiel-zur-interpretation-des-interaktionseffekts/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Danke auch für die kritische Durchsicht und die hilfreichen Anmerkungen.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;reproduzierbarkeitsinformationen&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Reproduzierbarkeitsinformationen&lt;/h2&gt;

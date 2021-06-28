@@ -30,10 +30,11 @@
   
     
   
-  <meta name="description" content="Bei der Analyse von Zusammenhängen tauchen sowohl Moderation als auch Mediation auf. Es geht um Zusammenhänge zwischen drei Variablen \(X\), \(Y\) und \(M\). Untersucht wird der Effekt einer unabhägigen Variable \(X\) (Prädiktor, UV) auf ein abhängige Variable \(Y\) (AV)." />
+  <meta name="description" content="Wir wollen den Fall unterschen bei dem wir mit zwei statistischen Variabeln (\(X\) und \(Y\)) eine dritte Variable (\(Z\)) mittels einer multiplen linearen Regression modellieren.
+Es seien die Datenpunkte \((x_1, y_1, z_1), \dots, (x_n, y_n, z_n)\) gegeben und wir wollen eine lineare Funktion \(g(x,y)\) finden, so dass" />
 
   
-  <link rel="alternate" hreflang="de-de" href="https://sefiroth.net/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/" />
+  <link rel="alternate" hreflang="de-de" href="https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/" />
 
   
 
@@ -283,7 +284,7 @@
   <link rel="icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
   <link rel="apple-touch-icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
 
-  <link rel="canonical" href="https://sefiroth.net/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/" />
+  <link rel="canonical" href="https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/" />
 
   
   
@@ -300,18 +301,19 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Norman&#39;s Academic Blog" />
-  <meta property="og:url" content="https://sefiroth.net/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/" />
-  <meta property="og:title" content="Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen | Norman&#39;s Academic Blog" />
-  <meta property="og:description" content="Bei der Analyse von Zusammenhängen tauchen sowohl Moderation als auch Mediation auf. Es geht um Zusammenhänge zwischen drei Variablen \(X\), \(Y\) und \(M\). Untersucht wird der Effekt einer unabhägigen Variable \(X\) (Prädiktor, UV) auf ein abhängige Variable \(Y\) (AV)." /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+  <meta property="og:url" content="https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/" />
+  <meta property="og:title" content="Dinge die man in zwei Dimensionen machen kann - Multiple lineare Regression | Norman&#39;s Academic Blog" />
+  <meta property="og:description" content="Wir wollen den Fall unterschen bei dem wir mit zwei statistischen Variabeln (\(X\) und \(Y\)) eine dritte Variable (\(Z\)) mittels einer multiplen linearen Regression modellieren.
+Es seien die Datenpunkte \((x_1, y_1, z_1), \dots, (x_n, y_n, z_n)\) gegeben und wir wollen eine lineare Funktion \(g(x,y)\) finden, so dass" /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
     <meta property="twitter:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="de-de" />
   
     
       <meta
         property="article:published_time"
-        content="2019-12-31T00:00:00&#43;00:00"
+        content="2021-06-24T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2019-12-31T13:33:45&#43;01:00">
+    <meta property="article:modified_time" content="2021-06-24T08:09:11&#43;02:00">
   
 
   
@@ -335,12 +337,12 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://sefiroth.net/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/"
+    "@id": "https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/"
   },
-  "headline": "Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen",
+  "headline": "Dinge die man in zwei Dimensionen machen kann - Multiple lineare Regression",
   
-  "datePublished": "2019-12-31T00:00:00Z",
-  "dateModified": "2019-12-31T13:33:45+01:00",
+  "datePublished": "2021-06-24T00:00:00Z",
+  "dateModified": "2021-06-24T08:09:11+02:00",
   
   "author": {
     "@type": "Person",
@@ -355,7 +357,7 @@
       "url": "https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Bei der Analyse von Zusammenhängen tauchen sowohl Moderation als auch Mediation auf. Es geht um Zusammenhänge zwischen drei Variablen \\(X\\), \\(Y\\) und \\(M\\). Untersucht wird der Effekt einer unabhägigen Variable \\(X\\) (Prädiktor, UV) auf ein abhängige Variable \\(Y\\) (AV)."
+  "description": "Wir wollen den Fall unterschen bei dem wir mit zwei statistischen Variabeln (\\(X\\) und \\(Y\\)) eine dritte Variable (\\(Z\\)) mittels einer multiplen linearen Regression modellieren.\nEs seien die Datenpunkte \\((x_1, y_1, z_1), \\dots, (x_n, y_n, z_n)\\) gegeben und wir wollen eine lineare Funktion \\(g(x,y)\\) finden, so dass"
 }
 </script>
 
@@ -371,11 +373,11 @@
 
 
 
-  <title>Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen | Norman&#39;s Academic Blog</title>
+  <title>Dinge die man in zwei Dimensionen machen kann - Multiple lineare Regression | Norman&#39;s Academic Blog</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="c4e2b6d3899edee451df21b607176158" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="e16556a36136101f3c8fc2b5afa3e84e" >
 
   
   
@@ -732,7 +734,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Moderator und Mediation - Formen der Interaktion bei Analyse von Zusammenhängen</h1>
+  <h1>Dinge die man in zwei Dimensionen machen kann - Multiple lineare Regression</h1>
 
   
 
@@ -753,7 +755,7 @@
           Zuletzt aktualisiert am
       
     
-    Dec 31, 2019
+    Jun 24, 2021
   </span>
   
 
@@ -762,7 +764,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min Lesezeit
+    5 min Lesezeit
   </span>
   
 
@@ -797,48 +799,171 @@
 
     <div class="article-style">
       
-<script src="2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhängen_files/header-attrs/header-attrs.js"></script>
+<script src="https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/index.de_files/header-attrs/header-attrs.js"></script>
 
 
-<p>Bei der Analyse von Zusammenhängen tauchen sowohl <em>Moderation</em> als auch <em>Mediation</em> auf. Es geht um Zusammenhänge zwischen drei Variablen <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span> und <span class="math inline">\(M\)</span>.
-Untersucht wird der Effekt einer unabhägigen Variable <span class="math inline">\(X\)</span> (<em>Prädiktor</em>, <em>UV</em>) auf ein abhängige Variable <span class="math inline">\(Y\)</span> (<em>AV</em>).
-Wir untersuchen dies mit einem Regressionsmodell <span class="math inline">\(Y \sim X\)</span>.
-Dabei wird zusätzlich eine dritte Variable <span class="math inline">\(M\)</span> berücksichtigt, die man entweder der <em>Moderator</em> oder <em>Mediator</em> nennt.</p>
-<p>Ist die abhängige Variable metrisch, so können wir mittels eine linearer Regression vorgehen, ist die AB dagegen dichotom, so nutzen wir eine logistische Regression.</p>
-<div id="moderation" class="section level2">
-<h2>Moderation</h2>
-<p>Bei einer <em>Moderation</em> wirkt die dritte Variable <span class="math inline">\(M\)</span> (<em>Moderator</em>) auf die Beziehung zwischen <span class="math inline">\(X\)</span> und <span class="math inline">\(Y\)</span>.</p>
-<p><img src="/nabpost/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Moderation-1.png" width="30%" style="display: block; margin: auto;" /></p>
-<p>Der Einfluss von <span class="math inline">\(M\)</span> ändert also den Effekt von <span class="math inline">\(X\)</span> auf <span class="math inline">\(Y\)</span>. Der Zusammenhang zwischen <span class="math inline">\(Y\)</span> und <span class="math inline">\(X\)</span> ist also je nach <span class="math inline">\(M\)</span> unterschiedlich.</p>
-<p>Statistisch gesehen liegt eine <em>Interaktion</em> zwischen <span class="math inline">\(M\)</span> und <span class="math inline">\(X\)</span> vor.</p>
-<div id="wie-untersucht-man-einen-zusammenhang-auf-eine-moderation" class="section level3">
-<h3>Wie untersucht man einen Zusammenhang auf eine Moderation?</h3>
-<p>Dazu stellen wir ein Regressionsmodell mit den drei Faktoren <span class="math inline">\(X\)</span>, <span class="math inline">\(M\)</span> und der Interaktion zwischen <span class="math inline">\(X\)</span> und <span class="math inline">\(M\)</span> auf.</p>
-<pre class="r"><code>lm(Y ~ X * M, data=daten)</code></pre>
-<p>Oder alternativ:</p>
-<pre class="r"><code>lm(Y ~ X + M + M:X, data=daten)</code></pre>
-<p>Diese drei Faktoren wirken auf <span class="math inline">\(Y\)</span>. Ist in diesem Modell die Interaktion <span class="math inline">\(M:X\)</span> <em>signifikant</em>, so liegt eine (signifikante) <em>Moderation</em> vor.</p>
-</div>
-</div>
-<div id="mediation" class="section level2">
-<h2>Mediation</h2>
-<p>Bei der <em>Mediation</em> steht die Variable <span class="math inline">\(M\)</span> (der <em>Mediator</em>) sowohl zu <span class="math inline">\(X\)</span> als auch zu <span class="math inline">\(Y\)</span> in Beziehung.
-Der direkte Effekt zwischen <span class="math inline">\(X\)</span> und <span class="math inline">\(Y\)</span> wird durch den indirekten Effekt über <span class="math inline">\(M\)</span> erklärt, also durch
-<span class="math inline">\(X \to M \to Y\)</span>.</p>
-<p><img src="/nabpost/2019-12-31-moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenha%CC%88ngen_files/figure-html/Mediator-1.png" width="30%" style="display: block; margin: auto;" /></p>
-<div id="wie-untersucht-man-auf-eine-mediation" class="section level3">
-<h3>Wie untersucht man auf eine Mediation?</h3>
-<p>In diesem Fall stellen wir mehrere Regressionsmodelle auf. Eine (signifikante) Mediation liegt dann vor, wenn die folgenden Bedinungen erfüllt sind:</p>
-<pre class="r"><code>erstesModell &lt;- lm(Y ~ X, data=daten)
-zweitesModell &lt;- lm(M ~ X, data=daten)
-drittesModell &lt;- lm(Y ~ X + M, data=daten)</code></pre>
+<p>Wir wollen den Fall unterschen bei dem wir mit zwei statistischen Variabeln (<span class="math inline">\(X\)</span> und <span class="math inline">\(Y\)</span>) eine dritte Variable (<span class="math inline">\(Z\)</span>) mittels einer multiplen linearen Regression modellieren.</p>
+<p>Es seien die Datenpunkte <span class="math inline">\((x_1, y_1, z_1), \dots, (x_n, y_n, z_n)\)</span> gegeben und wir wollen eine lineare Funktion <span class="math inline">\(g(x,y)\)</span> finden, so dass</p>
+<p><span class="math display">\[
+z_i = g(x_i,y_i)+ \epsilon_i =\beta_0 + \beta_1 \cdot x_i + \beta_2 \cdot y_i + \epsilon_i
+\]</span></p>
+<p>gilt und der Abweichungsterm <span class="math inline">\(\epsilon_i\)</span> möglichst klein ist.</p>
+<p>Auf Grundlage unserer Datenpunkt wollen wir die Koeffizienten so schätzen, dass die Summe der quadratische Abweichungen minimal ist.
+<span class="math display">\[
+  QS = QS(\hat\beta_0, \hat\beta_1, \hat\beta_2) 
+  = \sum\limits_{i=1}^n (z_i - \hat\beta_0 - \hat\beta_1 \cdot x_i - \hat\beta_2 \cdot y_i )^2
+\]</span></p>
+<p>Das führt zu der folgenden, notwendigen Bedingen (für stationäre Punkte):</p>
+<p><span class="math display">\[
+\nabla QS(\hat\beta_0, \hat\beta_1, \hat\beta_2) = \begin{pmatrix} 0\\ 0\\ 0\end{pmatrix}
+\]</span></p>
+<p>Im einzelnen heißt das:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial}{\partial \hat\beta_0} QS(\hat\beta_0, \hat\beta_1, \hat\beta_2) &amp;= -2 \cdot\sum\limits_{i=1}^n \left(z_i - \hat\beta_0 - \hat\beta_1 \cdot x_i - \hat\beta_2 \cdot y_i \right) \\
+&amp;= -2 \cdot n \cdot \left(\bar{z} - \hat\beta_0 - \hat\beta_1 \cdot\bar{x} - \hat\beta_2 \cdot\bar{y} \right) \\
+\\
+\frac{\partial}{\partial \hat\beta_1} QS(\hat\beta_0, \hat\beta_1, \hat\beta_2) &amp;= -2 \cdot \sum\limits_{i=1}^n \left( z_i\cdot x_i - \hat\beta_0 \cdot x_i - \hat\beta_1 \cdot x_i\cdot x_i - \hat\beta_2 \cdot y_i\cdot x_i \right) \\
+&amp;= -2 \cdot \left(\sum\limits_{i=1}^n  z_i\cdot x_i -  \hat\beta_0 \cdot n \cdot \bar{x}- \hat\beta_1 \cdot \sum\limits_{i=1}^n x_i^2 - \hat\beta_2 \cdot \sum\limits_{i=1}^n y_i\cdot x_i \right) \\
+\\
+\frac{\partial}{\partial \hat\beta_2} QS(\hat\beta_0, \hat\beta_1, \hat\beta_2) &amp;= -2 \cdot \sum\limits_{i=1}^n \left( z_i\cdot y_i - \hat\beta_0 \cdot y_i - \hat\beta_1 \cdot x_i\cdot y_i - \hat\beta_2 \cdot y_i\cdot y_i \right) \\
+&amp;= -2 \cdot \left(\sum\limits_{i=1}^n  z_i\cdot y_i -  \hat\beta_0 \cdot n \cdot \bar{y}- \hat\beta_1 \cdot \sum\limits_{i=1}^n x_i\cdot y_i - \hat\beta_2 \cdot \sum\limits_{i=1}^n y_i^2 \right) \\
+\end{aligned}
+\]</span></p>
+<p>Wir setzen die 1. Gleichung gleich Null und stellen nach <span class="math inline">\(\hat\beta_0\)</span> um:</p>
+<p><span class="math display">\[
+  \hat\beta_0 = \bar{z}  - \hat\beta_1 \cdot \bar{x} - \hat\beta_2 \cdot \bar{y}
+\]</span>
+Nun ersetzen wir <span class="math inline">\(\hat\beta_0\)</span> in den verbleibenden Gleichungen durch <span class="math inline">\(z_i - \hat\beta_1 \cdot x_i - \hat\beta_2 \cdot y_i\)</span> und nutzen den Verschiebesatz:
+<!--
+% &= -2 \cdot \left(\sum\limits_{i=1}^n  z_i\cdot x_i - n \cdot \bar{z}\cdot \bar{x} + \hat\beta_1 \cdot n \cdot \bar{x}^2 + \hat\beta_2 \cdot n \cdot \bar{y}\cdot \bar{x}- \hat\beta_1 \cdot \sum\limits_{i=1}^n x_i^2 - \hat\beta_2 \cdot \sum\limits_{i=1}^n y_i\cdot x_i \right) \\
+--></p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial}{\partial \hat\beta_1} QS
+&amp;= -2 \cdot \left(\sum\limits_{i=1}^n  z_i\cdot x_i - (\bar{z}  - \hat\beta_1 \cdot \bar{x} - \hat\beta_2 \cdot \bar{y}) \cdot n \cdot \bar{x}- \hat\beta_1 \cdot \sum\limits_{i=1}^n x_i^2 - \hat\beta_2 \cdot \sum\limits_{i=1}^n y_i\cdot x_i \right) \\
+&amp;= -2 \cdot \left(\sum\limits_{i=1}^n (z_i-\bar{z})(x_i - \bar{x}) - \hat\beta_1 \cdot \sum\limits_{i=1}^n (x_i -\bar{x})^2 - \hat\beta_2 \cdot \sum\limits_{i=1}^n (y_i-\bar{y})(x_i- \bar{x}) \right) \\
+\\
+\frac{\partial}{\partial \hat\beta_2} QS 
+&amp;= -2 \cdot \left(\sum\limits_{i=1}^n  z_i\cdot y_i - (\bar{z}  - \hat\beta_1 \cdot \bar{x} - \hat\beta_2 \cdot \bar{y}) \cdot n \cdot \bar{y}- \hat\beta_1 \cdot \sum\limits_{i=1}^n x_i\cdot y_i - \hat\beta_2 \cdot \sum\limits_{i=1}^n y_i^2 \right) \\
+&amp;= -2 \cdot \left(\sum\limits_{i=1}^n (z_i-\bar{z})(y_i - \bar{y}) - \hat\beta_2 \cdot \sum\limits_{i=1}^n (y_i -\bar{y})^2 - \hat\beta_1 \cdot \sum\limits_{i=1}^n (y_i-\bar{y})(x_i- \bar{x}) \right) \\
+\end{aligned}
+\]</span></p>
+<p>Wir setzen die beiden Gleichungen nun gleich Null und formen nach <span class="math inline">\(\hat\beta_1\)</span> und <span class="math inline">\(\hat\beta_2\)</span> um:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \hat\beta_1 
+  &amp;= \frac{\sum\limits_{i=1}^n (z_i-\bar{z})(x_i - \bar{x}) - \hat\beta_2 \cdot \sum\limits_{i=1}^n (y_i-\bar{y})(x_i- \bar{x})}{\sum\limits_{i=1}^n (x_i -\bar{x})^2} \\
+  \\
+  \hat\beta_2 
+  &amp;= \frac{\sum\limits_{i=1}^n (z_i-\bar{z})(y_i - \bar{y}) - \hat\beta_1 \cdot \sum\limits_{i=1}^n (y_i-\bar{y})(x_i- \bar{x})}{\sum\limits_{i=1}^n (y_i -\bar{y})^2}
+\end{aligned}
+\]</span></p>
+<p>Durch Erweiterung von Zähler nun Nenner mit <span class="math inline">\(\frac{1}{n-1}\)</span> erhalten wir:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \hat\beta_1 
+  &amp;= \frac{\frac{1}{n-1}\cdot\sum\limits_{i=1}^n (z_i-\bar{z})(x_i - \bar{x}) - \hat\beta_2 \cdot \frac{1}{n-1}\cdot\sum\limits_{i=1}^n (y_i-\bar{y})(x_i- \bar{x})}{\frac{1}{n-1}\cdot\sum\limits_{i=1}^n (x_i -\bar{x})^2} \\
+  &amp;= \frac{s_{x,z}-\hat\beta_2\cdot s_{x,y}}{s^2_{x}} = \frac{s_{x,z}}{s^2_x}-\hat\beta_2 \frac{s_{x,y}}{s^2_{x}} \\
+  \\
+  \hat\beta_2 
+  &amp;= \frac{\frac{1}{n-1}\cdot\sum\limits_{i=1}^n (z_i-\bar{z})(y_i - \bar{y}) - \hat\beta_1 \cdot \frac{1}{n-1}\cdot\sum\limits_{i=1}^n (y_i-\bar{y})(x_i - \bar{x})}{\frac{1}{n-1}\cdot\sum\limits_{i=1}^n (y_i -\bar{y})^2} \\
+  &amp;= \frac{s_{y,z}-\hat\beta_1\cdot s_{x,y}}{s^2_{y}} = \frac{s_{y,z}}{s^2_y}-\hat\beta_1 \frac{s_{x,y}}{s^2_{y}} \\
+\end{aligned}
+\]</span></p>
+<p>wir setzen nun die erste in die zweite Gleichung ein und erhalten:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat\beta_2 
+  &amp;= \frac{s_{y,z}}{s^2_y} - \left(\frac{s_{x,z}}{s^2_x}-\hat\beta_2 \frac{s_{x,y}}{s^2_{x}}\right) \frac{s_{x,y}}{s^2_{y}} \\
+  &amp;= \frac{s_{y,z}}{s^2_y} - \frac{s_{x,z}}{s^2_x}\frac{s_{x,y}}{s^2_{y}} + \hat\beta_2 \frac{s_{x,y}}{s^2_{x}}\frac{s_{x,y}}{s^2_{y}} \\
+  &amp;= \frac{\frac{s_{y,z}}{s^2_y} - \frac{s_{x,z}}{s^2_x}\frac{s_{x,y}}{s^2_{y}}}{1-\frac{s_{x,y}}{s^2_{x}}\frac{s_{x,y}}{s^2_{y}}} \\
+  &amp;= \frac{\frac{s_{y,z}\cdot s^2_x - s_{x,z} s_{x,y}}{s^2_x\cdot s^2_y}}{\frac{s^2_x s^2_y-(s_{x,y})^2}{s^2_x \cdot s^2_y}}
+  = \frac{s_{y,z}\cdot s^2_x - s_{x,z} s_{x,y}}{s^2_x s^2_y-(s_{x,y})^2}
+\end{aligned}
+\]</span></p>
+<p>Und damit weiter:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat\beta_1  
+  &amp;= \frac{s_{x,z}}{s^2_x}-\hat\beta_2 \frac{s_{x,y}}{s^2_{x}} \\
+  &amp;= \frac{s_{x,z}}{s^2_x} - \frac{s_{y,z}\cdot s^2_x - s_{x,z} s_{x,y}}{s^2_x s^2_y-(s_{x,y})^2} \frac{s_{x,y}}{s^2_{x}} \\
+  &amp;= \frac{s_{x,z} (s^2_x s^2_y - (s_{x,y})^2) - s_{y,z}s_{x,y}s^2_x + s_{x,z}s_{x,y}s_{x,y}}{s^2_x (s^2_x s^2_y - (s_{x,y})^2)} \\
+    &amp;= \frac{s_{x,z}s^2_x s^2_y - s_{x,z}(s_{x,y})^2 - s_{y,z}s_{x,y}s^2_x + s_{x,z}(s_{x,y})^2}{s^2_x s^2_x s^2_y- s^2_x(s_{x,y})^2} \\
+\end{aligned}
+\]</span></p>
+<pre class="r"><code>library(mosaic)
+
+mtcars %&gt;%
+  select(mpg, hp, wt) -&gt; dt
+
+# Von R berechnete Koeffizienten:
+coef(lm(mpg ~ hp + wt, data = dt))
+#&gt; (Intercept)          hp          wt 
+#&gt; 37.22727012 -0.03177295 -3.87783074
+
+mean_x = mean( ~ hp, data = dt)
+mean_y = mean( ~ wt, data = dt)
+mean_z = mean( ~ mpg, data = dt)
+
+s_xy &lt;- cov(hp ~ wt, data = dt)
+s_xz &lt;- cov(hp ~ mpg, data = dt)
+s_yz &lt;- cov(wt ~ mpg, data = dt)
+
+var_x &lt;- var(~ hp, data = dt)
+var_y &lt;- var(~ wt, data = dt)
+
+b1 &lt;- (s_xz*var_x*var_y - s_xz*(s_xy)**2 - s_yz*s_xy*var_x + s_xz*s_xy**2) / (var_x*var_x*var_y - var_x*s_xy**2)
+b2 &lt;- (s_yz*var_x - s_xz*s_xy) / (var_x * var_y- s_xy*s_xy)
+b0 &lt;- mean_z - b1 * mean_x - b2 * mean_y
+
+# Koeffizienten zur Ausgabe aufbereiten:
+my_coef &lt;- c(b0, b1, b2)
+names(my_coef) &lt;- c(&quot;(Intercept)&quot;, &quot;hp&quot;, &quot;wt&quot;)
+
+# Von Hand berechnete Koeffizienten:
+my_coef
+#&gt; (Intercept)          hp          wt 
+#&gt; 37.22727012 -0.03177295 -3.87783074</code></pre>
+<div id="was-passiert-wenn-wir-alle-datenpunkte-studentisieren" class="section level2">
+<h2>Was passiert, wenn wir alle Datenpunkte studentisieren?</h2>
+<p>Wir rechnen um in:</p>
+<p><span class="math display">\[
+x_i^{\text{stud}} = \frac{x_i-\bar{x}}{s_x}; \quad y_i^{\text{stud}} = \frac{y_i-\bar{y}}{s_y}; \quad z_i^{\text{stud}} = \frac{z_i-\bar{z}}{s_z}
+\]</span>
+Damit ist
+<span class="math display">\[
+\bar{x_i}^\text{stud} = 0; \quad \bar{y_i}^\text{stud} = 0;\quad \bar{z_i}^\text{stud} = 0
+\]</span>
+und</p>
+<p><span class="math display">\[
+s_{{x_i}^\text{stud}} = 1; \quad s_{{y_i}^\text{stud}} = 1;\quad s_{{z_i}^\text{stud}} = 1
+\]</span>
+Zur Vereinfachung lassen wir die Kennzeichnung “stud” weg.
+Damit ist dann:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat\beta_0
+  &amp;= 0\\
+\\
+\hat\beta_1
+  &amp;= \frac{s_{x,z} \cdot s^2_x \cdot s^2_y - s_{x,z} \cdot (s_{x,y})^2 - s_{y,z} \cdot s_{x,y}s^2_x + s_{x,z} \cdot (s_{x,y})^2}{s^2_x \cdot s^2_x s^2_y- s^2_x \cdot (s_{x,y})^2} \\ 
+  &amp;= \frac{s_{x,z} \cdot 1 \cdot 1 -  s_{x,z} \cdot (s_{x,y})^2 - s_{y,z} \cdot s_{x,y} \cdot 1 + s_{x,z} \cdot (s_{x,y})^2}{1 \cdot 1 \cdot 1 - 1 \cdot (s_{x,y})^2}\\
+  &amp;= \frac{s_{x,z} -  s_{x,z} \cdot (s_{x,y})^2 - s_{y,z} \cdot s_{x,y} + s_{x,z} \cdot (s_{x,y})^2}{1 - (s_{x,y})^2} \\
+  &amp;= \frac{s_{x,z} - s_{y,z} \cdot s_{x,y} }{1 - (s_{x,y})^2} \\
+\\
+\hat\beta_2
+  &amp;= \frac{s_{y,z} \cdot s^2_x - s_{x,z} \cdot s_{x,y}}{s^2_x \cdot s^2_y - (s_{x,y})^2} \\ 
+  &amp;= \frac{s_{y,z} \cdot 1 - s_{x,z} \cdot s_{x,y}}{1 \cdot 1 - (s_{x,y})^2} \\
+  &amp;= \frac{s_{y,z} - s_{x,z} \cdot s_{x,y}}{1 - (s_{x,y})^2} \\
+\end{aligned}
+\]</span></p>
+<p>Wir schauen uns ein paar Fälle genauer an:</p>
 <ol style="list-style-type: decimal">
-<li><p>Im ersten Modell (<span class="math inline">\(X \to Y\)</span>) ist der Regressionskoeffizient von <span class="math inline">\(X\)</span> signifikant.</p></li>
-<li><p>Im zweiten Modell (<span class="math inline">\(X \to M\)</span>) ist der Regressionskoeffizient von <span class="math inline">\(X\)</span> signifikant.</p></li>
-<li><p>Im dritten Modell (<span class="math inline">\(X,M \to Y\)</span>) ist der Regressionskoeffizient von <span class="math inline">\(M\)</span> signifikant und</p></li>
-<li><p>der Regressionskoeffizient von <span class="math inline">\(X\)</span> im dritten Modell kleiner als im ersten Modell.</p></li>
+<li><p>Fall: <strong><span class="math inline">\(X\)</span> und <span class="math inline">\(Y\)</span> sind unabhängig.</strong> Dann ist <span class="math inline">\(s_{x,y}=0\)</span> und wir erhalten <span class="math inline">\(\hat\beta_1=s_{x,z}\in[-1;1]\)</span> und <span class="math inline">\(\hat\beta_2=s_{y,z}\in[-1;1]\)</span>.</p></li>
+<li><p>Fall: <strong><span class="math inline">\(X\)</span> und <span class="math inline">\(Y\)</span> sind abhängig.</strong> Dann ist <span class="math inline">\(|s_{x,y}|=1\)</span> und es gibt keine Lösung für <span class="math inline">\(\hat\beta_1\)</span> und <span class="math inline">\(\hat\beta_2\)</span>.</p></li>
+<li><p>Fall: <strong><span class="math inline">\(0 &lt; |s_{x,y}| &lt; 1\)</span>.</strong> …</p></li>
 </ol>
-</div>
 </div>
 
     </div>
@@ -852,23 +977,11 @@ drittesModell &lt;- lm(Y ~ X + M, data=daten)</code></pre>
 
 <div class="article-tags">
   
+  <a class="badge badge-light" href="/nab/tag/data-science/">Data Science</a>
+  
+  <a class="badge badge-light" href="/nab/tag/lineare-regression/">Lineare Regression</a>
+  
   <a class="badge badge-light" href="/nab/tag/statistik/">Statistik</a>
-  
-  <a class="badge badge-light" href="/nab/tag/moderator/">Moderator</a>
-  
-  <a class="badge badge-light" href="/nab/tag/mediator/">Mediator</a>
-  
-  <a class="badge badge-light" href="/nab/tag/moderatorenanalyse/">Moderatorenanalyse</a>
-  
-  <a class="badge badge-light" href="/nab/tag/mediatorenanalyse/">Mediatorenanalyse</a>
-  
-  <a class="badge badge-light" href="/nab/tag/interaktion/">Interaktion</a>
-  
-  <a class="badge badge-light" href="/nab/tag/zusammemhangsanalyse/">Zusammemhangsanalyse</a>
-  
-  <a class="badge badge-light" href="/nab/tag/regression/">Regression</a>
-  
-  <a class="badge badge-light" href="/nab/tag/regressionsanalyse/">Regressionsanalyse</a>
   
 </div>
 
@@ -885,7 +998,7 @@ drittesModell &lt;- lm(Y ~ X + M, data=daten)</code></pre>
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://sefiroth.net/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/&amp;text=Moderator%20und%20Mediation%20-%20Formen%20der%20Interaktion%20bei%20Analyse%20von%20Zusammenh%c3%a4ngen" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/&amp;text=Dinge%20die%20man%20in%20zwei%20Dimensionen%20machen%20kann%20-%20Multiple%20lineare%20Regression" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -898,7 +1011,7 @@ drittesModell &lt;- lm(Y ~ X + M, data=daten)</code></pre>
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://sefiroth.net/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/&amp;t=Moderator%20und%20Mediation%20-%20Formen%20der%20Interaktion%20bei%20Analyse%20von%20Zusammenh%c3%a4ngen" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/&amp;t=Dinge%20die%20man%20in%20zwei%20Dimensionen%20machen%20kann%20-%20Multiple%20lineare%20Regression" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -911,7 +1024,7 @@ drittesModell &lt;- lm(Y ~ X + M, data=daten)</code></pre>
       
       
       <li>
-        <a href="mailto:?subject=Moderator%20und%20Mediation%20-%20Formen%20der%20Interaktion%20bei%20Analyse%20von%20Zusammenh%c3%a4ngen&amp;body=https://sefiroth.net/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Dinge%20die%20man%20in%20zwei%20Dimensionen%20machen%20kann%20-%20Multiple%20lineare%20Regression&amp;body=https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -924,7 +1037,7 @@ drittesModell &lt;- lm(Y ~ X + M, data=daten)</code></pre>
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://sefiroth.net/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/&amp;title=Moderator%20und%20Mediation%20-%20Formen%20der%20Interaktion%20bei%20Analyse%20von%20Zusammenh%c3%a4ngen" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/&amp;title=Dinge%20die%20man%20in%20zwei%20Dimensionen%20machen%20kann%20-%20Multiple%20lineare%20Regression" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -937,7 +1050,7 @@ drittesModell &lt;- lm(Y ~ X + M, data=daten)</code></pre>
       
       
       <li>
-        <a href="whatsapp://send?text=Moderator%20und%20Mediation%20-%20Formen%20der%20Interaktion%20bei%20Analyse%20von%20Zusammenh%c3%a4ngen%20https://sefiroth.net/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Dinge%20die%20man%20in%20zwei%20Dimensionen%20machen%20kann%20-%20Multiple%20lineare%20Regression%20https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -950,7 +1063,7 @@ drittesModell &lt;- lm(Y ~ X + M, data=daten)</code></pre>
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://sefiroth.net/nab/post/moderator-und-mediation-formen-der-interaktion-bei-analyse-von-zusammenhaengen/&amp;title=Moderator%20und%20Mediation%20-%20Formen%20der%20Interaktion%20bei%20Analyse%20von%20Zusammenh%c3%a4ngen" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/&amp;title=Dinge%20die%20man%20in%20zwei%20Dimensionen%20machen%20kann%20-%20Multiple%20lineare%20Regression" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1118,13 +1231,13 @@ drittesModell &lt;- lm(Y ~ X + M, data=daten)</code></pre>
       
       <li><a href="/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/">Interaktionseffekte leichter interpretieren durch Transformationen</a></li>
       
+      <li><a href="/nab/post/regression-mit-studentisierten-daten/">Regression mit studentisierten Daten</a></li>
+      
+      <li><a href="/nab/post/ueber-die-koeffizienten-einer-linearen-regression/">Über die Koeffizienten einer linearen Regression</a></li>
+      
       <li><a href="/nab/post/nur-ein-wenig-lineare-regression/">Nur ein wenig lineare Regression</a></li>
       
-      <li><a href="/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/">Dinge die man in zwei Dimensionen machen kann - Multiple lineare Regression</a></li>
-      
-      <li><a href="/nab/post/ein-kleines-beispiel-zum-rangkorrelationskoeffizienten/">Ein kleines Beispiel zum Rangkorrelationskoeffizienten</a></li>
-      
-      <li><a href="/nab/post/eine-typische-frage-von-studierenden/">Eine typische Frage von Studierenden</a></li>
+      <li><a href="/nab/project/etwas-r-am-abend/">Etwas R am Abend</a></li>
       
     </ul>
   </div>

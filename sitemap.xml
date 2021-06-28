@@ -11,17 +11,41 @@
     <loc>https://sefiroth.net/nab/event/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://sefiroth.net/nab/tag/allgemein/</loc>
-    <lastmod>2021-06-23T07:52:47+02:00</lastmod>
-  </url><url>
     <loc>https://sefiroth.net/nab/post/</loc>
-    <lastmod>2021-06-23T10:24:28+02:00</lastmod>
+    <lastmod>2021-06-27T18:27:55+02:00</lastmod>
   </url><url>
     <loc>https://sefiroth.net/nab/categories/</loc>
-    <lastmod>2021-06-23T10:24:28+02:00</lastmod>
+    <lastmod>2021-06-27T18:27:55+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nab/tag/datenjudo/</loc>
+    <lastmod>2021-06-27T18:27:55+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nab/post/datenjudo-fur-fragebogen/</loc>
+    <lastmod>2021-06-27T18:27:55+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nab/tag/r/</loc>
+    <lastmod>2021-06-27T18:27:55+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nab/category/statistisches/</loc>
+    <lastmod>2021-06-27T18:27:55+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nab/tags/</loc>
+    <lastmod>2021-06-27T18:27:55+02:00</lastmod>
   </url><url>
     <loc>https://sefiroth.net/nab/tag/data-science/</loc>
-    <lastmod>2021-06-23T10:24:28+02:00</lastmod>
+    <lastmod>2021-06-24T08:09:11+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/</loc>
+    <lastmod>2021-06-24T08:09:11+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nab/tag/lineare-regression/</loc>
+    <lastmod>2021-06-24T08:09:11+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nab/tag/statistik/</loc>
+    <lastmod>2021-06-24T08:09:11+02:00</lastmod>
+  </url><url>
+    <loc>https://sefiroth.net/nab/tag/allgemein/</loc>
+    <lastmod>2021-06-23T07:52:47+02:00</lastmod>
   </url><url>
     <loc>https://sefiroth.net/nab/tag/interaktionseffekte/</loc>
     <lastmod>2021-06-23T10:24:28+02:00</lastmod>
@@ -31,9 +55,6 @@
   </url><url>
     <loc>https://sefiroth.net/nab/tag/korrelationskoeffizient/</loc>
     <lastmod>2021-06-23T07:52:47+02:00</lastmod>
-  </url><url>
-    <loc>https://sefiroth.net/nab/tag/lineare-regression/</loc>
-    <lastmod>2021-06-23T10:24:28+02:00</lastmod>
   </url><url>
     <loc>https://sefiroth.net/nab/tag/mediator/</loc>
     <lastmod>2021-06-23T10:24:28+02:00</lastmod>
@@ -47,20 +68,8 @@
     <loc>https://sefiroth.net/nab/tag/moderatorenanalyse/</loc>
     <lastmod>2021-06-23T10:24:28+02:00</lastmod>
   </url><url>
-    <loc>https://sefiroth.net/nab/tag/r/</loc>
-    <lastmod>2021-06-23T10:24:28+02:00</lastmod>
-  </url><url>
     <loc>https://sefiroth.net/nab/post/regression-mit-studentisierten-daten/</loc>
     <lastmod>2021-06-23T07:52:47+02:00</lastmod>
-  </url><url>
-    <loc>https://sefiroth.net/nab/tag/statistik/</loc>
-    <lastmod>2021-06-23T10:24:28+02:00</lastmod>
-  </url><url>
-    <loc>https://sefiroth.net/nab/category/statistisches/</loc>
-    <lastmod>2021-06-23T10:24:28+02:00</lastmod>
-  </url><url>
-    <loc>https://sefiroth.net/nab/tags/</loc>
-    <lastmod>2021-06-23T10:24:28+02:00</lastmod>
   </url><url>
     <loc>https://sefiroth.net/nab/tag/dichte/</loc>
     <lastmod>2021-06-11T11:57:07+02:00</lastmod>
