@@ -45,7 +45,7 @@ mycols &amp;lt;- cols(
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Laden mit vroom, Spaltentypen erraten, Locale auf mylocale
 tips.vroom &amp;lt;- vroom(url, locale = mylocale)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Rows: 244 Columns: 7&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+&lt;pre&gt;&lt;code&gt;## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &amp;quot;;&amp;quot;
 ## chr (4): sex, smoker, day, time
 ## dbl (3): total_bill, tip, size&lt;/code&gt;&lt;/pre&gt;
@@ -144,7 +144,7 @@ library(readr)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tips.readr &amp;lt;- readr::read_csv2(url)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## ℹ Using &amp;#39;\&amp;#39;,\&amp;#39;&amp;#39; as decimal and &amp;#39;\&amp;#39;.\&amp;#39;&amp;#39; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
 ##   total_bill = col_double(),
 ##   tip = col_double(),

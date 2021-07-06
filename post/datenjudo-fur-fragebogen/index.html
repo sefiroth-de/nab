@@ -764,7 +764,7 @@ Dazu kann etwas gezieltes Datenjudo helfen. Wir schauen uns das folgende generie
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min Lesezeit
+    6 min Lesezeit
   </span>
   
 
@@ -814,9 +814,6 @@ N &lt;- 25  # Anzahl der Testzeileneinträge in den &quot;testdaten&quot;!
 minLikert &lt;- 1  # bis
 maxLikert &lt;- 6  # erstellen.
 
-# Für den Zufallszahlengenerator:
-maxRnd &lt;- maxLikert + 0.99
-
 # Zum späteren Umrechnen der inversen Items:
 maxInvItem &lt;- maxLikert + 1
 
@@ -827,36 +824,36 @@ maxInvItem &lt;- maxLikert + 1
 testdaten &lt;- tibble(
     ID = 1:N,
     # AS1-AS6 bilden ein Itemset:
-    AS1 = trunc(runif(N, min = minLikert, max = maxLikert)),
-    AS2 = trunc(runif(N, min = minLikert, max = maxLikert)),
-    AS3 = trunc(runif(N, min = minLikert, max = maxLikert)),
-    AS4 = trunc(runif(N, min = minLikert, max = maxLikert)),
-    AS5 = trunc(runif(N, min = minLikert, max = maxLikert)),
-    AS6 = trunc(runif(N, min = minLikert, max = maxLikert)),
+    AS1 = sample(minLikert:maxLikert, N, replace = TRUE),
+    AS2 = sample(minLikert:maxLikert, N, replace = TRUE),
+    AS3 = sample(minLikert:maxLikert, N, replace = TRUE),
+    AS4 = sample(minLikert:maxLikert, N, replace = TRUE),
+    AS5 = sample(minLikert:maxLikert, N, replace = TRUE),
+    AS6 = sample(minLikert:maxLikert, N, replace = TRUE),
     # BS1-BS5 bilden ein Itemset:
-    BS1 = trunc(runif(N, min = minLikert, max = maxLikert)),
-    BS2 = trunc(runif(N, min = minLikert, max = maxLikert)),
-    BS3 = trunc(runif(N, min = minLikert, max = maxLikert)),
-    BS4 = trunc(runif(N, min = minLikert, max = maxLikert)),
-    BS5 = trunc(runif(N, min = minLikert, max = maxLikert)),
+    BS1 = sample(minLikert:maxLikert, N, replace = TRUE),
+    BS2 = sample(minLikert:maxLikert, N, replace = TRUE),
+    BS3 = sample(minLikert:maxLikert, N, replace = TRUE),
+    BS4 = sample(minLikert:maxLikert, N, replace = TRUE),
+    BS5 = sample(minLikert:maxLikert, N, replace = TRUE),
     # Geschlecht als sex mit (1 für Frauen und 2 für Männer)
-    sex = trunc(runif(N, min = 1, max = 2.99))
+    sex = sample(1:2, N, replace = TRUE)
 )
 
 # Orinal testdaten einmal ausgeben:
 head(testdaten)
 #&gt; # A tibble: 6 x 13
 #&gt;      ID   AS1   AS2   AS3   AS4   AS5   AS6   BS1   BS2   BS3   BS4   BS5   sex
-#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1     1     1     1     5     4     2     1     1     5     5     1     3     1
-#&gt; 2     2     4     4     1     5     2     2     1     2     2     3     1     2
-#&gt; 3     3     4     1     5     2     4     2     1     1     3     2     4     2
-#&gt; 4     4     1     3     3     4     4     2     4     1     5     1     2     1
-#&gt; 5     5     3     2     2     2     1     5     1     3     4     5     4     2
-#&gt; 6     6     1     1     1     3     3     5     3     4     3     1     2     1</code></pre>
+#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+#&gt; 1     1     4     4     1     1     2     4     5     5     3     2     3     2
+#&gt; 2     2     2     1     2     2     5     6     4     5     2     2     6     1
+#&gt; 3     3     4     4     6     3     3     4     3     3     4     1     5     1
+#&gt; 4     4     2     6     1     4     5     4     6     4     5     1     3     1
+#&gt; 5     5     3     1     3     5     5     6     6     1     2     6     5     1
+#&gt; 6     6     6     4     1     3     6     6     4     6     5     3     3     1</code></pre>
 <p>Die Spalten AS3, AS4 und BS1, BS5 waren inverse Items, die wir noch umrechnen müssen:</p>
 <pre class="r"><code># Inverse Item umrechnen:
-testdaten %&gt;%
+testdaten |&gt;
     mutate(
         AS3 = maxInvItem - AS3,
         AS4 = maxInvItem - AS4,
@@ -868,20 +865,20 @@ testdaten %&gt;%
 head(testdaten_korrigiert)
 #&gt; # A tibble: 6 x 13
 #&gt;      ID   AS1   AS2   AS3   AS4   AS5   AS6   BS1   BS2   BS3   BS4   BS5   sex
-#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1     1     1     1     2     3     2     1     6     5     5     1     4     1
-#&gt; 2     2     4     4     6     2     2     2     6     2     2     3     6     2
-#&gt; 3     3     4     1     2     5     4     2     6     1     3     2     3     2
-#&gt; 4     4     1     3     4     3     4     2     3     1     5     1     5     1
-#&gt; 5     5     3     2     5     5     1     5     6     3     4     5     3     2
-#&gt; 6     6     1     1     6     4     3     5     4     4     3     1     5     1</code></pre>
+#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt;
+#&gt; 1     1     4     4     6     6     2     4     2     5     3     2     4     2
+#&gt; 2     2     2     1     5     5     5     6     3     5     2     2     1     1
+#&gt; 3     3     4     4     1     4     3     4     4     3     4     1     2     1
+#&gt; 4     4     2     6     6     3     5     4     1     4     5     1     4     1
+#&gt; 5     5     3     1     4     2     5     6     1     1     2     6     2     1
+#&gt; 6     6     6     4     6     4     6     6     3     6     5     3     4     1</code></pre>
 <p>Die jeweiligen Itemsets werden nun zur einem Wert (Gesamtscore)
 zusammengefasst, in dem wir jeweils den Mittelwert von <code>AS1</code>-<code>AS6</code>
 und <code>BS1</code>-<code>BS5</code> bildenund in <code>AS</code> bzw. <code>BS</code> speichern:</p>
 <pre class="r"><code># Wir fassen nun die AS1-AS6 und die BS1-BS5 zusammen 
 # und bilden die jeweiligen Mittelwerte:
-testdaten_korrigiert %&gt;%
-    group_by(ID, sex) %&gt;%  # Damit wird für jede Zeile die Zusammenfassung gemacht!
+testdaten_korrigiert |&gt;
+    group_by(ID, sex) |&gt;  # Damit wird für jede Zeile die Zusammenfassung gemacht!
     summarise(
         AS = mean(c(AS1, AS2, AS3, AS4, AS5, AS6)),
         BS = mean(c(BS1, BS2, BS3, BS4, BS5))
@@ -892,16 +889,16 @@ head(testdaten_sum)
 #&gt; # A tibble: 6 x 4
 #&gt; # Groups:   ID [6]
 #&gt;      ID   sex    AS    BS
-#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1     1     1  1.67   4.2
-#&gt; 2     2     2  3.33   3.8
-#&gt; 3     3     2  3      3  
-#&gt; 4     4     1  2.83   3  
-#&gt; 5     5     2  3.5    4.2
-#&gt; 6     6     1  3.33   3.4</code></pre>
+#&gt;   &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1     1     2  4.33   3.2
+#&gt; 2     2     1  4      2.6
+#&gt; 3     3     1  3.33   2.8
+#&gt; 4     4     1  4.33   3  
+#&gt; 5     5     1  3.5    2.4
+#&gt; 6     6     1  5.33   4.2</code></pre>
 <p>Die Datentabelle <code>testdaten_sum</code> enthält nun die Spalten <code>AS</code> und <code>BS</code> mit den entsprechenden Mittelwerten der einzelnen Items <code>AS1</code>-<code>AS6</code> sowieso <code>BS1</code>- <code>BS5</code>.</p>
 <p>Wir wollen nun die Ergebnisse als Boxplots anzeigen lassen. Dafür benennen wir die Geschlechter von 1,2 auf “Frau”, “Mann” um:</p>
-<pre class="r"><code>testdaten_sum %&gt;%
+<pre class="r"><code>testdaten_sum |&gt;
     mutate(sex = factor(sex, levels = c(1, 2),
                              labels = c(&quot;Frau&quot;, &quot;Mann&quot;))
     ) -&gt; testdaten_sex </code></pre>
@@ -912,7 +909,7 @@ gf_boxplot(AS ~ sex, data = testdaten_sex) %&gt;%
         title = &quot;Boxplot von AS nach Geschlechtern&quot;,
         x = &quot;Geschlechter&quot;,
         y = &quot;Item AS&quot;
-    ) %&gt;%
+    ) |&gt;
   gf_refine(
     scale_y_continuous(
       breaks = 1:6, 
@@ -927,24 +924,60 @@ gf_boxplot(BS ~ sex, data = testdaten_sex) %&gt;%
         title = &quot;Boxplot von BS nach Geschlechtern&quot;,
         x = &quot;Geschlechter&quot;,
         y = &quot;Item BS&quot;
-    ) %&gt;%
+    ) |&gt;
   gf_refine(
     scale_y_continuous(
       breaks = 1:6, 
       label = 1:6,
-      limits = c(1, 6)  # GIbt den ganzen Bereich von 1 bis 6 aus!
+      limits = c(1, 6)  # Gibt den ganzen Bereich von 1 bis 6 aus!
     )  
   )</code></pre>
 <p><img src="https://sefiroth.net/nab/post/datenjudo-fur-fragebogen/index.de_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;" /><img src="https://sefiroth.net/nab/post/datenjudo-fur-fragebogen/index.de_files/figure-html/unnamed-chunk-5-2.png" width="90%" style="display: block; margin: auto;" /></p>
-<p>Die Kennzahlen dazu erhalten wir mit <code>favstats</code>:</p>
+<p>Die Kennzahlen dazu erhalten wir mit <code>favstats</code>. Dabei wählen wir die ersten sechs Einträge (Variabelbezeichnung und Q0 bis Q4) aus:</p>
 <pre class="r"><code>favstats(AS ~ sex, data = testdaten_sex)[1:6]
-#&gt;    sex      min    Q1   median       Q3      max
-#&gt; 1 Frau 1.666667 2.625 3.333333 3.666667 4.000000
-#&gt; 2 Mann 3.000000 3.000 3.333333 3.500000 3.833333
+#&gt;    sex      min       Q1   median       Q3      max
+#&gt; 1 Frau 2.166667 3.333333 3.666667 4.166667 5.333333
+#&gt; 2 Mann 3.666667 4.000000 4.333333 4.333333 4.500000
 favstats(BS ~ sex, data = testdaten_sex)[1:6]
 #&gt;    sex min  Q1 median  Q3 max
-#&gt; 1 Frau 2.6 3.2    3.6 4.0 4.2
-#&gt; 2 Mann 2.2 2.8    3.0 3.8 4.2</code></pre>
+#&gt; 1 Frau 2.4 2.8    3.4 4.2 4.6
+#&gt; 2 Mann 2.6 3.2    3.3 3.8 4.2</code></pre>
+<p>Unter der Verwendung des Pakets <code>likert</code> (<a href="https://github.com/jbryer/likert" class="uri">https://github.com/jbryer/likert</a>) können wir die Ausgaben auch noch etwas schöner gestalten:</p>
+<pre class="r"><code>library(likert)
+
+# Wir wählen nur den Itemset BS aus und speichern in in items2:
+testdaten_korrigiert |&gt;
+  select(
+    starts_with(&quot;BS&quot;)
+  ) -&gt; items2
+
+# Leider mag likert tibbels nicht so gerne, daher:
+items2 &lt;- as.data.frame(items2)
+
+# Wir geben den Items noch ein paar Buzzwords:
+names(items2) &lt;- c(&quot;Gesundheit&quot;, &quot;Familie&quot;, &quot;Geld&quot;, &quot;Freunde&quot;, &quot;Langes Leben&quot;)
+
+# Vorbereitung:
+l2 &lt;- likert(items2, nlevels = 5)
+
+# Zusammenfassung
+summary(l2)
+#&gt;           Item      low   neutral     high     mean       sd
+#&gt; 3         Geld 28.57143 23.809524 47.61905 3.380952 1.359272
+#&gt; 5 Langes Leben 57.14286  4.761905 38.09524 2.619048 1.532194
+#&gt; 1   Gesundheit 38.09524 28.571429 33.33333 2.857143 1.492840
+#&gt; 2      Familie 38.09524 28.571429 33.33333 2.952381 1.499206
+#&gt; 4      Freunde 42.85714 23.809524 33.33333 2.857143 1.236354
+
+# Graphische Ausgaben:
+plot(l2)
+
+plot(l2,&quot;bar&quot;)
+
+plot(l2,&quot;heat&quot;)
+
+plot(l2,&quot;density&quot;)</code></pre>
+<p><img src="https://sefiroth.net/nab/post/datenjudo-fur-fragebogen/index.de_files/figure-html/unnamed-chunk-7-1.png" width="90%" style="display: block; margin: auto;" /><img src="https://sefiroth.net/nab/post/datenjudo-fur-fragebogen/index.de_files/figure-html/unnamed-chunk-7-2.png" width="90%" style="display: block; margin: auto;" /><img src="https://sefiroth.net/nab/post/datenjudo-fur-fragebogen/index.de_files/figure-html/unnamed-chunk-7-3.png" width="90%" style="display: block; margin: auto;" /><img src="https://sefiroth.net/nab/post/datenjudo-fur-fragebogen/index.de_files/figure-html/unnamed-chunk-7-4.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Voilà!</p>
 
     </div>
