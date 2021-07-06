@@ -1,2 +1,5 @@
 # nab
-Normans Akademischer Blob
+aka Normans Akademischer Blog
+
+Das sind die Inhaltseiten meines kleinen Blogs.
+
