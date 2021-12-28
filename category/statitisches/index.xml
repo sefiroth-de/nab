@@ -5,12 +5,58 @@
     <link>https://sefiroth.net/nab/category/statitisches/</link>
       <atom:link href="https://sefiroth.net/nab/category/statitisches/index.xml" rel="self" type="application/rss+xml" />
     <description>Statitisches</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 22 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Mon, 27 Dec 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Statitisches</title>
       <link>https://sefiroth.net/nab/category/statitisches/</link>
     </image>
+    
+    <item>
+      <title>Grafiken nebeneinander setzen mit ggplot2 oder ggformula</title>
+      <link>https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/</link>
+      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;wie-menschen-grafiken-von-ggplot2-oder-ggformula-nebeneinander-setzten-kann&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Wie menschen Grafiken von ggplot2 oder ggformula nebeneinander setzten kann&lt;/h2&gt;
+&lt;p&gt;Ab und zu möchte mensch zwei (oder mehr) Grafiken neben- oder übereinander setzen.&lt;/p&gt;
+&lt;p&gt;Hier ein kurzes Beispiel, wie das gelingen kann.
+Zunächst bereiten wir alles vor, in dem wir die Pakete laden und die Daten freigeben.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+# ggf. einmal vorher den Befehl:
+# install.packages(&amp;quot;gridExtra&amp;quot;)
+# ausführen oder das Paket &amp;quot;gridExtra&amp;quot; installieren.
+library(gridExtra)
+data(iris)  # Datensatz bereitstellen&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Dann erstellen nun vier Plots und speichern diese in vier Variablen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Ersten Plot erstellen
+plot1 &amp;lt;- gf_point(Sepal.Length ~ Sepal.Width, data = iris)
+
+# Zweiten Plot erstellen
+plot2 &amp;lt;- gf_point(Petal.Length ~ Petal.Width, data = iris)
+
+# Dritten Plot erstellen
+plot3 &amp;lt;- gf_point(Sepal.Length ~ Petal.Width, data = iris)
+
+# Vierten Plot erstellen
+plot4 &amp;lt;- gf_point(Petal.Length ~ Sepal.Width, data = iris)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nun arrangieren wir die Plots entsprechend:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Zwei Plots nebeneinander in einer Zeile: 
+grid.arrange(plot1, plot2, ncol = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Zwei Plots untereinander in einer Spalte
+grid.arrange(plot1, plot2, nrow = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Vier Plots in einer Matrix:
+grid.arrange(plot1, plot2, plot3, plot4, ncol = 2, nrow = 2) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Der Standardfehler aus klassischer Sicht - Ein kleiner Überblick</title>
@@ -299,13 +345,13 @@ zscore(u)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;Weiterführende Literatur und Quellen dieses Eintrags:&lt;/strong&gt;&lt;/p&gt;
 &lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body&#34;&gt;
 &lt;div id=&#34;ref-Schira2005&#34; class=&#34;csl-entry&#34;&gt;
-&lt;p&gt;&lt;div class=&#34;csl-left-margin&#34;&gt;1. &lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Schira, J.: Statistische Methoden der VWL und BWL. PEARSON Studion, München (2005)&lt;/div&gt;&lt;/p&gt;
+&lt;div class=&#34;csl-left-margin&#34;&gt;1. &lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Schira, J.: Statistische Methoden der VWL und BWL. PEARSON Studion, München (2005)&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;ref-website:WikipediaZGS&#34; class=&#34;csl-entry&#34;&gt;
-&lt;p&gt;&lt;div class=&#34;csl-left-margin&#34;&gt;2. &lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Wikipedia: Zentraler Grenzwertsatz, &lt;a href=&#34;https://de.wikipedia.org/w/index.php?title=Zentraler_Grenzwertsatz&amp;amp;oldid=162715036&#34;&gt;https://de.wikipedia.org/w/index.php?title=Zentraler_Grenzwertsatz&amp;amp;oldid=162715036&lt;/a&gt;, (2017)&lt;/div&gt;&lt;/p&gt;
+&lt;div class=&#34;csl-left-margin&#34;&gt;2. &lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Wikipedia: Zentraler Grenzwertsatz, &lt;a href=&#34;https://de.wikipedia.org/w/index.php?title=Zentraler_Grenzwertsatz&amp;amp;oldid=162715036&#34;&gt;https://de.wikipedia.org/w/index.php?title=Zentraler_Grenzwertsatz&amp;amp;oldid=162715036&lt;/a&gt;, (2017)&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;ref-website:WolframMathWorldCLT&#34; class=&#34;csl-entry&#34;&gt;
-&lt;p&gt;&lt;div class=&#34;csl-left-margin&#34;&gt;3. &lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Weisstein, E.W.: Central limit theorem, &lt;a href=&#34;http://mathworld.wolfram.com/CentralLimitTheorem.html&#34;&gt;http://mathworld.wolfram.com/CentralLimitTheorem.html&lt;/a&gt;, (2017)&lt;/div&gt;&lt;/p&gt;
+&lt;div class=&#34;csl-left-margin&#34;&gt;3. &lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Weisstein, E.W.: Central limit theorem, &lt;a href=&#34;http://mathworld.wolfram.com/CentralLimitTheorem.html&#34;&gt;http://mathworld.wolfram.com/CentralLimitTheorem.html&lt;/a&gt;, (2017)&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;

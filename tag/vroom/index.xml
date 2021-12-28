@@ -7,7 +7,7 @@
     <description>vroom</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>vroom</title>
       <link>https://sefiroth.net/nab/tag/vroom/</link>
     </image>
@@ -45,7 +45,7 @@ mycols &amp;lt;- cols(
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Laden mit vroom, Spaltentypen erraten, Locale auf mylocale
 tips.vroom &amp;lt;- vroom(url, locale = mylocale)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Rows: 244 Columns: 7&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Column specification ────────────────────────────────────────────────────────
+&lt;pre&gt;&lt;code&gt;## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &amp;quot;;&amp;quot;
 ## chr (4): sex, smoker, day, time
 ## dbl (3): total_bill, tip, size&lt;/code&gt;&lt;/pre&gt;
@@ -53,7 +53,7 @@ tips.vroom &amp;lt;- vroom(url, locale = mylocale)&lt;/code&gt;&lt;/pre&gt;
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tips.vroom)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 × 7
 ##   total_bill   tip sex    smoker day   time    size
 ##        &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;dbl&amp;gt;
 ## 1       17.0  1.01 Female No     Sun   Dinner     2
@@ -89,7 +89,7 @@ tips.vroom &amp;lt;- vroom(url, locale = mylocale)&lt;/code&gt;&lt;/pre&gt;
 tips.vroom2 &amp;lt;- vroom(url, col_types = mycols, locale = mylocale)
 
 head(tips.vroom2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 × 7
 ##   total_bill   tip sex    smoker day   time    size
 ##        &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;  &amp;lt;fct&amp;gt;  &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt;  &amp;lt;int&amp;gt;
 ## 1       17.0  1.01 Female No     Sun   Dinner     2
@@ -124,13 +124,15 @@ head(tips.vroom2)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Readr
 library(readr)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Registered S3 methods overwritten by &amp;#39;readr&amp;#39;:
-##   method           from 
-##   format.col_spec  vroom
-##   print.col_spec   vroom
-##   print.collector  vroom
-##   print.date_names vroom
-##   print.locale     vroom
-##   str.col_spec     vroom&lt;/code&gt;&lt;/pre&gt;
+##   method                    from 
+##   as.data.frame.spec_tbl_df vroom
+##   as_tibble.spec_tbl_df     vroom
+##   format.col_spec           vroom
+##   print.col_spec            vroom
+##   print.collector           vroom
+##   print.date_names          vroom
+##   print.locale              vroom
+##   str.col_spec              vroom&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## Attache Paket: &amp;#39;readr&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Die folgenden Objekte sind maskiert von &amp;#39;package:vroom&amp;#39;:
@@ -142,20 +144,17 @@ library(readr)&lt;/code&gt;&lt;/pre&gt;
 ##     fwf_empty, fwf_positions, fwf_widths, locale, output_column,
 ##     problems, spec&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tips.readr &amp;lt;- readr::read_csv2(url)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ℹ Using &amp;#39;\&amp;#39;,\&amp;#39;&amp;#39; as decimal and &amp;#39;\&amp;#39;.\&amp;#39;&amp;#39; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ℹ Using &amp;quot;&amp;#39;,&amp;#39;&amp;quot; as decimal and &amp;quot;&amp;#39;.&amp;#39;&amp;quot; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 244 Columns: 7&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────
+## Delimiter: &amp;quot;;&amp;quot;
+## chr (4): sex, smoker, day, time
+## dbl (3): total_bill, tip, size&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   total_bill = col_double(),
-##   tip = col_double(),
-##   sex = col_character(),
-##   smoker = col_character(),
-##   day = col_character(),
-##   time = col_character(),
-##   size = col_double()
-## )&lt;/code&gt;&lt;/pre&gt;
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tips.readr)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 × 7
 ##   total_bill   tip sex    smoker day   time    size
 ##        &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;dbl&amp;gt;
 ## 1       17.0  1.01 Female No     Sun   Dinner     2
@@ -182,9 +181,10 @@ library(readr)&lt;/code&gt;&lt;/pre&gt;
 ##   ..   day = col_character(),
 ##   ..   time = col_character(),
 ##   ..   size = col_double()
-##   .. )&lt;/code&gt;&lt;/pre&gt;
+##   .. )
+##  - attr(*, &amp;quot;problems&amp;quot;)=&amp;lt;externalptr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;object.size(tips.readr)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 20400 bytes&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 20632 bytes&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Readr
 tips.readr2 &amp;lt;- readr::read_csv2(url,
                                 col_types = list(
@@ -197,9 +197,9 @@ tips.readr2 &amp;lt;- readr::read_csv2(url,
                                 col_integer()  # size
                      )
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ℹ Using &amp;#39;\&amp;#39;,\&amp;#39;&amp;#39; as decimal and &amp;#39;\&amp;#39;.\&amp;#39;&amp;#39; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ℹ Using &amp;quot;&amp;#39;,&amp;#39;&amp;quot; as decimal and &amp;quot;&amp;#39;.&amp;#39;&amp;quot; as grouping mark. Use `read_delim()` for more control.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tips.readr2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 × 7
 ##   total_bill   tip sex    smoker day   time    size
 ##        &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;  &amp;lt;fct&amp;gt;  &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt;  &amp;lt;int&amp;gt;
 ## 1       17.0  1.01 Female No     Sun   Dinner     2
@@ -226,9 +226,10 @@ tips.readr2 &amp;lt;- readr::read_csv2(url,
 ##   ..   day = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
 ##   ..   time = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
 ##   ..   size = col_integer()
-##   .. )&lt;/code&gt;&lt;/pre&gt;
+##   .. )
+##  - attr(*, &amp;quot;problems&amp;quot;)=&amp;lt;externalptr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;object.size(tips.readr2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 19184 bytes&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 19416 bytes&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Mit Bordmitteln von R
 download.file(&amp;quot;https://goo.gl/whKjnl&amp;quot;, destfile = &amp;quot;tips.csv&amp;quot;)
 tips.csv2 &amp;lt;- read.csv2(&amp;quot;tips.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;

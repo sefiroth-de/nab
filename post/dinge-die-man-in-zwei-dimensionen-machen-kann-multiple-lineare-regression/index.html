@@ -281,8 +281,8 @@ Es seien die Datenpunkte \((x_1, y_1, z_1), \dots, (x_n, y_n, z_n)\) gegeben und
     <link rel="manifest" href="/nab/index.webmanifest" />
   
 
-  <link rel="icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
-  <link rel="apple-touch-icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
+  <link rel="icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
   <link rel="canonical" href="https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/" />
 
@@ -304,8 +304,8 @@ Es seien die Datenpunkte \((x_1, y_1, z_1), \dots, (x_n, y_n, z_n)\) gegeben und
   <meta property="og:url" content="https://sefiroth.net/nab/post/dinge-die-man-in-zwei-dimensionen-machen-kann-multiple-lineare-regression/" />
   <meta property="og:title" content="Dinge die man in zwei Dimensionen machen kann - Multiple lineare Regression | Norman&#39;s Academic Blog" />
   <meta property="og:description" content="Wir wollen den Fall unterschen bei dem wir mit zwei statistischen Variabeln (\(X\) und \(Y\)) eine dritte Variable (\(Z\)) mittels einer multiplen linearen Regression modellieren.
-Es seien die Datenpunkte \((x_1, y_1, z_1), \dots, (x_n, y_n, z_n)\) gegeben und wir wollen eine lineare Funktion \(g(x,y)\) finden, so dass" /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
-    <meta property="twitter:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="de-de" />
+Es seien die Datenpunkte \((x_1, y_1, z_1), \dots, (x_n, y_n, z_n)\) gegeben und wir wollen eine lineare Funktion \(g(x,y)\) finden, so dass" /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="de-de" />
   
     
       <meta
@@ -354,7 +354,7 @@ Es seien die Datenpunkte \((x_1, y_1, z_1), \dots, (x_n, y_n, z_n)\) gegeben und
     "name": "Norman's Academic Blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+      "url": "https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "Wir wollen den Fall unterschen bei dem wir mit zwei statistischen Variabeln (\\(X\\) und \\(Y\\)) eine dritte Variable (\\(Z\\)) mittels einer multiplen linearen Regression modellieren.\nEs seien die Datenpunkte \\((x_1, y_1, z_1), \\dots, (x_n, y_n, z_n)\\) gegeben und wir wollen eine lineare Funktion \\(g(x,y)\\) finden, so dass"
@@ -912,9 +912,10 @@ s_yz &lt;- cov(wt ~ mpg, data = dt)
 
 var_x &lt;- var(~ hp, data = dt)
 var_y &lt;- var(~ wt, data = dt)
-
-b1 &lt;- (s_xz*var_x*var_y - s_xz*(s_xy)**2 - s_yz*s_xy*var_x + s_xz*s_xy**2) / (var_x*var_x*var_y - var_x*s_xy**2)
-b2 &lt;- (s_yz*var_x - s_xz*s_xy) / (var_x * var_y- s_xy*s_xy)
+b1z &lt;- s_xz*var_x*var_y - s_xz*(s_xy)**2 - s_yz*s_xy*var_x + s_xz*s_xy**2
+b1n &lt;- var_x*var_x*var_y - var_x*s_xy**2
+b1 &lt;- b1z / b1n
+b2 &lt;- (s_yz*var_x - s_xz*s_xy) / (var_x * var_y - s_xy*s_xy)
 b0 &lt;- mean_z - b1 * mean_x - b2 * mean_y
 
 # Koeffizienten zur Ausgabe aufbereiten:
@@ -1421,7 +1422,7 @@ Damit ist dann:</p>
       
     
     
-    <script src="/nab/de/js/wowchemy.min.109be7f7da89e8aa181a9577a3adb003.js"></script>
+    <script src="/nab/de/js/wowchemy.min.d9b311232cc234ef3dafdc7ce0b876bb.js"></script>
 
     
 

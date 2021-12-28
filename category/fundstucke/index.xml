@@ -7,7 +7,7 @@
     <description>Fundstücke</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 02 Jan 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Fundstücke</title>
       <link>https://sefiroth.net/nab/category/fundstucke/</link>
     </image>
@@ -21,7 +21,7 @@
 &lt;h2 id=&#34;vorbereiten-der-sd-karte&#34;&gt;Vorbereiten der SD Karte&lt;/h2&gt;
 &lt;p&gt;Die SD(HC) Karte sollte auf FAT32 formatiert werden. Das geht unter macOS sehr schön mit dem Festplattenmanager!&lt;/p&gt;
 &lt;h2 id=&#34;laden-der-aktuellen-version-von-rasbian&#34;&gt;Laden der aktuellen Version von Rasbian&lt;/h2&gt;
-&lt;p&gt;Die aktuellen Versionen findet man unter &lt;a href=&#34;https://www.raspberrypi.org/downloads/raspbian/&#34;&gt;https://www.raspberrypi.org/downloads/raspbian/&lt;/a&gt;. Es ginge auch alternativ NOOBS, aber da ich &amp;ldquo;headless&amp;rdquo; installieren möchte, wähle ich Raspbian direkt aus.&lt;/p&gt;
+&lt;p&gt;Die aktuellen Versionen findet man unter &lt;a href=&#34;https://www.raspberrypi.org/downloads/raspbian/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.raspberrypi.org/downloads/raspbian/&lt;/a&gt;. Es ginge auch alternativ NOOBS, aber da ich &amp;ldquo;headless&amp;rdquo; installieren möchte, wähle ich Raspbian direkt aus.&lt;/p&gt;
 &lt;p&gt;Die ZIP-Datei wird entpackt (Archiveprogramm) und wir befinden uns mit der Konsole in dem Verzeichnis in dem das aktuelle Image liegt.&lt;/p&gt;
 &lt;p&gt;Zur Zeit dieses Eintrages war das die Datei &amp;ldquo;2018-11-13-raspbian-stretch-full.img&amp;rdquo;&lt;/p&gt;
 &lt;h3 id=&#34;speichern-des-images-auf-die-sd-karte&#34;&gt;Speichern des Images auf die SD Karte&lt;/h3&gt;

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ggplot2 | Norman&#39;s Academic Blog</title>
+    <link>https://sefiroth.net/nab/tag/ggplot2/</link>
+      <atom:link href="https://sefiroth.net/nab/tag/ggplot2/index.xml" rel="self" type="application/rss+xml" />
+    <description>ggplot2</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Mon, 27 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>ggplot2</title>
+      <link>https://sefiroth.net/nab/tag/ggplot2/</link>
+    </image>
+    
+    <item>
+      <title>Grafiken nebeneinander setzen mit ggplot2 oder ggformula</title>
+      <link>https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/</link>
+      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;wie-menschen-grafiken-von-ggplot2-oder-ggformula-nebeneinander-setzten-kann&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Wie menschen Grafiken von ggplot2 oder ggformula nebeneinander setzten kann&lt;/h2&gt;
+&lt;p&gt;Ab und zu möchte mensch zwei (oder mehr) Grafiken neben- oder übereinander setzen.&lt;/p&gt;
+&lt;p&gt;Hier ein kurzes Beispiel, wie das gelingen kann.
+Zunächst bereiten wir alles vor, in dem wir die Pakete laden und die Daten freigeben.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mosaic)
+# ggf. einmal vorher den Befehl:
+# install.packages(&amp;quot;gridExtra&amp;quot;)
+# ausführen oder das Paket &amp;quot;gridExtra&amp;quot; installieren.
+library(gridExtra)
+data(iris)  # Datensatz bereitstellen&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Dann erstellen nun vier Plots und speichern diese in vier Variablen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Ersten Plot erstellen
+plot1 &amp;lt;- gf_point(Sepal.Length ~ Sepal.Width, data = iris)
+
+# Zweiten Plot erstellen
+plot2 &amp;lt;- gf_point(Petal.Length ~ Petal.Width, data = iris)
+
+# Dritten Plot erstellen
+plot3 &amp;lt;- gf_point(Sepal.Length ~ Petal.Width, data = iris)
+
+# Vierten Plot erstellen
+plot4 &amp;lt;- gf_point(Petal.Length ~ Sepal.Width, data = iris)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nun arrangieren wir die Plots entsprechend:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Zwei Plots nebeneinander in einer Zeile: 
+grid.arrange(plot1, plot2, ncol = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Zwei Plots untereinander in einer Spalte
+grid.arrange(plot1, plot2, nrow = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Vier Plots in einer Matrix:
+grid.arrange(plot1, plot2, plot3, plot4, ncol = 2, nrow = 2) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://sefiroth.net/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

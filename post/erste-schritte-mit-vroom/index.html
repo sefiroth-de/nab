@@ -280,8 +280,8 @@
     <link rel="manifest" href="/nab/index.webmanifest" />
   
 
-  <link rel="icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
-  <link rel="apple-touch-icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
+  <link rel="icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
   <link rel="canonical" href="https://sefiroth.net/nab/post/erste-schritte-mit-vroom/" />
 
@@ -302,8 +302,8 @@
   <meta property="og:site_name" content="Norman&#39;s Academic Blog" />
   <meta property="og:url" content="https://sefiroth.net/nab/post/erste-schritte-mit-vroom/" />
   <meta property="og:title" content="Erste Schritte mit `vroom` | Norman&#39;s Academic Blog" />
-  <meta property="og:description" content="Nach readr kommt vroom. In der Zwischenzeit liegt vroom in der Version 1.2.0 vor und daher habe ich mir ein paar Stunden Zeit gekommen um ein paar erste Experimente damit zu machen." /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
-    <meta property="twitter:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="de-de" />
+  <meta property="og:description" content="Nach readr kommt vroom. In der Zwischenzeit liegt vroom in der Version 1.2.0 vor und daher habe ich mir ein paar Stunden Zeit gekommen um ein paar erste Experimente damit zu machen." /><meta property="og:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="de-de" />
   
     
       <meta
@@ -352,7 +352,7 @@
     "name": "Norman's Academic Blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+      "url": "https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "Nach readr kommt vroom. In der Zwischenzeit liegt vroom in der Version 1.2.0 vor und daher habe ich mir ein paar Stunden Zeit gekommen um ein paar erste Experimente damit zu machen."
@@ -824,7 +824,7 @@ mycols &lt;- cols(
 <pre class="r"><code># Laden mit vroom, Spaltentypen erraten, Locale auf mylocale
 tips.vroom &lt;- vroom(url, locale = mylocale)</code></pre>
 <pre><code>## Rows: 244 Columns: 7</code></pre>
-<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+<pre><code>## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;;&quot;
 ## chr (4): sex, smoker, day, time
 ## dbl (3): total_bill, tip, size</code></pre>
@@ -832,7 +832,7 @@ tips.vroom &lt;- vroom(url, locale = mylocale)</code></pre>
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>head(tips.vroom)</code></pre>
-<pre><code>## # A tibble: 6 x 7
+<pre><code>## # A tibble: 6 × 7
 ##   total_bill   tip sex    smoker day   time    size
 ##        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;
 ## 1       17.0  1.01 Female No     Sun   Dinner     2
@@ -868,7 +868,7 @@ tips.vroom &lt;- vroom(url, locale = mylocale)</code></pre>
 tips.vroom2 &lt;- vroom(url, col_types = mycols, locale = mylocale)
 
 head(tips.vroom2)</code></pre>
-<pre><code>## # A tibble: 6 x 7
+<pre><code>## # A tibble: 6 × 7
 ##   total_bill   tip sex    smoker day   time    size
 ##        &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;  &lt;int&gt;
 ## 1       17.0  1.01 Female No     Sun   Dinner     2
@@ -903,13 +903,15 @@ head(tips.vroom2)</code></pre>
 <pre class="r"><code># Readr
 library(readr)</code></pre>
 <pre><code>## Registered S3 methods overwritten by &#39;readr&#39;:
-##   method           from 
-##   format.col_spec  vroom
-##   print.col_spec   vroom
-##   print.collector  vroom
-##   print.date_names vroom
-##   print.locale     vroom
-##   str.col_spec     vroom</code></pre>
+##   method                    from 
+##   as.data.frame.spec_tbl_df vroom
+##   as_tibble.spec_tbl_df     vroom
+##   format.col_spec           vroom
+##   print.col_spec            vroom
+##   print.collector           vroom
+##   print.date_names          vroom
+##   print.locale              vroom
+##   str.col_spec              vroom</code></pre>
 <pre><code>## 
 ## Attache Paket: &#39;readr&#39;</code></pre>
 <pre><code>## Die folgenden Objekte sind maskiert von &#39;package:vroom&#39;:
@@ -921,20 +923,17 @@ library(readr)</code></pre>
 ##     fwf_empty, fwf_positions, fwf_widths, locale, output_column,
 ##     problems, spec</code></pre>
 <pre class="r"><code>tips.readr &lt;- readr::read_csv2(url)</code></pre>
-<pre><code>## ℹ Using &#39;\&#39;,\&#39;&#39; as decimal and &#39;\&#39;.\&#39;&#39; as grouping mark. Use `read_delim()` for more control.</code></pre>
+<pre><code>## ℹ Using &quot;&#39;,&#39;&quot; as decimal and &quot;&#39;.&#39;&quot; as grouping mark. Use `read_delim()` for more control.</code></pre>
+<pre><code>## Rows: 244 Columns: 7</code></pre>
+<pre><code>## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;;&quot;
+## chr (4): sex, smoker, day, time
+## dbl (3): total_bill, tip, size</code></pre>
 <pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   total_bill = col_double(),
-##   tip = col_double(),
-##   sex = col_character(),
-##   smoker = col_character(),
-##   day = col_character(),
-##   time = col_character(),
-##   size = col_double()
-## )</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>head(tips.readr)</code></pre>
-<pre><code>## # A tibble: 6 x 7
+<pre><code>## # A tibble: 6 × 7
 ##   total_bill   tip sex    smoker day   time    size
 ##        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;
 ## 1       17.0  1.01 Female No     Sun   Dinner     2
@@ -961,9 +960,10 @@ library(readr)</code></pre>
 ##   ..   day = col_character(),
 ##   ..   time = col_character(),
 ##   ..   size = col_double()
-##   .. )</code></pre>
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
 <pre class="r"><code>object.size(tips.readr)</code></pre>
-<pre><code>## 20400 bytes</code></pre>
+<pre><code>## 20632 bytes</code></pre>
 <pre class="r"><code># Readr
 tips.readr2 &lt;- readr::read_csv2(url,
                                 col_types = list(
@@ -976,9 +976,9 @@ tips.readr2 &lt;- readr::read_csv2(url,
                                 col_integer()  # size
                      )
 )</code></pre>
-<pre><code>## ℹ Using &#39;\&#39;,\&#39;&#39; as decimal and &#39;\&#39;.\&#39;&#39; as grouping mark. Use `read_delim()` for more control.</code></pre>
+<pre><code>## ℹ Using &quot;&#39;,&#39;&quot; as decimal and &quot;&#39;.&#39;&quot; as grouping mark. Use `read_delim()` for more control.</code></pre>
 <pre class="r"><code>head(tips.readr2)</code></pre>
-<pre><code>## # A tibble: 6 x 7
+<pre><code>## # A tibble: 6 × 7
 ##   total_bill   tip sex    smoker day   time    size
 ##        &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;  &lt;int&gt;
 ## 1       17.0  1.01 Female No     Sun   Dinner     2
@@ -1005,9 +1005,10 @@ tips.readr2 &lt;- readr::read_csv2(url,
 ##   ..   day = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
 ##   ..   time = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
 ##   ..   size = col_integer()
-##   .. )</code></pre>
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
 <pre class="r"><code>object.size(tips.readr2)</code></pre>
-<pre><code>## 19184 bytes</code></pre>
+<pre><code>## 19416 bytes</code></pre>
 <pre class="r"><code># Mit Bordmitteln von R
 download.file(&quot;https://goo.gl/whKjnl&quot;, destfile = &quot;tips.csv&quot;)
 tips.csv2 &lt;- read.csv2(&quot;tips.csv&quot;)</code></pre>
@@ -1299,13 +1300,13 @@ tips.csv2 &lt;- read.csv2(&quot;tips.csv&quot;)</code></pre>
       
       <li><a href="/nab/post/auch-r-markdown-dateien-sollten-sich-an-regeln-halten/">Auch R markdown Dateien sollten sich an Regeln halten</a></li>
       
+      <li><a href="/nab/post/2021-12-27-grafiken-nebeneinander-setzen-mit-ggplot2-oder-ggformula/">Grafiken nebeneinander setzen mit ggplot2 oder ggformula</a></li>
+      
       <li><a href="/nab/post/datenjudo-fur-fragebogen/">Datenjudo für Fragebögen </a></li>
       
       <li><a href="/nab/post/interaktionseffekte-leichter-interpretieren-durch-transformationen/">Interaktionseffekte leichter interpretieren durch Transformationen</a></li>
       
       <li><a href="/nab/post/regression-mit-studentisierten-daten/">Regression mit studentisierten Daten</a></li>
-      
-      <li><a href="/nab/post/ueber-die-koeffizienten-einer-linearen-regression/">Über die Koeffizienten einer linearen Regression</a></li>
       
     </ul>
   </div>
@@ -1489,7 +1490,7 @@ tips.csv2 &lt;- read.csv2(&quot;tips.csv&quot;)</code></pre>
       
     
     
-    <script src="/nab/de/js/wowchemy.min.109be7f7da89e8aa181a9577a3adb003.js"></script>
+    <script src="/nab/de/js/wowchemy.min.d9b311232cc234ef3dafdc7ce0b876bb.js"></script>
 
     
 

@@ -5,12 +5,34 @@
     <link>https://sefiroth.net/nab/category/allgemeines/</link>
       <atom:link href="https://sefiroth.net/nab/category/allgemeines/index.xml" rel="self" type="application/rss+xml" />
     <description>Allgemeines</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Wed, 18 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>de-de</language><copyright>© in 2017-2021 by Norman Markgraf</copyright><lastBuildDate>Fri, 27 Aug 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://sefiroth.net/nab/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Allgemeines</title>
       <link>https://sefiroth.net/nab/category/allgemeines/</link>
     </image>
+    
+    <item>
+      <title>CSV Dateien bearbeiten mit Miller</title>
+      <link>https://sefiroth.net/nab/post/csv-dateien-bearbeiten-mit-miller/</link>
+      <pubDate>Fri, 27 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://sefiroth.net/nab/post/csv-dateien-bearbeiten-mit-miller/</guid>
+      <description>
+&lt;script src=&#34;https://sefiroth.net/nab/post/csv-dateien-bearbeiten-mit-miller/index.de_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Miller ist sagt selber über sich:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON. You get to work with your data using named fields, without needing to count positional column indices.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ein Werkzeug als, mit dem man (unter anderem) CSV Dateien bearbeiten kann.&lt;/p&gt;
+&lt;p&gt;Hier ein paar Beispiele:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; mlr --icsv --fs semicolon --otsv cat tips.csv | sed &amp;#39;s/,/./g&amp;#39; | mlr --itsv --omd cat&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mit diesem Befehl wird eine durch Semikolon getrennte CSV-Datei in eine durch Tabulatur getrennte TSV Datei umgewandelt, dann alle Kommata in Punkte umgewandelt und zu guter letzt daraus ein Markdown-Tabelle erzeugt.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; mlr --icsv --fs semicolon --otsv cat tips.csv | sed &amp;#39;s/,/./g&amp;#39; | mlr --itsv --opprint --barred cat&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mit diesem Befehl wird eine durch Semikolon getrennte CSV-Datei in eine durch Tabulatur getrennte TSV Datei umgewandelt, dann alle Kommata in Punkte umgewandelt und zu guter letzt daraus ein Tabelle erzeugt, welche eingerahmt ist.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Korrigieren von Arbeiten mit Excel und R</title>
